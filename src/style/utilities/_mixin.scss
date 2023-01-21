@@ -1,0 +1,13 @@
+@mixin flex($row: row, $content: center, $gap: 0.3rem) {
+  display: flex;
+  justify-content: $content;
+  align-items: center;
+  flex-direction: $row;
+  gap: $gap;
+}
+
+@mixin grid($col, $fraction, $gap) {
+  display: grid;
+  grid-template-columns: repeat($col, $fraction);
+  gap: $gap;
+}

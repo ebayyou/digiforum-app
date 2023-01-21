@@ -1,0 +1,28 @@
+@use './base/reset';
+@use './base/variable' as *;
+@use './utilities/mixin' as *;
+@use './layout/AuthPage';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: $body-font;
+  color: $title-color;
+  background-color: $main-color;
+}
+
+.heading {
+  font-size: 2.2rem;
+  text-align: center;
+  color: $title-color;
+}
+
+.logo__brand {
+  @include flex();
+  width: 49px;
+  height: 49px;
+  font-size: 1.2rem;
+  background-color: $first-color-alt;
+  border-radius: 50%;
+  margin-bottom: 2em;
+}
