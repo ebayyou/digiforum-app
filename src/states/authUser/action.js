@@ -28,7 +28,7 @@ function asyncSetAuthUser({ email, password }) {
     try {
       const token = await Api.requestLogin({ email, password });
       Api.putAccessToken(token);
-      const authUser = await Api.getOwnUser();
+      const authUser = await Api.getOwnProfile();
 
       dispatch(setAuthUserActionCreator(authUser));
     } catch (error) {
@@ -44,10 +44,4 @@ function asyncUnsetAuthUser() {
   };
 }
 
-export {
-  ActionType,
-  setAuthUserActionCreator,
-  unsetAuthUserActionCreator,
-  asyncSetAuthUser,
-  asyncUnsetAuthUser,
-};
+export { ActionType, setAuthUserActionCreator, unsetAuthUserActionCreator, asyncSetAuthUser, asyncUnsetAuthUser };

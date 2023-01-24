@@ -1,0 +1,8 @@
+@use '../base/variable' as *;
+@use '../utilities/mixin' as *;
+
+.box__wrapper {
+  @include flex();
+  width: 100%;
+  padding: 1em;
+}

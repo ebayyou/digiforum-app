@@ -1,14 +1,19 @@
 @use './base/reset';
 @use './base/variable' as *;
 @use './utilities/mixin' as *;
+@use './layout/HomePage';
 @use './layout/AuthPage';
+@use './components/Navbar';
+@use './components/Threads';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 body {
+  width: 100%;
+  height: 100vh;
   font-family: $body-font;
   color: $title-color;
-  background-color: $main-color;
+  background: $main-color;
 }
 
 .heading {
@@ -21,8 +26,33 @@ body {
   @include flex();
   width: 49px;
   height: 49px;
+  margin-bottom: 2em;
   font-size: 1.2rem;
   background-color: $first-color-alt;
   border-radius: 50%;
-  margin-bottom: 2em;
+}
+
+.drop {
+  width: 100%;
+  height: 100vh;
+  background: rgba(35, 32, 32, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(3.9px);
+  border: 1px solid rgba(35, 32, 32, 0.17);
+}
+
+.drop__blur {
+  width: 100%;
+  height: 100vh;
+  background: rgba(35, 32, 32, 0.3);
+  box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+  backdrop-filter: blur(10.3px);
+  -webkit-backdrop-filter: blur(10.3px);
+  border: 1px solid rgba(35, 32, 32, 0.17);
+}
+
+.loading {
+  position: sticky;
+  top: 0;
 }
