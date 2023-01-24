@@ -37,13 +37,15 @@ const Api = (() => {
       throw new Error(message);
     }
 
-    const { data: { token } } = responseJson;
+    const {
+      data: { token },
+    } = responseJson;
 
     return token;
   }
 
   async function requestRegister({ name, email, password }) {
-    const request = await fetch(`${BASE_URL}/login`, {
+    const request = await fetch(`${BASE_URL}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,7 +59,9 @@ const Api = (() => {
       throw new Error(message);
     }
 
-    const { data: { user } } = responseJson;
+    const {
+      data: { user },
+    } = responseJson;
 
     return user;
   }
@@ -71,12 +75,14 @@ const Api = (() => {
       throw new Error(message);
     }
 
-    const { data: { users } } = responseJson;
+    const {
+      data: { users },
+    } = responseJson;
 
     return users;
   }
 
-  async function getOwnUser() {
+  async function getOwnProfile() {
     const responseJson = await _fetchWithToken(`${BASE_URL}/users/me`);
     const { status, message } = responseJson;
 
@@ -84,9 +90,11 @@ const Api = (() => {
       throw new Error(message);
     }
 
-    const { data: { users } } = responseJson;
+    const {
+      data: { user },
+    } = responseJson;
 
-    return users;
+    return user;
   }
 
   async function getAllThreads() {
@@ -98,7 +106,9 @@ const Api = (() => {
       throw new Error(message);
     }
 
-    const { data: { threads } } = responseJson;
+    const {
+      data: { threads },
+    } = responseJson;
 
     return threads;
   }
@@ -113,7 +123,9 @@ const Api = (() => {
       throw new Error(message);
     }
 
-    const { data: { threadDetail } } = responseJson;
+    const {
+      data: { threadDetail },
+    } = responseJson;
 
     return threadDetail;
   }
@@ -132,7 +144,9 @@ const Api = (() => {
       throw new Error(message);
     }
 
-    const { data: { thread } } = responseJson;
+    const {
+      data: { thread },
+    } = responseJson;
 
     return thread;
   }
@@ -151,7 +165,9 @@ const Api = (() => {
       throw new Error(message);
     }
 
-    const { data: { comment } } = responseJson;
+    const {
+      data: { comment },
+    } = responseJson;
 
     return comment;
   }
@@ -165,7 +181,9 @@ const Api = (() => {
       throw new Error(message);
     }
 
-    const { data: { leaderboards } } = responseJson;
+    const {
+      data: { leaderboards },
+    } = responseJson;
 
     return leaderboards;
   }
@@ -176,7 +194,7 @@ const Api = (() => {
     requestLogin,
     requestRegister,
     getAllUsers,
-    getOwnUser,
+    getOwnProfile,
     getAllThreads,
     getDetailThread,
     createThread,
