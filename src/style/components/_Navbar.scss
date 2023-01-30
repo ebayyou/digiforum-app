@@ -3,30 +3,123 @@
 
 .navbar {
   @include flex(row, space-between, 0);
-  width: 100%;
+  position: relative;
   height: 50px;
   padding: 2.3em 0.5em;
-  background-color: rgb(24 24 24 / 54%);
-  backdrop-filter: blur(10px);
+  background-color: $first-color;
 
   .nav__brand {
-    @include flex(row, center, 0.5rem);
+    @include flex(row, center, 0);
     color: $title-color;
 
     .nav__brand-logo {
-      margin-bottom: 0;
+      margin: 0;
+      cursor: pointer;
     }
     .name__brand {
       color: #dadadf;
     }
   }
 
-  .nav__button {
-    @include flex();
-    width: 65px;
-    height: 40px;
-    color: #dadadf;
-    background: $backgroud-linear;
-    border-radius: 3em;
+  .Humberger__Menu {
+    padding: 0.2em;
+    background-color: transparent;
+
+    .menu {
+      font-size: 2rem;
+      color: $title-color;
+    }
+  }
+
+  .nav__group {
+    @include flex(column, center, 0);
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    width: 95%;
+    margin: 0 auto;
+    padding: 1rem;
+    background: rgb(51 57 79 / 65%);
+    border-radius: 0.6em;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: all 0.3s ease;
+
+    .nav__list {
+      width: 85%;
+      margin: 0 auto;
+
+      .nav__link {
+        @include flex();
+        width: 120px;
+        height: 44px;
+        margin: 0 auto 0.7em;
+        text-align: center;
+        font-size: 16px;
+        color: $title-color;
+      }
+
+      .nav__button {
+        @include flex();
+        height: 44px;
+        color: #dadadf;
+        background: $backgroud-linear;
+        border-radius: 0.3em;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    padding: 2.3em 1em;
+
+    .nav__group {
+      width: 729px;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 10;
+
+    .Humberger__Menu {
+      display: none;
+    }
+
+    .nav__group {
+      position: relative;
+      top: 0;
+      justify-content: space-between;
+      flex-direction: row;
+      margin: 0;
+      padding: 1rem;
+      transition: none;
+
+      .nav__list .nav__link {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .navbar {
+    padding: 2.3em 2em;
+  }
+}
+
+@media (min-width: 1440px) {
+  .navbar {
+    width: 1440px;
+    border-radius: 0.6rem;
   }
 }

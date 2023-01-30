@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useInput } from '../hooks/useInput';
+import logo from '../public/images/Logo.png';
 
 function LoginInput({ onSubmitHandlerLogin }) {
   const [email, onChangeEmail] = useInput('');
@@ -14,7 +15,9 @@ function LoginInput({ onSubmitHandlerLogin }) {
 
   return (
     <div className="auth__input">
-      <div className="logo__brand">DF</div>
+      <div className="logo__brand">
+        <img src={logo} alt="logo brand" />
+      </div>
       <h2 className="auth__heading">Login</h2>
       <p className="auth__description">
         You can Login with your registered account, If you don’t have an account yet,

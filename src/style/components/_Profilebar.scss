@@ -1,0 +1,28 @@
+@use '../base/variable' as *;
+@use '../utilities/mixin' as *;
+
+.profilebar {
+  display: none;
+  position: fixed;
+  top: 80px;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  padding: 1rem;
+  border-left: 2px solid rgb(116 116 116 / 38%);
+}
+
+@media (min-width: 1150px) {
+  .profilebar {
+    display: block;
+
+    // backdrop-filter: blur(15px);
+    // -webkit-backdrop-filter: blur(15px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .profilebar {
+    right: 0px;
+  }
+}

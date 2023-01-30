@@ -2,17 +2,16 @@
 @use '../utilities/mixin' as *;
 
 .thread__list {
-  @include flex();
   width: 100%;
   padding: 1em;
 }
 
 .thread {
-  width: 550px;
+  margin: 0 auto 2em;
   padding: 1.5em 2em;
   color: #e3e5eb;
   background-color: #2c2b2a;
-  box-shadow: 10px 10px 0px rgba(32, 36, 51, 0.27);
+  box-shadow: 10px 10px 0px rgb(100 100 100 / 27%);
   border-radius: 10px;
 
   .thread__heading {
@@ -100,4 +99,64 @@
       }
     }
   }
+}
+
+.threadAdded {
+  @include flex(row, space-between, 0);
+  width: 90%;
+  height: 68px;
+  margin: 2em auto;
+  padding: 0 1.5em;
+  background-color: $first-color;
+  border-radius: 0.4em;
+
+  .added__heading {
+    font-size: $h3-font-size;
+    color: #d7cdcf;
+  }
+
+  .added__button {
+    @include flex();
+    padding: 0.2em;
+    border-radius: 0.2em;
+    background-color: $second-color;
+
+    .button__icon {
+      font-size: 1.5rem;
+      color: #d7cdcf;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .thread {
+    width: 450px;
+  }
+}
+@media (min-width: 768px) {
+  .thread,
+  .threadAdded {
+    width: 550px;
+  }
+
+  .thread__list {
+    width: 600px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1024px) {
+  .thread__list {
+    position: absolute;
+    right: 60px;
+    margin: 50px auto 0;
+  }
+}
+@media (min-width: 1150px) {
+  .thread__list {
+    position: absolute;
+    right: 0;
+    left: 0;
+  }
+}
+@media (min-width: 1440px) {
 }

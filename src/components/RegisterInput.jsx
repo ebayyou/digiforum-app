@@ -46,7 +46,7 @@ function RegisterInput({ onSubmitHandlerRegister }) {
 
       <div className="auth__info">
         have an account?
-        <Link to="/*" className="highlight">
+        <Link to="/login" className="highlight">
           Login!
         </Link>
       </div>

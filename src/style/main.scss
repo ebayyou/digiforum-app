@@ -5,6 +5,8 @@
 @use './layout/AuthPage';
 @use './components/Navbar';
 @use './components/Threads';
+@use './components/Sidebar';
+@use './components/Profilebar';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
@@ -24,12 +26,9 @@ body {
 
 .logo__brand {
   @include flex();
-  width: 49px;
-  height: 49px;
-  margin-bottom: 2em;
-  font-size: 1.2rem;
-  background-color: $first-color-alt;
-  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  margin: 0 -0.7em 2em;
 }
 
 .drop {
@@ -55,4 +54,39 @@ body {
 .loading {
   position: sticky;
   top: 0;
+}
+
+.visible {
+  display: none;
+  opacity: 0;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.Layout {
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .visible {
+    display: block;
+    opacity: 1;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 1rem 0;
+  }
+
+  .Layout {
+    position: relative;
+    width: 1440px;
+    height: 100vh;
+    margin: 0 auto;
+  }
 }

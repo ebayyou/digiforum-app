@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { asyncPopulateUserAndThreads } from '../states/shared/action';
-import ThreadList from './ThreadList';
-import Navbar from '../components/Navbar';
+import ThreadList from '../components/ThreadList';
+import Layout from '../components/Layout';
 
 function HomePage() {
   const { threads = {} } = useSelector((state) => state);
@@ -13,18 +13,9 @@ function HomePage() {
   }, [dispatch]);
 
   return (
-    <div className="drop drop__blur homepage">
-      <div className="drop__blur">
-        <header>
-          <Navbar />
-        </header>
-
-        <main>
-          <h1>Home Page</h1>
-          <ThreadList threads={threads} />
-        </main>
-      </div>
-    </div>
+    <Layout>
+      <ThreadList threads={threads} />
+    </Layout>
   );
 }
 

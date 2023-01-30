@@ -1,12 +1,13 @@
 $main-color: #202433;
-$second-color: #FC728B;
-$first-color-alt: #33394F;
-$title-color: #FFFFFF;
+$second-color: #fc728b;
+$first-color: #1c1e24;
+$first-color-alt: #33394f;
+$title-color: #ffffff;
 $subtitle-color: hsl(19, 16%, 15%);
 $text-color: hsl(19, 16%, 35%);
-$text-color-light: rgba(255, 255, 255, 0.6);;
-$container-color: #FFE3CA;
-$backgroud-linear: linear-gradient(152.9deg, #F4C395 0.44%, #F27F94 100%);
+$text-color-light: rgba(255, 255, 255, 0.6);
+$container-color: #ffe3ca;
+$backgroud-linear: linear-gradient(152.9deg, #f4c395 0.44%, #f27f94 100%);
 
 $body-font: 'Inter', sans-serif;
 $title-font: 'Lora', serif;
@@ -28,7 +29,7 @@ $z-fixed: 100;
   $biggest-font-size: 4rem;
   $h1-font-size: 2.25rem;
   $h2-font-size: 1.5rem;
-  $h3-font-size: 1.25rem;
+  $h3-font-size: 1.5rem;
   $normal-font-size: 1rem;
   $small-font-size: 0.875rem;
   $smaller-font-size: 0.813rem;

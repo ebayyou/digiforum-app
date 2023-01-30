@@ -1,11 +1,14 @@
 import { FaComment, FaBookmark } from 'react-icons/fa';
 import avatar from '../public/images/Avatar_1.png';
+import logo from '../public/images/Logo.png';
 
 function TaglineBrand() {
   return (
     <div className="wrapper__side">
       <div className="tagline">
-        <div className="logo__brand">DF</div>
+        <div className="logo__brand">
+          <img src={logo} alt="logo brand" />
+        </div>
         <h3 className="tagline__brand">DigiForum.io</h3>
         <h1 className="tagline__heading">Any discussion, anywhere, with anyone, only at DigiForum.io</h1>
       </div>
