@@ -14,25 +14,53 @@
 
   .sidebar__headers {
     @include flex(row, space-between, 0);
-    background-color: #3e4250;
     width: 100%;
     padding: 2em 1em;
-    border-top-right-radius: 0.6em;
-    border-bottom: 2px solid #3a3333;
 
-    .sidebar__heading {
-      font-size: $h2-font-size;
-      font-weight: $font-semi-bold;
-      font-style: italic;
-      text-decoration: underline;
+    .headers__item {
+      @include flex(row, flex-start, 0.5rem);
+
+      .headers__img {
+        width: 32px;
+        height: 32px;
+        padding: 0.2em;
+        background: $backgroud-linear;
+        border-radius: 0.2em;
+      }
+
+      .headers__group {
+        .headers__title {
+          font-size: 1rem;
+          margin-bottom: 0.2em;
+        }
+
+        .headers__desc {
+          font-size: 0.7rem;
+          color: #b6c3cf;
+        }
+      }
     }
 
-    .sidebar_icon {
-      font-size: 1.8rem;
-      padding: 0.2em;
-      border-radius: 0.2rem;
-      color: $title-color;
-      background: $backgroud-linear;
+    .headers__button {
+      @include flex();
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(152.9deg, #442a10 0.44%, #cf5b70 100%);
+      border-radius: 3rem;
+
+      .headers__icon {
+        font-size: 1.8rem;
+        color: $title-color;
+      }
+    }
+  }
+
+  .sidebar__overflow {
+    overflow-y: auto;
+    height: 100%;
+
+    &::-webkit-scrollbar {
+      width: 0;
     }
   }
 
@@ -134,8 +162,8 @@
   }
 
   .sidebar__footer {
-    margin-top: 7em;
-    border-top: 2px solid #3a3333;
+    margin: 7em 0 7em;
+    border-top: 2px solid #c1afaf;
     padding: 0.5em 1.5em;
 
     .footer__item {
@@ -177,6 +205,8 @@
     border-right: 2px solid rgba(151, 142, 142, 0.38);
     border-radius: 0;
     box-shadow: 0px 0px 0px;
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
 
     .sidebar__headers {
       display: none;
@@ -184,6 +214,16 @@
 
     .sidebar__wrapper {
       margin: 1em 0;
+
+      .sidebar__navigation {
+        margin-bottom: 3.5em;
+      }
+
+      .sidebar__leaderboard {
+        .leaderboard__heading {
+          margin-bottom: 1.5em;
+        }
+      }
     }
   }
 }

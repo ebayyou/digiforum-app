@@ -27,13 +27,13 @@ function ThreadItems() {
       </p>
 
       <div className="thread__icon">
-        <div className="wrapper__icon">
+        <button type="button" className="wrapper__icon">
           <FaBookmark className="bookmark" />
-        </div>
-        <div className="thread__comment">
+        </button>
+        <button type="button" className="thread__comment">
           <FaComment className="comment" />
           <span>Add Response</span>
-        </div>
+        </button>
       </div>
     </div>
   );

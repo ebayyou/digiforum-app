@@ -78,7 +78,7 @@
 
       .bookmark {
         color: #fc728b;
-        font-size: 18px;
+        font-size: 1em;
       }
     }
 
@@ -90,12 +90,12 @@
 
       .comment {
         color: #fc728b;
-        font-size: 18px;
+        font-size: 1em;
       }
 
       span {
         font-size: 12px;
-        color: $main-color;
+        color: #dfdfdf;
       }
     }
   }
@@ -131,12 +131,46 @@
 @media (min-width: 640px) {
   .thread {
     width: 450px;
+
+    .thread__icon {
+      .wrapper__icon {
+        .bookmark {
+          font-size: 1.2rem;
+        }
+      }
+
+      .thread__comment {
+        .comment {
+          font-size: 1.2rem;
+        }
+      }
+    }
   }
 }
 @media (min-width: 768px) {
   .thread,
   .threadAdded {
     width: 550px;
+  }
+
+  .thread {
+    .thread__icon {
+      .wrapper__icon {
+        padding: 0.5em 0.7em;
+
+        .bookmark {
+          font-size: 1.5rem;
+        }
+      }
+
+      .thread__comment {
+        padding: 0.5em 0.7em;
+
+        .comment {
+          font-size: 1.5rem;
+        }
+      }
+    }
   }
 
   .thread__list {
