@@ -4,7 +4,7 @@ import { asyncPopulateUserAndThreads } from '../states/shared/action';
 import ThreadList from '../components/ThreadList';
 import Layout from '../components/Layout';
 
-function HomePage() {
+const HomePage = () => {
   const { threads = {} } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -17,6 +17,6 @@ function HomePage() {
       <ThreadList threads={threads} />
     </Layout>
   );
-}
+};
 
 export default HomePage;

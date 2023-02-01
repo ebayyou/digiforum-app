@@ -190,6 +190,12 @@
     position: absolute;
     right: 0;
     left: 0;
+    overflow-y: auto;
+    height: 840px;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
   }
 }
 @media (min-width: 1440px) {

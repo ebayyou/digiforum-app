@@ -120,6 +120,7 @@
 @media (min-width: 1440px) {
   .navbar {
     width: 1440px;
-    border-radius: 0.6rem;
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.6rem;
   }
 }

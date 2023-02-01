@@ -4,7 +4,7 @@ import { asyncRequestRegisterUser } from '../states/users/action';
 import RegisterInput from '../components/RegisterInput';
 import TaglineBrand from '../components/TaglineBrand';
 
-function RegisterPage() {
+const RegisterPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -24,6 +24,6 @@ function RegisterPage() {
       </div>
     </section>
   );
-}
+};
 
 export default RegisterPage;

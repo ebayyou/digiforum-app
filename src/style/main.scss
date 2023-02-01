@@ -85,8 +85,12 @@ body {
 
   .Layout {
     position: relative;
+    top: 35px;
     width: 1440px;
     height: 100vh;
     margin: 0 auto;
+    border-radius: 0.8rem;
+    background: rgba(111, 112, 116, 0.2);
+    backdrop-filter: blur(175px);
   }
 }

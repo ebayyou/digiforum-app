@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import { asyncPreloadProcess } from './states/isPreload/action';
 
-function App() {
+const App = () => {
   const { isPreload = false } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -25,6 +25,6 @@ function App() {
       <Route path="/register" element={<RegisterPage />} />
     </Routes>
   );
-}
+};
 
 export default App;

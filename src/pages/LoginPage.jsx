@@ -4,7 +4,7 @@ import { asyncSetAuthUser } from '../states/authUser/action';
 import LoginInput from '../components/LoginInput';
 import TaglineBrand from '../components/TaglineBrand';
 
-function LoginPage() {
+const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -24,6 +24,6 @@ function LoginPage() {
       </div>
     </section>
   );
-}
+};
 
 export default LoginPage;
