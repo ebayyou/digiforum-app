@@ -1,8 +1,13 @@
 @use './base/reset';
 @use './base/variable' as *;
 @use './utilities/mixin' as *;
+@use './layout/Layout';
 @use './layout/HomePage';
 @use './layout/AuthPage';
+@use './layout/ThreadAddedPage';
+@use './layout/ThreadDetailPage';
+@use './layout/LeaderboardsPage';
+@use './layout/NotfoundPage';
 @use './components/Navbar';
 @use './components/Threads';
 @use './components/Sidebar';
@@ -66,10 +71,6 @@ body {
   margin: 0 auto;
 }
 
-.Layout {
-  position: relative;
-}
-
 @media (min-width: 1024px) {
   .visible {
     display: block;
@@ -81,16 +82,5 @@ body {
   .container {
     max-width: 1440px;
     padding: 1rem 0;
-  }
-
-  .Layout {
-    position: relative;
-    top: 35px;
-    width: 1440px;
-    height: 100vh;
-    margin: 0 auto;
-    border-radius: 0.8rem;
-    background: rgba(111, 112, 116, 0.2);
-    backdrop-filter: blur(175px);
   }
 }

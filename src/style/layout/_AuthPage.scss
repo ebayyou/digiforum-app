@@ -2,7 +2,6 @@
 @use '../utilities/mixin' as *;
 
 .container__section {
-  height: 100vh;
   background: $main-color;
   padding: 2rem;
 }
@@ -107,6 +106,10 @@
 }
 
 @media (min-width: 600px) {
+  .container__section {
+    height: 100vh;
+  }
+
   .right__side {
     width: 85%;
 
@@ -185,7 +188,7 @@
           margin: 1.1em 0 1.5em;
 
           .box__group {
-            @include flex();
+            @include flex(row, center, 0.8em);
 
             .box__image {
               width: 50px;

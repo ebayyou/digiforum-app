@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { FaTrophy } from 'react-icons/fa';
 import LeaderboardItem from './SidebarLBItem';
 
-export default function SidebarLeaderboard() {
+const SidebarLeaderboard = () => {
   return (
     <div className="sidebar__leaderboard">
       <h4 className="leaderboard__heading">Leaderboards</h4>
@@ -17,4 +17,6 @@ export default function SidebarLeaderboard() {
       </Link>
     </div>
   );
-}
+};
+
+export default SidebarLeaderboard;

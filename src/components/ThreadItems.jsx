@@ -2,7 +2,7 @@ import { FaComment, FaBookmark } from 'react-icons/fa';
 import avatar from '../public/images/Avatar_1.png';
 // import PropTypes from 'prop-types';
 
-function ThreadItems() {
+const ThreadItems = () => {
   return (
     <div className="thread">
       <h3 className="thread__heading">How to become a react developer</h3>
@@ -37,7 +37,7 @@ function ThreadItems() {
       </div>
     </div>
   );
-}
+};
 
 // export const threadItemShape = {
 //   id: PropTypes.string.isRequired,

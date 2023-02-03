@@ -1,11 +1,6 @@
 @use '../base/variable' as *;
 @use '../utilities/mixin' as *;
 
-.thread__list {
-  width: 100%;
-  padding: 1em;
-}
-
 .thread {
   margin: 0 auto 2em;
   padding: 1.5em 2em;
@@ -132,6 +127,10 @@
   .thread {
     width: 450px;
 
+    .thread__profile .thread__group {
+      gap: 0.8em;
+    }
+
     .thread__icon {
       .wrapper__icon {
         .bookmark {
@@ -147,6 +146,7 @@
     }
   }
 }
+
 @media (min-width: 768px) {
   .thread,
   .threadAdded {
@@ -154,49 +154,36 @@
   }
 
   .thread {
-    .thread__icon {
-      .wrapper__icon {
-        padding: 0.5em 0.7em;
+    .thread__heading {
+      font-size: 24px;
+    }
 
-        .bookmark {
-          font-size: 1.5rem;
-        }
+    .thread__desc {
+      font-size: 16px;
+    }
+
+    .thread__profile {
+      margin: 1.5rem 0;
+    }
+
+    .thread__icon {
+      .wrapper__icon .bookmark {
+        font-size: 1.3rem;
       }
 
       .thread__comment {
         padding: 0.5em 0.7em;
 
         .comment {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
         }
       }
     }
   }
-
-  .thread__list {
-    width: 600px;
-    margin: 0 auto;
-  }
 }
+
 @media (min-width: 1024px) {
-  .thread__list {
-    position: absolute;
-    right: 60px;
-    margin: 50px auto 0;
-  }
 }
-@media (min-width: 1150px) {
-  .thread__list {
-    position: absolute;
-    right: 0;
-    left: 0;
-    overflow-y: auto;
-    height: 840px;
 
-    &::-webkit-scrollbar {
-      width: 0;
-    }
-  }
-}
-@media (min-width: 1440px) {
+@media (min-width: 1150px) {
 }

@@ -1,7 +1,7 @@
 import { FaUserAstronaut, FaGoogle, FaTripadvisor } from 'react-icons/fa';
 import Avatar from '../public/images/Avatar_1.png';
 
-export default function ProfileBar() {
+const ProfileBar = () => {
   return (
     <div className="profilebar">
       <div className="profilebar__group">
@@ -25,4 +25,6 @@ export default function ProfileBar() {
       </div>
     </div>
   );
-}
+};
+
+export default ProfileBar;

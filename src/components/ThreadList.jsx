@@ -2,9 +2,9 @@
 import ThreadItems from './ThreadItems';
 import ThreadAdded from './ThreadAdded';
 
-function ThreadList() {
+const ThreadList = () => {
   return (
-    <section className="thread__list">
+    <section className="Layout__children">
       <ThreadAdded />
 
       <ThreadItems />
@@ -12,7 +12,7 @@ function ThreadList() {
       <ThreadItems />
     </section>
   );
-}
+};
 
 // ThreadList.propTypes = {
 //   threads: PropTypes.arrayOf(PropTypes.shape(threadItemShape)).isRequired,

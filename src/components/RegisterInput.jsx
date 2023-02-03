@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useInput } from '../hooks/useInput';
 
-function RegisterInput({ onSubmitHandlerRegister }) {
+const RegisterInput = ({ onSubmitHandlerRegister }) => {
   const [name, onChangeName] = useInput('');
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
@@ -52,7 +52,7 @@ function RegisterInput({ onSubmitHandlerRegister }) {
       </div>
     </div>
   );
-}
+};
 
 RegisterInput.propTypes = {
   onSubmitHandlerRegister: PropTypes.func.isRequired,

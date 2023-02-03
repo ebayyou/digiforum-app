@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useInput } from '../hooks/useInput';
 import logo from '../public/images/Logo.png';
 
-function LoginInput({ onSubmitHandlerLogin }) {
+const LoginInput = ({ onSubmitHandlerLogin }) => {
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
 
@@ -56,7 +56,7 @@ function LoginInput({ onSubmitHandlerLogin }) {
       </div>
     </div>
   );
-}
+};
 
 LoginInput.propTypes = {
   onSubmitHandlerLogin: PropTypes.func.isRequired,

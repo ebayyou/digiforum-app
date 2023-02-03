@@ -2,7 +2,7 @@ import { FaComment, FaBookmark } from 'react-icons/fa';
 import avatar from '../public/images/Avatar_1.png';
 import logo from '../public/images/Logo.png';
 
-function TaglineBrand() {
+const TaglineBrand = () => {
   return (
     <div className="wrapper__side">
       <div className="tagline">
@@ -53,6 +53,6 @@ function TaglineBrand() {
       </div>
     </div>
   );
-}
+};
 
 export default TaglineBrand;

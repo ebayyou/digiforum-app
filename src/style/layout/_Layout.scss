@@ -1,0 +1,55 @@
+.Layout {
+  position: relative;
+}
+.Layout__children {
+  width: 100%;
+  padding: 1em;
+}
+
+@media (min-width: 768px) {
+  .Layout__children {
+    width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .Layout__children {
+    position: absolute;
+    right: 60px;
+    margin: 50px auto 0;
+  }
+}
+
+@media (min-width: 1150px) {
+  .Layout__children {
+    position: absolute;
+    right: 0;
+    left: 0;
+    overflow-y: auto;
+    height: 840px;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .Layout {
+    position: relative;
+    top: 35px;
+    width: 1440px;
+    height: 100vh;
+    margin: 0 auto;
+    border-radius: 0.8rem;
+    background: rgba(111, 112, 116, 0.2);
+    backdrop-filter: blur(175px);
+  }
+}
+
+@media (min-width: 1440px) and (min-height: 1000px) {
+  .thread__list {
+    height: 900px;
+  }
+}

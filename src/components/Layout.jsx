@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
+import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import SideBar from './SideBar';
 import ProfileBar from './ProfileBar';
 
-export default function Layout({ children }) {
+const Layout = () => {
   return (
     <div className="Layout">
       <header>
@@ -12,13 +12,11 @@ export default function Layout({ children }) {
 
       <main>
         <SideBar />
-        {children}
+        <Outlet />
         <ProfileBar />
       </main>
     </div>
   );
-}
-
-Layout.propTypes = {
-  children: PropTypes.element.isRequired,
 };
+
+export default Layout;

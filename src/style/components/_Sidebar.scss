@@ -71,7 +71,7 @@
     .sidebar__navigation {
       margin-bottom: 2.5em;
 
-      .nav__item {
+      .nav__link {
         @include flex(row, flex-start, 1em);
         margin-bottom: 1em;
 

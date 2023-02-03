@@ -1,12 +1,12 @@
+import { Link } from 'react-router-dom';
 import { FaComment, FaBookmark, FaHome, FaGithub } from 'react-icons/fa';
 import { RiMindMap, RiCloseFill } from 'react-icons/ri';
 import SidebarLeaderboard from './SidebarLeaderboard';
 import logo from '../public/images/Logo.png';
 
-// RiMindMap
-export default function SideBar() {
+const SideBar = () => {
   return (
-    <div className="sidebar">
+    <div className="sidebar visible">
       <header className="sidebar__headers">
         <div className="headers__item">
           <img className="headers__img" src={logo} alt="logo" />
@@ -23,18 +23,18 @@ export default function SideBar() {
       <div className="sidebar__overflow">
         <div className="sidebar__wrapper">
           <div className="sidebar__navigation">
-            <div className="nav__item">
+            <Link to="/" className="nav__link">
               <FaHome className="nav__icon" />
               <h4 className="nav__title">Home</h4>
-            </div>
-            <div className="nav__item">
+            </Link>
+            <Link to="/" className="nav__link">
               <FaComment className="nav__icon" />
               <h4 className="nav__title">Your Threads</h4>
-            </div>
-            <div className="nav__item">
+            </Link>
+            <Link to="/" className="nav__link">
               <FaBookmark className="nav__icon" />
               <h4 className="nav__title">Saved</h4>
-            </div>
+            </Link>
           </div>
 
           <SidebarLeaderboard />
@@ -59,4 +59,6 @@ export default function SideBar() {
       </div>
     </div>
   );
-}
+};
+
+export default SideBar;

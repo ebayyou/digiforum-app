@@ -1,6 +1,6 @@
 import Avatar from '../public/images/Avatar_1.png';
 
-export default function LeaderboardItem() {
+const LeaderboardItem = () => {
   return (
     <div className="leaderboard__item">
       <div className="lb__group">
@@ -13,4 +13,6 @@ export default function LeaderboardItem() {
       <div className="lb__score">10</div>
     </div>
   );
-}
+};
+
+export default LeaderboardItem;

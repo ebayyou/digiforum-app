@@ -7,7 +7,7 @@ import { RiMenuFill } from 'react-icons/ri';
 import { asyncUnsetAuthUser } from '../states/authUser/action';
 import logo from '../public/images/Logo.png';
 
-function Navbar() {
+const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const { authUser = null } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ function Navbar() {
               Login
             </Link>
           ) : (
-            <button className="nav__button" type="button" onClick={onHandlerLogout}>
+            <button className="nav__button nav__btn" type="button" onClick={onHandlerLogout}>
               Logout
             </button>
           )}
@@ -66,6 +66,6 @@ function Navbar() {
       </ul>
     </nav>
   );
-}
+};
 
 export default Navbar;
