@@ -1,0 +1,39 @@
+@use '../base/variable' as *;
+@use '../utilities/mixin' as *;
+
+.thread__profile {
+  @include flex(row, space-between, 0);
+  margin: 1.1em 0 1.5em;
+
+  .thread__group {
+    @include flex();
+
+    .thread__image {
+      width: 45px;
+      height: 45px;
+      border-radius: 0.4em;
+    }
+
+    .thread__info {
+      h4 {
+        font-size: 14px;
+        margin-bottom: 0.2em;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: 10px;
+        color: rgb(133 132 131);
+      }
+    }
+  }
+  .thread__badge {
+    background: #f4c395;
+    padding: 0.6em;
+    font-size: 14px;
+    border-radius: 1em;
+    color: #f94868;
+    font-weight: 500;
+    border: 1px solid #fc728b;
+  }
+}

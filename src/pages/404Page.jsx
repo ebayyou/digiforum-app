@@ -4,7 +4,16 @@ const NotfoundPage = () => {
   return (
     <section className="NotfoundPage">
       <h1>404 : Not Found Page</h1>
-      <Link to="/">go back home</Link>
+
+      <div className="NotfoundPage__group">
+        <Link className="link" to="/login">
+          go to login
+        </Link>
+        <div className="slash" />
+        <Link className="link" to="/">
+          go back home
+        </Link>
+      </div>
     </section>
   );
 };

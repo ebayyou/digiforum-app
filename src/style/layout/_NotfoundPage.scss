@@ -2,7 +2,27 @@
 @use '../utilities/mixin' as *;
 
 .NotfoundPage {
-  @include flex();
+  @include flex(column, center, 0);
   width: 100%;
   height: 100vh;
+
+  h1 {
+    font-size: $h1-font-size;
+    margin-bottom: 1em;
+  }
+
+  .NotfoundPage__group {
+    @include flex(row, center, 1em);
+
+    .slash {
+      width: 4px;
+      height: 25px;
+      border-radius: 0.1em;
+      background: $backgroud-linear;
+    }
+
+    .link {
+      color: $second-color;
+    }
+  }
 }

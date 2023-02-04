@@ -1,6 +1,63 @@
 @use '../base/variable' as *;
 @use '../utilities/mixin' as *;
 
-.ThreadAddedPage {
-  padding: 2em 0;
+.ThreadAddPage {
+  @include flex(column, center, 0);
+  height: 100vh;
+  margin-top: -50px;
+
+  .threadAddPage__form .threadAddPage__group {
+    margin: 1em auto;
+
+    .threadAddPage__input {
+      width: 100%;
+      padding: 20px 40px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      background-color: transparent;
+      color: $title-color;
+      border-radius: 0.4em;
+      border: 2px solid $second-color;
+    }
+
+    .threadAddPage__textarea {
+      width: 100%;
+      height: 225px;
+      padding: 20px 40px;
+      margin-bottom: 0.8em;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      background-color: transparent;
+      border-radius: 0.4em;
+      border: 2px solid $second-color;
+    }
+  }
+
+  .threadAddPage__button {
+    width: 100%;
+    height: 44px;
+    border-radius: 0.4em;
+    background: $backgroud-linear;
+  }
+}
+
+@media (min-width: 600px) {
+  .ThreadAddPage {
+    align-items: flex-start;
+
+    .ThreadAddPage__heading {
+      font-size: $h1-font-size;
+      margin-bottom: 0.5em;
+    }
+
+    .threadAdd__flex {
+      @include flex(row, space-between, 1em);
+    }
+
+    .threadAddPage__form .threadAddPage__group {
+      margin: 1em 0;
+    }
+  }
 }

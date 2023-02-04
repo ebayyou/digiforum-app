@@ -2,5 +2,53 @@
 @use '../utilities/mixin' as *;
 
 .LeaderboardsPage {
-  padding: 2em 0;
+  padding: 4em 0;
+
+  .boards__heading {
+    font-size: $h1-font-size;
+  }
+  .boards__desc {
+    margin: 1em 0 2.5em;
+    font-size: $normal-font-size;
+    font-weight: 300;
+    color: $text-color-light;
+  }
+
+  .boards__headers {
+    @include flex(row, space-between, 0);
+    align-items: flex-end;
+    margin-bottom: 1em;
+
+    .boards__head {
+      font-size: $h2-font-size;
+    }
+
+    .boards__score {
+      font-size: $normal-font-size;
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .LeaderboardsPage {
+    width: 450px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .LeaderboardsPage {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1150px) {
+  .LeaderboardsPage {
+    width: 480px;
+  }
+}
+@media (min-width: 1440px) {
+  .LeaderboardsPage {
+    width: 90%;
+  }
 }

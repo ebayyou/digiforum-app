@@ -1,0 +1,73 @@
+@use '../base/variable' as *;
+@use '../utilities/mixin' as *;
+
+.leaderboard__item {
+  @include flex(row, space-between, 0);
+  margin: 1em 0;
+  transition: all 0.3s ease;
+
+  .lb__group {
+    @include flex(row, flex-start, 0.7em);
+
+    .lb__img {
+      width: 42px;
+      height: 42px;
+      border-radius: 0.3em;
+    }
+
+    .lb__users {
+      h5 {
+        font-size: $normal-font-size;
+        margin-bottom: 0.2em;
+      }
+
+      p {
+        font-size: $small-font-size;
+        font-weight: 300;
+        color: $text-color-light;
+      }
+    }
+  }
+
+  .lb__score {
+    font-size: $h2-font-size;
+    font-weight: $font-semi-bold;
+    padding: 0.5em;
+    color: $title-color;
+    background: rgb(235 141 141 / 60%);
+    border-radius: 0.2em;
+  }
+
+  &:hover {
+    padding: 0.4rem;
+    background-color: #91707082;
+    border-radius: 0.4em;
+  }
+}
+
+.leaderboard__item--lbPage:hover {
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+@media (min-width: 1024px) {
+  .leaderboard__item--lbPage {
+    .lb__group--lbPage {
+      .lb__img--lbPage {
+        width: 52px;
+        height: 52px;
+      }
+
+      .lb__users {
+        .lb__name--lbPage {
+          font-size: 1.1rem;
+        }
+
+        .lb__id--lbPage {
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+}

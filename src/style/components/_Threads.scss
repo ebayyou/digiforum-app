@@ -12,42 +12,12 @@
   .thread__heading {
     font-size: 20px;
     font-weight: 600;
-  }
+    color: $title-color;
+    transition: text-decoration 0.3s ease;
+    cursor: pointer;
 
-  .thread__profile {
-    @include flex(row, space-between, 0);
-    margin: 1.1em 0 1.5em;
-
-    .thread__group {
-      @include flex();
-
-      .thread__image {
-        width: 45px;
-        height: 45px;
-        border-radius: 0.4em;
-      }
-
-      .thread__info {
-        h4 {
-          font-size: 14px;
-          margin-bottom: 0.2em;
-          font-weight: 500;
-        }
-
-        p {
-          font-size: 10px;
-          color: rgb(133 132 131);
-        }
-      }
-    }
-    .thread__badge {
-      background: #f4c395;
-      padding: 0.6em;
-      font-size: 14px;
-      border-radius: 1em;
-      color: #f94868;
-      font-weight: 500;
-      border: 1px solid #fc728b;
+    &:hover {
+      text-decoration: underline;
     }
   }
 
@@ -79,7 +49,7 @@
 
     .thread__comment {
       @include flex(row, space-between, 0.8em);
-      padding: 0.5em;
+      padding: 0.4em 0.5em;
       background-color: rgb(207 207 207 / 40%);
       border-radius: 2em;
 
@@ -167,8 +137,12 @@
     }
 
     .thread__icon {
-      .wrapper__icon .bookmark {
-        font-size: 1.3rem;
+      .wrapper__icon {
+        padding: 0.6em;
+
+        .bookmark {
+          font-size: 1.3rem;
+        }
       }
 
       .thread__comment {

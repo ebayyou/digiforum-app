@@ -1,22 +1,16 @@
 import { FaComment, FaBookmark } from 'react-icons/fa';
-import avatar from '../public/images/Avatar_1.png';
+import { Link } from 'react-router-dom';
+import ThreadItemOwner from './ThreadItemOwner';
 // import PropTypes from 'prop-types';
 
 const ThreadItems = () => {
   return (
     <div className="thread">
-      <h3 className="thread__heading">How to become a react developer</h3>
-      <div className="thread__profile">
-        <div className="thread__group">
-          <img className="thread__image" src={avatar} alt="example avatar" />
-          <div className="thread__info">
-            <h4>Elisabeth May</h4>
-            <p>3 days ago</p>
-          </div>
-        </div>
+      <Link to="/threadDetail/abc" className="thread__heading">
+        How to become a react developer
+      </Link>
 
-        <div className="thread__badge">Front-end</div>
-      </div>
+      <ThreadItemOwner />
 
       <p className="thread__desc">
         If you’re interested in
@@ -30,10 +24,10 @@ const ThreadItems = () => {
         <button type="button" className="wrapper__icon">
           <FaBookmark className="bookmark" />
         </button>
-        <button type="button" className="thread__comment">
+        <Link to="/threadDetail/abc#comment" className="thread__comment">
           <FaComment className="comment" />
           <span>Add Response</span>
-        </button>
+        </Link>
       </div>
     </div>
   );
