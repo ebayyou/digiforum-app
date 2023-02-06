@@ -37,3 +37,30 @@
     border: 1px solid #fc728b;
   }
 }
+
+@media (min-width: 600px) {
+  .thread__profile-DM {
+    .thread__group-DM {
+      gap: 0.8em;
+
+      .thread__image-DM {
+        width: 55px;
+        height: 55px;
+      }
+
+      .thread__info-DM {
+        h4 {
+          font-size: 18px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .thread__badge-DM {
+      font-size: 16px;
+    }
+  }
+}

@@ -30,7 +30,7 @@
   }
 
   .lb__score {
-    font-size: $h2-font-size;
+    font-size: 1rem;
     font-weight: $font-semi-bold;
     padding: 0.5em;
     color: $title-color;
@@ -68,6 +68,10 @@
           font-size: 0.95rem;
         }
       }
+    }
+
+    .lb__score--lbPage {
+      font-size: $h2-font-size;
     }
   }
 }

@@ -1,5 +1,7 @@
 import { FaComment, FaBookmark } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { HashLink } from 'react-router-hash-link';
 import ThreadItemOwner from './ThreadItemOwner';
 // import PropTypes from 'prop-types';
 
@@ -24,10 +26,10 @@ const ThreadItems = () => {
         <button type="button" className="wrapper__icon">
           <FaBookmark className="bookmark" />
         </button>
-        <Link to="/threadDetail/abc#comment" className="thread__comment">
+        <HashLink to="/threadDetail/abc#comment" className="thread__comment">
           <FaComment className="comment" />
           <span>Add Response</span>
-        </Link>
+        </HashLink>
       </div>
     </div>
   );

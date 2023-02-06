@@ -5,7 +5,7 @@ import ThreadList from '../components/ThreadList';
 // import Layout from '../components/Layout';
 
 const HomePage = () => {
-  const { threads = {} } = useSelector((state) => state);
+  const { threads = [] } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {

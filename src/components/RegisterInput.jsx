@@ -25,19 +25,19 @@ const RegisterInput = ({ onSubmitHandlerRegister }) => {
           <label className="auth__label" htmlFor="name">
             Name
           </label>
-          <input className="auth__input" onChange={onChangeName} value={name} type="text" name="name" id="name" placeholder="Ebayyou Anggoro" />
+          <input className="auth__input" onChange={onChangeName} value={name} type="text" name="name" id="name" placeholder="Ebayyou Anggoro" required />
         </div>
         <div className="auth__group">
           <label className="auth__label" htmlFor="email">
             Email
           </label>
-          <input className="auth__input" onChange={onChangeEmail} value={email} type="email" name="email" id="email" placeholder="example@gmai.com" />
+          <input className="auth__input" onChange={onChangeEmail} value={email} type="email" name="email" id="email" placeholder="example@gmai.com" required />
         </div>
         <div className="auth__group">
           <label className="auth__label" htmlFor="password">
             Password
           </label>
-          <input className="auth__input" onChange={onChangePassword} value={password} type="password" name="password" id="password" placeholder="Your password is..." />
+          <input className="auth__input" onChange={onChangePassword} value={password} type="password" name="password" id="password" placeholder="Your password is..." required />
         </div>
         <button type="submit" className="auth__button">
           Register

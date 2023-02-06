@@ -14,14 +14,14 @@ const LeaderboardsPage = () => {
           <h4 className="boards__score">Score</h4>
         </div>
 
-        <LeaderboardItem lbMode />
-        <LeaderboardItem lbMode />
-        <LeaderboardItem lbMode />
-        <LeaderboardItem lbMode />
-        <LeaderboardItem lbMode />
-        <LeaderboardItem lbMode />
-        <LeaderboardItem lbMode />
-        <LeaderboardItem lbMode />
+        <LeaderboardItem DesktopMode />
+        <LeaderboardItem DesktopMode />
+        <LeaderboardItem DesktopMode />
+        <LeaderboardItem DesktopMode />
+        <LeaderboardItem DesktopMode />
+        <LeaderboardItem DesktopMode />
+        <LeaderboardItem DesktopMode />
+        <LeaderboardItem DesktopMode />
       </div>
     </section>
   );
