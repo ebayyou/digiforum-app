@@ -8,8 +8,8 @@ import { asyncUnsetAuthUser } from '../states/authUser/action';
 import logo from '../public/images/Logo.png';
 
 const Navbar = () => {
+  const { authUser } = useSelector((state) => state);
   const [toggle, setToggle] = useState(false);
-  const { authUser = null } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const onHandlerLogout = () => {
@@ -53,14 +53,14 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="nav__list">
-          {authUser === null ? (
-            <Link className="nav__button" to="/login">
-              Login
-            </Link>
-          ) : (
+          {authUser ? (
             <button className="nav__button nav__btn" type="button" onClick={onHandlerLogout}>
               Logout
             </button>
+          ) : (
+            <Link className="nav__button" to="/login">
+              Login
+            </Link>
           )}
         </li>
       </ul>

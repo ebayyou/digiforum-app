@@ -33,9 +33,4 @@ function asyncReceiveThreadDetail(threadId) {
   };
 }
 
-export {
-  ActionType,
-  receiveThreadDetailActionCreator,
-  clearThreadDetailActionCreator,
-  asyncReceiveThreadDetail,
-};
+export { ActionType, receiveThreadDetailActionCreator, clearThreadDetailActionCreator, asyncReceiveThreadDetail };

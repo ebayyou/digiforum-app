@@ -1,12 +1,14 @@
 import { FaUserAstronaut, FaGoogle, FaTripadvisor } from 'react-icons/fa';
-import Avatar from '../public/images/Avatar_1.png';
+import { useSelector } from 'react-redux';
 
 const ProfileBar = () => {
+  const { authUser } = useSelector((state) => state);
+
   return (
-    <div className="profilebar">
+    <aside className="profilebar">
       <div className="profilebar__group">
-        <img className="profilebar__img" src={Avatar} alt="profile" />
-        <h4 className="profilebar__name">Ebayyou Anggoro</h4>
+        <img className="profilebar__img" src={authUser ? authUser.avatar : 'https://ui-avatars.com/api/?name=Society&background=random'} alt="profile" />
+        <h4 className="profilebar__name">{authUser ? authUser.name : 'Morning Person'}</h4>
 
         <div className="profilebar__box">
           <div className="profilebar__badge">
@@ -15,15 +17,15 @@ const ProfileBar = () => {
           </div>
           <div className="profilebar__info">
             <FaUserAstronaut className="profilebar__icon" />
-            <p>Ebay__Ang</p>
+            <p>{authUser ? authUser.id : 'Morning Person'}</p>
           </div>
           <div className="profilebar__info">
             <FaGoogle className="profilebar__icon" />
-            <p>ebayyou.e124@gmail.com</p>
+            <p>{authUser ? authUser.email : 'morningperson@exd.com'}</p>
           </div>
         </div>
       </div>
-    </div>
+    </aside>
   );
 };
 

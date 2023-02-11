@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { asyncRequestRegisterUser } from '../states/users/action';
-import RegisterInput from '../components/RegisterInput';
-import TaglineBrand from '../components/TaglineBrand';
+import RegisterInput from '../components/authComponent/RegisterInput';
+import TaglineBrand from '../components/authComponent/children/TaglineBrand';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();

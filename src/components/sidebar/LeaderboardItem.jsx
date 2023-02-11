@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Avatar from '../public/images/Avatar_1.png';
+import Avatar from '../../public/images/Avatar_1.png';
 
 const LeaderboardItem = ({ DesktopMode }) => {
   return (
@@ -16,8 +16,11 @@ const LeaderboardItem = ({ DesktopMode }) => {
   );
 };
 
+LeaderboardItem.defaultProps = {
+  DesktopMode: false,
+};
+
 LeaderboardItem.propTypes = {
-  // eslint-disable-next-line react/require-default-props
   DesktopMode: PropTypes.bool,
 };
 

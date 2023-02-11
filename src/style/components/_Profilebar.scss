@@ -59,7 +59,7 @@
 
       .profilebar__info {
         @include flex(row, flex-start, 1em);
-        margin: 1em 0;
+        margin: 0.8em 0;
 
         .profilebar__icon {
           padding: 0.2em;
@@ -70,8 +70,15 @@
         }
 
         p {
+          width: 160px;
+          overflow-x: scroll;
+          margin-top: 1.15em;
           font-size: 0.8em;
           color: #d1d1d1;
+
+          &::-webkit-scrollbar {
+            width: 0;
+          }
         }
       }
     }

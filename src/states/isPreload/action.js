@@ -19,6 +19,7 @@ function asyncPreloadProcess() {
     try {
       const authUser = await Api.getOwnUser();
       dispatch(setAuthUserActionCreator(authUser));
+      dispatch(setIsPreloadActionCreator(true));
     } catch (error) {
       dispatch(setAuthUserActionCreator(null));
     } finally {
@@ -27,8 +28,4 @@ function asyncPreloadProcess() {
   };
 }
 
-export {
-  ActionType,
-  setIsPreloadActionCreator,
-  asyncPreloadProcess,
-};
+export { ActionType, setIsPreloadActionCreator, asyncPreloadProcess };

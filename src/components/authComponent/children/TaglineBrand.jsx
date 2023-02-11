@@ -1,14 +1,15 @@
 import { FaComment, FaBookmark } from 'react-icons/fa';
-import avatar from '../public/images/Avatar_1.png';
-import logo from '../public/images/Logo.png';
+import { Link } from 'react-router-dom';
+import avatar from '../../../public/images/Avatar_1.png';
+import logo from '../../../public/images/Logo.png';
 
 const TaglineBrand = () => {
   return (
     <div className="wrapper__side">
       <div className="tagline">
-        <div className="logo__brand">
+        <Link to="/" className="logo__brand">
           <img src={logo} alt="logo brand" />
-        </div>
+        </Link>
         <h3 className="tagline__brand">DigiForum.io</h3>
         <h1 className="tagline__heading">Any discussion, anywhere, with anyone, only at DigiForum.io</h1>
       </div>

@@ -124,10 +124,10 @@ const Api = (() => {
     }
 
     const {
-      data: { threadDetail },
+      data: { detailThread },
     } = responseJson;
 
-    return threadDetail;
+    return detailThread;
   }
 
   async function createThread({ title, body, category = '' }) {

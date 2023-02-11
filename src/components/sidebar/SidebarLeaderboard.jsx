@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FaTrophy } from 'react-icons/fa';
-import LeaderboardItem from './SidebarLBItem';
+import LeaderboardItem from './LeaderboardItem';
 
 const SidebarLeaderboard = () => {
   return (

@@ -1,4 +1,4 @@
-import LeaderboardItem from '../components/SidebarLBItem';
+import LeaderboardItem from '../components/sidebar/LeaderboardItem';
 
 const LeaderboardsPage = () => {
   return (

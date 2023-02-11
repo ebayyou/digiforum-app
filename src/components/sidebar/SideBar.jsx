@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import { FaComment, FaBookmark, FaHome, FaGithub } from 'react-icons/fa';
 import { RiMindMap, RiCloseFill } from 'react-icons/ri';
 import SidebarLeaderboard from './SidebarLeaderboard';
-import logo from '../public/images/Logo.png';
+import logo from '../../public/images/Logo.png';
 
 const SideBar = () => {
   return (
-    <div className="sidebar visible">
+    <aside className="sidebar visible">
       <header className="sidebar__headers">
         <div className="headers__item">
           <img className="headers__img" src={logo} alt="logo" />
@@ -57,7 +57,7 @@ const SideBar = () => {
           <p className="footer__copyright">&copy;2023 DigiForum.io Discussion, all rights reserved.</p>
         </footer>
       </div>
-    </div>
+    </aside>
   );
 };
 
