@@ -1,17 +1,16 @@
 import PropTypes from 'prop-types';
-import Avatar from '../../public/images/Avatar_1.png';
 
-const LeaderboardItem = ({ DesktopMode }) => {
+const LeaderboardItem = ({ DesktopMode, score, user }) => {
   return (
     <div className={`leaderboard__item ${DesktopMode && 'leaderboard__item--lbPage'}`}>
       <div className="lb__group lb__group--lbPage">
-        <img className="lb__img lb__img--lbPage" src={Avatar} alt="example avatar" />
+        <img className="lb__img lb__img--lbPage" src={user.avatar} alt={user.name} />
         <div className="lb__users">
-          <h5 className="lb__name--lbPage">John doe</h5>
-          <p className="lb__id--lbPage">users-1</p>
+          <h5 className="lb__name--lbPage lb__users-name">{user.name.substring(0, 10)}</h5>
+          <p className="lb__id--lbPage lb__users-email">{user.email.substring(0, 10)}</p>
         </div>
       </div>
-      <div className="lb__score lb__score--lbPage">10</div>
+      <div className="lb__score lb__score--lbPage">{score}</div>
     </div>
   );
 };
@@ -22,6 +21,8 @@ LeaderboardItem.defaultProps = {
 
 LeaderboardItem.propTypes = {
   DesktopMode: PropTypes.bool,
+  score: PropTypes.number.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 export default LeaderboardItem;

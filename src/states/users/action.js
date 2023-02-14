@@ -1,3 +1,4 @@
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import Api from '../../utils/Api';
 
 const ActionType = {
@@ -14,17 +15,17 @@ function receiveUsersActionCreator(users) {
 }
 
 function asyncRequestRegisterUser({ name, email, password }) {
-  return async () => {
+  return async (dispatch) => {
+    dispatch(showLoading());
+
     try {
       await Api.requestRegister({ name, email, password });
     } catch (error) {
       alert(error.message);
     }
+
+    dispatch(hideLoading());
   };
 }
 
-export {
-  ActionType,
-  receiveUsersActionCreator,
-  asyncRequestRegisterUser,
-};
+export { ActionType, receiveUsersActionCreator, asyncRequestRegisterUser };

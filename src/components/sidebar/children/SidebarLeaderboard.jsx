@@ -1,15 +1,16 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FaTrophy } from 'react-icons/fa';
-import LeaderboardItem from './LeaderboardItem';
+import LeaderboardItem from '../LeaderboardItem';
 
-const SidebarLeaderboard = () => {
+const SidebarLeaderboard = ({ topLeaderboard }) => {
   return (
     <div className="sidebar__leaderboard">
       <h4 className="leaderboard__heading">Leaderboards</h4>
 
-      <LeaderboardItem />
-      <LeaderboardItem />
-      <LeaderboardItem />
+      {topLeaderboard.map((topLeadBoard) => (
+        <LeaderboardItem key={topLeadBoard.lead.user.id} {...topLeadBoard.lead} />
+      ))}
 
       <Link className="leaderboard__button" to="/leaderboards">
         <FaTrophy className="btn__icon" />
@@ -17,6 +18,10 @@ const SidebarLeaderboard = () => {
       </Link>
     </div>
   );
+};
+
+SidebarLeaderboard.propTypes = {
+  topLeaderboard: PropTypes.array.isRequired,
 };
 
 export default SidebarLeaderboard;

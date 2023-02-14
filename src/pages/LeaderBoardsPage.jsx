@@ -1,6 +1,9 @@
+import { useSelector } from 'react-redux';
 import LeaderboardItem from '../components/sidebar/LeaderboardItem';
 
 const LeaderboardsPage = () => {
+  const { leaderboards } = useSelector((state) => state);
+
   return (
     <section className="Layout__children">
       <div className="LeaderboardsPage">
@@ -14,14 +17,9 @@ const LeaderboardsPage = () => {
           <h4 className="boards__score">Score</h4>
         </div>
 
-        <LeaderboardItem DesktopMode />
-        <LeaderboardItem DesktopMode />
-        <LeaderboardItem DesktopMode />
-        <LeaderboardItem DesktopMode />
-        <LeaderboardItem DesktopMode />
-        <LeaderboardItem DesktopMode />
-        <LeaderboardItem DesktopMode />
-        <LeaderboardItem DesktopMode />
+        {leaderboards.map((leadboard) => (
+          <LeaderboardItem key={leadboard.user.id} DesktopMode {...leadboard} />
+        ))}
       </div>
     </section>
   );

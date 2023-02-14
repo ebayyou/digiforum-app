@@ -6,7 +6,7 @@ import { FaComment, FaBookmark } from 'react-icons/fa';
 import { limitString } from '../../../utils';
 import ThreadItemOwner from './ThreadItemOwner';
 
-const ThreadItems = ({ id, category, title, body, createdAt, user }) => {
+const ThreadItems = ({ id, category, title, body, createdAt, user, totalComments }) => {
   return (
     <div className="thread">
       <Link to={`/threadDetail/${id}`} className="thread__heading">
@@ -24,6 +24,7 @@ const ThreadItems = ({ id, category, title, body, createdAt, user }) => {
         <HashLink to={`/threadDetail/${id}#comment`} className="thread__comment">
           <FaComment className="comment" />
           <span>Add Response</span>
+          <span className="comment__total">{totalComments}</span>
         </HashLink>
       </div>
     </div>

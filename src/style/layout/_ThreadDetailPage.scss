@@ -56,7 +56,7 @@
     .comment__total {
       font-size: 12px;
       padding: 0.4em;
-      border-radius: 0.8em;
+      border-radius: 0.2em;
       background-color: #26325e;
     }
   }
@@ -95,8 +95,17 @@
 
   .comment__data {
     margin: 2rem 0 1rem;
-    padding-bottom: 1em;
-    border-bottom: 1px solid #525252;
+
+    .comment__items {
+      border-bottom: 1px solid #525252;
+      margin-bottom: 1em;
+      padding: 0.5em 0;
+
+      .comment__notFound {
+        margin: 2rem 0;
+        text-align: center;
+      }
+    }
 
     .comment__group {
       @include flex(row, space-between, 0);
@@ -112,9 +121,9 @@
         }
 
         .comment__profile {
-          h5 {
+          h4 {
             font-size: 14px;
-            margin-bottom: 0.2em;
+            margin-bottom: 0.3em;
           }
 
           p {
@@ -154,6 +163,19 @@
   }
 }
 
+.threadDetail__comment-false {
+  margin: 3em 0 0.5em;
+
+  span {
+    padding-right: 0.5em;
+  }
+
+  .link-to-login {
+    color: $second-color;
+    text-decoration: underline;
+  }
+}
+
 @media (min-width: 550px) {
   .ThreadDetailPage {
     .threadDetail__title {
@@ -167,6 +189,7 @@
     .threadDetail__comment {
       .comment__heading {
         width: 30%;
+        gap: 0.8em;
 
         h2 {
           font-size: 1rem;
