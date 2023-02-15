@@ -5,12 +5,12 @@ import SidebarLeaderboard from './children/SidebarLeaderboard';
 import SideBarFooter from './children/SidebarFooter';
 
 const SideBar = () => {
-  const { leaderboards } = useSelector((state) => state);
+  const { leaderboards, sidebarStatus } = useSelector((state) => state);
 
   const topLeaderboard = [{ lead: leaderboards[0] }, { lead: leaderboards[1] }, { lead: leaderboards[2] }];
 
   return (
-    <aside className="sidebar visible">
+    <aside className={`sidebar ${sidebarStatus ? '' : 'visible'}`}>
       <SidebarHeader />
 
       <div className="sidebar__overflow">

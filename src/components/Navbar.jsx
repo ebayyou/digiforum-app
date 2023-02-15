@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { RiMenuFill } from 'react-icons/ri';
 import { asyncUnsetAuthUser } from '../states/authUser/action';
 import logo from '../public/images/Logo.png';
+import { sidebarStatusActionCreator } from '../states/sidebarStatus/action';
 
 const Navbar = () => {
   const { authUser } = useSelector((state) => state);
@@ -16,12 +17,16 @@ const Navbar = () => {
     dispatch(asyncUnsetAuthUser());
   };
 
+  const onHandlerSidebar = () => {
+    dispatch(sidebarStatusActionCreator(true));
+  };
+
   return (
     <nav className="navbar">
       <div className="nav__brand">
-        <div className="logo__brand nav__brand-logo">
+        <button type="button" className="logo__brand nav__brand-logo" onClick={onHandlerSidebar}>
           <img src={logo} alt="logo brand" />
-        </div>
+        </button>
         <Link to="/" className="name__brand">
           DigiForum
         </Link>
