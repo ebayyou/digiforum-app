@@ -1,3 +1,4 @@
+/* eslint-disable  */
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import Api from '../../utils/Api';
 
@@ -61,4 +62,10 @@ function asyncAddThreadComment(threadId, content) {
   };
 }
 
-export { ActionType, receiveThreadDetailActionCreator, clearThreadDetailActionCreator, asyncReceiveThreadDetail, asyncAddThreadComment };
+export {
+  ActionType,
+  receiveThreadDetailActionCreator,
+  clearThreadDetailActionCreator,
+  asyncReceiveThreadDetail,
+  asyncAddThreadComment,
+};

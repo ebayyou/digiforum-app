@@ -8,7 +8,11 @@ const CommentsItems = ({ content, createdAt, owner }) => {
     <div className="comment__items">
       <div className="comment__group">
         <div className="comment__group-profile">
-          <img className="comment__image-profile" src={owner.avatar} alt={owner.name} />
+          <img
+            className="comment__image-profile"
+            src={owner.avatar}
+            alt={owner.name}
+          />
           <div className="comment__profile">
             <h4>{owner.name}</h4>
             <p>{postedAt(createdAt)}</p>
@@ -21,7 +25,10 @@ const CommentsItems = ({ content, createdAt, owner }) => {
         </div>
       </div>
 
-      <div className="comment__body" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
+      <div
+        className="comment__body"
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
+      />
     </div>
   );
 };

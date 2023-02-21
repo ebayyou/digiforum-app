@@ -5,7 +5,11 @@ const ThreadItemOwner = ({ DesktopMode, owner, category, createdAt }) => {
   return (
     <div className={`thread__profile ${DesktopMode && 'thread__profile-DM'}`}>
       <div className="thread__group thread__group-DM">
-        <img className="thread__image thread__image-DM" src={owner.avatar} alt={owner.name} />
+        <img
+          className="thread__image thread__image-DM"
+          src={owner.avatar}
+          alt={owner.name}
+        />
         <div className="thread__info thread__info-DM">
           <h4>{owner.name}</h4>
           <p>{postedAt(createdAt)}</p>

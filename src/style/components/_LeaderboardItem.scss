@@ -31,12 +31,20 @@
   }
 
   .lb__score {
+    width: 38px;
+    height: 38px;
     font-size: 1rem;
     font-weight: $font-semi-bold;
-    padding: 0.5em;
+    text-align: center;
+    line-height: 38px;
     color: $title-color;
     background: rgb(235 141 141 / 60%);
     border-radius: 0.2em;
+    // overflow-x: scroll;
+
+    // &::-webkit-scrollbar {
+    //   width: 0;
+    // }
   }
 
   &:hover {

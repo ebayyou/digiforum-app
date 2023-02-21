@@ -25,20 +25,54 @@ const ThreadAddedPage = () => {
       <div className="ThreadAddPage">
         <h1 className="ThreadAddPage__heading">Thread Added</h1>
 
-        <form className="threadAddPage__form" onSubmit={handlerSubmitAddedThread}>
+        <form
+          className="threadAddPage__form"
+          onSubmit={handlerSubmitAddedThread}
+        >
           <div className="threadAdd__flex">
             <div className="threadAddPage__group">
-              <input className="threadAddPage__input" value={title} onChange={onChangeTitle} type="text" name="title" id="title" placeholder="Headline your threads..." required />
+              <input
+                className="threadAddPage__input"
+                value={title}
+                onChange={onChangeTitle}
+                type="text"
+                name="title"
+                id="title"
+                placeholder="Headline your threads..."
+                required
+              />
             </div>
             <div className="threadAddPage__group">
-              <input className="threadAddPage__input" value={category} onChange={onChangeCategory} type="text" name="category" id="category" placeholder="Category your threads..." required />
+              <input
+                className="threadAddPage__input"
+                value={category}
+                onChange={onChangeCategory}
+                type="text"
+                name="category"
+                id="category"
+                placeholder="Category your threads..."
+                required
+              />
             </div>
           </div>
           <div className="threadAddPage__group">
-            <textarea className="threadAddPage__textarea" value={body} onChange={onChangeBody} name="body" id="body" cols="30" rows="10" placeholder="Your threads here (;" required />
+            <textarea
+              className="threadAddPage__textarea"
+              value={body}
+              onChange={onChangeBody}
+              name="body"
+              id="body"
+              cols="30"
+              rows="10"
+              placeholder="Your threads here (;"
+              required
+            />
           </div>
 
-          <button type="submit" className="threadAddPage__button">
+          <button
+            type="submit"
+            className="threadAddPage__button"
+          >
             Create Thread
           </button>
         </form>

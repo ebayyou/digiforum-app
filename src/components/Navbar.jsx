@@ -24,46 +24,79 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav__brand">
-        <button type="button" className="logo__brand nav__brand-logo" onClick={onHandlerSidebar}>
-          <img src={logo} alt="logo brand" />
+        <button
+          type="button"
+          className="logo__brand nav__brand-logo"
+          onClick={onHandlerSidebar}
+        >
+          <img
+            src={logo}
+            alt="logo brand"
+          />
         </button>
-        <Link to="/" className="name__brand">
+        <Link
+          to="/"
+          className="name__brand"
+        >
           DigiForum
         </Link>
       </div>
 
-      <button type="button" className="Humberger__Menu" onClick={() => setToggle((prevState) => !prevState)}>
+      <button
+        type="button"
+        className="Humberger__Menu"
+        onClick={() => setToggle((prevState) => !prevState)}
+      >
         <RiMenuFill className="menu" />
       </button>
 
-      <ul className={`nav__group ${toggle ? '' : 'visible'}`}>
+      <ul className={`${toggle ? 'nav__group' : 'nav__group visible__navbar'}`}>
         <li className="nav__list">
-          <Link className="nav__link" to="/">
+          <Link
+            className="nav__link"
+            to="/"
+          >
             Grades
           </Link>
         </li>
         <li className="nav__list">
-          <Link className="nav__link" to="/">
+          <Link
+            className="nav__link"
+            to="/"
+          >
             Schedule
           </Link>
         </li>
         <li className="nav__list">
-          <Link className="nav__link" to="/">
+          <Link
+            className="nav__link"
+            to="/"
+          >
             Comunity
           </Link>
         </li>
         <li className="nav__list">
-          <Link className="nav__link" to="/">
+          <Link
+            className="nav__link"
+            to="/"
+          >
             Payments
           </Link>
         </li>
         <li className="nav__list">
           {authUser ? (
-            <button className="nav__button nav__btn" type="button" onClick={onHandlerLogout}>
+            <button
+              className="nav__button nav__btn"
+              type="button"
+              onClick={onHandlerLogout}
+            >
               Logout
             </button>
           ) : (
-            <Link className="nav__button" to="/login">
+            <Link
+              className="nav__button"
+              to="/login"
+            >
               Login
             </Link>
           )}

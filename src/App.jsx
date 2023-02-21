@@ -26,15 +26,39 @@ const App = () => {
       <Loading />
 
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/threadAdded" element={<ThreadAddedPage />} />
-          <Route path="/threadDetail/:threadId" element={<ThreadDetailPage />} />
-          <Route path="/leaderboards" element={<LeaderboardsPage />} />
+        <Route
+          path="/"
+          element={<Layout />}
+        >
+          <Route
+            index
+            element={<HomePage />}
+          />
+          <Route
+            path="/threadAdded"
+            element={<ThreadAddedPage />}
+          />
+          <Route
+            path="/threadDetail/:threadId"
+            element={<ThreadDetailPage />}
+          />
+          <Route
+            path="/leaderboards"
+            element={<LeaderboardsPage />}
+          />
         </Route>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="*" element={<NotfoundPage />} />
+        <Route
+          path="/login"
+          element={<LoginPage />}
+        />
+        <Route
+          path="/register"
+          element={<RegisterPage />}
+        />
+        <Route
+          path="*"
+          element={<NotfoundPage />}
+        />
       </Routes>
     </>
   );

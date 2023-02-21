@@ -17,8 +17,8 @@ const store = configureStore({
     threadDetail: threadDetailReducer,
     leaderboards: leaderboardsReducer,
     loadingBar: loadingBarReducer,
-    sidebarStatus: sidebarstatusReducer,
-  },
+    sidebarStatus: sidebarstatusReducer
+  }
 });
 
 export default store;

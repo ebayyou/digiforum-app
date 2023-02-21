@@ -20,33 +20,78 @@ const RegisterInput = ({ onSubmitHandlerRegister }) => {
 
       <div className="auth__barrier" />
 
-      <form className="auth__form" onSubmit={handlerSubmitRegister}>
+      <form
+        className="auth__form"
+        onSubmit={handlerSubmitRegister}
+      >
         <div className="auth__group">
-          <label className="auth__label" htmlFor="name">
+          <label
+            className="auth__label"
+            htmlFor="name"
+          >
             Name
           </label>
-          <input className="auth__input" onChange={onChangeName} value={name} type="text" name="name" id="name" placeholder="Ebayyou Anggoro" required />
+          <input
+            className="auth__input"
+            onChange={onChangeName}
+            value={name}
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Ebayyou Anggoro"
+            required
+          />
         </div>
         <div className="auth__group">
-          <label className="auth__label" htmlFor="email">
+          <label
+            className="auth__label"
+            htmlFor="email"
+          >
             Email
           </label>
-          <input className="auth__input" onChange={onChangeEmail} value={email} type="email" name="email" id="email" placeholder="example@gmai.com" required />
+          <input
+            className="auth__input"
+            onChange={onChangeEmail}
+            value={email}
+            type="email"
+            name="email"
+            id="email"
+            placeholder="example@gmai.com"
+            required
+          />
         </div>
         <div className="auth__group">
-          <label className="auth__label" htmlFor="password">
+          <label
+            className="auth__label"
+            htmlFor="password"
+          >
             Password
           </label>
-          <input className="auth__input" onChange={onChangePassword} value={password} type="password" name="password" id="password" placeholder="Your password is..." required />
+          <input
+            className="auth__input"
+            onChange={onChangePassword}
+            value={password}
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Your password is..."
+            required
+          />
         </div>
-        <button type="submit" className="auth__button">
+        <button
+          type="submit"
+          className="auth__button"
+        >
           Register
         </button>
       </form>
 
       <div className="auth__info">
         have an account?
-        <Link to="/login" className="highlight">
+        <Link
+          to="/login"
+          className="highlight"
+        >
           Login!
         </Link>
       </div>

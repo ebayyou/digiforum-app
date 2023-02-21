@@ -7,7 +7,15 @@ const ProfileBar = () => {
   return (
     <aside className="profilebar">
       <div className="profilebar__group">
-        <img className="profilebar__img" src={authUser ? authUser.avatar : 'https://ui-avatars.com/api/?name=Society&background=random'} alt="profile" />
+        <img
+          className="profilebar__img"
+          src={
+            authUser
+              ? authUser.avatar
+              : 'https://ui-avatars.com/api/?name=Society&background=random'
+          }
+          alt="profile"
+        />
         <h4 className="profilebar__name">{authUser ? authUser.name : 'Morning Person'}</h4>
 
         <div className="profilebar__box">

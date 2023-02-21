@@ -9,7 +9,9 @@ const LeaderboardsPage = () => {
       <div className="LeaderboardsPage">
         <h1 className="boards__heading">Leaderboards</h1>
         <p className="boards__desc">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores totam excepturi laboriosam iure fuga necessitatibus at debitis facilis, obcaecati suscipit sunt voluptatibus. Ut deleniti expedita doloremque, odit qui ex ratione.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores totam excepturi
+          laboriosam iure fuga necessitatibus at debitis facilis, obcaecati suscipit sunt
+          voluptatibus. Ut deleniti expedita doloremque, odit qui ex ratione.
         </p>
 
         <div className="boards__headers">
@@ -18,7 +20,11 @@ const LeaderboardsPage = () => {
         </div>
 
         {leaderboards.map((leadboard) => (
-          <LeaderboardItem key={leadboard.user.id} DesktopMode {...leadboard} />
+          <LeaderboardItem
+            key={leadboard.user.id}
+            DesktopMode
+            {...leadboard}
+          />
         ))}
       </div>
     </section>

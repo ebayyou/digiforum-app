@@ -6,11 +6,17 @@ const NotfoundPage = () => {
       <h1>404 : Not Found Page</h1>
 
       <div className="NotfoundPage__group">
-        <Link className="link" to="/login">
+        <Link
+          className="link"
+          to="/login"
+        >
           go to login
         </Link>
         <div className="slash" />
-        <Link className="link" to="/">
+        <Link
+          className="link"
+          to="/"
+        >
           go back home
         </Link>
       </div>

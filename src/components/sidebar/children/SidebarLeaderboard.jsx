@@ -9,10 +9,16 @@ const SidebarLeaderboard = ({ topLeaderboard }) => {
       <h4 className="leaderboard__heading">Leaderboards</h4>
 
       {topLeaderboard.map((topLeadBoard) => (
-        <LeaderboardItem key={topLeadBoard.lead.user.id} {...topLeadBoard.lead} />
+        <LeaderboardItem
+          key={topLeadBoard.lead.user.id}
+          {...topLeadBoard.lead}
+        />
       ))}
 
-      <Link className="leaderboard__button" to="/leaderboards">
+      <Link
+        className="leaderboard__button"
+        to="/leaderboards"
+      >
         <FaTrophy className="btn__icon" />
         <h5 className="btn__text">See all Leaderboards</h5>
       </Link>

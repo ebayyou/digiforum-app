@@ -16,11 +16,25 @@ const CommentInput = ({ handlerSubmitComment }) => {
         <h2>Comment</h2>
       </div>
 
-      <form className="comment__form" onSubmit={handlerSubmitAddComment}>
+      <form
+        className="comment__form"
+        onSubmit={handlerSubmitAddComment}
+      >
         <div className="comment__textArea-group">
-          <textarea className="comment__textArea" value={comment} onChange={handlerComment} name="comment" id="comment" cols="30" rows="10" />
+          <textarea
+            className="comment__textArea"
+            value={comment}
+            onChange={handlerComment}
+            name="comment"
+            id="comment"
+            cols="30"
+            rows="10"
+          />
         </div>
-        <button className="comment__button" type="submit">
+        <button
+          className="comment__button"
+          type="submit"
+        >
           Send Comment
         </button>
       </form>

@@ -13,6 +13,7 @@
   "rules": {
     "eslint-disable-next-line": "off",
     "max-len": "off",
+    "comma-dangle": "off",
     "object-curly-newline": "off",
     "no-alert": "off",
     "no-underscore-dangle": "off",
@@ -20,9 +21,10 @@
     "import/prefer-default-export": "off",
     "import/no-cycle": "off",
     "react/no-danger": "off",
-    "react/react-in-jsx-scope": "off",
     "react/forbid-prop-types": "off",
+    "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
+    "react/jsx-closing-bracket-location": "off",
     "react/function-component-definition": "off",
     "arrow-body-style": "off"
   }

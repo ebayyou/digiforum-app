@@ -2,7 +2,11 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ThreadDetail from '../components/thread/ThreadDetail';
-import { asyncAddThreadComment, asyncReceiveThreadDetail, clearThreadDetailActionCreator } from '../states/threadDetail/action';
+import {
+  asyncAddThreadComment,
+  asyncReceiveThreadDetail,
+  clearThreadDetailActionCreator,
+} from '../states/threadDetail/action';
 
 const ThreadDetailPage = () => {
   const { threadDetail = {}, authUser } = useSelector((state) => state);
@@ -23,7 +27,15 @@ const ThreadDetailPage = () => {
 
   return (
     <section className="Layout__children">
-      <article className="ThreadDetailPage">{threadDetail.body && <ThreadDetail threadDetail={threadDetail} handlerSubmitComment={handlerSubmitComment} authUser={authUser} />}</article>
+      <article className="ThreadDetailPage">
+        {threadDetail.body && (
+          <ThreadDetail
+            threadDetail={threadDetail}
+            handlerSubmitComment={handlerSubmitComment}
+            authUser={authUser}
+          />
+        )}
+      </article>
     </section>
   );
 };

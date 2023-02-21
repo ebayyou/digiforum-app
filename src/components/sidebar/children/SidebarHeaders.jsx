@@ -13,13 +13,21 @@ const SidebarHeader = () => {
   return (
     <header className="sidebar__headers">
       <div className="headers__item">
-        <img className="headers__img" src={logo} alt="logo" />
+        <img
+          className="headers__img"
+          src={logo}
+          alt="logo"
+        />
         <div className="headers__group">
           <h4 className="headers__title">DigiForum</h4>
           <p className="headers__desc">Discussion forum</p>
         </div>
       </div>
-      <button className="headers__button" type="button" onClick={onHandlerSidebar}>
+      <button
+        className="headers__button"
+        type="button"
+        onClick={onHandlerSidebar}
+      >
         <RiCloseFill className="headers__icon" />
       </button>
     </header>

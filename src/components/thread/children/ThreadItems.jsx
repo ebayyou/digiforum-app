@@ -9,19 +9,35 @@ import ThreadItemOwner from './ThreadItemOwner';
 const ThreadItems = ({ id, category, title, body, createdAt, user, totalComments }) => {
   return (
     <div className="thread">
-      <Link to={`/threadDetail/${id}`} className="thread__heading">
+      <Link
+        to={`/threadDetail/${id}`}
+        className="thread__heading"
+      >
         {title}
       </Link>
 
-      <ThreadItemOwner owner={user} createdAt={createdAt} category={category} />
+      <ThreadItemOwner
+        owner={user}
+        createdAt={createdAt}
+        category={category}
+      />
 
-      <div className="thread__desc" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(limitString(body, 200)) }} />
+      <div
+        className="thread__desc"
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(limitString(body, 200)) }}
+      />
 
       <div className="thread__icon">
-        <button type="button" className="wrapper__icon">
+        <button
+          type="button"
+          className="wrapper__icon"
+        >
           <FaBookmark className="bookmark" />
         </button>
-        <HashLink to={`/threadDetail/${id}#comment`} className="thread__comment">
+        <HashLink
+          to={`/threadDetail/${id}#comment`}
+          className="thread__comment"
+        >
           <FaComment className="comment" />
           <span>Add Response</span>
           <span className="comment__total">{totalComments}</span>

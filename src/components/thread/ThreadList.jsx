@@ -8,7 +8,10 @@ const ThreadList = ({ threads }) => {
       <ThreadAdded />
 
       {threads.map((thread) => (
-        <ThreadItems key={thread.id} {...thread} />
+        <ThreadItems
+          key={thread.id}
+          {...thread}
+        />
       ))}
     </section>
   );
