@@ -1,0 +1,65 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.menu {
+  font-family: $text-font;
+  width: 120px;
+  transition: background 0.3s ease;
+
+  .menu__list {
+    width: 160px;
+    height: 44px;
+    font-size: 20px;
+    margin-bottom: 1em;
+
+    .menu__link {
+      line-height: 44px;
+      color: $title-color;
+    }
+
+    &:hover {
+      background-color: $neutral-003;
+    }
+  }
+}
+.menu-mode {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .menu {
+    width: 350px;
+    margin: 0 auto;
+
+    .menu__list {
+      margin: 0 auto 1em;
+      text-align: center;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu-mode {
+    @include flex(row, space-between, 0);
+    margin: 0;
+    padding: 1rem;
+    transition: none;
+    background: $gradient-004;
+    border-radius: 0.6em;
+
+    .menu__list-mode {
+      width: 85%;
+      margin: 0 auto;
+
+      .menu__link-mode {
+        @include flex();
+        width: 120px;
+        height: 44px;
+        margin: 0;
+        text-align: center;
+        font-size: 16px;
+        color: $title-color;
+      }
+    }
+  }
+}

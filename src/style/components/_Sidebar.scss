@@ -2,30 +2,27 @@
 @use '../utilities/mixin' as *;
 
 .sidebar {
+  font-family: $text-font;
   position: fixed;
-  top: 0px;
-  width: 80%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
   height: 100%;
-  background: rgb(51 57 79 / 65%);
-  border-radius: 0.6em;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  background: #161519e7;
 
   .sidebar__headers {
     @include flex(row, space-between, 0);
     width: 100%;
-    padding: 2em 1em;
+    padding: 1em 1em;
+    border-bottom: 2px solid $navi-004;
 
     .headers__item {
       @include flex(row, flex-start, 0.5rem);
 
       .headers__img {
-        width: 32px;
-        height: 32px;
-        padding: 0.2em;
-        background: $backgroud-linear;
-        border-radius: 0.2em;
+        width: 42px;
+        height: 42px;
       }
 
       .headers__group {
@@ -65,23 +62,31 @@
   }
 
   .sidebar__wrapper {
+    width: 90%;
     margin: 2em 0;
     padding: 1.5em;
 
     .sidebar__navigation {
-      margin-bottom: 2.5em;
+      margin-bottom: 3.5em;
 
       .nav__link {
         @include flex(row, flex-start, 1em);
         margin-bottom: 1em;
 
-        .nav__icon {
-          font-size: 1.8rem;
-          padding: 0.2em;
-          border-radius: 50%;
-          color: $title-color;
-          background: $text-color-light;
+        .nav__wrap {
+          @include flex();
+          width: 36px;
+          height: 36px;
+          border-radius: 0.85em;
+          background-color: $neutral-004;
+
+          .nav__icon {
+            font-size: 1.4rem;
+            line-height: 36px;
+            color: $neutral-003;
+          }
         }
+
         .nav__title {
           font-size: $h3-font-size;
           font-weight: 400;
@@ -91,18 +96,24 @@
     }
 
     .sidebar__leaderboard {
+      margin-top: 1em;
+
+      .leaderboard__wrapper {
+        margin: 1.4em 0;
+      }
+
       .leaderboard__heading {
-        font-size: $h2-font-size;
-        margin-bottom: 2em;
+        font-size: 1.35rem;
+        font-weight: $font-medium;
       }
 
       .leaderboard__button {
         @include flex(row, center, 0.6em);
-        margin: 2em auto 0;
+        margin: 0 auto;
         width: 100%;
         height: 44px;
         padding: 0.2em;
-        background: #493ba1;
+        background: $gradient-004;
         color: #fff;
         border-radius: 0.5em;
 
@@ -118,8 +129,8 @@
   }
 
   .sidebar__footer {
-    margin: 7em 0 7em;
-    border-top: 2px solid #c1afaf;
+    margin: 5em 2em 7em;
+    border-top: 2px solid $navi-004;
     padding: 0.5em 1.5em;
 
     .footer__item {
@@ -128,37 +139,52 @@
 
       .footer__icon {
         font-size: 1.5em;
-        color: #493ba1;
+        color: $neutral-003;
       }
 
       .footer__link {
-        color: $text-color-light;
+        color: $neutral-003;
+        text-decoration: underline;
       }
     }
 
     .footer__copyright {
       margin-top: 2em;
-      color: #696969;
+      color: $neutral-003;
       text-align: center;
+
+      span {
+        display: inline-block;
+      }
     }
   }
 }
 
 @media (min-width: 420px) {
   .sidebar {
-    width: 280px;
+    .sidebar__wrapper {
+      width: 320px;
+    }
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 600px) {
+  .sidebar {
+    width: 320px;
+
+    .sidebar__wrapper {
+      width: 100%;
+    }
+  }
 }
 
 @media (min-width: 1024px) {
   .sidebar {
     top: 80px;
+    left: 0;
     padding: 1em;
     background: transparent;
-    border-right: 2px solid rgba(151, 142, 142, 0.38);
+    border-right: 2px solid $navi-004;
     border-radius: 0;
     box-shadow: 0px 0px 0px;
     backdrop-filter: blur(0);
@@ -191,5 +217,9 @@
   .sidebar {
     top: 0;
     padding: 5rem 1rem 1rem;
+
+    .sidebar__footer {
+      margin: 5em 1em 7em;
+    }
   }
 }

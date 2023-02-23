@@ -1,7 +1,6 @@
 import { RiCloseFill } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
 import { sidebarStatusActionCreator } from '../../../states/sidebarStatus/action';
-import logo from '../../../public/images/Logo.png';
 
 const SidebarHeader = () => {
   const dispatch = useDispatch();
@@ -15,12 +14,12 @@ const SidebarHeader = () => {
       <div className="headers__item">
         <img
           className="headers__img"
-          src={logo}
+          src="/images/brand/Favicon-1.png"
           alt="logo"
         />
         <div className="headers__group">
           <h4 className="headers__title">DigiForum</h4>
-          <p className="headers__desc">Discussion forum</p>
+          <p className="headers__desc">Platform Discussion</p>
         </div>
       </div>
       <button

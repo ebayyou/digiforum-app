@@ -4,6 +4,7 @@
 .container__section {
   background: $main-color;
   padding: 2rem;
+  font-family: $text-font;
 }
 
 .left__side {
@@ -42,7 +43,7 @@
         left: 0;
         right: 0;
         margin: 0 auto;
-        background-color: #fc728b;
+        background-color: $primary-003;
         width: 40px;
         height: 10px;
         border-radius: 20px;
@@ -75,6 +76,10 @@
           color: $title-color;
           border-radius: 8px;
           border: 0;
+
+          &::placeholder {
+            color: $neutral-003;
+          }
         }
       }
 
@@ -87,7 +92,7 @@
         font-weight: 600;
         font-size: 16px;
         line-height: 19px;
-        background-color: $second-color;
+        background-color: $primary-003;
         color: $main-color;
         border-radius: 6px;
       }
@@ -101,7 +106,7 @@
 }
 
 .highlight {
-  color: $second-color;
+  color: $primary-003;
   margin-left: 0.6em;
 }
 
@@ -142,7 +147,7 @@
     width: 50%;
     height: 96%;
     margin: 20px 0;
-    background: $backgroud-linear;
+    background: $gradient-mix;
     border-radius: 0.8em;
 
     .wrapper__side {
@@ -170,17 +175,18 @@
       }
 
       .box {
-        width: 550px;
-        padding: 1.5em 2em;
+        width: 446px;
+        padding: 1em 2em;
         margin: 80px auto;
-        color: $main-color;
-        background-color: $container-color;
-        box-shadow: 10px 10px 0px rgba(32, 36, 51, 0.14);
+        color: $title-color;
+        background-color: $main-color;
+        box-shadow: 10px 10px 0px rgba(32, 36, 51, 0.35);
         border-radius: 10px;
 
         .box__heading {
-          font-size: 24px;
+          font-size: 20px;
           font-weight: 600;
+          line-height: 30px;
         }
 
         .box__profile {
@@ -191,40 +197,42 @@
             @include flex(row, center, 0.8em);
 
             .box__image {
-              width: 50px;
-              height: 50px;
+              width: 38px;
+              height: 38px;
               border-radius: 0.4em;
             }
 
             .box__info {
               h4 {
+                font-size: 14px;
+                font-weight: $font-medium;
+                line-height: $line-height-poppins;
                 margin-bottom: 0.2em;
-                font-weight: 500;
               }
 
               p {
                 font-size: 12px;
-                color: rgb(133 132 131);
+                color: $neutral-002;
               }
             }
-
-            .box_badge {
-              background: #f4c395;
-              padding: 0.6em;
-              font-size: 14px;
-              border-radius: 1em;
-              color: #f94868;
-              font-weight: 500;
-              border: 1px solid #fc728b;
-            }
+          }
+          .box__badge {
+            width: 100px;
+            height: 34px;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            line-height: 34px;
+            background-color: $light-001;
+            color: $main-color;
+            border-radius: 0.3em;
           }
         }
 
         .box__desc {
-          strong {
-            font-weight: 700;
-            margin: 0 5px;
-          }
+          font-size: 14px;
+          font-weight: $font-medium;
+          line-height: $line-height-poppins;
         }
 
         .box__icon {
@@ -234,29 +242,45 @@
 
           .wrapper__icon {
             @include flex();
-            padding: 0.6em;
-            background-color: rgb(207 207 207 / 40%);
-            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            background-color: $neutral-004;
+            border-radius: 12px;
 
             .bookmark {
-              color: #fc728b;
-              font-size: 18px;
+              color: $navi-004;
+              font-size: 16px;
             }
           }
 
           .box__comment {
             @include flex(row, space-between, 0.8em);
             padding: 0.6em;
-            background-color: rgb(207 207 207 / 40%);
+            background-color: $neutral-004;
             border-radius: 2em;
 
             .comment {
-              color: #fc728b;
-              font-size: 18px;
+              color: $navi-004;
+              width: 16px;
+              height: 14px;
             }
 
             span {
+              font-size: 10px;
+              line-height: 15px;
               color: $main-color;
+            }
+
+            .comment__total {
+              width: 26px;
+              height: 19px;
+              font-size: 12px;
+              font-weight: $font-medium;
+              line-height: 19px;
+              text-align: center;
+              color: $title-color;
+              background-color: $primary-001;
+              border-radius: 0px 5px 5px 0px;
             }
           }
         }
@@ -285,7 +309,7 @@
   }
 
   .right__side {
-    width: 50%;
+    width: 45%;
     padding: 5em;
   }
 }
