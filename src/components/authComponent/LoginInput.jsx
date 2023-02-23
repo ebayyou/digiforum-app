@@ -2,7 +2,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useInput } from '../../hooks/useInput';
-import logo from '../../public/images/Logo.png';
 
 const LoginInput = ({ onSubmitHandlerLogin }) => {
   const [email, onChangeEmail] = useInput('');
@@ -20,7 +19,7 @@ const LoginInput = ({ onSubmitHandlerLogin }) => {
         className="logo__brand"
       >
         <img
-          src={logo}
+          src="/images/brand/Logo_Brand.png"
           alt="logo brand"
         />
       </Link>
@@ -55,7 +54,7 @@ const LoginInput = ({ onSubmitHandlerLogin }) => {
             type="email"
             name="email"
             id="email"
-            placeholder="example@gmai.com"
+            placeholder="Example@gmail.com"
             required
           />
         </div>

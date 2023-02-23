@@ -56,7 +56,7 @@ const RegisterInput = ({ onSubmitHandlerRegister }) => {
             type="email"
             name="email"
             id="email"
-            placeholder="example@gmai.com"
+            placeholder="example@gmail.com"
             required
           />
         </div>

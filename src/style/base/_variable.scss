@@ -1,16 +1,47 @@
+/* brand-color */
 $main-color: #202433;
 $second-color: #fc728b;
+
 $first-color: #1c1e24;
 $first-color-alt: #33394f;
 $title-color: #ffffff;
-$subtitle-color: hsl(19, 16%, 15%);
 $text-color: hsl(19, 16%, 35%);
 $text-color-light: rgba(255, 255, 255, 0.6);
 $container-color: #ffe3ca;
-$backgroud-linear: linear-gradient(152.9deg, #f4c395 0.44%, #f27f94 100%);
+
+$navi-001: #202433;
+$navi-002: #252d3a;
+$navi-003: #272d43;
+$navi-004: #33394f;
+
+$primary-001: #fc728b;
+$primary-002: #f4c395;
+$primary-003: #a296bd;
+
+$neutral-001: #ffffff;
+$neutral-002: #8d8080;
+$neutral-003: #999999;
+$neutral-004: #d9d9d9;
+
+$light-001: #d1caff;
+$light-002: #ffcaca;
+$light-003: #caecff;
+
+$gradient-001: linear-gradient(152.9deg, #f4c395 0.44%, #f27f94 100%);
+$gradient-002: linear-gradient(127.31deg, #ff5f6d 24.35%, #ffc371 91.32%);
+$gradient-003: linear-gradient(152.9deg, #c277dc 0.44%, #58ecf5 100%);
+$gradient-004: linear-gradient(152.9deg, #77a6dc 0.44%, #585ef5 100%);
+$gradient-005: linear-gradient(86.55deg, rgba(65, 88, 208, 0.6) 0%, #c850c0 46.88%, #ffcc70 100%);
+$gradient-mix: linear-gradient(
+  157.46deg,
+  #f2b4b4 23.11%,
+  rgba(225, 202, 255, 0.69) 55.55%,
+  rgba(202, 239, 255, 0.47) 79.51%,
+  rgba(251, 202, 255, 0.32) 100.93%
+);
 
 $body-font: 'Inter', sans-serif;
-$text-font: 'Source Serif Pro', serif;
+$text-font: 'Poppins', sans-serif;
 
 $biggest-font-size: 2.25rem;
 $h1-font-size: 1.5rem;
@@ -19,8 +50,12 @@ $h3-font-size: 1rem;
 $normal-font-size: 0.938rem;
 $small-font-size: 0.813rem;
 $smaller-font-size: 0.75rem;
+
+$line-height-poppins: 21px;
+$font-light: 300;
 $font-medium: 500;
 $font-semi-bold: 600;
+$font-bold: 900;
 
 $z-tooltip: 10;
 $z-fixed: 100;

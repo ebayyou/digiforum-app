@@ -1,11 +1,10 @@
-import { FaGithub } from 'react-icons/fa';
-import { RiMindMap } from 'react-icons/ri';
+import { FiGitPullRequest, FiGithub } from 'react-icons/fi';
 
 const SideBarFooter = () => {
   return (
     <footer className="sidebar__footer">
       <div className="footer__item">
-        <RiMindMap className="footer__icon" />
+        <FiGitPullRequest className="footer__icon" />
         <a
           className="footer__link"
           href="https://forum-api.dicoding.dev/v1/#/"
@@ -16,7 +15,7 @@ const SideBarFooter = () => {
         </a>
       </div>
       <div className="footer__item">
-        <FaGithub className="footer__icon" />
+        <FiGithub className="footer__icon" />
         <a
           className="footer__link"
           href="https://github.com/ebayyou/digiforum-app"
@@ -27,7 +26,10 @@ const SideBarFooter = () => {
         </a>
       </div>
 
-      <p className="footer__copyright">&copy;2023 DigiForum.io Discussion, all rights reserved.</p>
+      <p className="footer__copyright">
+        © 2023 DigiForum.
+        <span>All rights reserved.</span>
+      </p>
     </footer>
   );
 };

@@ -1,7 +1,5 @@
 import { FaComment, FaBookmark } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import avatar from '../../../public/images/Avatar_1.png';
-import logo from '../../../public/images/Logo.png';
 
 const TaglineBrand = () => {
   return (
@@ -12,7 +10,7 @@ const TaglineBrand = () => {
           className="logo__brand"
         >
           <img
-            src={logo}
+            src="/images/brand/Logo_Brand.png"
             alt="logo brand"
           />
         </Link>
@@ -23,30 +21,26 @@ const TaglineBrand = () => {
       </div>
 
       <div className="box">
-        <h3 className="box__heading">How to become a react developer</h3>
+        <h3 className="box__heading">Front-end Developer</h3>
         <div className="box__profile">
           <div className="box__group">
             <img
               className="box__image"
-              src={avatar}
+              src="/images/main_avatar.png"
               alt="example avatar"
             />
             <div className="box__info">
-              <h4>Elisabeth May</h4>
+              <h4>EbayYou Anggoro</h4>
               <p>3 days ago</p>
             </div>
           </div>
 
-          <div className="box_badge">Front-end</div>
+          <div className="box__badge">Front-end</div>
         </div>
 
         <p className="box__desc">
-          If you’re interested in
-          <strong>front-end development</strong>
-          and
-          <strong>web design</strong>
-          ,a React developer position may be a great fit for you. You can learn more about pursuing
-          this career path in the following walkthrough
+          The three main languages you need to know well are HTML, CSS, and JavaScript. From there
+          you can focus on frameworks, libraries, and other useful tools.
         </p>
 
         <div className="box__icon">
@@ -56,6 +50,7 @@ const TaglineBrand = () => {
           <div className="box__comment">
             <FaComment className="comment" />
             <span>Add Response</span>
+            <span className="comment__total">10</span>
           </div>
         </div>
       </div>

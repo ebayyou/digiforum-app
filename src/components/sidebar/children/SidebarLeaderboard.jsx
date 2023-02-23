@@ -6,14 +6,16 @@ import LeaderboardItem from '../LeaderboardItem';
 const SidebarLeaderboard = ({ topLeaderboard }) => {
   return (
     <div className="sidebar__leaderboard">
-      <h4 className="leaderboard__heading">Leaderboards</h4>
+      <h4 className="leaderboard__heading">Top Leaderboards</h4>
 
-      {topLeaderboard.map((topLeadBoard) => (
-        <LeaderboardItem
-          key={topLeadBoard.lead.user.id}
-          {...topLeadBoard.lead}
-        />
-      ))}
+      <div className="leaderboard__wrapper">
+        {topLeaderboard.map((topLeadBoard) => (
+          <LeaderboardItem
+            key={topLeadBoard.lead.user.id}
+            {...topLeadBoard.lead}
+          />
+        ))}
+      </div>
 
       <Link
         className="leaderboard__button"

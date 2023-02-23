@@ -1,0 +1,118 @@
+@use '../base/variable' as *;
+@use '../utilities/mixin' as *;
+
+.navbar {
+  @include flex(row, space-between, 0);
+  height: 50px;
+  padding: 2.3em 0.5em;
+  font-family: $text-font;
+  background-color: transparent;
+  border-bottom: 2px solid $navi-004;
+
+  .nav__brand {
+    @include flex(row, center, 0);
+    color: $title-color;
+
+    .nav__brand-logo {
+      margin: 0;
+      cursor: pointer;
+      background-color: transparent;
+    }
+
+    .name__brand {
+      display: none;
+    }
+  }
+
+  .nav__group-button {
+    @include flex(row, flex-start, 0.5em);
+
+    .Humberger__Menu {
+      padding: 0.2em;
+      background-color: transparent;
+
+      .menu__fill {
+        font-size: 2rem;
+        color: $title-color;
+      }
+    }
+
+    .nav__button {
+      @include flex();
+      width: 98px;
+      height: 44px;
+      color: $navi-002;
+      font-weight: $font-semi-bold;
+      background-color: $primary-002;
+      border-radius: 0.3em;
+      font-size: 16px;
+    }
+    .nav__btn {
+      width: 100%;
+    }
+  }
+}
+
+.visible__navbar {
+  display: none;
+  opacity: 0;
+  transform: translateY(-500px);
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    padding: 2.3em 1em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 10;
+    height: 50px;
+    padding: 2.3em 0.5em;
+    background-color: $navi-003;
+    border: none;
+
+    .nav__group-button {
+      .Humberger__Menu,
+      .nav__button,
+      .nav__btn {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar .visible__navbar {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 1280px) {
+  .navbar {
+    padding: 2.3em 2em;
+
+    .nav__brand {
+      .name__brand {
+        color: $title-color;
+      }
+    }
+  }
+}
+
+@media (min-width: 1441px) {
+  .navbar {
+    background-color: $navi-004;
+    width: 1440px;
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.6rem;
+  }
+}
