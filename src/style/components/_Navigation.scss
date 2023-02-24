@@ -85,6 +85,20 @@
         display: none;
       }
     }
+    .nav__brand .name__brand {
+      display: block;
+
+      h4 {
+        font-size: 18px;
+        color: $title-color;
+        margin-bottom: 0.2em;
+      }
+      span {
+        font-size: 14px;
+        font-weight: $font-light;
+        color: $text-color-light;
+      }
+    }
   }
 }
 
@@ -110,9 +124,15 @@
 
 @media (min-width: 1441px) {
   .navbar {
-    background-color: $navi-004;
-    width: 1440px;
     border-top-left-radius: 0.6rem;
     border-top-right-radius: 0.6rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .navbar {
+    background-color: $navi-004;
+    top: 20px;
+    width: 1536px;
   }
 }
