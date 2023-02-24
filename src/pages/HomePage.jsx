@@ -1,22 +1,14 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { asyncPopulateUserAndThreads } from '../states/shared/action';
-import ThreadList from '../components/thread/ThreadList';
+import Headers from '../components/Headers';
 
 const HomePage = () => {
-  const { threads = [], users = [] } = useSelector((state) => state);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(asyncPopulateUserAndThreads());
-  }, [dispatch]);
-
-  const threadsAndUser = threads.map((thread) => ({
-    ...thread,
-    user: users.find((user) => user.id === thread.ownerId),
-  }));
-
-  return <ThreadList threads={threadsAndUser} />;
+  return (
+    <section className="Layout__children">
+      <Headers
+        heading="DigiForum"
+        description="Welcome to Discussion with anyone, You can say anything #FreeSpeech."
+      />
+    </section>
+  );
 };
 
 export default HomePage;

@@ -1,8 +1,5 @@
 @use '../base/variable' as *;
 
-.Layout {
-  position: relative;
-}
 .Layout__children {
   width: 100%;
   padding: 1em;
@@ -26,8 +23,22 @@
 @media (min-width: 1150px) {
   .Layout__children {
     position: absolute;
-    right: 0;
+    right: 90px;
+    overflow-y: auto;
+    height: 840px;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .Layout__children {
+    position: absolute;
+    top: 20px;
     left: 0;
+    right: 0;
     overflow-y: auto;
     height: 840px;
 
@@ -39,19 +50,28 @@
 
 @media (min-width: 1441px) {
   .Layout {
-    position: relative;
     top: 35px;
     width: 1440px;
-    height: 100vh;
-    margin: 0 auto;
-    border-radius: 0.8rem;
-    background: $navi-003;
-    backdrop-filter: blur(175px);
   }
 }
 
 @media (min-width: 1440px) and (min-height: 1000px) {
   .thread__list {
     height: 900px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .Layout {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 1536px;
+    height: 100vh;
+    margin: 0 auto;
+    border-radius: 0.8rem;
+    background: #272d43;
   }
 }
