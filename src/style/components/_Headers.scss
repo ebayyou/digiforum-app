@@ -6,6 +6,7 @@
   height: 135px;
   margin: 2.5em auto 0;
   font-family: $text-font;
+  order: 1;
 
   .headers__heading {
     margin-bottom: 0.2em;
@@ -21,5 +22,19 @@
     font-size: 16px;
     line-height: 24px;
     text-align: center;
+  }
+}
+
+@media (min-width: 1536px) {
+  .headers {
+    margin: 0 auto;
+
+    .headers__heading {
+      text-align: left;
+    }
+
+    .headers__desc {
+      text-align: left;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes, { element } from 'prop-types';
 import { FiMail } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
@@ -26,7 +26,7 @@ const MenuCollapse = ({ children, toggle }) => {
 
 MenuCollapse.propTypes = {
   toggle: PropTypes.bool.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(element).isRequired,
 };
 
 export default MenuCollapse;

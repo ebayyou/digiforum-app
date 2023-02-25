@@ -7,12 +7,14 @@ const ThreadList = ({ threads }) => {
     <section className="Layout__children">
       <ThreadAdded />
 
-      {threads.map((thread) => (
-        <ThreadItems
-          key={thread.id}
-          {...thread}
-        />
-      ))}
+      <div className="thread__list">
+        {threads.map((thread) => (
+          <ThreadItems
+            key={thread.id}
+            {...thread}
+          />
+        ))}
+      </div>
     </section>
   );
 };

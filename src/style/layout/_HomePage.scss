@@ -1,8 +1,62 @@
 @use '../base/variable' as *;
 @use '../utilities/mixin' as *;
 
-.box__wrapper {
-  @include flex();
-  width: 100%;
-  padding: 1em;
+.homepage {
+  padding-bottom: 1em;
+
+  .homepage__btn {
+    display: block;
+    width: 80%;
+    height: 54px;
+    margin: 1em auto 0;
+    font-family: $body-font;
+    font-style: normal;
+    font-weight: $font-semi-bold;
+    font-size: 16px;
+    line-height: 54px;
+    text-align: center;
+    background: $primary-001;
+    color: $navi-001;
+    border-radius: 6px;
+  }
+}
+
+@media (min-width: 420px) {
+  .homepage__btn {
+    width: 348px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .homepage {
+    position: absolute;
+    top: 60px;
+    right: 120px;
+    padding-bottom: 2em !important;
+  }
+}
+@media (min-width: 1150px) {
+  .homepage {
+    right: 190px;
+  }
+}
+@media (min-width: 1200px) {
+  .homepage {
+    left: 0px;
+    right: 0px;
+  }
+}
+
+@media (min-width: 1440px) and (min-height: 1000px) {
+}
+
+@media (min-width: 1536px) {
+  .homepage {
+    max-width: 1000px;
+    margin: 6em auto 0;
+
+    .homepage__wrapper {
+      @include flex();
+    }
+  }
 }

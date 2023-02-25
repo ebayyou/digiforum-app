@@ -4,37 +4,41 @@
 .thread__profile {
   @include flex(row, space-between, 0);
   margin: 1.1em 0 1.5em;
+  font-family: $text-font;
 
   .thread__group {
-    @include flex();
+    @include flex(row, flex-start, 0.8em);
 
     .thread__image {
-      width: 45px;
-      height: 45px;
+      width: 38px;
+      height: 38px;
       border-radius: 0.4em;
     }
 
     .thread__info {
       h4 {
         font-size: 14px;
+        font-weight: $font-medium;
+        line-height: $line-height-poppins;
         margin-bottom: 0.2em;
-        font-weight: 500;
       }
 
       p {
-        font-size: 10px;
-        color: rgb(133 132 131);
+        font-size: 12px;
+        color: $neutral-002;
       }
     }
   }
   .thread__badge {
-    background: #f4c395;
-    padding: 0.6em;
+    width: 100px;
+    height: 34px;
     font-size: 14px;
-    border-radius: 1em;
-    color: #f94868;
     font-weight: 500;
-    border: 1px solid #fc728b;
+    text-align: center;
+    line-height: 34px;
+    background-color: $light-001;
+    color: $main-color;
+    border-radius: 0.3em;
   }
 }
 
