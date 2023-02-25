@@ -3,29 +3,44 @@
 
 .LeaderboardsPage {
   padding: 4em 0;
+  font-family: $text-font;
 
   .boards__heading {
-    font-size: $h1-font-size;
+    margin: 0 0.5em;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 38px;
   }
   .boards__desc {
-    margin: 1em 0 2.5em;
-    font-size: $normal-font-size;
+    margin: 0 0.8em;
     font-weight: 300;
-    color: $text-color-light;
+    font-size: 18px;
+    line-height: 27px;
+    color: $neutral-002;
   }
 
-  .boards__headers {
+  .boards__group {
+    margin: 1.4em 0.8em 0;
+  }
+
+  .boards__info {
     @include flex(row, space-between, 0);
     align-items: flex-end;
     margin-bottom: 1em;
 
-    .boards__head {
-      font-size: $h2-font-size;
+    .boards__text {
+      font-style: normal;
+      font-weight: $font-semi-bold;
+      font-size: 20px;
+      line-height: 30px;
     }
+  }
 
-    .boards__score {
-      font-size: $normal-font-size;
-    }
+  .boards__wrapper {
+    @include flex(column, flex-start, 0.3em);
+    align-items: flex-start;
+    padding: 0px;
+    gap: 25px;
   }
 }
 
@@ -50,5 +65,12 @@
 @media (min-width: 1440px) {
   .LeaderboardsPage {
     width: 90%;
+
+    .boards__headers {
+      width: 348px;
+      height: 130px;
+      margin: 0 auto;
+      text-align: center;
+    }
   }
 }
