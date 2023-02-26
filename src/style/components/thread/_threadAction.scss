@@ -1,0 +1,89 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.thread__wrapper {
+  @include flex(row, space-between, 0);
+  margin: 1.3em 0 0.5em;
+}
+
+.thread__action {
+  @include flex(row, flex-start, 0.6em);
+
+  .wrapper__icon {
+    @include flex();
+    width: 34px;
+    height: 34px;
+    background-color: $neutral-004;
+    border-radius: 12px;
+
+    .bookmark {
+      color: $navi-004;
+      font-size: 16px;
+    }
+  }
+
+  .thread__comment {
+    @include flex(row, space-between, 0.4em);
+    width: 148px;
+    height: 34px;
+    padding: 0.4em 0.5em;
+    background-color: $neutral-004;
+    border-radius: 2em;
+
+    .comment {
+      color: $navi-004;
+      font-size: 1.3rem;
+    }
+
+    span {
+      font-size: 10px;
+      line-height: 15px;
+      color: $main-color;
+    }
+
+    .comment__total {
+      width: 26px;
+      height: 19px;
+      font-size: 12px;
+      font-weight: $font-medium;
+      line-height: 19px;
+      text-align: center;
+      color: $title-color;
+      background-color: $primary-001;
+      border-radius: 0px 5px 5px 0px;
+    }
+  }
+}
+
+.thread__votes {
+  @include flex(row, flex-start, 0.6em);
+
+  .votes {
+    @include flex(row, flex-start, 0.2em);
+    width: 36px;
+    height: 24px;
+
+    button {
+      background-color: transparent;
+      margin: 0;
+
+      .votes__icon {
+        font-size: 1.2rem;
+        color: $primary-001;
+      }
+    }
+
+    span {
+      font-weight: $font-regular;
+      font-size: 10px;
+      line-height: 15px;
+    }
+  }
+
+  .votes-flex-start {
+    align-items: flex-start;
+  }
+  .votes-flex-end {
+    align-items: flex-end;
+  }
+}

@@ -1,0 +1,32 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.comment__heading {
+  @include flex();
+  width: 129px;
+  height: 34px;
+  gap: 1.1em;
+  background-color: $light-001;
+  color: $main-color;
+  border-radius: 0.4em;
+
+  h2 {
+    font-style: normal;
+    font-weight: $font-semi-bold;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .comment__total {
+    width: 26px;
+    height: 26px;
+    padding: 3px 4px;
+    font-weight: $font-medium;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: $title-color;
+    background-color: $primary-001;
+    border-radius: 0px 5px 5px 0px;
+  }
+}

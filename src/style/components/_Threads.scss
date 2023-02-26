@@ -10,10 +10,13 @@
   padding: 0.5em 0.2em;
   border-bottom: 2px solid $navi-004;
   color: $title-color;
+  font-family: $text-font;
 
   .thread__heading {
-    font-size: 20px;
+    font-style: normal;
     font-weight: $font-semi-bold;
+    font-size: 20px;
+    line-height: 25px;
     color: $title-color;
     transition: text-decoration 0.3s ease;
     cursor: pointer;
@@ -24,87 +27,10 @@
   }
 
   .thread__desc {
-    font-size: 14px;
-  }
-
-  .thread__icon {
-    @include flex(row, flex-start, 1em);
-    margin: 1em 0 0;
-    padding: 1em 0.4em;
-
-    .wrapper__icon {
-      width: 34px;
-      height: 34px;
-      background-color: $neutral-004;
-      border-radius: 12px;
-
-      .bookmark {
-        color: $navi-004;
-        font-size: 16px;
-      }
-    }
-
-    .thread__comment {
-      @include flex(row, space-between, 0.8em);
-      padding: 0.6em;
-      background-color: $neutral-004;
-      border-radius: 2em;
-
-      .comment {
-        color: $navi-004;
-        width: 16px;
-        height: 14px;
-      }
-
-      span {
-        font-size: 10px;
-        line-height: 15px;
-        color: $main-color;
-      }
-
-      .comment__total {
-        width: 26px;
-        height: 19px;
-        font-size: 12px;
-        font-weight: $font-medium;
-        line-height: 19px;
-        text-align: center;
-        color: $title-color;
-        background-color: $primary-001;
-        border-radius: 0px 5px 5px 0px;
-      }
-    }
-  }
-}
-
-.threadAdded {
-  @include flex(row, space-between, 0);
-  width: 95%;
-  height: 58px;
-  margin: 0.6em auto 2em;
-  padding: 0 0.8em;
-  background: $gradient-005;
-  border-radius: 0.4em;
-
-  .added__heading {
-    font-family: $text-font;
     font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .added__button {
-    @include flex();
-    width: 40px;
-    height: 35px;
-    border-radius: 0.2em;
-    background-color: $light-001;
-
-    .added__icon {
-      font-size: 1.5rem;
-      color: #d7cdcf;
-    }
+    font-weight: $font-regular;
+    font-size: 14px;
+    line-height: 21px;
   }
 }
 
@@ -127,40 +53,21 @@
 }
 
 @media (min-width: 768px) {
-  .thread,
-  .threadAdded {
+  .thread {
     width: 550px;
   }
 
   .thread {
     .thread__heading {
-      font-size: 24px;
+      font-size: 25px;
     }
 
     .thread__desc {
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .thread__profile {
       margin: 1.5rem 0;
-    }
-
-    .thread__icon {
-      .wrapper__icon {
-        padding: 0.6em;
-
-        .bookmark {
-          font-size: 1.3rem;
-        }
-      }
-
-      .thread__comment {
-        padding: 0.5em 0.7em;
-
-        .comment {
-          font-size: 1.3rem;
-        }
-      }
     }
   }
 }
@@ -174,11 +81,17 @@
     box-shadow: 10px 10px 0px rgba(2, 2, 2, 0.45);
     border: none;
   }
+}
 
-  .threadAdded {
-    margin: 2.5em auto 2em;
+@media (min-width: 1440px) and (min-height: 1000px) {
+  .thread__list {
+    height: 1000px;
+    padding-bottom: 1.5em;
   }
 }
 
-@media (min-width: 1150px) {
+@media (min-width: 1536px) {
+  .thread {
+    background: $navi-004;
+  }
 }

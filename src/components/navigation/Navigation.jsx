@@ -54,7 +54,7 @@ const Navbar = () => {
         <div className="nav__group-button">
           {authUser ? (
             <button
-              className="nav__button nav__btn"
+              className="nav__button"
               type="button"
               onClick={onHandlerLogout}
             >
