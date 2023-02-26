@@ -1,34 +1,42 @@
 import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import ThreadItemOwner, { ownerShape } from './children/ThreadItemOwner';
+import ThreadItemOwner, { userShape } from './children/thread/ThreadItemOwner';
 import CommentWrapper from './children/comment/CommentWrapper';
 import CommentsInput from './children/comment/CommentInput';
 import CommentResponse from './children/comment/CommentResponse';
 import CommentsItems, { commentShape } from './children/comment/CommentItems';
+import ThreadVotes from './children/thread/ThreadVotes';
 
 const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
   return (
     <>
-      <ThreadItemOwner
-        DesktopMode
-        owner={threadDetail.owner}
-        category={threadDetail.category}
-        createdAt={threadDetail.createdAt}
-      />
+      <div className="threadDetail__wrapper">
+        <ThreadItemOwner
+          DesktopMode
+          owner={threadDetail.owner}
+          category={threadDetail.category}
+          createdAt={threadDetail.createdAt}
+        />
 
-      <h1 className="threadDetail__title">{threadDetail.title}</h1>
-      <div
-        className="threadDetail__desc"
-        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(threadDetail.body) }}
-      />
+        <h1 className="threadDetail__title">{threadDetail.title}</h1>
+        <div
+          className="threadDetail__desc"
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(threadDetail.body) }}
+        />
+
+        <ThreadVotes />
+      </div>
 
       <div
         className="threadDetail__comment"
         id="comment"
       >
         {authUser ? (
-          <CommentsInput handlerSubmitComment={handlerSubmitComment} />
+          <CommentsInput
+            owner={threadDetail.owner}
+            handlerSubmitComment={handlerSubmitComment}
+          />
         ) : (
           <div className="threadDetail__comment-false">
             <span>Want to comment ?</span>
@@ -43,7 +51,10 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
 
         <CommentWrapper>
           <>
-            <CommentResponse length={threadDetail.comments.length} />
+            <CommentResponse
+              title="Comment"
+              length={threadDetail.comments.length}
+            />
 
             <div className="comment__data">
               {threadDetail.comments.length >= 1 ? (
@@ -68,18 +79,18 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
   );
 };
 
+ThreadDetail.defaultProps = {
+  authUser: null,
+};
+
 const ThreadDetailShape = {
   id: PropTypes.string.isRequired,
-  owner: PropTypes.shape(ownerShape).isRequired,
+  owner: PropTypes.shape(userShape).isRequired,
   category: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   comments: PropTypes.arrayOf(PropTypes.shape(commentShape)).isRequired,
-};
-
-ThreadDetail.defaultProps = {
-  authUser: null,
 };
 
 ThreadDetail.propTypes = {

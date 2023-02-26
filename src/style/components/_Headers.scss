@@ -2,14 +2,14 @@
 @use '../utilities/mixin' as *;
 
 .headers {
-  width: 273px;
+  // width: 273px;
+  width: 90%;
   height: 135px;
   margin: 2.5em auto 0;
   font-family: $text-font;
   order: 1;
 
   .headers__heading {
-    margin-bottom: 0.2em;
     font-size: 2rem;
     font-weight: $font-semi-bold;
     text-align: center;
@@ -17,6 +17,8 @@
   }
 
   .headers__desc {
+    width: 70%;
+    margin: 0 auto 0.2em;
     font-weight: $font-light;
     font-style: normal;
     font-size: 16px;
@@ -25,7 +27,27 @@
   }
 }
 
+@media (min-width: 420px) {
+  .headers {
+    width: 290px;
+  }
+
+  .headers-added {
+    width: 290px;
+    height: 111px;
+  }
+}
+
 @media (min-width: 1536px) {
+  .headers-added {
+    margin: 2.5em auto 0 !important;
+
+    .headers__desc {
+      width: 75% !important;
+      text-align: center !important;
+    }
+  }
+
   .headers {
     margin: 0 auto;
 
@@ -34,6 +56,7 @@
     }
 
     .headers__desc {
+      width: 100%;
       text-align: left;
     }
   }

@@ -1,7 +1,8 @@
 import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
-import { ownerShape } from '../ThreadItemOwner';
 import { postedAt } from '../../../../utils/index';
+import { userShape } from '../thread/ThreadItemOwner';
+import ThreadVotes from '../thread/ThreadVotes';
 
 const CommentsItems = ({ content, createdAt, owner }) => {
   return (
@@ -29,6 +30,8 @@ const CommentsItems = ({ content, createdAt, owner }) => {
         className="comment__body"
         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
       />
+
+      <ThreadVotes />
     </div>
   );
 };
@@ -36,7 +39,7 @@ const CommentsItems = ({ content, createdAt, owner }) => {
 export const commentShape = {
   content: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
-  owner: PropTypes.shape(ownerShape).isRequired,
+  owner: PropTypes.shape(userShape).isRequired,
 };
 
 CommentsItems.propTypes = {

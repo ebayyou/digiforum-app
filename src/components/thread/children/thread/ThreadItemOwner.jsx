@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { postedAt } from '../../../utils/index';
+import { postedAt } from '../../../../utils/index';
 
 const ThreadItemOwner = ({ DesktopMode, owner, category, createdAt }) => {
   return (
@@ -16,26 +16,29 @@ const ThreadItemOwner = ({ DesktopMode, owner, category, createdAt }) => {
         </div>
       </div>
 
-      <div className="thread__badge thread__badge-DM">{category}</div>
+      <div className="thread__badge thread__badge-DM">
+        <h3>{category}</h3>
+      </div>
     </div>
   );
-};
-
-export const ownerShape = {
-  avatar: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
 };
 
 ThreadItemOwner.defaultProps = {
   DesktopMode: false,
 };
 
+export const userShape = {
+  avatar: PropTypes.string.isRequired,
+  email: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
 ThreadItemOwner.propTypes = {
   DesktopMode: PropTypes.bool,
   category: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
-  owner: PropTypes.shape(ownerShape).isRequired,
+  owner: PropTypes.shape(userShape).isRequired,
 };
 
 export default ThreadItemOwner;

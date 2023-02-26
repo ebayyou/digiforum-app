@@ -1,5 +1,5 @@
-@use '../base/variable' as *;
-@use '../utilities/mixin' as *;
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
 
 .thread__profile {
   @include flex(row, space-between, 0);
@@ -32,14 +32,23 @@
   .thread__badge {
     width: 100px;
     height: 34px;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: center;
-    line-height: 34px;
     background-color: $light-001;
     color: $main-color;
     border-radius: 0.3em;
+
+    h3 {
+      font-size: 14px;
+      font-weight: $font-semi-bold;
+      text-transform: capitalize;
+      text-align: center;
+      line-height: 34px;
+    }
   }
+}
+
+.thread__profile-DM {
+  width: 100%;
+  margin: 0;
 }
 
 @media (min-width: 600px) {
@@ -66,5 +75,13 @@
     .thread__badge-DM {
       font-size: 16px;
     }
+  }
+}
+
+@media (min-width: 1440px) {
+  .thread__profile .thread__group .thread__image {
+    width: 55px;
+    height: 55px;
+    border-radius: 0.4em;
   }
 }

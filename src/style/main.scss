@@ -12,11 +12,17 @@
 @use './components/navigation/menu';
 @use './components/navigation/menuCollapse';
 @use './components/navigation/menuHeader';
+@use './components/navigation/navigationThread';
 @use './components/Threads';
+@use './components/thread/threadAdded';
+@use './components/thread/ThreadProfile';
+@use './components/thread/threadAction';
+@use './components/comment/commentForm';
+@use './components/comment/commentData';
+@use './components/comment/commentHeading';
 @use './components/Sidebar';
 @use './components/RightBar';
 @use './components/LeaderboardItem';
-@use './components/ThreadProfile';
 @use './components/Headers';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
