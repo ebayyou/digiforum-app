@@ -56,6 +56,13 @@
   }
 }
 
+@media (min-width: 1440px) and (min-height: 1000px) {
+  .Layout__children {
+    height: 900px;
+    padding-bottom: 1.5em;
+  }
+}
+
 @media (min-width: 1536px) {
   .Layout {
     position: fixed;

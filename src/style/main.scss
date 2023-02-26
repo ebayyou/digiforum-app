@@ -15,11 +15,12 @@
 @use './components/navigation/navigationThread';
 @use './components/Threads';
 @use './components/thread/threadAdded';
-@use './components/thread/ThreadProfile';
+@use './components/thread/threadItemOwner';
 @use './components/thread/threadAction';
 @use './components/comment/commentForm';
 @use './components/comment/commentData';
 @use './components/comment/commentHeading';
+@use './components/Profile';
 @use './components/Sidebar';
 @use './components/RightBar';
 @use './components/LeaderboardItem';
