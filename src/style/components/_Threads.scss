@@ -6,6 +6,7 @@
 }
 
 .thread {
+  width: 100%;
   margin: 0 auto;
   padding: 0.5em 0.2em;
   border-bottom: 2px solid $navi-004;
@@ -80,13 +81,6 @@
     border-radius: 15px;
     box-shadow: 10px 10px 0px rgba(2, 2, 2, 0.45);
     border: none;
-  }
-}
-
-@media (min-width: 1440px) and (min-height: 1000px) {
-  .thread__list {
-    height: 1000px;
-    padding-bottom: 1.5em;
   }
 }
 

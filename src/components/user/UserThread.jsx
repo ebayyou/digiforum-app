@@ -2,17 +2,15 @@ import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 import { Link } from 'react-router-dom';
 import { limitString } from '../../utils';
-import ThreadItems from './children/ThreadItems';
-import ThreadAdded from './children/ThreadAdded';
-import ThreadItemOwner, { userShape } from './children/thread/ThreadItemOwner';
-import ThreadAction from './children/thread/ThreadAction';
-import ThreadVotes from './children/thread/ThreadVotes';
+import ThreadItems from '../thread/children/ThreadItems';
+import ThreadItemOwner from '../thread/children/thread/ThreadItemOwner';
+import ThreadAction from '../thread/children/thread/ThreadAction';
+import ThreadVotes from '../thread/children/thread/ThreadVotes';
+import { threadItemShape } from '../thread/ThreadList';
 
-const ThreadList = ({ threads }) => {
+const UserThreads = ({ threads }) => {
   return (
-    <section className="Layout__children">
-      <ThreadAdded />
-
+    <div className="userthread">
       <div className="thread__list">
         {threads.map(({ id, title, user, createdAt, category, body, totalComments }) => (
           <ThreadItems key={id}>
@@ -44,23 +42,12 @@ const ThreadList = ({ threads }) => {
           </ThreadItems>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 
-export const threadItemShape = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  ownerId: PropTypes.string.isRequired,
-  totalComments: PropTypes.number.isRequired,
-  user: PropTypes.shape(userShape).isRequired,
-};
-
-ThreadList.propTypes = {
+UserThreads.propTypes = {
   threads: PropTypes.arrayOf(PropTypes.shape(threadItemShape)).isRequired,
 };
 
-export default ThreadList;
+export default UserThreads;
