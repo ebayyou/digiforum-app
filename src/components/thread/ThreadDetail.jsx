@@ -6,7 +6,7 @@ import CommentWrapper from './children/comment/CommentWrapper';
 import CommentsInput from './children/comment/CommentInput';
 import CommentResponse from './children/comment/CommentResponse';
 import CommentsItems, { commentShape } from './children/comment/CommentItems';
-import ThreadVotes from './children/thread/ThreadVotes';
+import Votes from './children/Votes';
 
 const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
   return (
@@ -25,7 +25,10 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(threadDetail.body) }}
         />
 
-        <ThreadVotes />
+        <Votes
+          upVotes={threadDetail.upVotesBy.length}
+          downVotes={threadDetail.downVotesBy.length}
+        />
       </div>
 
       <div
@@ -64,6 +67,8 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
                     owner={comment.owner}
                     content={comment.content}
                     createdAt={comment.createdAt}
+                    upVotes={comment.upVotesBy.length}
+                    downVotes={comment.downVotesBy.length}
                   />
                 ))
               ) : (

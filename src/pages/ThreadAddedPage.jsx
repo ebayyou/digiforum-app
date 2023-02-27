@@ -26,7 +26,10 @@ const ThreadAddedPage = () => {
     <section className="Layout__children">
       <div className="ThreadAddPage">
         <div className="navigation__thread">
-          <button type="button">
+          <button
+            type="button"
+            onClick={() => navigate('/threads')}
+          >
             <FiArrowLeft className="navigation__icon" />
           </button>
 

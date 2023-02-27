@@ -25,7 +25,7 @@ const ThreadAction = ({ id, totalComments }) => {
 
 ThreadAction.propTypes = {
   id: PropTypes.string.isRequired,
-  totalComments: PropTypes.string.isRequired,
+  totalComments: PropTypes.number.isRequired,
 };
 
 export default ThreadAction;

@@ -6,7 +6,7 @@ import ThreadItems from './children/ThreadItems';
 import ThreadAdded from './children/ThreadAdded';
 import ThreadItemOwner, { userShape } from './children/thread/ThreadItemOwner';
 import ThreadAction from './children/thread/ThreadAction';
-import ThreadVotes from './children/thread/ThreadVotes';
+import Votes from './children/Votes';
 
 const ThreadList = ({ threads }) => {
   return (
@@ -14,35 +14,52 @@ const ThreadList = ({ threads }) => {
       <ThreadAdded />
 
       <div className="thread__list">
-        {threads.map(({ id, title, user, createdAt, category, body, totalComments }) => (
-          <ThreadItems key={id}>
-            <Link
-              to={`/threadDetail/${id}`}
-              className="thread__heading"
-            >
-              {title}
-            </Link>
+        {threads.map(
+          ({
+            id,
+            title,
+            user,
+            createdAt,
+            category,
+            body,
+            totalComments,
+            upVotesBy,
+            downVotesBy,
+          }) => (
+            <ThreadItems key={id}>
+              <Link
+                to={`/threadDetail/${id}`}
+                className="thread__heading"
+              >
+                {title}
+              </Link>
 
-            <ThreadItemOwner
-              owner={user}
-              createdAt={createdAt}
-              category={category}
-            />
-
-            <div
-              className="thread__desc"
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(limitString(body, 200)) }}
-            />
-
-            <div className="thread__wrapper">
-              <ThreadAction
-                id={id}
-                totalComments={totalComments}
+              <ThreadItemOwner
+                owner={user}
+                createdAt={createdAt}
+                category={category}
               />
-              <ThreadVotes />
-            </div>
-          </ThreadItems>
-        ))}
+
+              <div
+                className="thread__desc"
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(limitString(body, 200)) }}
+              />
+
+              <div className="thread__wrapper">
+                <ThreadAction
+                  id={id}
+                  totalComments={totalComments}
+                />
+                <Votes
+                  thread
+                  threadId={id}
+                  upVotes={upVotesBy.length}
+                  downVotes={downVotesBy.length}
+                />
+              </div>
+            </ThreadItems>
+          )
+        )}
       </div>
     </section>
   );
