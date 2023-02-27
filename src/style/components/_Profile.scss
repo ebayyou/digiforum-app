@@ -168,3 +168,15 @@
     right: 0px;
   }
 }
+
+@media (min-width: 1536px) {
+  .profile__container {
+    overflow-x: scroll;
+    width: 580px;
+    height: 800px;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}

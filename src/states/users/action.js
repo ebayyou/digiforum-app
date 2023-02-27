@@ -28,4 +28,19 @@ function asyncRequestRegisterUser({ name, email, password }) {
   };
 }
 
-export { ActionType, receiveUsersActionCreator, asyncRequestRegisterUser };
+function asyncAllUsers() {
+  return async (dispatch) => {
+    dispatch(showLoading());
+
+    try {
+      const users = await Api.getAllUsers();
+      dispatch(receiveUsersActionCreator(users));
+    } catch (error) {
+      alert(error.message);
+    }
+
+    dispatch(hideLoading());
+  };
+}
+
+export { ActionType, receiveUsersActionCreator, asyncRequestRegisterUser, asyncAllUsers };

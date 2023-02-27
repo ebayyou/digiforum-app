@@ -55,7 +55,7 @@
   }
 }
 
-.thread__votes {
+.votes__group {
   @include flex(row, flex-start, 0.6em);
 
   .votes {

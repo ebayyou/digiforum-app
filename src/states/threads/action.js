@@ -4,6 +4,10 @@ import Api from '../../utils/Api';
 const ActionType = {
   RECEIVE_THREADS: 'RECEIVE_THREADS',
   ADD_THREAD: 'ADD_THREAD',
+  FILTER_THREAD: 'FILTER_THREAD',
+  UP_VOTE_THREAD: 'UP_VOTE_THREAD',
+  DOWN_VOTE_THREAD: 'DOWN_VOTE_THREAD',
+  NEUTRALIZE_VOTE_THREAD: 'NEUTRALIZE_VOTE_THREAD',
 };
 
 function receiveThreadsActionCreator(threads) {
@@ -24,6 +28,24 @@ function addThreadActionCreator(thread) {
   };
 }
 
+function filterThreadByCategoryActionCreator(category) {
+  return {
+    type: ActionType.FILTER_THREAD,
+    payload: {
+      category,
+    },
+  };
+}
+
+function upVoteThreadActionCreator(threadId) {
+  return {
+    type: ActionType.UP_VOTE_THREAD,
+    payload: {
+      threadId,
+    },
+  };
+}
+
 function asyncAddThread({ title, body, category }) {
   return async (dispatch) => {
     dispatch(showLoading());
@@ -39,4 +61,24 @@ function asyncAddThread({ title, body, category }) {
   };
 }
 
-export { ActionType, receiveThreadsActionCreator, addThreadActionCreator, asyncAddThread };
+function asyncUpVoteThread(threadId) {
+  return async (dispatch) => {
+    console.log(threadId);
+
+    try {
+      const vote = await Api.upVoteThread(threadId);
+      dispatch(upVoteThreadActionCreator(vote));
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+}
+
+export {
+  ActionType,
+  receiveThreadsActionCreator,
+  addThreadActionCreator,
+  filterThreadByCategoryActionCreator,
+  asyncAddThread,
+  asyncUpVoteThread,
+};

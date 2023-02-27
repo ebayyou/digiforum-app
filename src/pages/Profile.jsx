@@ -1,23 +1,29 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import UserProfile from '../components/user/UserProfile';
 import UserThreads from '../components/user/UserThread';
+import { asyncPopulateUserAndThreads } from '../states/shared/action';
 
 const Profile = () => {
   const { threads = [], authUser } = useSelector((state) => state);
   const [userThreads, setUserThreads] = useState([]);
+  const dispatch = useDispatch();
 
-  if (authUser) {
-    const userThread = threads.filter((thread) => thread.ownerId === authUser.id);
+  useEffect(() => {
+    dispatch(asyncPopulateUserAndThreads());
 
-    const threadsAndUser = userThread.map((thread) => ({
-      ...thread,
-      user: authUser,
-    }));
+    if (authUser) {
+      const userThread = threads.filter((thread) => thread.ownerId === authUser.id);
 
-    setUserThreads(threadsAndUser);
-  }
+      const threadsAndUser = userThread.map((thread) => ({
+        ...thread,
+        user: authUser,
+      }));
+
+      setUserThreads(threadsAndUser);
+    }
+  }, [dispatch]);
 
   return (
     <section className="profile__container">
@@ -47,7 +53,7 @@ const Profile = () => {
               </div>
             </div>
 
-            {threads ? (
+            {userThreads.length !== 0 ? (
               <UserThreads threads={userThreads} />
             ) : (
               <div className="profile__thread__empty">nothing thread</div>
