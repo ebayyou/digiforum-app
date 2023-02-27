@@ -1,17 +1,23 @@
 @use '../base/variable' as *;
 @use '../utilities/mixin' as *;
 
+.thread__list {
+  @include flex(column, flex-start, 1.4em);
+}
+
 .thread {
-  margin: 0 auto 2em;
-  padding: 1.5em 2em;
-  color: #e3e5eb;
-  background-color: #2c2b2a;
-  box-shadow: 10px 10px 0px rgb(100 100 100 / 27%);
-  border-radius: 10px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.5em 0.2em;
+  border-bottom: 2px solid $navi-004;
+  color: $title-color;
+  font-family: $text-font;
 
   .thread__heading {
+    font-style: normal;
+    font-weight: $font-semi-bold;
     font-size: 20px;
-    font-weight: 600;
+    line-height: 25px;
     color: $title-color;
     transition: text-decoration 0.3s ease;
     cursor: pointer;
@@ -22,91 +28,15 @@
   }
 
   .thread__desc {
+    font-style: normal;
+    font-weight: $font-regular;
     font-size: 14px;
-
-    strong {
-      font-weight: 700;
-      margin: 0 5px;
-    }
-  }
-
-  .thread__icon {
-    @include flex(row, flex-start, 1em);
-    margin: 1em 0 0;
-    padding: 1em 0.4em;
-
-    .wrapper__icon {
-      @include flex();
-      padding: 0.5em;
-      background-color: rgb(207 207 207 / 40%);
-      border-radius: 50%;
-
-      .bookmark {
-        color: #fc728b;
-        font-size: 1em;
-      }
-    }
-
-    .thread__comment {
-      @include flex(row, space-between, 0.8em);
-      padding: 0.4em 0.5em;
-      background-color: rgb(207 207 207 / 40%);
-      border-radius: 2em;
-
-      .comment {
-        color: #fc728b;
-        font-size: 1em;
-      }
-
-      span {
-        font-size: 12px;
-        color: #dfdfdf;
-      }
-
-      .comment__total {
-        background: #303340;
-        padding: 0.3em;
-        border-radius: 0.2em;
-      }
-    }
-  }
-}
-
-.threadAdded {
-  @include flex(row, space-between, 0);
-  width: 90%;
-  height: 68px;
-  margin: 2em auto;
-  padding: 0 1.5em;
-  background-color: $first-color;
-  border-radius: 0.4em;
-
-  .added__heading {
-    font-size: $h3-font-size;
-    color: #d7cdcf;
-  }
-
-  .added__button {
-    @include flex();
-    padding: 0.2em;
-    border-radius: 0.2em;
-    background-color: $second-color;
-
-    .button__icon {
-      font-size: 1.5rem;
-      color: #d7cdcf;
-    }
+    line-height: 21px;
   }
 }
 
 @media (min-width: 640px) {
   .thread {
-    width: 450px;
-
-    .thread__profile .thread__group {
-      gap: 0.8em;
-    }
-
     .thread__icon {
       .wrapper__icon {
         .bookmark {
@@ -124,46 +54,38 @@
 }
 
 @media (min-width: 768px) {
-  .thread,
-  .threadAdded {
+  .thread {
     width: 550px;
   }
 
   .thread {
     .thread__heading {
-      font-size: 24px;
+      font-size: 25px;
     }
 
     .thread__desc {
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .thread__profile {
       margin: 1.5rem 0;
     }
-
-    .thread__icon {
-      .wrapper__icon {
-        padding: 0.6em;
-
-        .bookmark {
-          font-size: 1.3rem;
-        }
-      }
-
-      .thread__comment {
-        padding: 0.5em 0.7em;
-
-        .comment {
-          font-size: 1.3rem;
-        }
-      }
-    }
   }
 }
 
 @media (min-width: 1024px) {
+  .thread {
+    margin-top: 1em;
+    background: $navi-002;
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 10px 10px 0px rgba(2, 2, 2, 0.45);
+    border: none;
+  }
 }
 
-@media (min-width: 1150px) {
+@media (min-width: 1536px) {
+  .thread {
+    background: $navi-004;
+  }
 }

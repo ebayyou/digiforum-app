@@ -8,6 +8,7 @@ import { asyncUnsetAuthUser } from '../../states/authUser/action';
 import { sidebarStatusActionCreator } from '../../states/sidebarStatus/action';
 import MenuList from './children/MenuList';
 import MenuCollapse from './children/MenuCollapse';
+import MenuHeader from './children/MenuHeader';
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -28,10 +29,10 @@ const Navbar = () => {
 
   return (
     <>
-      <MenuCollapse
-        toggle={toggle}
-        onHandlerNavbar={onHandlerNavbar}
-      />
+      <MenuCollapse toggle={toggle}>
+        <MenuHeader onHandlerNavbar={onHandlerNavbar} />
+        <MenuList />
+      </MenuCollapse>
       <nav className="navbar">
         <div className="nav__brand">
           <button
@@ -53,7 +54,7 @@ const Navbar = () => {
         <div className="nav__group-button">
           {authUser ? (
             <button
-              className="nav__button nav__btn"
+              className="nav__button"
               type="button"
               onClick={onHandlerLogout}
             >

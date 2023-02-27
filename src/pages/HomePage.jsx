@@ -1,22 +1,30 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { asyncPopulateUserAndThreads } from '../states/shared/action';
-import ThreadList from '../components/thread/ThreadList';
+import { Link } from 'react-router-dom';
+import Headers from '../components/Headers';
+import WrapperImage from '../components/WrapperImage';
 
 const HomePage = () => {
-  const { threads = [], users = [] } = useSelector((state) => state);
-  const dispatch = useDispatch();
+  return (
+    <section className="homepage">
+      <div className="homepage__wrapper">
+        <Headers
+          heading="DigiForum"
+          description="Welcome to Discussion with anyone, You can say anything #FreeSpeech."
+        />
 
-  useEffect(() => {
-    dispatch(asyncPopulateUserAndThreads());
-  }, [dispatch]);
+        <WrapperImage
+          src="/images/illustration/Illustration_home.png"
+          alt="illustration home page"
+        />
+      </div>
 
-  const threadsAndUser = threads.map((thread) => ({
-    ...thread,
-    user: users.find((user) => user.id === thread.ownerId),
-  }));
-
-  return <ThreadList threads={threadsAndUser} />;
+      <Link
+        className="homepage__btn"
+        to="/threads"
+      >
+        Go to #Threads
+      </Link>
+    </section>
+  );
 };
 
 export default HomePage;

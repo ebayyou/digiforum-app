@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 import { useInput } from '../hooks/useInput';
 import { asyncAddThread } from '../states/threads/action';
+import Headers from '../components/Headers';
 
 const ThreadAddedPage = () => {
   const { authUser = {} } = useSelector((state) => state);
@@ -14,7 +16,7 @@ const ThreadAddedPage = () => {
   const handlerSubmitAddedThread = () => {
     if (authUser) {
       dispatch(asyncAddThread({ title, category, body }));
-      navigate('/');
+      navigate('/threads');
     } else {
       alert('you have login!!!');
     }
@@ -23,34 +25,49 @@ const ThreadAddedPage = () => {
   return (
     <section className="Layout__children">
       <div className="ThreadAddPage">
-        <h1 className="ThreadAddPage__heading">Thread Added</h1>
+        <div className="navigation__thread">
+          <button type="button">
+            <FiArrowLeft className="navigation__icon" />
+          </button>
 
-        <form
-          className="threadAddPage__form"
-          onSubmit={handlerSubmitAddedThread}
-        >
+          <button
+            className="navigation__button"
+            type="submit"
+            onClick={handlerSubmitAddedThread}
+          >
+            Add Thread
+          </button>
+        </div>
+
+        <Headers
+          heading="Add Your Threads"
+          description="You can say anything #FreeSpeech"
+          added
+        />
+
+        <form className="threadAddPage__form">
           <div className="threadAdd__flex">
             <div className="threadAddPage__group">
               <input
-                className="threadAddPage__input"
+                className="threadAddPage__input border-color-1"
                 value={title}
                 onChange={onChangeTitle}
                 type="text"
                 name="title"
                 id="title"
-                placeholder="Headline your threads..."
+                placeholder="Title"
                 required
               />
             </div>
             <div className="threadAddPage__group">
               <input
-                className="threadAddPage__input"
+                className="threadAddPage__input border-color-2"
                 value={category}
                 onChange={onChangeCategory}
                 type="text"
                 name="category"
                 id="category"
-                placeholder="Category your threads..."
+                placeholder="Category"
                 required
               />
             </div>
@@ -64,17 +81,10 @@ const ThreadAddedPage = () => {
               id="body"
               cols="30"
               rows="10"
-              placeholder="Your threads here (;"
+              placeholder="Tell People what you have to say"
               required
             />
           </div>
-
-          <button
-            type="submit"
-            className="threadAddPage__button"
-          >
-            Create Thread
-          </button>
         </form>
       </div>
     </section>

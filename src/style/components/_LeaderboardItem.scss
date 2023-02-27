@@ -5,6 +5,7 @@
   @include flex(row, space-between, 0);
   margin: 1em 0;
   transition: all 0.3s ease;
+  font-family: $text-font;
 
   .lb__group {
     @include flex(row, flex-start, 0.7em);
@@ -17,15 +18,17 @@
 
     .lb__users {
       .lb__users-name {
-        font-size: $normal-font-size;
+        font-weight: $font-medium;
+        font-size: 14px;
+        line-height: 21px;
         margin-bottom: 0.2em;
       }
 
       .lb__users-email {
-        font-size: $small-font-size;
-        font-weight: 300;
-        color: $text-color-light;
-        width: 80px;
+        font-weight: $font-regular;
+        font-size: 12px;
+        line-height: 18px;
+        color: $neutral-002;
       }
     }
   }
@@ -37,14 +40,9 @@
     font-weight: $font-semi-bold;
     text-align: center;
     line-height: 38px;
-    color: $title-color;
-    background: rgb(235 141 141 / 60%);
+    color: $navi-002;
+    background: $light-001;
     border-radius: 0.2em;
-    // overflow-x: scroll;
-
-    // &::-webkit-scrollbar {
-    //   width: 0;
-    // }
   }
 
   &:hover {
@@ -58,6 +56,11 @@
   padding: 0;
   background-color: transparent;
   border-radius: 0;
+}
+
+.leaderboard__item--lbPage {
+  margin: 0;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {
@@ -80,7 +83,10 @@
     }
 
     .lb__score--lbPage {
+      width: 50px;
+      height: 50px;
       font-size: $h2-font-size;
+      line-height: 50px;
     }
   }
 }

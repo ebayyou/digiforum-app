@@ -5,8 +5,9 @@
   font-family: $text-font;
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
+  padding: 1rem;
   width: 100%;
   height: 100%;
   background: #161519e7;
@@ -129,7 +130,7 @@
   }
 
   .sidebar__footer {
-    margin: 5em 2em 7em;
+    margin: 5em 1em 7em;
     border-top: 2px solid $navi-004;
     padding: 0.5em 1.5em;
 
@@ -181,7 +182,6 @@
 @media (min-width: 1024px) {
   .sidebar {
     top: 80px;
-    left: 0;
     padding: 1em;
     background: transparent;
     border-right: 2px solid $navi-004;
@@ -216,10 +216,13 @@
 @media (min-width: 1440px) {
   .sidebar {
     top: 0;
-    padding: 5rem 1rem 1rem;
+    padding: 6rem 1rem 1rem;
+  }
+}
 
-    .sidebar__footer {
-      margin: 5em 1em 7em;
-    }
+@media (min-width: 1536px) {
+  .sidebar {
+    top: 20px;
+    left: unset;
   }
 }

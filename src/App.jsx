@@ -3,15 +3,18 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncReceiveLeaderboars } from './states/leaderboard/action';
+import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
+import About from './pages/About';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import Layout from './components/Layout';
+import Threads from './pages/Threads';
 import ThreadAddedPage from './pages/ThreadAddedPage';
 import ThreadDetailPage from './pages/ThreadDetailPage';
 import LeaderboardsPage from './pages/LeaderBoardsPage';
 import NotfoundPage from './pages/404Page';
 import Loading from './components/Loading';
+import Profile from './pages/Profile';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,6 +36,18 @@ const App = () => {
           <Route
             index
             element={<HomePage />}
+          />
+          <Route
+            path="/about"
+            element={<About />}
+          />
+          <Route
+            path="/profile"
+            element={<Profile />}
+          />
+          <Route
+            path="/threads"
+            element={<Threads />}
           />
           <Route
             path="/threadAdded"

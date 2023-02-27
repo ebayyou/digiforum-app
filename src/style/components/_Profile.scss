@@ -1,0 +1,170 @@
+@use '../base/variable' as *;
+@use '../utilities/mixin' as *;
+
+.profile__container {
+  @include flex(column, flex-start, 1em);
+  align-items: flex-start;
+  margin: 1.4em 0.6em;
+
+  .profile {
+    @include flex(column, flex-start, 0.9em);
+    align-items: flex-start;
+    width: 100%;
+
+    .profile__group {
+      width: 100%;
+
+      .profile__banner {
+        width: 100%;
+        height: 100px;
+        background: $gradient-005;
+        border-radius: 0.35em;
+      }
+
+      .profile__picture {
+        width: 100px;
+        height: 100px;
+        margin: -3.25em auto 0;
+        border-radius: 0.35em;
+      }
+    }
+
+    .profile__bio {
+      font-family: $text-font;
+
+      .bio__name {
+        font-style: normal;
+        font-weight: $font-medium;
+        font-size: 22px;
+        line-height: 33px;
+      }
+
+      .bio__id {
+        font-style: normal;
+        font-weight: $font-light;
+        font-size: 12px;
+        line-height: 18px;
+        color: $neutral-002;
+      }
+
+      .bio__desc {
+        width: 75%;
+        margin-top: 1em;
+        font-style: normal;
+        font-weight: $font-regular;
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+  }
+
+  .profile__wrapper {
+    @include flex(column, flex-start, 1.25em);
+    align-items: flex-start;
+    width: 100%;
+
+    .profile__tabs {
+      @include flex(row, flex-start, 1.65em);
+
+      .tabs {
+        width: 67px;
+        height: 33px;
+
+        .tabs__button {
+          width: 100%;
+          font-style: normal;
+          font-weight: $font-medium;
+          font-size: 16px;
+          line-height: 24px;
+          text-align: center;
+          background: transparent;
+          color: $title-color;
+          margin-bottom: 0.4em;
+        }
+
+        .active__button {
+          width: 100%;
+          height: 4px;
+          background: #7b61ff;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+
+  .userthread {
+    width: 100%;
+  }
+}
+
+.profile__container-false {
+  @include flex(row, center, 1em);
+  width: 100%;
+  height: 100vh;
+
+  span {
+    padding-right: 0.5em;
+  }
+
+  .link-to-login {
+    color: $second-color;
+    text-decoration: underline;
+  }
+}
+
+@media (min-width: 550px) {
+  .profile__container {
+    width: 550px;
+    margin: 1.4em auto;
+    gap: 1.8em;
+
+    .profile {
+      .profile__group {
+        .profile__banner {
+          height: 144px;
+        }
+
+        .profile__picture {
+          width: 144px;
+          height: 148px;
+          margin: -4.65em auto 0;
+          border-radius: 0.5em;
+        }
+      }
+
+      .profile__bio {
+        .bio__name {
+          font-size: 25px;
+          margin-bottom: 0.2em;
+        }
+        .bio__id {
+          font-size: 14px;
+        }
+        .bio__desc {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .profile__container {
+    position: absolute;
+    top: 120px;
+    right: 80px;
+    padding-bottom: 2em !important;
+  }
+}
+@media (min-width: 1150px) {
+  .profile__container {
+    right: 145px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .profile__container {
+    left: 0px;
+    right: 0px;
+  }
+}

@@ -7,7 +7,7 @@ const MenuList = ({ desktopMode }) => {
       <li className={`${desktopMode ? 'menu__list-mode' : 'menu__list'}`}>
         <Link
           className={`${desktopMode ? 'menu__link-mode' : 'menu__link'}`}
-          to="/home"
+          to="/"
         >
           Home
         </Link>
@@ -23,7 +23,7 @@ const MenuList = ({ desktopMode }) => {
       <li className={`${desktopMode ? 'menu__list-mode' : 'menu__list'}`}>
         <Link
           className={`${desktopMode ? 'menu__link-mode' : 'menu__link'}`}
-          to="/"
+          to="/community"
         >
           Community
         </Link>

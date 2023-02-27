@@ -7,25 +7,29 @@ const LeaderboardsPage = () => {
   return (
     <section className="Layout__children">
       <div className="LeaderboardsPage">
-        <h1 className="boards__heading">Leaderboards</h1>
-        <p className="boards__desc">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores totam excepturi
-          laboriosam iure fuga necessitatibus at debitis facilis, obcaecati suscipit sunt
-          voluptatibus. Ut deleniti expedita doloremque, odit qui ex ratione.
-        </p>
-
         <div className="boards__headers">
-          <h2 className="boards__head">Users</h2>
-          <h4 className="boards__score">Score</h4>
+          <h1 className="boards__heading">Top Leaderboards For 24h Threads</h1>
+          <p className="boards__desc">
+            Leaderboard is used to see the top users with the highest score.
+          </p>
         </div>
 
-        {leaderboards.map((leadboard) => (
-          <LeaderboardItem
-            key={leadboard.user.id}
-            DesktopMode
-            {...leadboard}
-          />
-        ))}
+        <div className="boards__group">
+          <div className="boards__info">
+            <h2 className="boards__text">Users</h2>
+            <h2 className="boards__text">Score</h2>
+          </div>
+
+          <div className="boards__wrapper">
+            {leaderboards.map((leadboard) => (
+              <LeaderboardItem
+                key={leadboard.user.id}
+                DesktopMode
+                {...leadboard}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
