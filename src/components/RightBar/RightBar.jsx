@@ -7,9 +7,10 @@ import { asyncUnsetAuthUser } from '../../states/authUser/action';
 import TrendItems from './children/TrendItems';
 import UserItems from './children/UserItems';
 import { asyncPopulateUserAndThreads } from '../../states/shared/action';
+import { trendByCategoryActionCreator } from '../../states/trends/action';
 
 const RightBar = () => {
-  const { authUser, users, threads } = useSelector((state) => state);
+  const { trend, authUser, users, threads } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,6 +19,14 @@ const RightBar = () => {
 
   const onHandlerLogout = () => {
     dispatch(asyncUnsetAuthUser());
+  };
+
+  const onClickhandlerTrend = (newTrend) => {
+    if (newTrend === trend) {
+      dispatch(trendByCategoryActionCreator('all'));
+    } else {
+      dispatch(trendByCategoryActionCreator(newTrend));
+    }
   };
 
   const usersList = users.slice(501, 507);
@@ -82,8 +91,10 @@ const RightBar = () => {
             {popularThreads.map((popular) => (
               <TrendItems
                 key={popular.id}
+                onClickhandlerTrend={onClickhandlerTrend}
                 trend={popular.category}
                 createdAt={popular.createdAt}
+                popularTrend={trend === popular.category}
               />
             ))}
           </div>

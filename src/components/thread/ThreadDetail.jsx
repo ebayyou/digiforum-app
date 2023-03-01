@@ -26,8 +26,10 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
         />
 
         <Votes
-          upVotes={threadDetail.upVotesBy.length}
-          downVotes={threadDetail.downVotesBy.length}
+          thread
+          id={threadDetail.id}
+          upVotes={threadDetail.upVotesBy}
+          downVotes={threadDetail.downVotesBy}
         />
       </div>
 
@@ -64,11 +66,13 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
                 threadDetail.comments.map((comment) => (
                   <CommentsItems
                     key={comment.id}
+                    threadId={threadDetail.id}
+                    commentId={comment.id}
                     owner={comment.owner}
                     content={comment.content}
                     createdAt={comment.createdAt}
-                    upVotes={comment.upVotesBy.length}
-                    downVotes={comment.downVotesBy.length}
+                    upVotes={comment.upVotesBy}
+                    downVotes={comment.downVotesBy}
                   />
                 ))
               ) : (
@@ -89,13 +93,15 @@ ThreadDetail.defaultProps = {
 };
 
 const ThreadDetailShape = {
-  id: PropTypes.string.isRequired,
-  owner: PropTypes.shape(userShape).isRequired,
-  category: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
   comments: PropTypes.arrayOf(PropTypes.shape(commentShape)).isRequired,
+  createdAt: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  upVotesBy: PropTypes.array.isRequired,
+  downVotesBy: PropTypes.array.isRequired,
+  owner: PropTypes.shape(userShape).isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 ThreadDetail.propTypes = {

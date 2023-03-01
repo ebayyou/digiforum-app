@@ -1,17 +1,13 @@
 import PropTypes from 'prop-types';
 import { FiHash } from 'react-icons/fi';
-import { useDispatch } from 'react-redux';
 import { postedAt } from '../../../utils/index';
-import { filterThreadByCategoryActionCreator } from '../../../states/threads/action';
 
-const TrendItems = ({ trend, createdAt }) => {
-  const dispatch = useDispatch();
-
+const TrendItems = ({ onClickhandlerTrend, trend, createdAt, popularTrend }) => {
   return (
     <button
       type="button"
-      className="trend__group"
-      onClick={() => dispatch(filterThreadByCategoryActionCreator(trend))}
+      className={`trend__group ${popularTrend ? 'pink' : 'neutral'}`}
+      onClick={() => onClickhandlerTrend(trend)}
     >
       <div className="trend__item">
         <FiHash className="trend__icon" />
@@ -25,6 +21,8 @@ const TrendItems = ({ trend, createdAt }) => {
 TrendItems.propTypes = {
   trend: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
+  onClickhandlerTrend: PropTypes.func.isRequired,
+  popularTrend: PropTypes.bool.isRequired,
 };
 
 export default TrendItems;

@@ -1,17 +1,38 @@
 import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { limitString } from '../../utils';
-import ThreadItems from './children/ThreadItems';
+import { asyncRemoveSavethread, asyncSavedThread } from '../../states/savedThread/action';
 import ThreadAdded from './children/ThreadAdded';
 import ThreadItemOwner, { userShape } from './children/thread/ThreadItemOwner';
 import ThreadAction from './children/thread/ThreadAction';
 import Votes from './children/Votes';
 
-const ThreadList = ({ threads }) => {
+const ThreadList = ({ userThread, threads }) => {
+  const { authUser = {} } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const handlerActionSavedThread = (id) => {
+    if (authUser) {
+      const findThread = threads.find((thread) => thread.id === id);
+      dispatch(asyncSavedThread(findThread));
+    } else {
+      alert('you have login');
+    }
+  };
+
+  const handlerActionRemoveSavedThread = (id) => {
+    if (authUser) {
+      dispatch(asyncRemoveSavethread(id));
+    } else {
+      alert('you have login');
+    }
+  };
+
   return (
-    <section className="Layout__children">
-      <ThreadAdded />
+    <section className={`${userThread ? 'userthread' : 'Layout__children'}`}>
+      {userThread === false && <ThreadAdded />}
 
       <div className="thread__list">
         {threads.map(
@@ -26,7 +47,10 @@ const ThreadList = ({ threads }) => {
             upVotesBy,
             downVotesBy,
           }) => (
-            <ThreadItems key={id}>
+            <div
+              className="thread"
+              key={id}
+            >
               <Link
                 to={`/threadDetail/${id}`}
                 className="thread__heading"
@@ -49,15 +73,17 @@ const ThreadList = ({ threads }) => {
                 <ThreadAction
                   id={id}
                   totalComments={totalComments}
+                  handlerActionSavedThread={handlerActionSavedThread}
+                  handlerActionRemoveSavedThread={handlerActionRemoveSavedThread}
                 />
                 <Votes
                   thread
                   threadId={id}
-                  upVotes={upVotesBy.length}
-                  downVotes={downVotesBy.length}
+                  upVotes={upVotesBy}
+                  downVotes={downVotesBy}
                 />
               </div>
-            </ThreadItems>
+            </div>
           )
         )}
       </div>
@@ -76,8 +102,13 @@ export const threadItemShape = {
   user: PropTypes.shape(userShape).isRequired,
 };
 
+ThreadList.defaultProps = {
+  userThread: false,
+};
+
 ThreadList.propTypes = {
   threads: PropTypes.arrayOf(PropTypes.shape(threadItemShape)).isRequired,
+  userThread: PropTypes.bool,
 };
 
 export default ThreadList;

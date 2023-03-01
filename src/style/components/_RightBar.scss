@@ -119,11 +119,9 @@
         .trend__icon {
           width: 20px;
           height: 20px;
-          color: $neutral-002;
         }
 
         h4 {
-          color: $neutral-003;
           font-weight: 500;
           font-size: 12px;
           line-height: 18px;
@@ -134,8 +132,14 @@
         font-weight: 400;
         font-size: 12px;
         line-height: 18px;
-        color: $neutral-002;
       }
+    }
+
+    .neutral {
+      color: $neutral-002;
+    }
+    .pink {
+      color: $primary-001;
     }
   }
 
