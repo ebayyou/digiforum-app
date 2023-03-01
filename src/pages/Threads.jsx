@@ -4,7 +4,7 @@ import { asyncPopulateUserAndThreads } from '../states/shared/action';
 import ThreadList from '../components/thread/ThreadList';
 
 const Threads = () => {
-  const { threads = [], users = [] } = useSelector((state) => state);
+  const { trend, threads = [], users = [] } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +16,13 @@ const Threads = () => {
     user: users.find((user) => user.id === thread.ownerId),
   }));
 
-  return <ThreadList threads={threadsAndUser} />;
+  const threadFilters = threads.filter((thread) => thread.category === trend);
+  const threadsAndUserFilters = threadFilters.map((thread) => ({
+    ...thread,
+    user: users.find((user) => user.id === thread.ownerId),
+  }));
+
+  return <ThreadList threads={trend === 'all' ? threadsAndUser : threadsAndUserFilters} />;
 };
 
 export default Threads;

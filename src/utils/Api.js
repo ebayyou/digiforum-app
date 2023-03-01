@@ -130,6 +130,28 @@ const Api = (() => {
     return detailThread;
   }
 
+  function getSavedThreadFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('savedThread'));
+  }
+
+  function savedThreadToLocalStorage(thread) {
+    let threads = [];
+    if (localStorage.getItem('savedThread') !== null) threads = getSavedThreadFromLocalStorage();
+
+    threads.push(thread);
+    localStorage.setItem('savedThread', JSON.stringify(threads));
+    alert('success saved');
+  }
+
+  function removeThreadFromLocalStorage(threadId) {
+    let threads = [];
+    if (localStorage.getItem('savedThread') !== null) threads = getSavedThreadFromLocalStorage();
+    const filterThreads = threads.filter((thread) => thread.id === threadId);
+
+    localStorage.setItem('savedThread', JSON.stringify(filterThreads));
+    alert('success removed');
+  }
+
   async function createThread({ title, body, category = '' }) {
     const responseJson = await _fetchWithToken(`${BASE_URL}/threads`, {
       method: 'POST',
@@ -314,6 +336,9 @@ const Api = (() => {
     getOwnProfile,
     getAllThreads,
     getDetailThread,
+    savedThreadToLocalStorage,
+    getSavedThreadFromLocalStorage,
+    removeThreadFromLocalStorage,
     upVoteThread,
     downVoteThread,
     neutralizeVoteThread,

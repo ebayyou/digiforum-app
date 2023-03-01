@@ -1,13 +1,13 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable operator-linebreak */
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import Api from '../../utils/Api';
 
 const ActionType = {
   RECEIVE_THREADS: 'RECEIVE_THREADS',
   ADD_THREAD: 'ADD_THREAD',
-  FILTER_THREAD: 'FILTER_THREAD',
   UP_VOTE_THREAD: 'UP_VOTE_THREAD',
   DOWN_VOTE_THREAD: 'DOWN_VOTE_THREAD',
-  NEUTRALIZE_VOTE_THREAD: 'NEUTRALIZE_VOTE_THREAD',
 };
 
 function receiveThreadsActionCreator(threads) {
@@ -28,20 +28,22 @@ function addThreadActionCreator(thread) {
   };
 }
 
-function filterThreadByCategoryActionCreator(category) {
-  return {
-    type: ActionType.FILTER_THREAD,
-    payload: {
-      category,
-    },
-  };
-}
-
-function upVoteThreadActionCreator(threadId) {
+function upVoteThreadActionCreator(threadId, userVoteId) {
   return {
     type: ActionType.UP_VOTE_THREAD,
     payload: {
       threadId,
+      userVoteId,
+    },
+  };
+}
+
+function downVoteThreadActionCreator(threadId, userVoteId) {
+  return {
+    type: ActionType.UP_VOTE_THREAD,
+    payload: {
+      threadId,
+      userVoteId,
     },
   };
 }
@@ -61,15 +63,56 @@ function asyncAddThread({ title, body, category }) {
   };
 }
 
-function asyncUpVoteThread(threadId) {
-  return async (dispatch) => {
-    console.log(threadId);
+function asyncToggleUpVoteThread(threadId) {
+  return async (dispatch, getState) => {
+    dispatch(showLoading());
+
+    const { authUser, threads } = getState();
+    dispatch(upVoteThreadActionCreator(threadId, authUser.id));
+    threads.map((thread) => {
+      return (
+        thread.downVotesBy.includes(authUser.id) &&
+        dispatch(downVoteThreadActionCreator(threadId, authUser.id))
+      );
+    });
 
     try {
-      const vote = await Api.upVoteThread(threadId);
-      dispatch(upVoteThreadActionCreator(vote));
+      await Api.neutralizeVoteThread(threadId);
+      !threads[0].upVotesBy.includes(authUser.id) && (await Api.upVoteThread(threadId));
     } catch (error) {
+      dispatch(upVoteThreadActionCreator(threadId, authUser.id));
+      dispatch(downVoteThreadActionCreator(threadId, authUser.id));
+
       alert(error.message);
+    } finally {
+      dispatch(hideLoading());
+    }
+  };
+}
+
+function asyncToggleDownVoteThread(threadId) {
+  return async (dispatch, getState) => {
+    dispatch(showLoading());
+
+    const { authUser, threads } = getState();
+    dispatch(downVoteThreadActionCreator(threadId, authUser.id));
+    threads.map((thread) => {
+      return (
+        thread.upVotesBy.includes(authUser.id) &&
+        dispatch(upVoteThreadActionCreator(threadId, authUser.id))
+      );
+    });
+
+    try {
+      await Api.neutralizeVoteThread(threadId);
+      !threads[0].downVotesBy.includes(authUser.id) && (await Api.downVoteThread(threadId));
+    } catch (error) {
+      dispatch(downVoteThreadActionCreator(threadId, authUser.id));
+      dispatch(upVoteThreadActionCreator(threadId, authUser.id));
+
+      alert(error.message);
+    } finally {
+      dispatch(hideLoading());
     }
   };
 }
@@ -78,7 +121,7 @@ export {
   ActionType,
   receiveThreadsActionCreator,
   addThreadActionCreator,
-  filterThreadByCategoryActionCreator,
   asyncAddThread,
-  asyncUpVoteThread,
+  asyncToggleUpVoteThread,
+  asyncToggleDownVoteThread,
 };
