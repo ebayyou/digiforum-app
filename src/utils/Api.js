@@ -138,18 +138,34 @@ const Api = (() => {
     let threads = [];
     if (localStorage.getItem('savedThread') !== null) threads = getSavedThreadFromLocalStorage();
 
-    threads.push(thread);
-    localStorage.setItem('savedThread', JSON.stringify(threads));
-    alert('success saved');
+    const threadsPromise = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve([...threads, thread]);
+      }, 1000);
+    });
+
+    threadsPromise
+      .then((response) => localStorage.setItem('savedThread', JSON.stringify(response)))
+      .catch((error) => {
+        throw new Error(error);
+      });
   }
 
   function removeThreadFromLocalStorage(threadId) {
     let threads = [];
     if (localStorage.getItem('savedThread') !== null) threads = getSavedThreadFromLocalStorage();
-    const filterThreads = threads.filter((thread) => thread.id === threadId);
 
-    localStorage.setItem('savedThread', JSON.stringify(filterThreads));
-    alert('success removed');
+    const threadsPromise = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(threads.filter((thread) => thread.id !== threadId));
+      }, 1000);
+    });
+
+    threadsPromise
+      .then((response) => localStorage.setItem('savedThread', JSON.stringify(response)))
+      .catch((error) => {
+        throw new Error(error);
+      });
   }
 
   async function createThread({ title, body, category = '' }) {
