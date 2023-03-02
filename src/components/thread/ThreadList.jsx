@@ -3,7 +3,10 @@ import DOMPurify from 'dompurify';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { limitString } from '../../utils';
-import { asyncRemoveSavethread, asyncSavedThread } from '../../states/savedThread/action';
+import {
+  removeSavedThreadActionCreator,
+  savedThreadActionCreator,
+} from '../../states/savedThread/action';
 import ThreadAdded from './children/ThreadAdded';
 import ThreadItemOwner, { userShape } from './children/thread/ThreadItemOwner';
 import ThreadAction from './children/thread/ThreadAction';
@@ -16,7 +19,7 @@ const ThreadList = ({ userThread, threads }) => {
   const handlerActionSavedThread = (id) => {
     if (authUser) {
       const findThread = threads.find((thread) => thread.id === id);
-      dispatch(asyncSavedThread(findThread));
+      dispatch(savedThreadActionCreator(findThread));
     } else {
       alert('you have login');
     }
@@ -24,7 +27,7 @@ const ThreadList = ({ userThread, threads }) => {
 
   const handlerActionRemoveSavedThread = (id) => {
     if (authUser) {
-      dispatch(asyncRemoveSavethread(id));
+      dispatch(removeSavedThreadActionCreator(id));
     } else {
       alert('you have login');
     }

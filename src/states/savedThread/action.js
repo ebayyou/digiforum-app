@@ -6,37 +6,36 @@ const ActionType = {
   REMOVE_SAVED: 'REMOVE_SAVED',
 };
 
-function savedThreadActionType(threads) {
+function savedThreadActionCreator(thread) {
   return {
     type: ActionType.SAVED_THREAD,
     payload: {
-      threads,
+      thread,
     },
   };
 }
 
-function removeSavedThreadActionType(threads) {
+function removeSavedThreadActionCreator(threadId) {
   return {
     type: ActionType.REMOVE_SAVED,
     payload: {
-      threads,
+      threadId,
     },
   };
 }
 
-function saveConditionActionType() {
+function saveConditionActionCreator() {
   return {
     type: ActionType.SAVED_CONDITION,
   };
 }
 
 function asyncSavedThread(thread) {
-  return (dispatch) => {
+  return async (dispatch) => {
     try {
       Api.savedThreadToLocalStorage(thread);
-      const getThreads = Api.getSavedThreadFromLocalStorage();
-      dispatch(savedThreadActionType(getThreads));
-      console.log(getThreads);
+      const getThreads = await Api.getSavedThreadFromLocalStorage();
+      dispatch(savedThreadActionCreator(getThreads));
     } catch (error) {
       alert(error.message);
     }
@@ -44,11 +43,11 @@ function asyncSavedThread(thread) {
 }
 
 function asyncRemoveSavethread(threadId) {
-  return (dispatch) => {
+  return async (dispatch) => {
     try {
       Api.removeThreadFromLocalStorage(threadId);
-      const getThreads = Api.getSavedThreadFromLocalStorage();
-      dispatch(removeSavedThreadActionType(getThreads));
+      const getThreads = await Api.getSavedThreadFromLocalStorage();
+      dispatch(removeSavedThreadActionCreator(getThreads));
     } catch (error) {
       alert(error.message);
     }
@@ -57,9 +56,9 @@ function asyncRemoveSavethread(threadId) {
 
 export {
   ActionType,
-  savedThreadActionType,
-  removeSavedThreadActionType,
-  saveConditionActionType,
+  savedThreadActionCreator,
+  removeSavedThreadActionCreator,
+  saveConditionActionCreator,
   asyncSavedThread,
   asyncRemoveSavethread,
 };

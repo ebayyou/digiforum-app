@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import { HashLink } from 'react-router-hash-link';
-import { FaComment, FaRegBookmark } from 'react-icons/fa'; // FaBookmark
-import { useDispatch, useSelector } from 'react-redux';
-import { saveConditionActionType } from '../../../../states/savedThread/action';
+import { FaComment, FaBookmark, FaRegBookmark } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
 const ThreadAction = ({
   handlerActionSavedThread,
@@ -10,21 +9,33 @@ const ThreadAction = ({
   id,
   totalComments,
 }) => {
-  const { savedThread = { threads: [], condition: false } } = useSelector((state) => state);
-  const dispatch = useDispatch();
-  console.log(savedThread);
+  const { savedThreads = [] } = useSelector((state) => state);
+
+  const checkConditionThreadSaved = () => {
+    let condition;
+    if (savedThreads.length > 0) {
+      savedThreads.forEach((thread) => {
+        if (thread.condition && thread.id === id) {
+          condition = thread.condition;
+        }
+      });
+    }
+    return condition;
+  };
 
   const toggleSavedThread = () => {
-    if (!savedThread.condition) {
-      console.log('saved');
-      handlerActionSavedThread(id);
-      dispatch(saveConditionActionType());
-    } else {
-      console.log('removed');
+    const threadCondition = checkConditionThreadSaved();
+
+    if (threadCondition) {
       handlerActionRemoveSavedThread(id);
-      dispatch(saveConditionActionType());
+      alert('removed succesfully');
+    } else {
+      handlerActionSavedThread(id);
+      alert('saved succesfully');
     }
   };
+
+  const bookmarkCondition = checkConditionThreadSaved();
 
   return (
     <div className="thread__action">
@@ -33,7 +44,7 @@ const ThreadAction = ({
         className="wrapper__icon"
         onClick={toggleSavedThread}
       >
-        <FaRegBookmark className="saved" />
+        {bookmarkCondition ? <FaBookmark className="saved" /> : <FaRegBookmark className="saved" />}
       </button>
       <HashLink
         to={`/threadDetail/${id}#comment`}

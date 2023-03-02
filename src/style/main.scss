@@ -65,14 +65,14 @@ html {
 }
 
 .wrapper__img {
-  margin: 1em auto;
+  margin: 3em auto 1em;
   height: 554px;
 }
 
 @media (min-width: 600px) {
   .wrapper__img {
     width: 458px;
-    margin: 1em auto 4em;
+    margin: 3em auto 4em;
 
     .img {
       width: 100%;

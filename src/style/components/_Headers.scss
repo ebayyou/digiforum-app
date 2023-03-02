@@ -2,7 +2,6 @@
 @use '../utilities/mixin' as *;
 
 .headers {
-  // width: 273px;
   width: 90%;
   height: 135px;
   margin: 2.5em auto 0;
@@ -17,7 +16,7 @@
   }
 
   .headers__desc {
-    width: 70%;
+    width: 80%;
     margin: 0 auto 0.2em;
     font-weight: $font-light;
     font-style: normal;
@@ -30,6 +29,10 @@
 @media (min-width: 420px) {
   .headers {
     width: 290px;
+
+    .headers__desc {
+      width: 95%;
+    }
   }
 
   .headers-added {

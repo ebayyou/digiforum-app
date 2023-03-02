@@ -6,13 +6,7 @@ import UserProfile from '../components/user/UserProfile';
 import { asyncPopulateUserAndThreads } from '../states/shared/action';
 
 const Profile = () => {
-  const {
-    threads = [],
-    savedThread = { threads: [], condition: false },
-    authUser = {},
-  } = useSelector((state) => state);
-  console.log(savedThread);
-
+  const { threads = [], savedThreads = [], authUser = {} } = useSelector((state) => state);
   const [userThreads, setUserThreads] = useState([]);
   const [typeTabs, setTypeTabs] = useState('yourthreads');
   const dispatch = useDispatch();
@@ -39,7 +33,7 @@ const Profile = () => {
       setUserThreads(filterThreads);
       setTypeTabs('yourthreads');
     } else {
-      setUserThreads(savedThread.threads);
+      setUserThreads(savedThreads);
       setTypeTabs('saved');
     }
   };
