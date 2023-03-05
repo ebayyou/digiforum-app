@@ -25,9 +25,14 @@ const SideBar = () => {
 
       <div className="sidebar__overflow">
         <div className="sidebar__wrapper">
-          <SideBarNavigation />
+          <SideBarNavigation onHandlerSidebar={onHandlerSidebar} />
 
-          {leaderboards.length >= 1 && <SidebarLeaderboard topLeaderboard={topLeaderboard} />}
+          {leaderboards.length >= 1 && (
+            <SidebarLeaderboard
+              onHandlerSidebar={onHandlerSidebar}
+              topLeaderboard={topLeaderboard}
+            />
+          )}
         </div>
 
         <SideBarFooter />

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { asyncPopulateUserAndThreads } from '../states/shared/action';
 import ThreadList from '../components/thread/ThreadList';
 
-const Threads = () => {
+const ThreadsPage = () => {
   const { trend, threads = [], users = [] } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -25,4 +25,4 @@ const Threads = () => {
   return <ThreadList threads={trend === 'all' ? threadsAndUser : threadsAndUserFilters} />;
 };
 
-export default Threads;
+export default ThreadsPage;

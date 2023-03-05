@@ -25,6 +25,7 @@ const ThreadAddedPage = () => {
   return (
     <section className="Layout__children">
       <div className="ThreadAddPage">
+        {/* mobile version */}
         <div className="navigation__thread">
           <button
             type="button"
@@ -48,7 +49,10 @@ const ThreadAddedPage = () => {
           added
         />
 
-        <form className="threadAddPage__form">
+        <form
+          className="threadAddPage__form"
+          onSubmit={handlerSubmitAddedThread}
+        >
           <div className="threadAdd__flex">
             <div className="threadAddPage__group">
               <input
@@ -88,6 +92,14 @@ const ThreadAddedPage = () => {
               required
             />
           </div>
+
+          {/* desktop version */}
+          <button
+            className="form__button"
+            type="submit"
+          >
+            Add Thread
+          </button>
         </form>
       </div>
     </section>

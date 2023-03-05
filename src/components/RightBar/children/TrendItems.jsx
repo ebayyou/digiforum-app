@@ -13,6 +13,7 @@ const TrendItems = ({ onClickhandlerTrend, trend, createdAt, popularTrend }) => 
         <FiHash className="trend__icon" />
         <h4>{trend}</h4>
       </div>
+
       <span className="trend__createdAt">{postedAt(createdAt)}</span>
     </button>
   );

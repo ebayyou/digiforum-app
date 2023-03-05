@@ -5,16 +5,16 @@ import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncReceiveLeaderboars } from './states/leaderboard/action';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
-import About from './pages/About';
+import AboutPage from './pages/AboutPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import Threads from './pages/Threads';
+import ThreadsPage from './pages/ThreadsPage';
 import ThreadAddedPage from './pages/ThreadAddedPage';
 import ThreadDetailPage from './pages/ThreadDetailPage';
 import LeaderboardsPage from './pages/LeaderBoardsPage';
+import ProfilePage from './pages/ProfilePage';
 import NotfoundPage from './pages/404Page';
 import Loading from './components/Loading';
-import Profile from './pages/Profile';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -39,15 +39,19 @@ const App = () => {
           />
           <Route
             path="/about"
-            element={<About />}
+            element={<AboutPage />}
           />
           <Route
             path="/profile"
-            element={<Profile />}
+            element={<ProfilePage />}
+          />
+          <Route
+            path="/profile/:profileId"
+            element={<ProfilePage />}
           />
           <Route
             path="/threads"
-            element={<Threads />}
+            element={<ThreadsPage />}
           />
           <Route
             path="/threadAdded"

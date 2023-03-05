@@ -105,7 +105,7 @@ const ThreadDetailShape = {
 };
 
 ThreadDetail.propTypes = {
-  threadDetail: PropTypes.objectOf(PropTypes.shape(ThreadDetailShape)).isRequired,
+  ...ThreadDetailShape,
   handlerSubmitComment: PropTypes.func.isRequired,
   authUser: PropTypes.object,
 };

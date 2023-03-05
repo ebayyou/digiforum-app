@@ -26,13 +26,8 @@ const ThreadAction = ({
   const toggleSavedThread = () => {
     const threadCondition = checkConditionThreadSaved();
 
-    if (threadCondition) {
-      handlerActionRemoveSavedThread(id);
-      alert('removed succesfully');
-    } else {
-      handlerActionSavedThread(id);
-      alert('saved succesfully');
-    }
+    if (threadCondition) handlerActionRemoveSavedThread(id);
+    else handlerActionSavedThread(id);
   };
 
   const bookmarkCondition = checkConditionThreadSaved();
