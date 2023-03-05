@@ -69,16 +69,17 @@ function asyncToggleUpVoteThread(threadId) {
 
     const { authUser, threads } = getState();
     dispatch(upVoteThreadActionCreator(threadId, authUser.id));
-    threads.map((thread) => {
-      return (
-        thread.downVotesBy.includes(authUser.id) &&
-        dispatch(downVoteThreadActionCreator(threadId, authUser.id))
-      );
+    threads.forEach(async (thread) => {
+      if (thread.id === threadId) {
+        if (thread.downVotesBy.includes(authUser.id)) await Api.downVoteThread(threadId);
+      }
     });
 
     try {
       await Api.neutralizeVoteThread(threadId);
-      !threads[0].upVotesBy.includes(authUser.id) && (await Api.upVoteThread(threadId));
+      threads.forEach(async (thread) => {
+        if (!thread.upVotesBy.includes(authUser.id)) await Api.upVoteThread(threadId);
+      });
     } catch (error) {
       dispatch(upVoteThreadActionCreator(threadId, authUser.id));
       dispatch(downVoteThreadActionCreator(threadId, authUser.id));
@@ -96,16 +97,19 @@ function asyncToggleDownVoteThread(threadId) {
 
     const { authUser, threads } = getState();
     dispatch(downVoteThreadActionCreator(threadId, authUser.id));
-    threads.map((thread) => {
-      return (
-        thread.upVotesBy.includes(authUser.id) &&
-        dispatch(upVoteThreadActionCreator(threadId, authUser.id))
-      );
+    threads.forEach(async (thread) => {
+      if (thread === threadId) {
+        if (thread.upVotesBy.includes(authUser.id)) await Api.upVoteThread(threadId);
+      }
     });
 
     try {
       await Api.neutralizeVoteThread(threadId);
-      !threads[0].downVotesBy.includes(authUser.id) && (await Api.downVoteThread(threadId));
+      threads.forEach(async (thread) => {
+        if (thread.id === threadId) {
+          if (!thread.downVotesBy.includes(authUser.id)) await Api.downVoteThread(threadId);
+        }
+      });
     } catch (error) {
       dispatch(downVoteThreadActionCreator(threadId, authUser.id));
       dispatch(upVoteThreadActionCreator(threadId, authUser.id));

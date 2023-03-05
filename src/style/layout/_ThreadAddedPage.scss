@@ -55,6 +55,10 @@
         }
       }
     }
+
+    .form__button {
+      display: none;
+    }
   }
 }
 
@@ -73,6 +77,21 @@
 
     .threadAddPage__form .threadAddPage__group {
       margin: 1em 0;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .ThreadAddPage .threadAddPage__form {
+    .form__button {
+      @include flex();
+      width: 100%;
+      height: 50px;
+      color: $navi-002;
+      font-weight: $font-semi-bold;
+      background-color: $primary-002;
+      border-radius: 0.3em;
+      font-size: 16px;
     }
   }
 }

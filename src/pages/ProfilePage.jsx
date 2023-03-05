@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ThreadList from '../components/thread/ThreadList';
 import UserProfile from '../components/user/UserProfile';
 import { asyncPopulateUserAndThreads } from '../states/shared/action';
 
-const Profile = () => {
+const ProfilePage = () => {
+  const { profileId } = useParams();
   const { threads = [], savedThreads = [], authUser = {} } = useSelector((state) => state);
   const [userThreads, setUserThreads] = useState([]);
-  const [typeTabs, setTypeTabs] = useState('yourthreads');
+  const [typeTabs, setTypeTabs] = useState(profileId === 'saved' ? 'saved' : 'yourThreads');
   const dispatch = useDispatch();
 
   const findUserthreads = () => threads.filter((thread) => thread.ownerId === authUser.id);
@@ -23,15 +24,16 @@ const Profile = () => {
 
     if (authUser) {
       const filterThreads = combineUserAndThreads();
-      setUserThreads(filterThreads);
+      if (profileId === 'saved') setUserThreads(savedThreads);
+      else setUserThreads(filterThreads);
     }
-  }, [dispatch]);
+  }, [dispatch, profileId]);
 
   const handleTabsThreads = (type) => {
-    if (type === 'yourthreads') {
+    if (type === 'yourThreads') {
       const filterThreads = combineUserAndThreads();
       setUserThreads(filterThreads);
-      setTypeTabs('yourthreads');
+      setTypeTabs('yourThreads');
     } else {
       setUserThreads(savedThreads);
       setTypeTabs('saved');
@@ -50,11 +52,11 @@ const Profile = () => {
                 <button
                   className="tabs__button"
                   type="button"
-                  onClick={() => handleTabsThreads('yourthreads')}
+                  onClick={() => handleTabsThreads('yourThreads')}
                 >
                   Threads
                 </button>
-                <div className={`${typeTabs === 'yourthreads' && 'active__button'}`} />
+                <div className={`${typeTabs === 'yourThreads' && 'active__button'}`} />
               </div>
               <div className="tabs">
                 <button
@@ -93,4 +95,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfilePage;

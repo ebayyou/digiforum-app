@@ -1,12 +1,12 @@
 import Headers from '../components/Headers';
 import WrapperImage from '../components/WrapperImage';
 
-const About = () => {
+const AboutPage = () => {
   return (
     <section className="homepage">
       <div className="homepage__wrapper">
         <Headers
-          heading="About"
+          heading="About DigiForum"
           description="DigiForum is a discussion platform with anyone, anywhere, and you can say anything #FreeSpeech"
         />
 
@@ -19,4 +19,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutPage;

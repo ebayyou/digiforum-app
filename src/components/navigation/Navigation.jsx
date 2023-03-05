@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -29,10 +27,14 @@ const Navbar = () => {
 
   return (
     <>
+      {/* mobile version */}
       <MenuCollapse toggle={toggle}>
         <MenuHeader onHandlerNavbar={onHandlerNavbar} />
-        <MenuList />
+        <nav>
+          <MenuList onHandlerNavbar={onHandlerNavbar} />
+        </nav>
       </MenuCollapse>
+      {/* desktop version */}
       <nav className="navbar">
         <div className="nav__brand">
           <button

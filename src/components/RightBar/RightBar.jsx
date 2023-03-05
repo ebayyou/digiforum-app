@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { FaTripadvisor } from 'react-icons/fa';
 import { FiUsers, FiAward } from 'react-icons/fi';
 import { asyncUnsetAuthUser } from '../../states/authUser/action';
-import TrendItems from './children/TrendItems';
-import UserItems from './children/UserItems';
 import { asyncPopulateUserAndThreads } from '../../states/shared/action';
 import { trendByCategoryActionCreator } from '../../states/trends/action';
+import TrendItems from './children/TrendItems';
+import UserItems from './children/UserItems';
 
 const RightBar = () => {
   const { trend, authUser, users, threads } = useSelector((state) => state);
@@ -30,10 +30,10 @@ const RightBar = () => {
   };
 
   const usersList = users.slice(501, 507);
-  const popularThreads = threads.filter((thread) => ({
-    id: thread.id,
-    category: thread.category,
+  const popularTrends = threads.map((thread) => ({
+    id: Math.floor(Math.random() * 100),
     createdAt: thread.createdAt,
+    trending: thread.category,
   }));
 
   return (
@@ -88,13 +88,13 @@ const RightBar = () => {
           </div>
 
           <div className="rightBarBox__wrapper">
-            {popularThreads.map((popular) => (
+            {popularTrends.map(({ id, trending, createdAt }) => (
               <TrendItems
-                key={popular.id}
+                key={id}
                 onClickhandlerTrend={onClickhandlerTrend}
-                trend={popular.category}
-                createdAt={popular.createdAt}
-                popularTrend={trend === popular.category}
+                trend={trending}
+                createdAt={createdAt}
+                popularTrend={trend === trending}
               />
             ))}
           </div>
