@@ -80,10 +80,12 @@ const ThreadList = ({ userThread, threads }) => {
                   handlerActionRemoveSavedThread={handlerActionRemoveSavedThread}
                 />
                 <Votes
-                  thread
+                  isThread
                   threadId={id}
                   upVotes={upVotesBy}
                   downVotes={downVotesBy}
+                  like={authUser && upVotesBy.includes(authUser.id)}
+                  unlike={authUser && downVotesBy.includes(authUser.id)}
                 />
               </div>
             </div>

@@ -28,7 +28,7 @@ function addThreadActionCreator(thread) {
   };
 }
 
-function upVoteThreadActionCreator(threadId, userVoteId) {
+function upVoteThreadActionCreator({ threadId, userVoteId }) {
   return {
     type: ActionType.UP_VOTE_THREAD,
     payload: {
@@ -38,9 +38,9 @@ function upVoteThreadActionCreator(threadId, userVoteId) {
   };
 }
 
-function downVoteThreadActionCreator(threadId, userVoteId) {
+function downVoteThreadActionCreator({ threadId, userVoteId }) {
   return {
-    type: ActionType.UP_VOTE_THREAD,
+    type: ActionType.DOWN_VOTE_THREAD,
     payload: {
       threadId,
       userVoteId,
@@ -68,21 +68,17 @@ function asyncToggleUpVoteThread(threadId) {
     dispatch(showLoading());
 
     const { authUser, threads } = getState();
-    dispatch(upVoteThreadActionCreator(threadId, authUser.id));
-    threads.forEach(async (thread) => {
-      if (thread.id === threadId) {
-        if (thread.downVotesBy.includes(authUser.id)) await Api.downVoteThread(threadId);
-      }
-    });
+    dispatch(upVoteThreadActionCreator({ threadId, userVoteId: authUser.id }));
+    threads.find((thread) => thread.id === threadId).downVotesBy.includes(authUser.id) &&
+      dispatch(downVoteThreadActionCreator({ threadId, userVoteId: authUser.id }));
 
     try {
       await Api.neutralizeVoteThread(threadId);
-      threads.forEach(async (thread) => {
-        if (!thread.upVotesBy.includes(authUser.id)) await Api.upVoteThread(threadId);
-      });
+      !threads.find((thread) => thread.id === threadId).upVotesBy.includes(authUser.id) &&
+        (await Api.upVoteThread(threadId));
     } catch (error) {
-      dispatch(upVoteThreadActionCreator(threadId, authUser.id));
-      dispatch(downVoteThreadActionCreator(threadId, authUser.id));
+      dispatch(upVoteThreadActionCreator({ threadId, userVoteId: authUser.id }));
+      dispatch(downVoteThreadActionCreator({ threadId, userVoteId: authUser.id }));
 
       alert(error.message);
     } finally {
@@ -96,23 +92,17 @@ function asyncToggleDownVoteThread(threadId) {
     dispatch(showLoading());
 
     const { authUser, threads } = getState();
-    dispatch(downVoteThreadActionCreator(threadId, authUser.id));
-    threads.forEach(async (thread) => {
-      if (thread === threadId) {
-        if (thread.upVotesBy.includes(authUser.id)) await Api.upVoteThread(threadId);
-      }
-    });
+    dispatch(downVoteThreadActionCreator({ threadId, userVoteId: authUser.id }));
+    threads.find((thread) => thread.id === threadId).upVotesBy.includes(authUser.id) &&
+      dispatch(upVoteThreadActionCreator({ threadId, userVoteId: authUser.id }));
 
     try {
       await Api.neutralizeVoteThread(threadId);
-      threads.forEach(async (thread) => {
-        if (thread.id === threadId) {
-          if (!thread.downVotesBy.includes(authUser.id)) await Api.downVoteThread(threadId);
-        }
-      });
+      !threads.find((thread) => thread.id === threadId).downVotesBy.includes(authUser.id) &&
+        (await Api.downVoteThread(threadId));
     } catch (error) {
-      dispatch(downVoteThreadActionCreator(threadId, authUser.id));
-      dispatch(upVoteThreadActionCreator(threadId, authUser.id));
+      dispatch(downVoteThreadActionCreator({ threadId, userVoteId: authUser.id }));
+      dispatch(upVoteThreadActionCreator({ threadId, userVoteId: authUser.id }));
 
       alert(error.message);
     } finally {

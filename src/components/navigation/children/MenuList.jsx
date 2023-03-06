@@ -32,7 +32,7 @@ const MenuList = ({ desktopMode, onHandlerNavbar }) => {
 
 MenuList.defaultProps = {
   desktopMode: false,
-  onHandlerNavbar: false,
+  onHandlerNavbar: () => {},
 };
 
 MenuList.propTypes = {

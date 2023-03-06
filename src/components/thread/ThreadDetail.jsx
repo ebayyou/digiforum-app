@@ -26,10 +26,12 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
         />
 
         <Votes
-          thread
-          id={threadDetail.id}
+          isThread={false}
+          threadId={threadDetail.id}
           upVotes={threadDetail.upVotesBy}
           downVotes={threadDetail.downVotesBy}
+          like={authUser && threadDetail.upVotesBy.includes(authUser.id)}
+          unlike={authUser && threadDetail.downVotesBy.includes(authUser.id)}
         />
       </div>
 
@@ -73,6 +75,8 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
                     createdAt={comment.createdAt}
                     upVotes={comment.upVotesBy}
                     downVotes={comment.downVotesBy}
+                    like={authUser && comment.upVotesBy.includes(authUser.id)}
+                    unlike={authUser && comment.downVotesBy.includes(authUser.id)}
                   />
                 ))
               ) : (

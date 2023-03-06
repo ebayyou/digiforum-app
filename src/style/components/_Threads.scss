@@ -32,6 +32,12 @@
     font-weight: $font-regular;
     font-size: 14px;
     line-height: 21px;
+    width: 100%;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
   }
 }
 
@@ -56,15 +62,14 @@
 @media (min-width: 768px) {
   .thread {
     width: 550px;
-  }
 
-  .thread {
     .thread__heading {
       font-size: 25px;
     }
 
     .thread__desc {
       font-size: 18px;
+      width: 490px;
     }
 
     .thread__profile {

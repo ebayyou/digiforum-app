@@ -4,7 +4,17 @@ import { postedAt } from '../../../../utils/index';
 import { userShape } from '../thread/ThreadItemOwner';
 import Votes from '../Votes';
 
-const CommentsItems = ({ threadId, content, createdAt, owner, upVotes, downVotes }) => {
+const CommentsItems = ({
+  threadId,
+  commentId,
+  content,
+  createdAt,
+  owner,
+  upVotes,
+  downVotes,
+  like,
+  unlike,
+}) => {
   return (
     <div className="comment__items">
       <div className="comment__group">
@@ -32,9 +42,13 @@ const CommentsItems = ({ threadId, content, createdAt, owner, upVotes, downVotes
       />
 
       <Votes
+        isComment
         threadId={threadId}
+        commentId={commentId}
         upVotes={upVotes}
         downVotes={downVotes}
+        like={like}
+        unlike={unlike}
       />
     </div>
   );
@@ -48,9 +62,11 @@ export const commentShape = {
 
 CommentsItems.propTypes = {
   ...commentShape,
+  threadId: PropTypes.string.isRequired,
   upVotes: PropTypes.array.isRequired,
   downVotes: PropTypes.array.isRequired,
-  threadId: PropTypes.string.isRequired,
+  like: PropTypes.bool.isRequired,
+  unlike: PropTypes.bool.isRequired,
 };
 
 export default CommentsItems;
