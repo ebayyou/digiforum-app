@@ -6,7 +6,7 @@ import CommentWrapper from './children/comment/CommentWrapper';
 import CommentsInput from './children/comment/CommentInput';
 import CommentResponse from './children/comment/CommentResponse';
 import CommentsItems, { commentShape } from './children/comment/CommentItems';
-import ThreadVotes from './children/thread/ThreadVotes';
+import Votes from './children/Votes';
 
 const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
   return (
@@ -25,7 +25,14 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(threadDetail.body) }}
         />
 
-        <ThreadVotes />
+        <Votes
+          isThread={false}
+          threadId={threadDetail.id}
+          upVotes={threadDetail.upVotesBy}
+          downVotes={threadDetail.downVotesBy}
+          like={authUser && threadDetail.upVotesBy.includes(authUser.id)}
+          unlike={authUser && threadDetail.downVotesBy.includes(authUser.id)}
+        />
       </div>
 
       <div
@@ -61,9 +68,15 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
                 threadDetail.comments.map((comment) => (
                   <CommentsItems
                     key={comment.id}
+                    threadId={threadDetail.id}
+                    commentId={comment.id}
                     owner={comment.owner}
                     content={comment.content}
                     createdAt={comment.createdAt}
+                    upVotes={comment.upVotesBy}
+                    downVotes={comment.downVotesBy}
+                    like={authUser && comment.upVotesBy.includes(authUser.id)}
+                    unlike={authUser && comment.downVotesBy.includes(authUser.id)}
                   />
                 ))
               ) : (
@@ -84,17 +97,19 @@ ThreadDetail.defaultProps = {
 };
 
 const ThreadDetailShape = {
-  id: PropTypes.string.isRequired,
-  owner: PropTypes.shape(userShape).isRequired,
-  category: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
   comments: PropTypes.arrayOf(PropTypes.shape(commentShape)).isRequired,
+  createdAt: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  upVotesBy: PropTypes.array.isRequired,
+  downVotesBy: PropTypes.array.isRequired,
+  owner: PropTypes.shape(userShape).isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 ThreadDetail.propTypes = {
-  threadDetail: PropTypes.objectOf(PropTypes.shape(ThreadDetailShape)).isRequired,
+  ...ThreadDetailShape,
   handlerSubmitComment: PropTypes.func.isRequired,
   authUser: PropTypes.object,
 };

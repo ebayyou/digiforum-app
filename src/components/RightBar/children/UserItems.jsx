@@ -4,7 +4,7 @@ const UserItems = ({ avatar, name, id }) => {
   return (
     <div className="userList__group">
       <img
-        className="userList__image"
+        className="userList__img"
         src={avatar}
         alt="avatar"
       />

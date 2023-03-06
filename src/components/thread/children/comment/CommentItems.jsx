@@ -2,9 +2,19 @@ import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
 import { postedAt } from '../../../../utils/index';
 import { userShape } from '../thread/ThreadItemOwner';
-import ThreadVotes from '../thread/ThreadVotes';
+import Votes from '../Votes';
 
-const CommentsItems = ({ content, createdAt, owner }) => {
+const CommentsItems = ({
+  threadId,
+  commentId,
+  content,
+  createdAt,
+  owner,
+  upVotes,
+  downVotes,
+  like,
+  unlike,
+}) => {
   return (
     <div className="comment__items">
       <div className="comment__group">
@@ -31,7 +41,15 @@ const CommentsItems = ({ content, createdAt, owner }) => {
         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
       />
 
-      <ThreadVotes />
+      <Votes
+        isComment
+        threadId={threadId}
+        commentId={commentId}
+        upVotes={upVotes}
+        downVotes={downVotes}
+        like={like}
+        unlike={unlike}
+      />
     </div>
   );
 };
@@ -44,6 +62,11 @@ export const commentShape = {
 
 CommentsItems.propTypes = {
   ...commentShape,
+  threadId: PropTypes.string.isRequired,
+  upVotes: PropTypes.array.isRequired,
+  downVotes: PropTypes.array.isRequired,
+  like: PropTypes.bool.isRequired,
+  unlike: PropTypes.bool.isRequired,
 };
 
 export default CommentsItems;

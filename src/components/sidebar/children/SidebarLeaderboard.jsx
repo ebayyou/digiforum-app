@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaTrophy } from 'react-icons/fa';
 import LeaderboardItem from '../LeaderboardItem';
 
-const SidebarLeaderboard = ({ topLeaderboard }) => {
+const SidebarLeaderboard = ({ onHandlerSidebar, topLeaderboard }) => {
   return (
     <div className="sidebar__leaderboard">
       <h4 className="leaderboard__heading">Top Leaderboards</h4>
@@ -20,6 +20,7 @@ const SidebarLeaderboard = ({ topLeaderboard }) => {
       <Link
         className="leaderboard__button"
         to="/leaderboards"
+        onClick={onHandlerSidebar}
       >
         <FaTrophy className="btn__icon" />
         <h5 className="btn__text">See all Leaderboards</h5>
@@ -28,8 +29,13 @@ const SidebarLeaderboard = ({ topLeaderboard }) => {
   );
 };
 
+SidebarLeaderboard.defaultProps = {
+  onHandlerSidebar: false,
+};
+
 SidebarLeaderboard.propTypes = {
   topLeaderboard: PropTypes.array.isRequired,
+  onHandlerSidebar: PropTypes.func,
 };
 
 export default SidebarLeaderboard;

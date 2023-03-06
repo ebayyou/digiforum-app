@@ -1,59 +1,43 @@
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const MenuList = ({ desktopMode }) => {
+const navigationItem = [
+  { id: '1', item: 'Home', link: '/' },
+  { id: '2', item: 'About', link: '/about' },
+  { id: '3', item: 'Community', link: '/community' },
+  { id: '4', item: 'Threads', link: '/threads' },
+  { id: '5', item: 'Leaderboards', link: '/leaderboards' },
+];
+
+const MenuList = ({ desktopMode, onHandlerNavbar }) => {
   return (
     <ul className={`${desktopMode ? 'menu-mode' : 'menu'}`}>
-      <li className={`${desktopMode ? 'menu__list-mode' : 'menu__list'}`}>
-        <Link
-          className={`${desktopMode ? 'menu__link-mode' : 'menu__link'}`}
-          to="/"
+      {navigationItem.map(({ id, item, link }) => (
+        <li
+          key={id}
+          className={`${desktopMode ? 'menu__list-mode' : 'menu__list'}`}
         >
-          Home
-        </Link>
-      </li>
-      <li className={`${desktopMode ? 'menu__list-mode' : 'menu__list'}`}>
-        <Link
-          className={`${desktopMode ? 'menu__link-mode' : 'menu__link'}`}
-          to="/about"
-        >
-          About
-        </Link>
-      </li>
-      <li className={`${desktopMode ? 'menu__list-mode' : 'menu__list'}`}>
-        <Link
-          className={`${desktopMode ? 'menu__link-mode' : 'menu__link'}`}
-          to="/community"
-        >
-          Community
-        </Link>
-      </li>
-      <li className={`${desktopMode ? 'menu__list-mode' : 'menu__list'}`}>
-        <Link
-          className={`${desktopMode ? 'menu__link-mode' : 'menu__link'}`}
-          to="/threads"
-        >
-          Threads
-        </Link>
-      </li>
-      <li className={`${desktopMode ? 'menu__list-mode' : 'menu__list'}`}>
-        <Link
-          className={`${desktopMode ? 'menu__link-mode' : 'menu__link'}`}
-          to="/leaderboards"
-        >
-          Leaderboards
-        </Link>
-      </li>
+          <Link
+            className={`${desktopMode ? 'menu__link-mode' : 'menu__link'}`}
+            onClick={onHandlerNavbar}
+            to={link}
+          >
+            {item}
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 };
 
 MenuList.defaultProps = {
   desktopMode: false,
+  onHandlerNavbar: () => {},
 };
 
 MenuList.propTypes = {
   desktopMode: PropTypes.bool,
+  onHandlerNavbar: PropTypes.func,
 };
 
 export default MenuList;

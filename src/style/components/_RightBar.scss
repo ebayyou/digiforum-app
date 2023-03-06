@@ -85,10 +85,9 @@
     .userList__group {
       @include flex(row, flex-start, 0.6em);
 
-      .userList__image {
+      .userList__img {
         width: 38px;
         height: 38px;
-        background: #9ab78d;
         border-radius: 50px;
       }
 
@@ -111,7 +110,7 @@
     .trend__group {
       @include flex(row, space-between, 0);
       width: 100%;
-      padding-bottom: 0.2em;
+      background-color: transparent;
       border-bottom: 1px solid $navi-004;
 
       .trend__item {
@@ -120,11 +119,9 @@
         .trend__icon {
           width: 20px;
           height: 20px;
-          color: $neutral-002;
         }
 
         h4 {
-          color: $neutral-003;
           font-weight: 500;
           font-size: 12px;
           line-height: 18px;
@@ -135,8 +132,14 @@
         font-weight: 400;
         font-size: 12px;
         line-height: 18px;
-        color: $neutral-002;
       }
+    }
+
+    .neutral {
+      color: $neutral-002;
+    }
+    .pink {
+      color: $primary-001;
     }
   }
 

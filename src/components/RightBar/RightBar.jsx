@@ -1,18 +1,40 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaTripadvisor } from 'react-icons/fa';
 import { FiUsers, FiAward } from 'react-icons/fi';
+import { asyncUnsetAuthUser } from '../../states/authUser/action';
+import { asyncPopulateUserAndThreads } from '../../states/shared/action';
+import { trendByCategoryActionCreator } from '../../states/trends/action';
 import TrendItems from './children/TrendItems';
 import UserItems from './children/UserItems';
-import { asyncUnsetAuthUser } from '../../states/authUser/action';
 
 const RightBar = () => {
-  const { authUser } = useSelector((state) => state);
+  const { trend, authUser, users, threads } = useSelector((state) => state);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(asyncPopulateUserAndThreads());
+  }, [dispatch]);
 
   const onHandlerLogout = () => {
     dispatch(asyncUnsetAuthUser());
   };
+
+  const onClickhandlerTrend = (newTrend) => {
+    if (newTrend === trend) {
+      dispatch(trendByCategoryActionCreator('all'));
+    } else {
+      dispatch(trendByCategoryActionCreator(newTrend));
+    }
+  };
+
+  const usersList = users.slice(501, 507);
+  const popularTrends = threads.map((thread) => ({
+    id: thread.id,
+    createdAt: thread.createdAt,
+    trending: thread.category,
+  }));
 
   return (
     <aside className="rightBar">
@@ -48,13 +70,14 @@ const RightBar = () => {
           </div>
 
           <div className="rightBarBox__wrapper">
-            {Array(6).fill(
+            {usersList.map((user) => (
               <UserItems
-                avatar="/images/main_avatar.png"
-                name="Ebayyou Anggoro"
-                id="user-1"
+                key={user.id}
+                avatar={user.avatar}
+                name={user.name}
+                id={user.id}
               />
-            )}
+            ))}
           </div>
         </div>
 
@@ -65,12 +88,15 @@ const RightBar = () => {
           </div>
 
           <div className="rightBarBox__wrapper">
-            {Array(6).fill(
+            {popularTrends.map(({ id, trending, createdAt }) => (
               <TrendItems
-                trend="front-end"
-                createdAt="2h ago"
+                key={id}
+                onClickhandlerTrend={onClickhandlerTrend}
+                trend={trending}
+                createdAt={createdAt}
+                popularTrend={trend === trending}
               />
-            )}
+            ))}
           </div>
         </div>
       </div>

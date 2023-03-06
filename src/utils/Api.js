@@ -130,6 +130,44 @@ const Api = (() => {
     return detailThread;
   }
 
+  function getSavedThreadFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('savedThread'));
+  }
+
+  function savedThreadToLocalStorage(thread) {
+    let threads = [];
+    if (localStorage.getItem('savedThread') !== null) threads = getSavedThreadFromLocalStorage();
+
+    const threadsPromise = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve([...threads, thread]);
+      }, 1000);
+    });
+
+    threadsPromise
+      .then((response) => localStorage.setItem('savedThread', JSON.stringify(response)))
+      .catch((error) => {
+        throw new Error(error);
+      });
+  }
+
+  function removeThreadFromLocalStorage(threadId) {
+    let threads = [];
+    if (localStorage.getItem('savedThread') !== null) threads = getSavedThreadFromLocalStorage();
+
+    const threadsPromise = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(threads.filter((thread) => thread.id !== threadId));
+      }, 1000);
+    });
+
+    threadsPromise
+      .then((response) => localStorage.setItem('savedThread', JSON.stringify(response)))
+      .catch((error) => {
+        throw new Error(error);
+      });
+  }
+
   async function createThread({ title, body, category = '' }) {
     const responseJson = await _fetchWithToken(`${BASE_URL}/threads`, {
       method: 'POST',
@@ -149,6 +187,123 @@ const Api = (() => {
     } = responseJson;
 
     return thread;
+  }
+
+  async function upVoteThread(threadId) {
+    const responseJson = await _fetchWithToken(`${BASE_URL}/threads/${threadId}/up-vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: vote } = responseJson;
+    return vote;
+  }
+
+  async function downVoteThread(threadId) {
+    const responseJson = await _fetchWithToken(`${BASE_URL}/threads/${threadId}/down-vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: vote } = responseJson;
+    return vote;
+  }
+
+  async function neutralizeVoteThread(threadId) {
+    const responseJson = await _fetchWithToken(`${BASE_URL}/threads/${threadId}/neutral-vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: vote } = responseJson;
+    return vote;
+  }
+
+  async function upVoteComment({ threadId, commentId }) {
+    const responseJson = await _fetchWithToken(
+      `${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: vote } = responseJson;
+    return vote;
+  }
+
+  async function downVoteComment({ threadId, commentId }) {
+    const responseJson = await _fetchWithToken(
+      `${BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: vote } = responseJson;
+    return vote;
+  }
+
+  async function neutralizeVoteComment({ threadId, commentId }) {
+    const responseJson = await _fetchWithToken(
+      `${BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: vote } = responseJson;
+    return vote;
   }
 
   async function createCommentForThread(threadID, content) {
@@ -197,6 +352,15 @@ const Api = (() => {
     getOwnProfile,
     getAllThreads,
     getDetailThread,
+    savedThreadToLocalStorage,
+    getSavedThreadFromLocalStorage,
+    removeThreadFromLocalStorage,
+    upVoteThread,
+    downVoteThread,
+    neutralizeVoteThread,
+    upVoteComment,
+    downVoteComment,
+    neutralizeVoteComment,
     createThread,
     createCommentForThread,
     getLeaderboardsByUsers,
