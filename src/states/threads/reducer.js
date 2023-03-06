@@ -12,10 +12,11 @@ function threadsReducer(threads = [], action = {}) {
           return {
             ...thread,
             upVotesBy: thread.upVotesBy.includes(action.payload.userVoteId)
-              ? thread.upVotesBy.filter((vote) => vote !== action.payload.userVoteId)
+              ? thread.upVotesBy.filter((voteId) => voteId !== action.payload.userVoteId)
               : thread.upVotesBy.concat([action.payload.userVoteId]),
           };
         }
+
         return thread;
       });
     case ActionType.DOWN_VOTE_THREAD:
@@ -24,7 +25,7 @@ function threadsReducer(threads = [], action = {}) {
           return {
             ...thread,
             downVotesBy: thread.downVotesBy.includes(action.payload.userVoteId)
-              ? thread.downVotesBy.filter((vote) => vote !== action.payload.userVoteId)
+              ? thread.downVotesBy.filter((voteId) => voteId !== action.payload.userVoteId)
               : thread.downVotesBy.concat([action.payload.userVoteId]),
           };
         }

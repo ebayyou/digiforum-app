@@ -31,7 +31,7 @@ const RightBar = () => {
 
   const usersList = users.slice(501, 507);
   const popularTrends = threads.map((thread) => ({
-    id: Math.floor(Math.random() * 100),
+    id: thread.id,
     createdAt: thread.createdAt,
     trending: thread.category,
   }));
