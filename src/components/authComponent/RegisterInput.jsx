@@ -57,7 +57,6 @@ const RegisterInput = ({ onSubmitHandlerRegister }) => {
             name="email"
             id="email"
             placeholder="Example@gmail.com"
-            required
           />
         </div>
         <div className="auth__group">
