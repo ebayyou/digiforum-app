@@ -55,7 +55,6 @@ const LoginInput = ({ onSubmitHandlerLogin }) => {
             name="email"
             id="email"
             placeholder="Example@gmail.com"
-            required
           />
         </div>
 
@@ -74,7 +73,6 @@ const LoginInput = ({ onSubmitHandlerLogin }) => {
             name="password"
             id="password"
             placeholder="Your password is..."
-            required
           />
         </div>
 
