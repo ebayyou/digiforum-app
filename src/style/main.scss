@@ -6,6 +6,7 @@
 @use './layout/AuthPage';
 @use './layout/ThreadAddedPage';
 @use './layout/ThreadDetailPage';
+@use './layout/CommunityPage';
 @use './layout/LeaderboardsPage';
 @use './layout/NotfoundPage';
 @use './components/Navigation';
@@ -25,6 +26,8 @@
 @use './components/RightBar';
 @use './components/LeaderboardItem';
 @use './components/Headers';
+@use './components/errorBoundaries/NothingThread';
+@use './components/errorBoundaries/ProfileLock';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
@@ -64,19 +67,37 @@ html {
   opacity: 0;
 }
 
-.wrapper__img {
-  margin: 3em auto 1em;
-  height: 554px;
+.heading__page {
+  margin: 0 0.5em;
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 38px;
+}
+
+.desc__page {
+  margin: 0 0.8em;
+  font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 27px;
+  color: $neutral-002;
 }
 
 @media (min-width: 600px) {
   .wrapper__img {
     width: 458px;
-    margin: 3em auto 4em;
+    margin: 1em auto 2em;
 
     .img {
       width: 100%;
     }
+  }
+
+  .heading__page {
+    font-size: 1.45em;
+  }
+
+  .desc__page {
+    font-size: 1.1rem;
   }
 }
 
@@ -84,6 +105,20 @@ html {
   .visible {
     display: block;
     opacity: 1;
+  }
+
+  .heading__page {
+    font-size: 1.45em;
+    margin: 0.2em 0.5em;
+  }
+}
+
+@media (min-width: 1440px) {
+  .headers__page {
+    width: 348px;
+    height: 130px;
+    margin: 0.2em auto;
+    text-align: center;
   }
 }
 

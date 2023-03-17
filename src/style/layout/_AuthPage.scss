@@ -68,7 +68,7 @@
 
         .auth__input {
           width: 100%;
-          padding: 20px 40px;
+          padding: 20px;
           font-weight: 400;
           font-size: 16px;
           line-height: 19px;
@@ -78,6 +78,7 @@
           border: 0;
 
           &::placeholder {
+            font-family: $text-font;
             color: $neutral-003;
           }
         }

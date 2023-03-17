@@ -2,15 +2,15 @@
 @use '../utilities/mixin' as *;
 
 .rightBar {
-  display: none;
   overflow-y: auto;
-  position: absolute;
-  top: 80px;
+  position: fixed;
   right: 0;
+  top: 0;
   width: 280px;
-  height: 100vh;
+  height: 100%;
   padding: 1rem;
   font-family: $text-font;
+  background: $navi-003;
   border-left: 2px solid $navi-004;
 
   .rightBar__group {
@@ -20,7 +20,7 @@
       width: 239px;
       padding: 1em;
       margin: 2em auto;
-      background-color: $navi-003;
+      background-color: $navi-004;
       border-radius: 0.6em;
     }
 
@@ -160,10 +160,29 @@
   height: 148px;
 }
 
+@media (min-width: 1024px) {
+  .rightBar {
+    position: absolute;
+    top: 80px;
+
+    .rightBar__box {
+      background-color: $navi-004;
+    }
+  }
+
+  .rightBar.visible {
+    display: none;
+  }
+}
+
 @media (min-width: 1200px) {
   .rightBar {
-    display: block;
     width: 300px;
+    background-color: transparent;
+  }
+
+  .rightBar.visible {
+    display: block;
   }
 }
 

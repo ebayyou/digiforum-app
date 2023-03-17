@@ -1,3 +1,4 @@
+// Sidebar-state
 const ActionType = {
   SIDEBAR_STATUS: 'SIDEBAR_STATUS',
 };

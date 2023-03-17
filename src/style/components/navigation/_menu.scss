@@ -2,23 +2,29 @@
 @use '../../utilities/mixin' as *;
 
 .menu {
+  @include flex(row, space-between, 0);
+  width: 85%;
+  margin: 0 auto;
   font-family: $text-font;
-  width: 120px;
   transition: background 0.3s ease;
 
   .menu__list {
-    width: 160px;
-    height: 44px;
     font-size: 20px;
-    margin-bottom: 1em;
 
     .menu__link {
-      line-height: 44px;
       color: $title-color;
-    }
 
-    &:hover {
-      background-color: $neutral-003;
+      .link__icon {
+        color: $neutral-003;
+
+        &:hover {
+          color: $light-001;
+        }
+      }
+
+      .link__icon-active {
+        color: $light-001;
+      }
     }
   }
 }
@@ -28,13 +34,7 @@
 
 @media (min-width: 768px) {
   .menu {
-    width: 350px;
     margin: 0 auto;
-
-    .menu__list {
-      margin: 0 auto 1em;
-      text-align: center;
-    }
   }
 }
 

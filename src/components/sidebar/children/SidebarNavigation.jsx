@@ -1,26 +1,25 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { FiHash, FiUsers } from 'react-icons/fi';
-import { FaBookmark } from 'react-icons/fa';
+import { User, Hashtag, Save2 } from 'iconsax-react';
 
 const navigationItem = [
   {
     id: '1',
     item: 'Profile',
     link: '/profile',
-    icon: <FiUsers className="nav__icon" />,
+    icon: <User className="nav__icon" />,
   },
   {
     id: '2',
     item: 'Your Threads',
     link: '/profile/yourThreads',
-    icon: <FiHash className="nav__icon" />,
+    icon: <Hashtag className="nav__icon" />,
   },
   {
     id: '3',
     item: 'Saved',
     link: '/profile/saved',
-    icon: <FaBookmark className="nav__icon" />,
+    icon: <Save2 className="nav__icon" />,
   },
 ];
 

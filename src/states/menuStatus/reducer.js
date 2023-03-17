@@ -1,6 +1,6 @@
 import { ActionType } from './action';
 
-function sidebarstatusReducer(status = false, action = {}) {
+function sidebarStatusReducer(status = false, action = {}) {
   switch (action.type) {
     case ActionType.SIDEBAR_STATUS:
       return action.payload.status;
@@ -9,4 +9,4 @@ function sidebarstatusReducer(status = false, action = {}) {
   }
 }
 
-export default sidebarstatusReducer;
+export default sidebarStatusReducer;

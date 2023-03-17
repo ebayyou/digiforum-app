@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { FaTrophy } from 'react-icons/fa';
+import { MedalStar } from 'iconsax-react';
 import LeaderboardItem from '../LeaderboardItem';
 
 const SidebarLeaderboard = ({ onHandlerSidebar, topLeaderboard }) => {
@@ -11,8 +11,8 @@ const SidebarLeaderboard = ({ onHandlerSidebar, topLeaderboard }) => {
       <div className="leaderboard__wrapper">
         {topLeaderboard.map((topLeadBoard) => (
           <LeaderboardItem
-            key={topLeadBoard.lead.user.id}
-            {...topLeadBoard.lead}
+            key={topLeadBoard.user.id}
+            {...topLeadBoard}
           />
         ))}
       </div>
@@ -22,7 +22,11 @@ const SidebarLeaderboard = ({ onHandlerSidebar, topLeaderboard }) => {
         to="/leaderboards"
         onClick={onHandlerSidebar}
       >
-        <FaTrophy className="btn__icon" />
+        <MedalStar
+          className="btn__icon"
+          size="32"
+          variant="Bold"
+        />
         <h5 className="btn__text">See all Leaderboards</h5>
       </Link>
     </div>

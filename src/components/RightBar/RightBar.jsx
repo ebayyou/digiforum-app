@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { FaTripadvisor } from 'react-icons/fa';
-import { FiUsers, FiAward } from 'react-icons/fi';
+import { Medal, Profile2User, UserOctagon } from 'iconsax-react';
 import { asyncUnsetAuthUser } from '../../states/authUser/action';
 import { asyncPopulateUserAndThreads } from '../../states/shared/action';
 import { trendByCategoryActionCreator } from '../../states/trends/action';
@@ -10,7 +9,7 @@ import TrendItems from './children/TrendItems';
 import UserItems from './children/UserItems';
 
 const RightBar = () => {
-  const { trend, authUser, users, threads } = useSelector((state) => state);
+  const { trend, authUser, users, threads, rightBarStatus } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,11 +36,14 @@ const RightBar = () => {
   }));
 
   return (
-    <aside className="rightBar">
+    <aside className={`rightBar ${rightBarStatus ? '' : 'visible'}`}>
       <div className="rightBar__group">
         <div className="rightBar__box rightBar-flex rightBar-relative rightBar-w-s">
           <div className="rightBar__badge">
-            <FaTripadvisor className="badge__icon" />
+            <UserOctagon
+              size="22"
+              className="badge__icon"
+            />
             <p className="badge__text">User Factor</p>
           </div>
 
@@ -66,7 +68,10 @@ const RightBar = () => {
         <div className="rightBar__box">
           <div className="rightBarBox__header">
             <h3>List of Users</h3>
-            <FiUsers className="rightBarBox__icon" />
+            <Profile2User
+              size="24"
+              className="rightBarBox__icon"
+            />
           </div>
 
           <div className="rightBarBox__wrapper">
@@ -84,7 +89,10 @@ const RightBar = () => {
         <div className="rightBar__box">
           <div className="rightBarBox__header">
             <h3>Whats Happenning ?</h3>
-            <FiAward className="rightBarBox__icon" />
+            <Medal
+              size="24"
+              className="rightBarBox__icon"
+            />
           </div>
 
           <div className="rightBarBox__wrapper">

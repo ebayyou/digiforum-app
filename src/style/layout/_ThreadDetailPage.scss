@@ -28,6 +28,8 @@
 
 .threadDetail__comment {
   margin: 1.5rem 0;
+  padding-top: 1em;
+  border-top: 3px solid $navi-004;
 
   .comment__wrapper {
     @include flex(column, flex-start, 18px);
