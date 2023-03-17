@@ -5,6 +5,7 @@
   @include flex(column, flex-start, 1em);
   align-items: flex-start;
   margin: 1.4em 0.6em;
+  font-family: $text-font;
 
   .profile {
     @include flex(column, flex-start, 0.9em);
@@ -30,8 +31,6 @@
     }
 
     .profile__bio {
-      font-family: $text-font;
-
       .bio__name {
         font-style: normal;
         font-weight: $font-medium;
@@ -63,8 +62,14 @@
     align-items: flex-start;
     width: 100%;
 
+    .profile__tabs-wrapper {
+      width: 100%;
+      border-bottom: 2px solid $navi-004;
+    }
+
     .profile__tabs {
       @include flex(row, flex-start, 1.65em);
+      width: 225px;
 
       .tabs {
         width: 100%;
@@ -74,12 +79,13 @@
           width: 100%;
           font-style: normal;
           font-weight: $font-medium;
+          font-family: $text-font;
           font-size: 16px;
           line-height: 24px;
           text-align: center;
           background: transparent;
           color: $title-color;
-          margin-bottom: 0.4em;
+          margin-bottom: 0.2em;
         }
 
         .active__button {

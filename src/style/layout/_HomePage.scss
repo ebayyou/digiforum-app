@@ -2,7 +2,7 @@
 @use '../utilities/mixin' as *;
 
 .homepage {
-  padding-bottom: 1em;
+  padding: 6em 1em;
 
   .homepage__btn {
     display: block;
@@ -15,7 +15,7 @@
     font-size: 16px;
     line-height: 54px;
     text-align: center;
-    background: $primary-001;
+    background: $light-001;
     color: $navi-001;
     border-radius: 6px;
   }
@@ -32,7 +32,7 @@
     position: absolute;
     top: 60px;
     right: 120px;
-    padding-bottom: 2em !important;
+    padding: 2em 1em;
   }
 }
 @media (min-width: 1150px) {

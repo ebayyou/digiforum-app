@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { HashLink } from 'react-router-hash-link';
-import { FaComment, FaBookmark, FaRegBookmark } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import { Save2, Message2 } from 'iconsax-react';
 
 const ThreadAction = ({
   handlerActionSavedThread,
@@ -39,13 +39,28 @@ const ThreadAction = ({
         className="wrapper__icon"
         onClick={toggleSavedThread}
       >
-        {bookmarkCondition ? <FaBookmark className="saved" /> : <FaRegBookmark className="saved" />}
+        {bookmarkCondition ? (
+          <Save2
+            className="saved"
+            size="24"
+          />
+        ) : (
+          <Save2
+            className="saved"
+            size="24"
+            variant="Bold"
+          />
+        )}
       </button>
       <HashLink
         to={`/threadDetail/${id}#comment`}
         className="thread__comment"
       >
-        <FaComment className="comment" />
+        <Message2
+          className="comment"
+          size="22"
+          variant="Bold"
+        />
         <span>Add Response</span>
         <span className="comment__total">{totalComments}</span>
       </HashLink>

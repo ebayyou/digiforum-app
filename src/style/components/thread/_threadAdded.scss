@@ -2,32 +2,132 @@
 @use '../../utilities/mixin' as *;
 
 .threadAdded {
-  @include flex(row, space-between, 0);
+  position: relative;
   width: 100%;
-  height: 58px;
-  margin: 0 0 2em;
-  padding: 0 0.8em;
-  background: $gradient-005;
+  margin: 0 0 1.5em;
+  padding: 0.6em 0.5em;
+  background: $navi-003;
   border-radius: 0.4em;
 
-  .added__heading {
-    font-family: $text-font;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+  .added__input-group {
+    @include flex(row, space-between, 0);
+
+    .added__img {
+      width: 50px;
+      height: 50px;
+      border-radius: 0.3em;
+    }
+
+    .added__input {
+      width: 82%;
+      height: 50px;
+      padding: 0.4em;
+      font-style: normal;
+      font-weight: $font-regular;
+      font-family: $text-font;
+      font-size: 1rem;
+      line-height: 24px;
+      background: $navi-004;
+      color: $neutral-001;
+      border: none;
+      border-radius: 0.3em;
+
+      &::placeholder {
+        color: $neutral-003;
+        font-family: $text-font;
+      }
+
+      &:focus {
+        outline: 2px solid #d1caff;
+        border: none;
+      }
+    }
   }
 
-  .added__button {
-    @include flex();
-    width: 40px;
-    height: 35px;
-    border-radius: 0.2em;
-    background-color: $light-001;
+  .added__group {
+    @include flex(row, space-between, 0);
+    height: 34px;
+    margin-top: 0.8em;
 
-    .added__icon {
-      font-size: 1.5rem;
-      color: #d7cdcf;
+    .added__dot {
+      @include flex(row, space-between, 0);
+      width: 55px;
+      height: 34px;
+      background: transparent;
+
+      span {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+
+        &:nth-child(1) {
+          background-color: #fc728b;
+        }
+        &:nth-child(2) {
+          background-color: #f9fc72;
+        }
+        &:nth-child(3) {
+          background-color: #7dfc72;
+        }
+      }
+    }
+
+    .added__item {
+      @include flex(row, center, 1em);
+      position: absolute;
+      bottom: -24px;
+      width: 198px;
+      height: 40px;
+      border-radius: 0.3em;
+      background-color: $navi-004;
+
+      .item__list {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .added__item.visible {
+      display: none;
+      opacity: 0;
+    }
+
+    .added__btn {
+      @include flex();
+      width: 100px;
+      height: 34px;
+      font-style: normal;
+      font-weight: $font-semi-bold;
+      font-size: 14px;
+      background-color: $light-001;
+      color: $navi-002;
+      border-radius: 0.2em;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .threadAdded {
+    .added__input-group {
+      .added__input {
+        width: 88%;
+        padding: 0.6em;
+      }
+    }
+
+    .added__group {
+      .added__dot {
+        display: none;
+      }
+
+      .added__item {
+        position: unset;
+      }
+
+      .added__item.visible {
+        display: flex;
+        opacity: 1;
+      }
     }
   }
 }
@@ -41,5 +141,21 @@
 @media (min-width: 1024px) {
   .threadAdded {
     margin: 2.5em auto 2em;
+  }
+}
+
+@media (min-width: 1536px) {
+  .threadAdded {
+    background-color: $navi-004;
+
+    .added__input-group {
+      .added__input {
+        background-color: $navi-002;
+      }
+    }
+
+    .added__group .added__item {
+      background-color: $navi-002;
+    }
   }
 }

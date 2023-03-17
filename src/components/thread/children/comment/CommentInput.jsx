@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import { useInput } from '../../../../hooks/useInput';
 import { userShape } from '../thread/ThreadItemOwner';
-import CommentResponse from './CommentResponse';
 
-const CommentInput = ({ owner, handlerSubmitComment }) => {
+const CommentInput = ({ length, owner, handlerSubmitComment }) => {
   const [comment, handlerComment, setValue] = useInput();
 
   const handlerSubmitAddComment = (event) => {
@@ -14,7 +13,10 @@ const CommentInput = ({ owner, handlerSubmitComment }) => {
 
   return (
     <div className="comment__wrapper">
-      <CommentResponse title="Add Comment" />
+      <div className="comment__heading">
+        <h2>Response</h2>
+        <span className="comment__total">{length > 0 ? length : 0}</span>
+      </div>
 
       <form
         className="comment__form"
@@ -54,6 +56,7 @@ const CommentInput = ({ owner, handlerSubmitComment }) => {
 
 CommentInput.propTypes = {
   handlerSubmitComment: PropTypes.func.isRequired,
+  length: PropTypes.number.isRequired,
   owner: PropTypes.shape(userShape).isRequired,
 };
 

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import { ArrowLeft } from 'iconsax-react';
 import { useInput } from '../hooks/useInput';
 import { asyncAddThread } from '../states/threads/action';
 import Headers from '../components/Headers';
@@ -31,7 +31,11 @@ const ThreadAddedPage = () => {
             type="button"
             onClick={() => navigate('/threads')}
           >
-            <FiArrowLeft className="navigation__icon" />
+            <ArrowLeft
+              className="navigation__icon"
+              size="32"
+              color="#fff"
+            />
           </button>
 
           <button

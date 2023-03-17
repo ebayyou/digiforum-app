@@ -1,8 +1,15 @@
 @use '../base/variable' as *;
+@use '../utilities/mixin' as *;
 
 .Layout__children {
   width: 100%;
-  padding: 1em;
+  padding: 6em 1em;
+}
+
+.Layout__children-full {
+  @include flex(column, center, 0);
+  width: 100%;
+  height: 100vh;
 }
 
 @media (min-width: 600px) {
@@ -18,7 +25,7 @@
     top: 20px;
     right: 60px;
     margin: 50px auto 0;
-    padding: 2rem;
+    padding: 2em;
   }
 }
 
@@ -68,7 +75,7 @@
     width: 1536px;
     height: 100vh;
     margin: 0 auto;
-    border-radius: 0.8rem;
+    border-radius: 0.8em;
     background: $navi-003;
   }
 }

@@ -2,9 +2,7 @@ import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ThreadItemOwner, { userShape } from './children/thread/ThreadItemOwner';
-import CommentWrapper from './children/comment/CommentWrapper';
 import CommentsInput from './children/comment/CommentInput';
-import CommentResponse from './children/comment/CommentResponse';
 import CommentsItems, { commentShape } from './children/comment/CommentItems';
 import Votes from './children/Votes';
 
@@ -42,6 +40,7 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
         {authUser ? (
           <CommentsInput
             owner={threadDetail.owner}
+            length={threadDetail.comments.length}
             handlerSubmitComment={handlerSubmitComment}
           />
         ) : (
@@ -56,37 +55,30 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
           </div>
         )}
 
-        <CommentWrapper>
-          <>
-            <CommentResponse
-              title="Comment"
-              length={threadDetail.comments.length}
-            />
-
-            <div className="comment__data">
-              {threadDetail.comments.length >= 1 ? (
-                threadDetail.comments.map((comment) => (
-                  <CommentsItems
-                    key={comment.id}
-                    threadId={threadDetail.id}
-                    commentId={comment.id}
-                    owner={comment.owner}
-                    content={comment.content}
-                    createdAt={comment.createdAt}
-                    upVotes={comment.upVotesBy}
-                    downVotes={comment.downVotesBy}
-                    like={authUser && comment.upVotesBy.includes(authUser.id)}
-                    unlike={authUser && comment.downVotesBy.includes(authUser.id)}
-                  />
-                ))
-              ) : (
-                <div className="comment__items">
-                  <h4 className="comment__notFound">No one commented</h4>
-                </div>
-              )}
-            </div>
-          </>
-        </CommentWrapper>
+        <div className="comment__wrapper">
+          <div className="comment__data">
+            {threadDetail.comments.length >= 1 ? (
+              threadDetail.comments.map((comment) => (
+                <CommentsItems
+                  key={comment.id}
+                  threadId={threadDetail.id}
+                  commentId={comment.id}
+                  owner={comment.owner}
+                  content={comment.content}
+                  createdAt={comment.createdAt}
+                  upVotes={comment.upVotesBy}
+                  downVotes={comment.downVotesBy}
+                  like={authUser && comment.upVotesBy.includes(authUser.id)}
+                  unlike={authUser && comment.downVotesBy.includes(authUser.id)}
+                />
+              ))
+            ) : (
+              <div className="comment__items">
+                <h4 className="comment__notFound">No one commented</h4>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </>
   );

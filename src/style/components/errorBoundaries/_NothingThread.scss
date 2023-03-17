@@ -1,0 +1,58 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.nothing__thread {
+  @include flex(column, center, 0);
+  width: 100%;
+  height: 265px;
+  margin: 0 auto;
+  padding: 0.5em 0.2em;
+  border-bottom: 2px solid $navi-004;
+  font-family: $text-font;
+
+  .nothing__group {
+    @include flex(row, center, 0.95em);
+
+    .nothing__img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .nothing__head {
+      color: $light-001;
+      font-style: normal;
+      font-weight: $font-medium;
+      font-size: 22px;
+      line-height: 33px;
+    }
+  }
+
+  .nothing__desc {
+    width: 75%;
+    margin: 1.2em 0;
+    font-style: normal;
+    font-weight: $font-medium;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+  }
+
+  .nothing__btn {
+    display: block;
+    width: 150px;
+    height: 35px;
+    margin: 0 auto;
+    color: $navi-002;
+    font-size: 14px;
+    font-weight: $font-semi-bold;
+    line-height: 35px;
+    background-color: $light-001;
+    border-radius: 0.3em;
+  }
+}
+
+@media (min-width: 768px) {
+  .nothing__thread {
+    width: 550px;
+  }
+}

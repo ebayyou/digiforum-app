@@ -3,7 +3,7 @@ import SideBarNavigation from './children/SidebarNavigation';
 import SidebarLeaderboard from './children/SidebarLeaderboard';
 import SideBarFooter from './children/SidebarFooter';
 import MenuHeader from '../navigation/children/MenuHeader';
-import { sidebarStatusActionCreator } from '../../states/sidebarStatus/action';
+import { sidebarStatusActionCreator } from '../../states/menuStatus/action';
 
 const SideBar = () => {
   const { leaderboards, sidebarStatus } = useSelector((state) => state);
@@ -14,9 +14,9 @@ const SideBar = () => {
   };
 
   const topLeaderboard = [
-    { lead: leaderboards[0] },
-    { lead: leaderboards[1] },
-    { lead: leaderboards[2] },
+    { ...leaderboards[0], color: '#d1caff' },
+    { ...leaderboards[1], color: '#ffcaca' },
+    { ...leaderboards[2], color: '#caecff' },
   ];
 
   return (
@@ -27,12 +27,12 @@ const SideBar = () => {
         <div className="sidebar__wrapper">
           <SideBarNavigation onHandlerSidebar={onHandlerSidebar} />
 
-          {leaderboards.length >= 1 && (
+          {leaderboards.length > 0 ? (
             <SidebarLeaderboard
               onHandlerSidebar={onHandlerSidebar}
               topLeaderboard={topLeaderboard}
             />
-          )}
+          ) : null}
         </div>
 
         <SideBarFooter />

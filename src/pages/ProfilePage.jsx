@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { asyncPopulateUserAndThreads } from '../states/shared/action';
 import ThreadList from '../components/thread/ThreadList';
 import UserProfile from '../components/user/UserProfile';
-import { asyncPopulateUserAndThreads } from '../states/shared/action';
+import NothingThread from '../components/errorBoundaries/NothingThread';
+import ProfileLock from '../components/errorBoundaries/ProfileLock';
 
 const ProfilePage = () => {
   const { profileId } = useParams();
@@ -47,26 +49,28 @@ const ProfilePage = () => {
           <UserProfile user={authUser} />
 
           <div className="profile__wrapper">
-            <div className="profile__tabs">
-              <div className="tabs">
-                <button
-                  className="tabs__button"
-                  type="button"
-                  onClick={() => handleTabsThreads('yourThreads')}
-                >
-                  Threads
-                </button>
-                <div className={`${typeTabs === 'yourThreads' && 'active__button'}`} />
-              </div>
-              <div className="tabs">
-                <button
-                  className="tabs__button"
-                  type="button"
-                  onClick={() => handleTabsThreads('saved')}
-                >
-                  Saved
-                </button>
-                <div className={`${typeTabs === 'saved' && 'active__button'}`} />
+            <div className="profile__tabs-wrapper">
+              <div className="profile__tabs">
+                <div className="tabs">
+                  <button
+                    className="tabs__button"
+                    type="button"
+                    onClick={() => handleTabsThreads('yourThreads')}
+                  >
+                    Threads
+                  </button>
+                  <div className={`${typeTabs === 'yourThreads' && 'active__button'}`} />
+                </div>
+                <div className="tabs">
+                  <button
+                    className="tabs__button"
+                    type="button"
+                    onClick={() => handleTabsThreads('saved')}
+                  >
+                    Saved
+                  </button>
+                  <div className={`${typeTabs === 'saved' && 'active__button'}`} />
+                </div>
               </div>
             </div>
 
@@ -76,20 +80,12 @@ const ProfilePage = () => {
                 threads={userThreads}
               />
             ) : (
-              <div className="profile__thread__empty">nothing thread</div>
+              <NothingThread errorMsg="You can create and save threads in the threads page" />
             )}
           </div>
         </>
       ) : (
-        <div className="profile__container-false">
-          <span>You want to see your profile?</span>
-          <Link
-            className="link-to-login"
-            to="/login"
-          >
-            Must be login
-          </Link>
-        </div>
+        <ProfileLock />
       )}
     </section>
   );

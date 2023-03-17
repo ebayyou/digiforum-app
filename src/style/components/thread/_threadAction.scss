@@ -24,7 +24,7 @@
 
   .thread__comment {
     @include flex(row, space-between, 0.4em);
-    width: 148px;
+    width: 150px;
     height: 34px;
     padding: 0.4em 0.5em;
     background-color: $neutral-004;
@@ -37,6 +37,7 @@
 
     span {
       font-size: 10px;
+      font-weight: $font-semi-bold;
       line-height: 15px;
       color: $main-color;
     }

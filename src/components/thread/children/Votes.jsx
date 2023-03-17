@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { FaRegThumbsUp, FaRegThumbsDown, FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
+import { Like1, Dislike } from 'iconsax-react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   asyncToggleDownVoteCommentThreadDetail,
@@ -55,9 +55,16 @@ const Votes = ({ isThread, isComment, threadId, commentId, upVotes, downVotes, l
           onClick={isComment ? upVoteToggleButtonComment : upVoteToggleButtonThread}
         >
           {like ? (
-            <FaThumbsUp className="votes__icon" />
+            <Like1
+              className="votes__icon"
+              size="24"
+              variant="Bold"
+            />
           ) : (
-            <FaRegThumbsUp className="votes__icon" />
+            <Like1
+              className="votes__icon"
+              size="24"
+            />
           )}
         </button>
         <span>{upVotes.length}</span>
@@ -68,9 +75,16 @@ const Votes = ({ isThread, isComment, threadId, commentId, upVotes, downVotes, l
           onClick={isComment ? downVoteToggleButtonComment : downVoteToggleButtonThread}
         >
           {unlike ? (
-            <FaThumbsDown className="votes__icon" />
+            <Dislike
+              className="votes__icon"
+              size="24"
+              variant="Bold"
+            />
           ) : (
-            <FaRegThumbsDown className="votes__icon" />
+            <Dislike
+              className="votes__icon"
+              size="24"
+            />
           )}
         </button>
         <span>{downVotes.length}</span>

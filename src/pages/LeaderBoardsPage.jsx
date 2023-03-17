@@ -4,12 +4,20 @@ import LeaderboardItem from '../components/sidebar/LeaderboardItem';
 const LeaderboardsPage = () => {
   const { leaderboards } = useSelector((state) => state);
 
+  const leadmap = leaderboards.map((leadboard) => (
+    <LeaderboardItem
+      key={leadboard.user.id}
+      DesktopMode
+      {...leadboard}
+    />
+  ));
+
   return (
     <section className="Layout__children">
       <div className="LeaderboardsPage">
-        <div className="boards__headers">
-          <h1 className="boards__heading">Top Leaderboards For 24h Threads</h1>
-          <p className="boards__desc">
+        <div className="headers__page">
+          <h1 className="heading__page">Top Leaderboards For 24h Threads</h1>
+          <p className="desc__page">
             Leaderboard is used to see the top users with the highest score.
           </p>
         </div>
@@ -20,15 +28,7 @@ const LeaderboardsPage = () => {
             <h2 className="boards__text">Score</h2>
           </div>
 
-          <div className="boards__wrapper">
-            {leaderboards.map((leadboard) => (
-              <LeaderboardItem
-                key={leadboard.user.id}
-                DesktopMode
-                {...leadboard}
-              />
-            ))}
-          </div>
+          <div className="boards__wrapper">{leaderboards.length > 0 ? leadmap : null}</div>
         </div>
       </div>
     </section>

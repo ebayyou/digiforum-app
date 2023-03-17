@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { RiMenuFill } from 'react-icons/ri';
+import { HambergerMenu, Category } from 'iconsax-react';
 import { asyncUnsetAuthUser } from '../../states/authUser/action';
-import { sidebarStatusActionCreator } from '../../states/sidebarStatus/action';
+import { sidebarStatusActionCreator } from '../../states/menuStatus/action';
+import { rightbarStatusActionCreator } from '../../states/menuStatus/action-r';
 import MenuList from './children/MenuList';
-import MenuCollapse from './children/MenuCollapse';
-import MenuHeader from './children/MenuHeader';
 
 const Navbar = () => {
-  const [toggle, setToggle] = useState(false);
+  const [setToggle] = useState(false);
   const { authUser } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -25,28 +24,36 @@ const Navbar = () => {
     dispatch(sidebarStatusActionCreator(true));
   };
 
+  const onHandlerRightbar = () => {
+    dispatch(rightbarStatusActionCreator(true));
+  };
+
   return (
     <>
       {/* mobile version */}
-      <MenuCollapse toggle={toggle}>
-        <MenuHeader onHandlerNavbar={onHandlerNavbar} />
-        <nav>
-          <MenuList onHandlerNavbar={onHandlerNavbar} />
-        </nav>
-      </MenuCollapse>
+      <nav className="navbar__bottom">
+        <MenuList onHandlerNavbar={onHandlerNavbar} />
+      </nav>
       {/* desktop version */}
       <nav className="navbar">
         <div className="nav__brand">
-          <button
-            type="button"
-            className="logo__brand nav__brand-logo"
-            onClick={onHandlerSidebar}
-          >
+          <div className="nav__brand-group">
+            <button
+              type="button"
+              className="nav__brand-logo"
+              onClick={onHandlerSidebar}
+            >
+              <Category
+                className="nav__icon"
+                size="32"
+                color="#d1caff"
+              />
+            </button>
             <img
               src="images/brand/Logo_brand.png"
               alt="logo brand"
             />
-          </button>
+          </div>
           <div className="name__brand">
             <h4>DigiForum</h4>
             <span>Platform Discussion</span>
@@ -74,9 +81,12 @@ const Navbar = () => {
           <button
             type="button"
             className="Humberger__Menu"
-            onClick={() => setToggle((prevState) => !prevState)}
+            onClick={onHandlerRightbar}
           >
-            <RiMenuFill className="menu__fill" />
+            <HambergerMenu
+              size="38"
+              color="#d1caff"
+            />
           </button>
         </div>
 
