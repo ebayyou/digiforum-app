@@ -15,7 +15,7 @@ const CommentInput = ({ length, owner, handlerSubmitComment }) => {
     <div className="comment__wrapper">
       <div className="comment__heading">
         <h2>Response</h2>
-        <span className="comment__total">{length > 0 ? length : 0}</span>
+        <span className="comment__total">{length}</span>
       </div>
 
       <form
@@ -47,7 +47,7 @@ const CommentInput = ({ length, owner, handlerSubmitComment }) => {
           className="comment__button"
           type="submit"
         >
-          <span>Response</span>
+          Respond
         </button>
       </form>
     </div>

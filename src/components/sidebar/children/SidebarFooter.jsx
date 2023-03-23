@@ -1,10 +1,11 @@
-import { FiGitPullRequest, FiGithub } from 'react-icons/fi';
+// import { FiGitPullRequest, FiGithub } from 'react-icons/fi';
+import { HuobiToken, Setting } from 'iconsax-react';
 
 const SideBarFooter = () => {
   return (
     <footer className="sidebar__footer">
       <div className="footer__item">
-        <FiGitPullRequest className="footer__icon" />
+        <Setting className="footer__icon" />
         <a
           className="footer__link"
           href="https://forum-api.dicoding.dev/v1/#/"
@@ -15,7 +16,7 @@ const SideBarFooter = () => {
         </a>
       </div>
       <div className="footer__item">
-        <FiGithub className="footer__icon" />
+        <HuobiToken className="footer__icon" />
         <a
           className="footer__link"
           href="https://github.com/ebayyou/digiforum-app"

@@ -4,7 +4,7 @@
 .profile__container {
   @include flex(column, flex-start, 1em);
   align-items: flex-start;
-  margin: 1.4em 0.6em;
+  margin: 6em 1em;
   font-family: $text-font;
 
   .profile {
@@ -84,7 +84,7 @@
           line-height: 24px;
           text-align: center;
           background: transparent;
-          color: $title-color;
+          color: $neutral-001;
           margin-bottom: 0.2em;
         }
 
@@ -121,8 +121,8 @@
 @media (min-width: 550px) {
   .profile__container {
     width: 550px;
-    margin: 1.4em auto;
     gap: 1.8em;
+    margin: 6em auto;
 
     .profile {
       .profile__group {
@@ -159,6 +159,7 @@
     position: absolute;
     top: 120px;
     right: 80px;
+    margin: 2em auto;
     padding-bottom: 2em !important;
   }
 }

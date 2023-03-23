@@ -6,6 +6,7 @@
   position: fixed;
   right: 0;
   top: 0;
+  z-index: 18;
   width: 280px;
   height: 100%;
   padding: 1rem;
@@ -18,7 +19,7 @@
 
     .rightBar__box {
       width: 239px;
-      padding: 1em;
+      padding: 1em 0;
       margin: 2em auto;
       background-color: $navi-004;
       border-radius: 0.6em;
@@ -50,17 +51,37 @@
       width: 142px;
       height: 44px;
       font-weight: $font-semi-bold;
-      font-size: 16px;
+      font-size: 1rem;
       line-height: 44px;
       text-align: center;
       color: $navi-002;
       background-color: $light-001;
       box-shadow: 6px 6px 0px rgba(46, 34, 34, 0.38);
-      border-radius: 5px;
+      border-radius: 0.3em;
+    }
+
+    .rightBarBox__button {
+      display: inline-block;
+      width: 85%;
+      height: 44px;
+      margin: 0.8em 1em 0;
+      font-weight: $font-semi-bold;
+      font-size: 1rem;
+      line-height: 44px;
+      text-align: center;
+      color: $light-001;
+      border-radius: 0.3em;
+      transition: background 0.3s ease;
+
+      &:hover {
+        color: $navi-002;
+        background-color: $light-001;
+      }
     }
 
     .rightBarBox__header {
       @include flex(row, space-between, 0);
+      padding: 0 1em;
       margin-bottom: 1em;
 
       h3 {
@@ -82,17 +103,21 @@
       align-items: flex-start;
     }
 
-    .userList__group {
+    .userItem__group {
       @include flex(row, flex-start, 0.6em);
+      width: 100%;
+      padding: 0.3em 1em;
+      transition: all 0.3s ease-in;
 
-      .userList__img {
+      .userItem__img {
         width: 38px;
         height: 38px;
         border-radius: 50px;
       }
 
-      .userList__info {
+      .userItem__info {
         h4 {
+          color: $neutral-001;
           font-weight: 500;
           font-size: 14px;
           line-height: 21px;
@@ -105,11 +130,21 @@
           color: $neutral-002;
         }
       }
+
+      &:hover {
+        background-color: $navi-002;
+      }
+
+      &:focus {
+        border: 1px solid $light-001;
+        outline: 1px solid $light-001;
+      }
     }
 
     .trend__group {
       @include flex(row, space-between, 0);
       width: 100%;
+      padding: 0 1em;
       background-color: transparent;
       border-bottom: 1px solid $navi-004;
 
@@ -164,9 +199,10 @@
   .rightBar {
     position: absolute;
     top: 80px;
+    z-index: 0;
 
-    .rightBar__box {
-      background-color: $navi-004;
+    .rightBar__group .rightBar__box {
+      background-color: $navi-003;
     }
   }
 

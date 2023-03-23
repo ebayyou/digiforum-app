@@ -80,7 +80,10 @@ const ProfilePage = () => {
                 threads={userThreads}
               />
             ) : (
-              <NothingThread errorMsg="You can create and save threads in the threads page" />
+              <NothingThread
+                withButton
+                errorMsg="You can create and save threads in the threads page"
+              />
             )}
           </div>
         </>

@@ -7,7 +7,6 @@ import {
   removeSavedThreadActionCreator,
   savedThreadActionCreator,
 } from '../../states/savedThread/action';
-import ThreadAdded from './children/ThreadAdded';
 import ThreadItemOwner, { userShape } from './children/thread/ThreadItemOwner';
 import ThreadAction from './children/thread/ThreadAction';
 import Votes from './children/Votes';
@@ -34,65 +33,51 @@ const ThreadList = ({ userThread, threads }) => {
   };
 
   return (
-    <section className={`${userThread ? 'userthread' : 'Layout__children'}`}>
-      {userThread === false && <ThreadAdded />}
-
-      <div className="thread__list">
-        {threads.map(
-          ({
-            id,
-            title,
-            user,
-            createdAt,
-            category,
-            body,
-            totalComments,
-            upVotesBy,
-            downVotesBy,
-          }) => (
-            <div
-              className="thread"
-              key={id}
+    <div className={` thread__list ${userThread ? 'userthread' : ''}`}>
+      {threads.map(
+        ({ id, title, user, createdAt, category, body, totalComments, upVotesBy, downVotesBy }) => (
+          <div
+            className="thread"
+            key={id}
+          >
+            <Link
+              to={`/threads/${id}`}
+              className="thread__heading"
             >
-              <Link
-                to={`/threadDetail/${id}`}
-                className="thread__heading"
-              >
-                {title}
-              </Link>
+              {title}
+            </Link>
 
-              <ThreadItemOwner
-                owner={user}
-                createdAt={createdAt}
-                category={category}
+            <ThreadItemOwner
+              owner={user}
+              createdAt={createdAt}
+              category={category}
+            />
+
+            <div
+              className="thread__desc"
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(limitString(body, 200)) }}
+            />
+
+            <div className="thread__wrapper">
+              <ThreadAction
+                id={id}
+                totalComments={totalComments}
+                handlerActionSavedThread={handlerActionSavedThread}
+                handlerActionRemoveSavedThread={handlerActionRemoveSavedThread}
               />
-
-              <div
-                className="thread__desc"
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(limitString(body, 200)) }}
+              <Votes
+                isThread
+                threadId={id}
+                upVotes={upVotesBy}
+                downVotes={downVotesBy}
+                like={authUser && upVotesBy.includes(authUser.id)}
+                unlike={authUser && downVotesBy.includes(authUser.id)}
               />
-
-              <div className="thread__wrapper">
-                <ThreadAction
-                  id={id}
-                  totalComments={totalComments}
-                  handlerActionSavedThread={handlerActionSavedThread}
-                  handlerActionRemoveSavedThread={handlerActionRemoveSavedThread}
-                />
-                <Votes
-                  isThread
-                  threadId={id}
-                  upVotes={upVotesBy}
-                  downVotes={downVotesBy}
-                  like={authUser && upVotesBy.includes(authUser.id)}
-                  unlike={authUser && downVotesBy.includes(authUser.id)}
-                />
-              </div>
             </div>
-          )
-        )}
-      </div>
-    </section>
+          </div>
+        )
+      )}
+    </div>
   );
 };
 

@@ -1,8 +1,10 @@
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Gallery, Text, TextalignCenter, Task, Translate } from 'iconsax-react';
-import { useState } from 'react';
 
 const ThreadAdded = () => {
+  const { authUser } = useSelector((state) => state);
   const [visible, setVisible] = useState(false);
 
   return (
@@ -10,7 +12,7 @@ const ThreadAdded = () => {
       <div className="added__input-group">
         <img
           className="added__img"
-          src="/images/main_avatar.png"
+          src={authUser !== null ? authUser.avatar : '/images/main_avatar.png'}
           alt="profile"
         />
         <input
@@ -68,7 +70,7 @@ const ThreadAdded = () => {
 
         <Link
           className="added__btn"
-          to="/threadAdded"
+          to="/threads/thread-added"
         >
           Response
         </Link>

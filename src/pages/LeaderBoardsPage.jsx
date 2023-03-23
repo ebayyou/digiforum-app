@@ -12,6 +12,15 @@ const LeaderboardsPage = () => {
     />
   ));
 
+  const leadError = (
+    <LeaderboardItem
+      DesktopMode
+      errorLead
+      user={{ avatar: '', name: 'Something Went Wrong', email: 'error404@gmail.com' }}
+      score={999}
+    />
+  );
+
   return (
     <section className="Layout__children">
       <div className="LeaderboardsPage">
@@ -28,7 +37,7 @@ const LeaderboardsPage = () => {
             <h2 className="boards__text">Score</h2>
           </div>
 
-          <div className="boards__wrapper">{leaderboards.length > 0 ? leadmap : null}</div>
+          <div className="boards__wrapper">{leaderboards.length === 0 ? leadmap : leadError}</div>
         </div>
       </div>
     </section>

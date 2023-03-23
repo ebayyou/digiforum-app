@@ -1,14 +1,18 @@
 import PropTypes from 'prop-types';
 
-const LeaderboardItem = ({ DesktopMode, user, score, color }) => {
+const LeaderboardItem = ({ DesktopMode, errorLead, user, score, color }) => {
   return (
     <div className={`leaderboard__item ${DesktopMode && 'leaderboard__item--lbPage'}`}>
       <div className="lb__group lb__group--lbPage">
-        <img
-          className="lb__img lb__img--lbPage"
-          src={user.avatar}
-          alt={user.name}
-        />
+        {errorLead ? (
+          <div className="lb-image-error" />
+        ) : (
+          <img
+            className="lb__img lb__img--lbPage"
+            src={user.avatar}
+            alt={user.name}
+          />
+        )}
         <div className="lb__users">
           <h5 className="lb__name--lbPage lb__users-name">
             {DesktopMode ? user.name : user.name.substring(0, 18)}
@@ -30,11 +34,13 @@ const LeaderboardItem = ({ DesktopMode, user, score, color }) => {
 
 LeaderboardItem.defaultProps = {
   DesktopMode: false,
+  errorLead: false,
   color: '',
 };
 
 LeaderboardItem.propTypes = {
   DesktopMode: PropTypes.bool,
+  errorLead: PropTypes.bool,
   user: PropTypes.object.isRequired,
   score: PropTypes.number.isRequired,
   color: PropTypes.string,

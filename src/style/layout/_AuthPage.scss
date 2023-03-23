@@ -28,7 +28,7 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 28px;
-      color: $text-color-light;
+      color: $neutral-005;
     }
 
     .auth__barrier {
@@ -43,7 +43,7 @@
         left: 0;
         right: 0;
         margin: 0 auto;
-        background-color: $primary-003;
+        background-color: $light-001;
         width: 40px;
         height: 10px;
         border-radius: 20px;
@@ -72,8 +72,8 @@
           font-weight: 400;
           font-size: 16px;
           line-height: 19px;
-          background-color: $first-color-alt;
-          color: $title-color;
+          background-color: $navi-004;
+          color: $neutral-001;
           border-radius: 8px;
           border: 0;
 
@@ -93,7 +93,7 @@
         font-weight: 600;
         font-size: 16px;
         line-height: 19px;
-        background-color: $primary-003;
+        background-color: $light-001;
         color: $main-color;
         border-radius: 6px;
       }
@@ -101,13 +101,13 @@
 
     .auth__info {
       text-align: center;
-      color: $text-color-light;
+      color: $neutral-005;
     }
   }
 }
 
 .highlight {
-  color: $primary-003;
+  color: $light-001;
   margin-left: 0.6em;
 }
 
@@ -181,7 +181,7 @@
         width: 446px;
         padding: 1em 2em;
         margin: 0px auto;
-        color: $title-color;
+        color: $neutral-001;
         background-color: $main-color;
         box-shadow: 10px 10px 0px rgba(32, 36, 51, 0.35);
         border-radius: 10px;
@@ -257,19 +257,20 @@
           }
 
           .box__comment {
-            @include flex(row, space-between, 0.8em);
-            padding: 0.6em;
+            @include flex(row, space-between, 0.4em);
+            height: 34px;
+            padding: 0.4em 0.5em;
             background-color: $neutral-004;
             border-radius: 2em;
 
             .comment {
               color: $navi-004;
-              width: 16px;
-              height: 14px;
+              font-size: 1.3rem;
             }
 
             span {
               font-size: 10px;
+              font-weight: $font-semi-bold;
               line-height: 15px;
               color: $main-color;
             }
@@ -281,7 +282,7 @@
               font-weight: $font-medium;
               line-height: 19px;
               text-align: center;
-              color: $title-color;
+              color: $neutral-001;
               background-color: $primary-001;
               border-radius: 0px 5px 5px 0px;
             }

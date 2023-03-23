@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { RiCloseFill } from 'react-icons/ri';
+import { CloseCircle } from 'iconsax-react';
 
 const MenuHeader = ({ onHandlerNavbar }) => {
   return (
@@ -20,7 +20,7 @@ const MenuHeader = ({ onHandlerNavbar }) => {
         className="navbar__btn-icon"
         onClick={onHandlerNavbar}
       >
-        <RiCloseFill className="close" />
+        <CloseCircle className="close" />
       </button>
     </div>
   );
