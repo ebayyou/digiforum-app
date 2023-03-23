@@ -43,12 +43,12 @@ const ThreadAction = ({
           <Save2
             className="saved"
             size="24"
+            variant="Bold"
           />
         ) : (
           <Save2
             className="saved"
             size="24"
-            variant="Bold"
           />
         )}
       </button>

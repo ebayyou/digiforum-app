@@ -1,19 +1,23 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const UserItems = ({ avatar, name, id }) => {
   return (
-    <div className="userList__group">
+    <Link
+      to="/"
+      className="userItem__group"
+    >
       <img
-        className="userList__img"
+        className="userItem__img"
         src={avatar}
         alt="avatar"
       />
 
-      <div className="userList__info">
+      <div className="userItem__info">
         <h4>{name}</h4>
         <span>{id}</span>
       </div>
-    </div>
+    </Link>
   );
 };
 

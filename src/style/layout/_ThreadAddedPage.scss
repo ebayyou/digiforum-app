@@ -17,12 +17,12 @@
         font-weight: $font-regular;
         font-size: 18px;
         line-height: 27px;
-        color: $title-color;
+        color: $neutral-001;
         background-color: transparent;
         border-radius: 0.4em;
 
         &::placeholder {
-          color: $title-color;
+          color: $neutral-001;
           font-family: $text-font;
         }
       }
@@ -45,12 +45,12 @@
         font-family: $text-font;
         line-height: 27px;
         background-color: transparent;
-        color: $title-color;
+        color: $neutral-001;
         border-radius: 0.4em;
         border: 2px solid $light-002;
 
         &::placeholder {
-          color: $title-color;
+          color: $neutral-001;
           font-family: $text-font;
         }
       }

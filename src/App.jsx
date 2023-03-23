@@ -14,6 +14,7 @@ import ThreadDetailPage from './pages/ThreadDetailPage';
 import ProfilePage from './pages/ProfilePage';
 import CommunityPage from './pages/CommunityPage';
 import LeaderboardsPage from './pages/LeaderBoardsPage';
+import UsersPage from './pages/UsersPage';
 import NotfoundPage from './pages/404Page';
 import Loading from './components/Loading';
 
@@ -45,22 +46,23 @@ const App = () => {
           <Route
             path="/profile"
             element={<ProfilePage />}
-          />
-          <Route
-            path="/profile/:profileId"
-            element={<ProfilePage />}
-          />
+          >
+            <Route
+              path=":profileId"
+              element={<ProfilePage />}
+            />
+          </Route>
           <Route
             path="/threads"
             element={<ThreadsPage />}
           />
           <Route
-            path="/threadAdded"
-            element={<ThreadAddedPage />}
+            path="/threads/:threadId"
+            element={<ThreadDetailPage />}
           />
           <Route
-            path="/threadDetail/:threadId"
-            element={<ThreadDetailPage />}
+            path="/threads/thread-added"
+            element={<ThreadAddedPage />}
           />
           <Route
             path="/community"
@@ -69,6 +71,10 @@ const App = () => {
           <Route
             path="/leaderboards"
             element={<LeaderboardsPage />}
+          />
+          <Route
+            path="/users"
+            element={<UsersPage />}
           />
         </Route>
         <Route

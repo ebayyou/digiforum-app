@@ -1,5 +1,5 @@
-import { FaComment, FaBookmark } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { Save2, Message2 } from 'iconsax-react';
 
 const TaglineBrand = () => {
   return (
@@ -45,10 +45,18 @@ const TaglineBrand = () => {
 
         <div className="box__icon">
           <div className="wrapper__icon">
-            <FaBookmark className="bookmark" />
+            <Save2
+              className="bookmark"
+              size="24"
+              variant="Bold"
+            />
           </div>
           <div className="box__comment">
-            <FaComment className="comment" />
+            <Message2
+              className="comment"
+              size="24"
+              variant="Bold"
+            />
             <span>Add Response</span>
             <span className="comment__total">10</span>
           </div>

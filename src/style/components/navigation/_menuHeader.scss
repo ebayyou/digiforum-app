@@ -3,7 +3,7 @@
 
 .navbar__header {
   @include flex(row, space-between, 0.3em);
-  color: $title-color;
+  color: $neutral-001;
   padding-bottom: 0.3em;
   border-bottom: 2px solid $navi-004;
 
@@ -18,13 +18,13 @@
     .name__brand {
       h4 {
         font-size: 18px;
-        color: $title-color;
+        color: $neutral-001;
         margin-bottom: 0.2em;
       }
       span {
         font-size: 14px;
         font-weight: $font-light;
-        color: $text-color-light;
+        color: $neutral-004;
       }
     }
   }

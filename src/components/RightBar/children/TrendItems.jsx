@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { FiHash } from 'react-icons/fi';
+import { Hashtag } from 'iconsax-react';
 import { postedAt } from '../../../utils/index';
 
 const TrendItems = ({ onClickhandlerTrend, trend, createdAt, popularTrend }) => {
@@ -10,7 +10,7 @@ const TrendItems = ({ onClickhandlerTrend, trend, createdAt, popularTrend }) => 
       onClick={() => onClickhandlerTrend(trend)}
     >
       <div className="trend__item">
-        <FiHash className="trend__icon" />
+        <Hashtag className="trend__icon" />
         <h4>{trend}</h4>
       </div>
 

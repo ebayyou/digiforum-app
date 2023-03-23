@@ -4,6 +4,7 @@ import SidebarLeaderboard from './children/SidebarLeaderboard';
 import SideBarFooter from './children/SidebarFooter';
 import MenuHeader from '../navigation/children/MenuHeader';
 import { sidebarStatusActionCreator } from '../../states/menuStatus/action';
+import WrapperError from '../errorBoundaries/WrapperError';
 
 const SideBar = () => {
   const { leaderboards, sidebarStatus } = useSelector((state) => state);
@@ -32,7 +33,9 @@ const SideBar = () => {
               onHandlerSidebar={onHandlerSidebar}
               topLeaderboard={topLeaderboard}
             />
-          ) : null}
+          ) : (
+            <WrapperError height={220} />
+          )}
         </div>
 
         <SideBarFooter />

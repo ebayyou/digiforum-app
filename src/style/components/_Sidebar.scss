@@ -7,6 +7,7 @@
   top: 0;
   left: 0;
   bottom: 0;
+  z-index: 18;
   padding: 1rem;
   width: 85%;
   height: 100%;
@@ -48,7 +49,7 @@
 
       .headers__icon {
         font-size: 1.8rem;
-        color: $title-color;
+        color: $neutral-001;
       }
     }
   }
@@ -90,7 +91,7 @@
         .nav__title {
           font-size: $h3-font-size;
           font-weight: 400;
-          color: $title-color;
+          color: $neutral-001;
         }
       }
     }
@@ -178,12 +179,11 @@
   .sidebar {
     top: 80px;
     padding: 1em;
+    z-index: 0;
     background: transparent;
     border-right: 2px solid $navi-004;
     border-radius: 0;
     box-shadow: 0px 0px 0px;
-    backdrop-filter: blur(0);
-    -webkit-backdrop-filter: blur(0);
 
     .sidebar__headers {
       display: none;

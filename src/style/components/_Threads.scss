@@ -10,7 +10,7 @@
   margin: 0 auto;
   padding: 0.5em 0.2em;
   border-bottom: 2px solid $navi-004;
-  color: $title-color;
+  color: $neutral-001;
   font-family: $text-font;
 
   .thread__heading {
@@ -18,7 +18,7 @@
     font-weight: $font-semi-bold;
     font-size: 20px;
     line-height: 25px;
-    color: $title-color;
+    color: $neutral-001;
     transition: text-decoration 0.3s ease;
     cursor: pointer;
 
