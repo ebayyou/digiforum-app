@@ -11,25 +11,26 @@
 @use './layout/Profile';
 @use './layout/NotfoundPage';
 @use './layout/UsersPage';
-@use './components/Navigation';
-@use './components/navigation/menu';
-@use './components/navigation/menuCollapse';
-@use './components/navigation/menuHeader';
-@use './components/navigation/navigationThread';
-@use './components/Threads';
+@use './components/navigation/Navigation';
+@use './components/navigation/navList';
+@use './components/navigation/navBottom';
+@use './components/thread/Threads';
 @use './components/thread/threadAdded';
 @use './components/thread/threadItemOwner';
 @use './components/thread/threadAction';
 @use './components/comment/commentForm';
 @use './components/comment/commentData';
 @use './components/comment/commentHeading';
-@use './components/Sidebar';
+@use './components/sidebar/Sidebar';
+@use './components/sidebar/sidebarHeader';
+@use './components/sidebar/sidebarNavigation';
+@use './components/sidebar/sidebarLeaderboard';
+@use './components/sidebar/sidebarFooter';
 @use './components/RightBar';
 @use './components/LeaderboardItem';
 @use './components/Headers';
 @use './components/errorBoundaries/NothingThread';
 @use './components/errorBoundaries/ProfileLock';
-@use './components/errorBoundaries/WrapperError';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
@@ -150,6 +151,13 @@ html {
   border-radius: 0.3rem;
 }
 
+.absolute__element {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+}
+
 @media (min-width: 500px) {
   .wrapper__img {
     width: 428px;
@@ -179,6 +187,13 @@ html {
   .heading__page {
     font-size: 1.45em;
     margin: 0.2em 0.5em;
+  }
+
+  .absolute__element {
+    display: none;
+    width: 0;
+    height: 0;
+    position: unset;
   }
 }
 

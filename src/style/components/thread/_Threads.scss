@@ -1,5 +1,5 @@
-@use '../base/variable' as *;
-@use '../utilities/mixin' as *;
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
 
 .thread__list {
   @include flex(column, flex-start, 1.4em);

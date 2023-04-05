@@ -1,17 +1,21 @@
+import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'iconsax-react';
 import { useInput } from '../hooks/useInput';
 import { asyncAddThread } from '../states/threads/action';
 import Headers from '../components/Headers';
+import { ThreadContext } from '../context';
 
 const ThreadAddedPage = () => {
   const { authUser = {} } = useSelector((state) => state);
-  const [title, onChangeTitle] = useInput('');
+  const threadTitle = useContext(ThreadContext);
+  const [title, onChangeTitle] = useInput(threadTitle);
   const [category, onChangeCategory] = useInput('');
   const [body, onChangeBody] = useInput('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log(threadTitle);
 
   const handlerSubmitAddedThread = () => {
     if (authUser) {

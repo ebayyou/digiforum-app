@@ -1,0 +1,39 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.sidebar__footer {
+  margin: 5em 0 7em;
+  border-top: 2px solid $navi-004;
+  padding: 0.5em 1em;
+
+  .footer__item {
+    @include flex(row, flex-start, 1em);
+    margin: 1em 0;
+
+    .footer__icon {
+      font-size: 1.5em;
+      color: $neutral-003;
+    }
+
+    .footer__link {
+      color: $neutral-003;
+      text-decoration: underline;
+    }
+  }
+
+  .footer__copyright {
+    margin-top: 2em;
+    color: $neutral-003;
+    text-align: center;
+
+    span {
+      display: inline-block;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .sidebar__footer {
+    margin: 5em 1em 7em;
+  }
+}

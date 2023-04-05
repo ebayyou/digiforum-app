@@ -5,20 +5,24 @@ import { Medal, Profile2User, UserOctagon } from 'iconsax-react';
 import { asyncUnsetAuthUser } from '../../states/authUser/action';
 import { asyncPopulateUserAndThreads } from '../../states/shared/action';
 import { trendByCategoryActionCreator } from '../../states/trends/action';
+import { rightbarStatusActionCreator } from '../../states/menuStatus/action';
 import TrendItems from './children/TrendItems';
 import UserItems from './children/UserItems';
 import WrapperError from '../errorBoundaries/WrapperError';
 
 const RightBar = () => {
-  const { trend, authUser, users, threads, rightBarStatus } = useSelector((state) => state);
+  const { trend, authUser, users, threads, menuStatus } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(asyncPopulateUserAndThreads());
   }, [dispatch]);
 
+  const onHandlerRightbar = () => dispatch(rightbarStatusActionCreator(false));
+
   const onHandlerLogout = () => {
     dispatch(asyncUnsetAuthUser());
+    onHandlerRightbar();
   };
 
   const onClickhandlerTrend = (newTrend) => {
@@ -27,6 +31,8 @@ const RightBar = () => {
     } else {
       dispatch(trendByCategoryActionCreator(newTrend));
     }
+
+    onHandlerRightbar();
   };
 
   const usersList = users.slice(501, 507);
@@ -37,8 +43,12 @@ const RightBar = () => {
   }));
 
   return (
-    <aside className={`rightBar ${rightBarStatus ? '' : 'visible'}`}>
-      <div className="rightBar__group">
+    <>
+      <div
+        onTouchStart={onHandlerRightbar}
+        className={menuStatus.rightbarStatus ? 'absolute__element' : null}
+      />
+      <aside className={menuStatus.rightbarStatus ? 'rightBar active' : 'rightBar'}>
         <div className="rightBar__box rightBar-flex rightBar-relative rightBar-w-s">
           <div className="rightBar__badge">
             <UserOctagon
@@ -83,6 +93,7 @@ const RightBar = () => {
                   avatar={user.avatar}
                   name={user.name}
                   id={user.id}
+                  onHandlerRightbar={onHandlerRightbar}
                 />
               ))
             ) : (
@@ -91,8 +102,9 @@ const RightBar = () => {
           </div>
 
           <Link
-            className="rightBarBox__button"
             to="/users"
+            className="rightBarBox__button"
+            onClick={onHandlerRightbar}
           >
             see more
           </Link>
@@ -123,8 +135,8 @@ const RightBar = () => {
             )}
           </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </>
   );
 };
 

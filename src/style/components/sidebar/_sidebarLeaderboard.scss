@@ -1,0 +1,38 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.sidebar__leaderboard {
+  margin-top: 1em;
+
+  .leaderboard__wrapper {
+    margin: 1.4em 0;
+  }
+
+  .leaderboard__heading {
+    font-size: 1.35rem;
+    font-weight: $font-medium;
+  }
+
+  .leaderboard__button {
+    @include flex(row, center, 0.6em);
+    margin: 0 auto;
+    width: 100%;
+    height: 50px;
+    padding: 0.2em;
+    background: $gradient-004;
+    color: #fff;
+    border-radius: 0.4em;
+
+    .btn__text {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .sidebar__leaderboard {
+    .leaderboard__heading {
+      margin-bottom: 1.5em;
+    }
+  }
+}

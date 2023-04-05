@@ -1,24 +1,9 @@
-@use '../base/variable' as *;
-@use '../utilities/mixin' as *;
-
-.navbar__bottom {
-  @include flex();
-  position: fixed;
-  z-index: 10;
-  bottom: 0;
-  width: 100%;
-  height: 74px;
-  background: $navi-003;
-  border-top-left-radius: 0.6em;
-  border-top-right-radius: 0.6em;
-}
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
 
 .navbar {
   @include flex(row, space-between, 0);
-  position: fixed;
-  z-index: 10;
   width: 100%;
-  top: 0;
   height: 50px;
   padding: 2.3em 0.5em;
   font-family: $text-font;
@@ -70,23 +55,6 @@
   }
 }
 
-.visible__navbar {
-  display: none;
-  opacity: 0;
-  transform: translateY(-500px);
-}
-
-@media (min-width: 500px) {
-  .navbar__bottom {
-    left: 0;
-    bottom: 10px;
-    right: 0;
-    width: 465px;
-    margin: 0 auto;
-    border-radius: 0.6rem;
-  }
-}
-
 @media (min-width: 768px) {
   .navbar {
     padding: 2.3em 1em;
@@ -131,16 +99,6 @@
         color: $neutral-004;
       }
     }
-  }
-
-  .navbar .visible__navbar {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .navbar__bottom {
-    display: none;
   }
 }
 

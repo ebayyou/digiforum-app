@@ -1,0 +1,37 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.sidebar__navigation {
+  margin-bottom: 3.5em;
+
+  .nav__link {
+    @include flex(row, flex-start, 1em);
+    margin-bottom: 1em;
+
+    .nav__wrap {
+      @include flex();
+      width: 36px;
+      height: 36px;
+      border-radius: 0.85em;
+      background-color: $neutral-004;
+
+      .nav__icon {
+        font-size: 1.4rem;
+        line-height: 36px;
+        color: $neutral-003;
+      }
+    }
+
+    .nav__title {
+      font-size: $h3-font-size;
+      font-weight: 400;
+      color: $neutral-001;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .sidebar__navigation {
+    margin-bottom: 3.5em;
+  }
+}

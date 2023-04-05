@@ -46,12 +46,11 @@ const App = () => {
           <Route
             path="/profile"
             element={<ProfilePage />}
-          >
-            <Route
-              path=":profileId"
-              element={<ProfilePage />}
-            />
-          </Route>
+          />
+          <Route
+            path="/profile/:profileId"
+            element={<ProfilePage />}
+          />
           <Route
             path="/threads"
             element={<ThreadsPage />}
@@ -75,6 +74,10 @@ const App = () => {
           <Route
             path="/users"
             element={<UsersPage />}
+          />
+          <Route
+            path="/users/:userId"
+            element={<ProfilePage />}
           />
         </Route>
         <Route

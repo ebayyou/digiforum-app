@@ -37,7 +37,7 @@ const LeaderboardsPage = () => {
             <h2 className="boards__text">Score</h2>
           </div>
 
-          <div className="boards__wrapper">{leaderboards.length === 0 ? leadmap : leadError}</div>
+          <div className="boards__wrapper">{leaderboards.length > 0 ? leadmap : leadError}</div>
         </div>
       </div>
     </section>

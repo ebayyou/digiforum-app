@@ -105,24 +105,24 @@ const navigationItem = [
   },
 ];
 
-const MenuList = ({ desktopMode }) => {
+const navList = ({ desktopMode }) => {
   return (
-    <ul className={`${desktopMode ? 'menu-mode' : 'menu'}`}>
+    <ul className={`${desktopMode ? 'navlist-mode' : 'navlist'}`}>
       {navigationItem.map(({ id, text, link, icon, iconActive }) => (
         <li
           key={id}
-          className={`${desktopMode ? 'menu__list-mode' : 'menu__list'}`}
+          className={`${desktopMode ? 'navlist__list-mode' : 'navlist__list'}`}
         >
           {desktopMode ? (
             <NavLink
-              className={`${desktopMode ? 'menu__link-mode' : 'menu__link'}`}
+              className={`${desktopMode ? 'navlist__link-mode' : 'navlist__link'}`}
               to={link}
             >
               {text}
             </NavLink>
           ) : (
             <NavLink
-              className={`${desktopMode ? 'menu__link-mode' : 'menu__link'}`}
+              className={`${desktopMode ? 'navlist__link-mode' : 'navlist__link'}`}
               to={link}
             >
               {({ isActive }) => (isActive ? iconActive : icon)}
@@ -134,12 +134,12 @@ const MenuList = ({ desktopMode }) => {
   );
 };
 
-MenuList.defaultProps = {
+navList.defaultProps = {
   desktopMode: false,
 };
 
-MenuList.propTypes = {
+navList.propTypes = {
   desktopMode: PropTypes.bool,
 };
 
-export default MenuList;
+export default navList;

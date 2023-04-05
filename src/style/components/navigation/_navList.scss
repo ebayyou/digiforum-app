@@ -1,17 +1,17 @@
 @use '../../base/variable' as *;
 @use '../../utilities/mixin' as *;
 
-.menu {
+.navlist {
   @include flex(row, space-between, 0);
   width: 85%;
   margin: 0 auto;
   font-family: $text-font;
   transition: background 0.3s ease;
 
-  .menu__list {
+  .navlist__group {
     font-size: 20px;
 
-    .menu__link {
+    .navlist__link {
       color: $neutral-001;
 
       .link__icon {
@@ -28,18 +28,18 @@
     }
   }
 }
-.menu-mode {
+.navlist-mode {
   display: none;
 }
 
 @media (min-width: 768px) {
-  .menu {
+  .navlist {
     margin: 0 auto;
   }
 }
 
 @media (min-width: 1024px) {
-  .menu-mode {
+  .navlist-mode {
     @include flex(row, space-between, 0);
     margin: 0;
     padding: 1rem;
@@ -47,11 +47,11 @@
     background: $gradient-004;
     border-radius: 0.6em;
 
-    .menu__list-mode {
+    .navlist__list-mode {
       width: 85%;
       margin: 0 auto;
 
-      .menu__link-mode {
+      .navlist__link-mode {
         @include flex();
         width: 120px;
         height: 44px;
@@ -65,7 +65,7 @@
 }
 
 @media (min-width: 1440px) {
-  .menu-mode {
+  .navlist-mode {
     padding: 1.5rem 1rem;
   }
 }
