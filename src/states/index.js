@@ -8,8 +8,7 @@ import threadDetailReducer from './threadDetail/reducer';
 import leaderboardsReducer from './leaderboard/reducer';
 import trendsReducer from './trends/reducer';
 import savedThreadReducer from './savedThread/reducer';
-import sidebarStatusReducer from './menuStatus/reducer';
-import rightbarStatusReducer from './menuStatus/reducer-r';
+import menuStatusReducer from './menuStatus/reducer';
 
 const store = configureStore({
   reducer: {
@@ -22,8 +21,7 @@ const store = configureStore({
     trend: trendsReducer,
     leaderboards: leaderboardsReducer,
     loadingBar: loadingBarReducer,
-    sidebarStatus: sidebarStatusReducer,
-    rightBarStatus: rightbarStatusReducer,
+    menuStatus: menuStatusReducer,
   },
 });
 

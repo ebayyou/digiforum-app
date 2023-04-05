@@ -53,7 +53,7 @@ const ThreadAction = ({
         )}
       </button>
       <HashLink
-        to={`/threadDetail/${id}#comment`}
+        to={`/threads/${id}#comment`}
         className="thread__comment"
       >
         <Message2

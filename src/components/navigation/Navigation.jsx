@@ -1,38 +1,26 @@
-import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { HambergerMenu, Category } from 'iconsax-react';
 import { asyncUnsetAuthUser } from '../../states/authUser/action';
-import { sidebarStatusActionCreator } from '../../states/menuStatus/action';
-import { rightbarStatusActionCreator } from '../../states/menuStatus/action-r';
-import MenuList from './children/MenuList';
+import {
+  rightbarStatusActionCreator,
+  sidebarStatusActionCreator,
+} from '../../states/menuStatus/action';
+import NavList from './children/NavList';
 
 const Navbar = () => {
-  const [setToggle] = useState(false);
   const { authUser } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const onHandlerLogout = () => {
-    dispatch(asyncUnsetAuthUser());
-  };
-
-  const onHandlerNavbar = () => {
-    setToggle(false);
-  };
-
-  const onHandlerSidebar = () => {
-    dispatch(sidebarStatusActionCreator(true));
-  };
-
-  const onHandlerRightbar = () => {
-    dispatch(rightbarStatusActionCreator(true));
-  };
+  const onHandlerLogout = () => dispatch(asyncUnsetAuthUser());
+  const onHandlerSidebar = () => dispatch(sidebarStatusActionCreator(true));
+  const onHandlerRightbar = () => dispatch(rightbarStatusActionCreator(true));
 
   return (
     <>
       {/* mobile version */}
       <nav className="navbar__bottom">
-        <MenuList onHandlerNavbar={onHandlerNavbar} />
+        <NavList />
       </nav>
       {/* desktop version */}
       <nav className="navbar">
@@ -90,7 +78,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <MenuList desktopMode />
+        <NavList desktopMode />
       </nav>
     </>
   );

@@ -4,7 +4,7 @@
 .profile__container {
   @include flex(column, flex-start, 1em);
   align-items: flex-start;
-  margin: 6em 1em;
+  padding: 1em 1em 6em;
   font-family: $text-font;
 
   .profile {
@@ -122,7 +122,8 @@
   .profile__container {
     width: 550px;
     gap: 1.8em;
-    margin: 6em auto;
+    margin: 1em auto;
+    padding-bottom: 6em;
 
     .profile {
       .profile__group {
@@ -154,11 +155,18 @@
   }
 }
 
+@media (min-width: 700px) {
+  .profile__container {
+    width: 600px;
+  }
+}
+
 @media (min-width: 1024px) {
   .profile__container {
     position: absolute;
     top: 120px;
     right: 80px;
+    width: 550px;
     margin: 2em auto;
     padding-bottom: 2em !important;
   }

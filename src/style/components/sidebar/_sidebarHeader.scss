@@ -1,42 +1,42 @@
 @use '../../base/variable' as *;
 @use '../../utilities/mixin' as *;
 
-.navbar__header {
+.sidebar__headers {
   @include flex(row, space-between, 0.3em);
   color: $neutral-001;
   padding-bottom: 0.3em;
   border-bottom: 2px solid $navi-004;
 
-  .navbar__brand {
+  .headers__brand {
     @include flex(row, flex-start, 0.3em);
 
     img {
-      margin: 0;
-      cursor: pointer;
-      background-color: transparent;
+      width: 55px;
+      height: 55px;
     }
-    .name__brand {
+
+    .headers__name {
       h4 {
-        font-size: 18px;
+        font-size: 16px;
         color: $neutral-001;
         margin-bottom: 0.2em;
       }
       span {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: $font-light;
         color: $neutral-004;
       }
     }
   }
 
-  .navbar__btn-icon {
+  .headers__button {
     @include flex();
     width: 36px;
     height: 36px;
     background-color: $light-001;
     border-radius: 0.2em;
 
-    .close {
+    .headers__icon {
       font-size: 2.2rem;
       color: $navi-002;
     }
@@ -44,7 +44,7 @@
 }
 
 @media (min-width: 1024px) {
-  .navbar__header {
+  .sidebar__headers {
     display: none;
   }
 }

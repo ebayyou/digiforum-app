@@ -76,6 +76,10 @@ const App = () => {
             path="/users"
             element={<UsersPage />}
           />
+          <Route
+            path="/users/:userId"
+            element={<ProfilePage />}
+          />
         </Route>
         <Route
           path="/login"

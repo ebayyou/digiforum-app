@@ -1,12 +1,19 @@
 import { ActionType } from './action';
 
-function sidebarStatusReducer(status = false, action = {}) {
+const initialState = {
+  sidebarStatus: false,
+  rightbarStatus: false,
+};
+
+function menuStatusReducer(state = initialState, action = {}) {
   switch (action.type) {
     case ActionType.SIDEBAR_STATUS:
-      return action.payload.status;
+      return { ...initialState, sidebarStatus: action.payload.status };
+    case ActionType.RIGHTBAR_STATUS:
+      return { ...initialState, rightbarStatus: action.payload.status };
     default:
-      return status;
+      return state;
   }
 }
 
-export default sidebarStatusReducer;
+export default menuStatusReducer;

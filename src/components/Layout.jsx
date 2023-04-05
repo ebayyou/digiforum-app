@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar from './navigation/Navigation';
 import SideBar from './sidebar/SideBar';
 import ProfileBar from './RightBar/RightBar';
+// import { rightbarStatusActionCreator } from '../states/menuStatus/action';
 
 const Layout = () => {
   return (
