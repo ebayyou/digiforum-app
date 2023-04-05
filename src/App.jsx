@@ -46,11 +46,12 @@ const App = () => {
           <Route
             path="/profile"
             element={<ProfilePage />}
-          />
-          <Route
-            path="/profile/:profileId"
-            element={<ProfilePage />}
-          />
+          >
+            <Route
+              path=":profileId"
+              element={<ProfilePage />}
+            />
+          </Route>
           <Route
             path="/threads"
             element={<ThreadsPage />}

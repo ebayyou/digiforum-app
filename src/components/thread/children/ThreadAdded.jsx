@@ -21,7 +21,6 @@ const ThreadAdded = () => {
     // setThreadTitle(value);
     navigate('/threads/thread-added');
   };
-  console.log(value);
 
   return (
     <ThreadProvider value={value}>
