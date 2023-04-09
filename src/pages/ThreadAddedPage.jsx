@@ -5,7 +5,7 @@ import { ArrowLeft } from 'iconsax-react';
 import { useInput } from '../hooks/useInput';
 import { asyncAddThread } from '../states/threads/action';
 import Headers from '../components/Headers';
-import { ThreadContext } from '../context';
+import ThreadContext from '../context';
 
 const ThreadAddedPage = () => {
   const { authUser = {} } = useSelector((state) => state);

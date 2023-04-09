@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Medal, Profile2User, UserOctagon } from 'iconsax-react';
 import { asyncUnsetAuthUser } from '../../states/authUser/action';
 import { asyncPopulateUserAndThreads } from '../../states/shared/action';
@@ -13,6 +13,7 @@ import WrapperError from '../errorBoundaries/WrapperError';
 const RightBar = () => {
   const { trend, authUser, users, threads, menuStatus } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(asyncPopulateUserAndThreads());
@@ -33,6 +34,7 @@ const RightBar = () => {
     }
 
     onHandlerRightbar();
+    navigate('/threads');
   };
 
   const usersList = users.slice(501, 507);

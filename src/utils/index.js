@@ -31,4 +31,13 @@ function postedAt(date) {
   return 'just now';
 }
 
-export { limitString, postedAt };
+function timeNow() {
+  const now = new Date();
+  const hours = now.getHours();
+  const checkAmPm = hours >= 12 ? 'PM' : 'AM';
+  const time = `${hours}:${now.getMinutes()} ${checkAmPm}`;
+
+  return time;
+}
+
+export { limitString, postedAt, timeNow };

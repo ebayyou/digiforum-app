@@ -6,6 +6,8 @@ function threadsReducer(threads = [], action = {}) {
       return action.payload.threads;
     case ActionType.ADD_THREAD:
       return [action.payload.thread, ...threads];
+    case ActionType.ADD_THREAD_SUCCESS:
+      return [action.payload.thread, ...threads];
     case ActionType.UP_VOTE_THREAD:
       return threads.map((thread) => {
         if (thread.id === action.payload.threadId) {

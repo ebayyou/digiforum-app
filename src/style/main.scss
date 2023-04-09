@@ -12,6 +12,7 @@
 @use './layout/NotfoundPage';
 @use './layout/UsersPage';
 @use './components/navigation/Navigation';
+@use './components/navigation/NavigationThread';
 @use './components/navigation/navList';
 @use './components/navigation/navBottom';
 @use './components/thread/Threads';
@@ -156,6 +157,7 @@ html {
   height: 100vh;
   position: fixed;
   top: 0;
+  z-index: 1;
 }
 
 @media (min-width: 500px) {

@@ -1,6 +1,8 @@
 import { createContext } from 'react';
 
-export const ThreadContext = createContext('');
+const ThreadContext = createContext('');
 
 export const ThreadConsumer = ThreadContext.Consumer;
 export const ThreadProvider = ThreadContext.Provider;
+
+export default ThreadContext;

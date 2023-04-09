@@ -26,6 +26,7 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-closing-bracket-location": "off",
     "react/function-component-definition": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }

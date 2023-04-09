@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Warning2, CloudCross, CopySuccess } from 'iconsax-react';
+import { timeNow } from '../utils';
 
 const AlertDigi = ({ warning, error, success, message }) => {
   const styleColor = {
@@ -33,7 +34,7 @@ const AlertDigi = ({ warning, error, success, message }) => {
 
           <p style={{ textAlign: 'left' }}>
             <span>Today at</span>
-            <span className="time">21:58</span>
+            <span className="time">{timeNow()}</span>
           </p>
         </div>
       </div>

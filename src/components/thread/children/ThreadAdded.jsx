@@ -8,7 +8,6 @@ import { useInput } from '../../../hooks/useInput';
 const ThreadAdded = () => {
   const { authUser } = useSelector((state) => state);
   const [visible, setVisible] = useState(false);
-  // const [threadTitle, setThreadTitle] = useState('');
   const [value, handleValueChange] = useInput('');
   const navigate = useNavigate();
 
@@ -18,9 +17,15 @@ const ThreadAdded = () => {
       return;
     }
 
-    // setThreadTitle(value);
+    if (value.length <= 3) {
+      alert('text cannot be empty, and must be more than 3 letters');
+      return;
+    }
+
     navigate('/threads/thread-added');
   };
+
+  // console.log(value.length !== 3);
 
   return (
     <ThreadProvider value={value}>
@@ -42,9 +47,9 @@ const ThreadAdded = () => {
             className="added__input"
             type="text"
             placeholder="what's in your mind?"
-            required
             value={value}
             onChange={handleValueChange}
+            required
           />
         </div>
 

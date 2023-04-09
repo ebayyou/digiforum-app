@@ -343,6 +343,10 @@ const Api = (() => {
     return leaderboards;
   }
 
+  function searchUser(users, username) {
+    return users.filter((user) => user.name.toLowerCase().includes(username.toLowerCase()));
+  }
+
   return {
     getAccessToken,
     putAccessToken,
@@ -364,6 +368,7 @@ const Api = (() => {
     createThread,
     createCommentForThread,
     getLeaderboardsByUsers,
+    searchUser,
   };
 })();
 
