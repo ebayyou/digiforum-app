@@ -1,11 +1,11 @@
-[![MasterHead](https://raw.githubusercontent.com/ebayyou/digiforum-app/additionalFeatures/public/images/Thumb%20Digiforum.png)](https://www.linkedin.com/in/bayu-anggoro-53204b250/)
+![Design preview for the Results summary component digiforum](./src/assets/Thumb%20Digiforum.png);
 
 # Build DigiForum APPs
 
 DigiForum is a discussion platform with anyone, anywhere, and you can say anything #FreeSpeech.
 
 <br />
-<img align="left" alt="version" src="https://img.shields.io/static/v1?label=DigiForum&message=v.0.2.0&color=#fff" />
+<img align="left" alt="version" src="https://img.shields.io/static/v1?label=DigiForum&message=v.1.2.0&color=#fff" />
 <br />
 
 > Three key concepts :

@@ -11,7 +11,7 @@
   border-bottom: 2px solid $navi-004;
 
   .nav__brand {
-    @include flex(row, center, 0);
+    @include flex(row, center, 1rem);
     color: $neutral-001;
 
     .nav__brand-group {
@@ -74,7 +74,7 @@
     background-color: $navi-003;
     border: none;
 
-    .nav__icon {
+    .nav__brand-logo {
       display: none;
     }
 

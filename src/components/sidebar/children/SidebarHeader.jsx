@@ -7,7 +7,7 @@ const SidebarHeader = ({ onHandlerSidebar }) => {
       <div className="headers__brand">
         <img
           className="headers__img"
-          src="/images/brand/Logo_Brand.png"
+          src="/images/brand/digiforum-stripe.svg"
           alt="logo"
         />
         <div className="headers__name">

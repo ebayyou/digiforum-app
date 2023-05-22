@@ -1,5 +1,6 @@
 import Headers from '../components/Headers';
 import WrapperImage from '../components/WrapperImage';
+import illustrationAbout from '../assets/images/illustration/Illustration_about.png';
 
 const AboutPage = () => {
   return (
@@ -11,7 +12,7 @@ const AboutPage = () => {
         />
 
         <WrapperImage
-          src="/images/illustration/Illustration_about.png"
+          src={illustrationAbout}
           alt="illustration home page"
         />
       </div>

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Save2, Message2 } from 'iconsax-react';
+import mainAvatar from '../../../assets/images/main_avatar.png';
+import logoBrandStripe from '../../../assets/images/brand/digiforum-stripe.svg';
 
 const TaglineBrand = () => {
   return (
@@ -10,7 +12,7 @@ const TaglineBrand = () => {
           className="logo__brand"
         >
           <img
-            src="/images/brand/Logo_Brand.png"
+            src={logoBrandStripe}
             alt="logo brand"
           />
         </Link>
@@ -26,7 +28,7 @@ const TaglineBrand = () => {
           <div className="box__group">
             <img
               className="box__image"
-              src="/images/main_avatar.png"
+              src={mainAvatar}
               alt="example avatar"
             />
             <div className="box__info">

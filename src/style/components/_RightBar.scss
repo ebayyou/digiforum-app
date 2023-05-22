@@ -15,10 +15,14 @@
   border-left: 2px solid $navi-004;
   transition: all 350ms ease-out;
 
+  .rightBar__wrapper {
+    @include flex(column, center, 2em);
+    margin: 2em 0;
+  }
+
   .rightBar__box {
     width: 239px;
     padding: 1em 0;
-    margin: 2em auto;
     background-color: $navi-004;
     border-radius: 0.6em;
   }

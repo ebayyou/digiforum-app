@@ -7,6 +7,7 @@ import {
   sidebarStatusActionCreator,
 } from '../../states/menuStatus/action';
 import NavList from './children/NavList';
+import logoBrand from '../../assets/images/brand/digiforum-main.svg';
 
 const Navbar = () => {
   const { authUser } = useSelector((state) => state);
@@ -38,7 +39,7 @@ const Navbar = () => {
               />
             </button>
             <img
-              src="images/brand/Logo_brand.png"
+              src={logoBrand}
               alt="logo brand"
             />
           </div>
