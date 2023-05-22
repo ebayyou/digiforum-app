@@ -22,7 +22,7 @@
         border-radius: 0.4em;
 
         &::placeholder {
-          color: $neutral-001;
+          color: $neutral-003;
           font-family: $text-font;
         }
       }
@@ -50,7 +50,7 @@
         border: 2px solid $light-002;
 
         &::placeholder {
-          color: $neutral-001;
+          color: $neutral-003;
           font-family: $text-font;
         }
       }
@@ -89,7 +89,7 @@
       height: 50px;
       color: $navi-002;
       font-weight: $font-semi-bold;
-      background-color: $primary-002;
+      background-color: $light-001;
       border-radius: 0.3em;
       font-size: 16px;
     }

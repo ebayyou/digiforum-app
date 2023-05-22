@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Warning2 } from 'iconsax-react';
+import { timeNow } from '../../utils';
 
 const WrapperError = ({ height }) => {
   return (
@@ -15,7 +16,7 @@ const WrapperError = ({ height }) => {
         <h4>Something Went Wrong</h4>
         <p>
           <span>Today at</span>
-          <span className="time">21:58</span>
+          <span className="time">{timeNow()}</span>
         </p>
       </div>
     </div>

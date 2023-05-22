@@ -28,11 +28,12 @@
   }
 
   .thread__desc {
+    width: 100%;
     font-style: normal;
     font-weight: $font-regular;
     font-size: 14px;
     line-height: 21px;
-    width: 100%;
+    color: $neutral-005;
     overflow-x: scroll;
 
     &::-webkit-scrollbar {

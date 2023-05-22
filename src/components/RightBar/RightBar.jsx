@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Medal, Profile2User, UserOctagon } from 'iconsax-react';
 import { asyncUnsetAuthUser } from '../../states/authUser/action';
 import { asyncPopulateUserAndThreads } from '../../states/shared/action';
@@ -13,6 +13,7 @@ import WrapperError from '../errorBoundaries/WrapperError';
 const RightBar = () => {
   const { trend, authUser, users, threads, menuStatus } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(asyncPopulateUserAndThreads());
@@ -33,6 +34,7 @@ const RightBar = () => {
     }
 
     onHandlerRightbar();
+    navigate('/threads');
   };
 
   const usersList = users.slice(501, 507);
@@ -49,90 +51,92 @@ const RightBar = () => {
         className={menuStatus.rightbarStatus ? 'absolute__element' : null}
       />
       <aside className={menuStatus.rightbarStatus ? 'rightBar active' : 'rightBar'}>
-        <div className="rightBar__box rightBar-flex rightBar-relative rightBar-w-s">
-          <div className="rightBar__badge">
-            <UserOctagon
-              size="22"
-              className="badge__icon"
-            />
-            <p className="badge__text">User Factor</p>
+        <div className="rightBar__wrapper">
+          <div className="rightBar__box rightBar-flex rightBar-relative rightBar-w-s">
+            <div className="rightBar__badge">
+              <UserOctagon
+                size="22"
+                className="badge__icon"
+              />
+              <p className="badge__text">User Factor</p>
+            </div>
+
+            {authUser ? (
+              <button
+                className="rightBar__button"
+                type="button"
+                onClick={onHandlerLogout}
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                className="rightBar__button"
+                to="/login"
+              >
+                Login
+              </Link>
+            )}
           </div>
 
-          {authUser ? (
-            <button
-              className="rightBar__button"
-              type="button"
-              onClick={onHandlerLogout}
-            >
-              Logout
-            </button>
-          ) : (
+          <div className="rightBar__box">
+            <div className="rightBarBox__header">
+              <h3>List of Users</h3>
+              <Profile2User
+                size="24"
+                className="rightBarBox__icon"
+              />
+            </div>
+
+            <div className="rightBarBox__wrapper">
+              {usersList.length > 0 ? (
+                usersList.map((user) => (
+                  <UserItems
+                    key={user.id}
+                    avatar={user.avatar}
+                    name={user.name}
+                    id={user.id}
+                    onHandlerRightbar={onHandlerRightbar}
+                  />
+                ))
+              ) : (
+                <WrapperError height={280} />
+              )}
+            </div>
+
             <Link
-              className="rightBar__button"
-              to="/login"
+              to="/users"
+              className="rightBarBox__button"
+              onClick={onHandlerRightbar}
             >
-              Login
+              see more
             </Link>
-          )}
-        </div>
-
-        <div className="rightBar__box">
-          <div className="rightBarBox__header">
-            <h3>List of Users</h3>
-            <Profile2User
-              size="24"
-              className="rightBarBox__icon"
-            />
           </div>
 
-          <div className="rightBarBox__wrapper">
-            {usersList.length > 0 ? (
-              usersList.map((user) => (
-                <UserItems
-                  key={user.id}
-                  avatar={user.avatar}
-                  name={user.name}
-                  id={user.id}
-                  onHandlerRightbar={onHandlerRightbar}
-                />
-              ))
-            ) : (
-              <WrapperError height={280} />
-            )}
-          </div>
+          <div className="rightBar__box">
+            <div className="rightBarBox__header">
+              <h3>Whats Happenning ?</h3>
+              <Medal
+                size="24"
+                className="rightBarBox__icon"
+              />
+            </div>
 
-          <Link
-            to="/users"
-            className="rightBarBox__button"
-            onClick={onHandlerRightbar}
-          >
-            see more
-          </Link>
-        </div>
-
-        <div className="rightBar__box">
-          <div className="rightBarBox__header">
-            <h3>Whats Happenning ?</h3>
-            <Medal
-              size="24"
-              className="rightBarBox__icon"
-            />
-          </div>
-
-          <div className="rightBarBox__wrapper">
-            {popularTrends.length > 0 ? (
-              popularTrends.map(({ id, trending, createdAt }) => (
-                <TrendItems
-                  key={id}
-                  onClickhandlerTrend={onClickhandlerTrend}
-                  trend={trending}
-                  createdAt={createdAt}
-                  popularTrend={trend === trending}
-                />
-              ))
-            ) : (
-              <WrapperError height={200} />
-            )}
+            <div className="rightBarBox__wrapper">
+              {popularTrends.length > 0 ? (
+                popularTrends.map(({ id, trending, createdAt }) => (
+                  <TrendItems
+                    key={id}
+                    onClickhandlerTrend={onClickhandlerTrend}
+                    trend={trending}
+                    createdAt={createdAt}
+                    popularTrend={trend === trending}
+                  />
+                ))
+              ) : (
+                <WrapperError height={200} />
+              )}
+            </div>
           </div>
         </div>
       </aside>

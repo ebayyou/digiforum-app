@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import errorElementDesktop from '../assets/images/illustration/Error_Element_desktop.svg';
+import errorElementMobile from '../assets/images/illustration/Error_Element_mobile.svg';
 
 const NotfoundPage = () => {
   return (
@@ -6,11 +8,11 @@ const NotfoundPage = () => {
       <picture className="not__image-wrapper">
         <source
           media="(min-width: 750px)"
-          srcSet="/images/illustration/Error_Element_desktop.svg"
+          srcSet={errorElementDesktop}
           alt="notfound illustration desktop"
         />
         <img
-          src="/images/illustration/Error_Element_mobile.svg"
+          src={errorElementMobile}
           alt="notfound illustration mobile"
         />
       </picture>

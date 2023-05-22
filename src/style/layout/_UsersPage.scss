@@ -55,6 +55,25 @@
         outline: 1px solid $light-001;
       }
     }
+
+    .user__notfound {
+      h3 {
+        font-style: normal;
+        font-weight: $font-medium;
+        font-size: 18px;
+        line-height: 22px;
+        color: $neutral-003;
+
+        span {
+          display: inline-block;
+          margin-left: 0.4em;
+          padding: 0.2em;
+          font-size: 14px;
+          background-color: #5e4dcb;
+          color: #d1caff;
+        }
+      }
+    }
   }
 }
 

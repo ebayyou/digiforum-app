@@ -1,61 +1,34 @@
-# Build DigiForum APPs v.0.1.0
+![Design preview for the Results summary component digiforum](./src/assets/Thumb%20Digiforum.png);
 
-build and create a digiforum apps with framework React, implementation state management with react-redux and with the rest of the react ecosystem, like a react-router, react-icons, react-redux-loading-bar, prop-types, etc.
+# Build DigiForum APPs
 
-## Getting Started with Create React App
+DigiForum is a discussion platform with anyone, anywhere, and you can say anything #FreeSpeech.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br />
+<img align="left" alt="version" src="https://img.shields.io/static/v1?label=DigiForum&message=v.1.2.0&color=#fff" />
+<br />
 
-> Available Scripts
+> Three key concepts :
 
-In the project directory, you can run:
+- #FreeSpeech You may or may not like or dislike any discussion, but never act on your will.
+- #NotBullying This platform is allowed for anyone, as long as it's not a person.
+- #Trust You are free to speak, discuss, as long as you don't hurt other people.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Creadits
 
-```json
-{
-  "name": "v1-digiforum-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.9.1",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.7.1",
-    "react-redux": "^8.0.5",
-    "react-redux-loading-bar": "^5.0.4",
-    "react-router-dom": "^6.6.2",
-    "react-scripts": "5.0.1",
-    "sass": "^1.57.1",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": ["react-app", "react-app/jest"]
-  },
-  "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
-    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
-  },
-  "devDependencies": {
-    "eslint": "^8.32.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-react": "^7.32.1",
-    "eslint-plugin-react-hooks": "^4.6.0"
-  }
-}
-```
+- API Public : [Forum API Dicoding](https://forum-api.dicoding.dev/v1/#/)
+- See Details Project : [DigiForum Criteria](https://obsidian-notebook-90d.notion.site/DigiForum-App-f5d4049acbe84c53a2aee08c251ebbc0)
+- See Design Digiforum APP : [Design Digiforum](https://www.figma.com/community/file/1227912702034646627)
+
+---
+
+## Tech Stack
+
+<img align="left" alt="html5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+<img align="left" alt="css3" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+<img align="left" alt="javascript" src="https://img.shields.io/badge/javascript%20-F5E015.svg?&style=for-the-badge&logo=javascript&logoColor=black" /> 
+<img align="left" alt="react" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> 
+<img align="left" alt="redux" src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white" />
+<img align="left" alt="SASS" src="https://img.shields.io/badge/sass-gray?style=for-the-badge&logo=sass" /> <br />

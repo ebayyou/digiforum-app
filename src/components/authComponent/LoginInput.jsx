@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useInput } from '../../hooks/useInput';
+import logoBrandStripe from '../../assets/images/brand/digiforum-stripe.svg';
 
 const LoginInput = ({ onSubmitHandlerLogin }) => {
   const [email, onChangeEmail] = useInput('');
@@ -19,7 +20,7 @@ const LoginInput = ({ onSubmitHandlerLogin }) => {
         className="logo__brand"
       >
         <img
-          src="/images/brand/Logo_Brand.png"
+          src={logoBrandStripe}
           alt="logo brand"
         />
       </Link>
