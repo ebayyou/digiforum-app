@@ -27,7 +27,10 @@
 @use './components/sidebar/sidebarNavigation';
 @use './components/sidebar/sidebarLeaderboard';
 @use './components/sidebar/sidebarFooter';
-@use './components/RightBar';
+@use './components/rightbar/RightBar';
+@use './components/rightbar/trendItems';
+@use './components/rightbar/userItems';
+@use './components/rightbar/communityItems';
 @use './components/LeaderboardItem';
 @use './components/Headers';
 @use './components/errorBoundaries/NothingThread';

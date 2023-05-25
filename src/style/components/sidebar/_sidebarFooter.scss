@@ -2,6 +2,7 @@
 @use '../../utilities/mixin' as *;
 
 .sidebar__footer {
+  background-color: $navi-003;
   position: absolute;
   width: 100%;
   height: 190px;
@@ -42,13 +43,9 @@
   }
 }
 
-@media (min-width: 1024px) {
-  // .sidebar__footer {
-  // }
-}
-
 @media (min-width: 1536px) {
   .sidebar__footer {
     bottom: 15px;
+    background-color: transparent;
   }
 }
