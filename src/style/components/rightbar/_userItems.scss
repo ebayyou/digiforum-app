@@ -1,0 +1,50 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.userItem__group {
+  @include flex(row, space-between, 0.6em);
+  width: 100%;
+  padding: 0.3em 1em;
+  transition: all 0.3s ease-in;
+
+  .userItem__profile {
+    @include flex(row, flex-start, 0.45em);
+  }
+
+  .userItem__icon {
+    width: 24px;
+    height: 24px;
+    color: $light-001;
+  }
+
+  .userItem__img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50px;
+  }
+
+  .userItem__info {
+    h4 {
+      color: $neutral-005;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    span {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      color: $neutral-003;
+    }
+  }
+
+  &:hover {
+    background-color: $navi-001;
+  }
+
+  &:focus {
+    border: 1px solid $light-001;
+    outline: 1px solid $light-001;
+  }
+}

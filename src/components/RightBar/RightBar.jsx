@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Medal, Profile2User } from 'iconsax-react';
 // import { asyncUnsetAuthUser } from '../../states/authUser/action';
 import { asyncPopulateUserAndThreads } from '../../states/shared/action';
@@ -8,6 +8,9 @@ import { trendByCategoryActionCreator } from '../../states/trends/action';
 import { rightbarStatusActionCreator } from '../../states/menuStatus/action';
 import TrendItems from './children/TrendItems';
 import UserItems from './children/UserItems';
+import RightbarBoxHeader from './children/RightbarBoxHeader';
+import RightbarBoxLink from './children/RightbarBoxLink';
+import Community from './children/Community';
 import WrapperError from '../errorBoundaries/WrapperError';
 
 const RightBar = () => {
@@ -50,16 +53,38 @@ const RightBar = () => {
         onTouchStart={onHandlerRightbar}
         className={menuStatus.rightbarStatus ? 'absolute__element' : null}
       />
-      <aside className={menuStatus.rightbarStatus ? 'rightBar active' : 'rightBar'}>
+      <aside className={menuStatus.rightbarStatus ? 'rightBar active' : 'rightBar active'}>
         <div className="rightBar__wrapper">
+          <Community />
+
           <div className="rightBar__box">
-            <div className="rightBarBox__header">
-              <h3>List of Users</h3>
-              <Profile2User
-                size="24"
-                className="rightBarBox__icon"
-              />
+            <RightbarBoxHeader
+              title="Whats Happenning ?"
+              Icon={Medal}
+            />
+
+            <div className="rightBarBox__wrapper">
+              {popularTrends.length > 0 ? (
+                popularTrends.map(({ id, trending, createdAt }) => (
+                  <TrendItems
+                    key={id}
+                    onClickhandlerTrend={onClickhandlerTrend}
+                    trend={trending}
+                    createdAt={createdAt}
+                    popularTrend={trend === trending}
+                  />
+                ))
+              ) : (
+                <WrapperError height={200} />
+              )}
             </div>
+          </div>
+
+          <div className="rightBar__box">
+            <RightbarBoxHeader
+              title="List of Users"
+              Icon={Profile2User}
+            />
 
             <div className="rightBarBox__wrapper">
               {usersList.length > 0 ? (
@@ -77,39 +102,10 @@ const RightBar = () => {
               )}
             </div>
 
-            <Link
+            <RightbarBoxLink
               to="/users"
-              className="rightBarBox__button"
-              onClick={onHandlerRightbar}
-            >
-              see more
-            </Link>
-          </div>
-
-          <div className="rightBar__box">
-            <div className="rightBarBox__header">
-              <h3>Whats Happenning ?</h3>
-              <Medal
-                size="24"
-                className="rightBarBox__icon"
-              />
-            </div>
-
-            <div className="rightBarBox__wrapper">
-              {popularTrends.length > 0 ? (
-                popularTrends.map(({ id, trending, createdAt }) => (
-                  <TrendItems
-                    key={id}
-                    onClickhandlerTrend={onClickhandlerTrend}
-                    trend={trending}
-                    createdAt={createdAt}
-                    popularTrend={trend === trending}
-                  />
-                ))
-              ) : (
-                <WrapperError height={200} />
-              )}
-            </div>
+              onHandlerRightbar={onHandlerRightbar}
+            />
           </div>
         </div>
       </aside>

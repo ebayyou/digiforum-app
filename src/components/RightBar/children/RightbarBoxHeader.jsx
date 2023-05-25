@@ -1,13 +1,21 @@
-const RightbarBoxHeader = () => {
-    return (
-        <div className="rightBarBox__header">
-              <h3>List of Users</h3>
-              <Profile2User
-                size="24"
-                className="rightBarBox__icon"
-              />
-            </div>
-    )
-}
+import PropTypes from 'prop-types';
 
-export default RightbarBoxHeader
+const RightbarBoxHeader = ({ title, Icon }) => {
+  return (
+    <div className="rightBarBox__header">
+      <h3>{title}</h3>
+      <Icon
+        size="24"
+        className="rightBarBox__icon"
+        variant="Bold"
+      />
+    </div>
+  );
+};
+
+RightbarBoxHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+  Icon: PropTypes.element.isRequired,
+};
+
+export default RightbarBoxHeader;
