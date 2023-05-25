@@ -30,13 +30,16 @@
 @media (min-width: 1024px) {
   .homepage {
     position: absolute;
+    margin: 0 auto;
     top: 60px;
     right: 120px;
     padding: 2em 1em;
   }
 }
+
 @media (min-width: 1150px) {
   .homepage {
+    max-width: 1000px;
     right: 190px;
   }
 }
@@ -47,12 +50,8 @@
   }
 }
 
-@media (min-width: 1440px) and (min-height: 1000px) {
-}
-
 @media (min-width: 1536px) {
   .homepage {
-    max-width: 1000px;
     margin: 6em auto 0;
 
     .homepage__wrapper {

@@ -40,9 +40,9 @@ const SideBar = () => {
               <WrapperError height={220} />
             )}
           </div>
-
-          <SideBarFooter />
         </div>
+
+        <SideBarFooter />
       </aside>
     </>
   );

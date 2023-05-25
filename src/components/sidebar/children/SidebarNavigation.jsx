@@ -1,43 +1,89 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { User, Hashtag, Save2 } from 'iconsax-react';
+import { NavLink } from 'react-router-dom';
+import { Home, Grammerly, Hashtag, Quant, MedalStar } from 'iconsax-react';
 
 const navigationItem = [
   {
     id: '1',
-    item: 'Profile',
-    link: '/profile',
-    icon: <User className="nav__icon" />,
+    text: 'Home',
+    link: '/',
+    icon: <Home className="nav__icon" />,
+    iconActive: (
+      <Home
+        className="nav__icon-active"
+        variant="Bold"
+      />
+    ),
   },
   {
     id: '2',
-    item: 'Your Threads',
-    link: '/profile/yourThreads',
-    icon: <Hashtag className="nav__icon" />,
+    text: 'About',
+    link: '/about',
+    icon: <Grammerly className="nav__icon" />,
+    iconActive: (
+      <Grammerly
+        className="nav__icon-active"
+        variant="Bold"
+      />
+    ),
   },
   {
     id: '3',
-    item: 'Saved',
-    link: '/profile/saved',
-    icon: <Save2 className="nav__icon" />,
+    text: 'Threads',
+    link: '/threads',
+    icon: <Hashtag className="nav__icon" />,
+    iconActive: (
+      <Hashtag
+        className="nav__icon-active"
+        variant="Bold"
+      />
+    ),
+  },
+  {
+    id: '4',
+    text: 'Community',
+    link: '/community',
+    icon: <Quant className="nav__icon" />,
+    iconActive: (
+      <Quant
+        className="nav__icon-active"
+        variant="Bold"
+      />
+    ),
+  },
+  {
+    id: '5',
+    text: 'Leaderboards',
+    link: '/leaderboard',
+    icon: <MedalStar className="nav__icon" />,
+    iconActive: (
+      <MedalStar
+        className="nav__icon-active"
+        variant="Bold"
+      />
+    ),
   },
 ];
 
 const SideBarNavigation = ({ onHandlerSidebar }) => {
   return (
-    <div className="sidebar__navigation">
-      {navigationItem.map(({ id, item, link, icon }) => (
-        <Link
+    <ul className="sidebar__navigation">
+      {navigationItem.map(({ id, text, link, icon }) => (
+        <li
           key={id}
-          to={link}
-          onClick={onHandlerSidebar}
-          className="nav__link"
+          className="nav__item"
         >
-          <div className="nav__wrap">{icon}</div>
-          <h4 className="nav__title">{item}</h4>
-        </Link>
+          <NavLink
+            to={link}
+            onClick={onHandlerSidebar}
+            className="nav__link"
+          >
+            <div className="nav__wrap">{icon}</div>
+            <h4 className="nav__title">{text}</h4>
+          </NavLink>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

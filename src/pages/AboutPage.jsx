@@ -12,8 +12,10 @@ const AboutPage = () => {
         />
 
         <WrapperImage
+          alt="illustration home page mobile"
+          altSet="illustration home page desktop"
           src={illustrationAbout}
-          alt="illustration home page"
+          srcSet={illustrationAbout}
         />
       </div>
     </section>

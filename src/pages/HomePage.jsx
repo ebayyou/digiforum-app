@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import Headers from '../components/Headers';
 import WrapperImage from '../components/WrapperImage';
-import illustrationHome from '../assets/images/illustration/Illustration_home.png';
+import illustrationHomeMobile from '../assets/images/illustration/Illustration-home_mobile.svg';
+import illustrationHomeDesktop from '../assets/images/illustration/Illustration-home_desktop.svg';
 
 const HomePage = () => {
   return (
@@ -13,8 +14,10 @@ const HomePage = () => {
         />
 
         <WrapperImage
-          src={illustrationHome}
-          alt="illustration home page"
+          alt="illustration home page mobile"
+          altSet="illustration home page desktop"
+          src={illustrationHomeMobile}
+          srcSet={illustrationHomeDesktop}
         />
       </div>
 

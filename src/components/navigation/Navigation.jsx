@@ -1,21 +1,22 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { HambergerMenu, Category } from 'iconsax-react';
-import { asyncUnsetAuthUser } from '../../states/authUser/action';
+import { useDispatch } from 'react-redux';
+// import { Link } from 'react-router-dom';
+// import { asyncUnsetAuthUser } from '../../states/authUser/action';
+import { ArrowSquareDown, SearchStatus, Notification, MessageFavorite } from 'iconsax-react';
 import {
-  rightbarStatusActionCreator,
+  // rightbarStatusActionCreator,
   sidebarStatusActionCreator,
 } from '../../states/menuStatus/action';
 import NavList from './children/NavList';
 import logoBrand from '../../assets/images/brand/digiforum-main.svg';
+import profile from '../../assets/images/main_avatar.png';
 
 const Navbar = () => {
-  const { authUser } = useSelector((state) => state);
+  // const { authUser } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const onHandlerLogout = () => dispatch(asyncUnsetAuthUser());
+  // const onHandlerLogout = () => dispatch(asyncUnsetAuthUser());
   const onHandlerSidebar = () => dispatch(sidebarStatusActionCreator(true));
-  const onHandlerRightbar = () => dispatch(rightbarStatusActionCreator(true));
+  // const onHandlerRightbar = () => dispatch(rightbarStatusActionCreator(true));
 
   return (
     <>
@@ -23,6 +24,7 @@ const Navbar = () => {
       <nav className="navbar__bottom">
         <NavList />
       </nav>
+
       {/* desktop version */}
       <nav className="navbar">
         <div className="nav__brand">
@@ -32,16 +34,11 @@ const Navbar = () => {
               className="nav__brand-logo"
               onClick={onHandlerSidebar}
             >
-              <Category
-                className="nav__icon"
-                size="32"
-                color="#d1caff"
+              <img
+                src={logoBrand}
+                alt="logo brand"
               />
             </button>
-            <img
-              src={logoBrand}
-              alt="logo brand"
-            />
           </div>
           <div className="name__brand">
             <h4>DigiForum</h4>
@@ -49,37 +46,63 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="nav__group-button">
-          {authUser ? (
-            <button
-              className="nav__button"
-              type="button"
-              onClick={onHandlerLogout}
-            >
-              Logout
-            </button>
-          ) : (
-            <Link
-              className="nav__button"
-              to="/login"
-            >
-              Login
-            </Link>
-          )}
-
-          <button
-            type="button"
-            className="Humberger__Menu"
-            onClick={onHandlerRightbar}
-          >
-            <HambergerMenu
-              size="38"
-              color="#d1caff"
-            />
-          </button>
+        <div className="nav__search">
+          <SearchStatus
+            size={32}
+            color="#d1caff"
+          />
+          <input
+            type="search"
+            className="search__input"
+            placeholder="Find what do you want ?"
+          />
         </div>
 
-        <NavList desktopMode />
+        <div className="nav__wrap-icon">
+          <div className="nav__group-icon">
+            <button
+              type="button"
+              className="icon__notif"
+            >
+              <Notification
+                size={26}
+                color="#d1caff"
+              />
+            </button>
+            <button
+              type="button"
+              className="icon__message"
+            >
+              <MessageFavorite
+                size={26}
+                color="#d1caff"
+              />
+            </button>
+          </div>
+
+          <div className="nav__group-profile">
+            <div className="nav__profile">
+              <img
+                src={profile}
+                alt="logo brand"
+              />
+
+              <h5>Ebayyou. A</h5>
+            </div>
+
+            <button
+              type="button"
+              className="nav__button-dropicon"
+            >
+              <ArrowSquareDown
+                className="dropicon"
+                size="28"
+                color="#DDD8D8"
+                variant="Bold"
+              />
+            </button>
+          </div>
+        </div>
       </nav>
     </>
   );

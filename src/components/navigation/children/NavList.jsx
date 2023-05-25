@@ -1,6 +1,5 @@
-import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { Home, EmojiSad, Hashtag, Quant, MedalStar } from 'iconsax-react';
+import { Home, Grammerly, Hashtag, Quant, MedalStar } from 'iconsax-react';
 
 const navigationItem = [
   {
@@ -10,14 +9,14 @@ const navigationItem = [
     icon: (
       <Home
         className="link__icon"
-        size="34"
+        size="30"
         color="#999999"
       />
     ),
     iconActive: (
       <Home
         className="link__icon-active"
-        size="34"
+        size="30"
         color="#d1caff"
         variant="Bold"
       />
@@ -28,16 +27,16 @@ const navigationItem = [
     text: 'About',
     link: '/about',
     icon: (
-      <EmojiSad
+      <Grammerly
         className="link__icon"
-        size="34"
+        size="30"
         color="#999999"
       />
     ),
     iconActive: (
-      <EmojiSad
+      <Grammerly
         className="link__icon-active"
-        size="34"
+        size="30"
         color="#d1caff"
         variant="Bold"
       />
@@ -50,14 +49,14 @@ const navigationItem = [
     icon: (
       <Hashtag
         className="link__icon"
-        size="34"
+        size="30"
         color="#999999"
       />
     ),
     iconActive: (
       <Hashtag
         className="link__icon-active"
-        size="34"
+        size="30"
         color="#d1caff"
         variant="Bold"
       />
@@ -70,14 +69,14 @@ const navigationItem = [
     icon: (
       <Quant
         className="link__icon"
-        size="34"
+        size="30"
         color="#999999"
       />
     ),
     iconActive: (
       <Quant
         className="link__icon-active"
-        size="34"
+        size="30"
         color="#d1caff"
         variant="Bold"
       />
@@ -90,14 +89,14 @@ const navigationItem = [
     icon: (
       <MedalStar
         className="link__icon"
-        size="34"
+        size="30"
         color="#999999"
       />
     ),
     iconActive: (
       <MedalStar
         className="link__icon-active"
-        size="34"
+        size="30"
         color="#d1caff"
         variant="Bold"
       />
@@ -105,41 +104,24 @@ const navigationItem = [
   },
 ];
 
-const navList = ({ desktopMode }) => {
+const navList = () => {
   return (
-    <ul className={`${desktopMode ? 'navlist-mode' : 'navlist'}`}>
-      {navigationItem.map(({ id, text, link, icon, iconActive }) => (
+    <ul className="navlist">
+      {navigationItem.map(({ id, link, icon, iconActive }) => (
         <li
           key={id}
-          className={`${desktopMode ? 'navlist__list-mode' : 'navlist__list'}`}
+          className="navlist__list"
         >
-          {desktopMode ? (
-            <NavLink
-              className={`${desktopMode ? 'navlist__link-mode' : 'navlist__link'}`}
-              to={link}
-            >
-              {text}
-            </NavLink>
-          ) : (
-            <NavLink
-              className={`${desktopMode ? 'navlist__link-mode' : 'navlist__link'}`}
-              to={link}
-            >
-              {({ isActive }) => (isActive ? iconActive : icon)}
-            </NavLink>
-          )}
+          <NavLink
+            className="navlist__link"
+            to={link}
+          >
+            {({ isActive }) => (isActive ? iconActive : icon)}
+          </NavLink>
         </li>
       ))}
     </ul>
   );
-};
-
-navList.defaultProps = {
-  desktopMode: false,
-};
-
-navList.propTypes = {
-  desktopMode: PropTypes.bool,
 };
 
 export default navList;

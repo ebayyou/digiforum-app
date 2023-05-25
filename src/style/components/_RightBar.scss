@@ -203,21 +203,28 @@
 
 @media (min-width: 1024px) {
   .rightBar {
-    position: absolute;
-    top: 80px;
-    right: 0;
-    z-index: 0;
-    margin: 2em 0;
+    //   position: absolute;
+    top: 40px;
+    //   right: 0;
+    //   z-index: 0;
+    //   margin: 2em 0;
 
-    .rightBar__box {
-      background-color: $navi-003;
-    }
+    //   .rightBar__box {
+    //     background-color: $navi-003;
+    //   }
+  }
+
+  .rightBar.visible {
+    display: none;
   }
 }
 
 @media (min-width: 1200px) {
   .rightBar {
+    right: 0;
     width: 300px;
+    z-index: 0;
+    margin: 2em 0;
     background-color: transparent;
   }
 
@@ -235,7 +242,9 @@
 
 @media (min-width: 1536px) {
   .rightBar {
-    top: 20px;
+    position: absolute;
+    right: 0px;
+    top: 56px;
     padding: 5rem 1rem 2rem;
 
     .rightBar__box {

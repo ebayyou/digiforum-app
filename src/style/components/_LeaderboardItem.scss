@@ -3,7 +3,8 @@
 
 .leaderboard__item {
   @include flex(row, space-between, 0);
-  margin: 1em 0;
+  width: 90%;
+  margin: 1em auto;
   transition: all 0.3s ease;
   font-family: $text-font;
 
@@ -46,8 +47,9 @@
   }
 
   &:hover {
+    width: 100%;
     padding: 0.4rem;
-    background-color: #91707082;
+    background-color: $navi-004;
     border-radius: 0.4em;
   }
 }

@@ -1,22 +1,26 @@
 import PropTypes from 'prop-types';
 
-const WrapperImage = ({ src, alt }) => {
+const WrapperImage = ({ src, srcSet, alt, altSet }) => {
   return (
-    <div className="wrapper__img">
+    <picture className="wrapper__img">
+      <source
+        media="(min-width: 750px)"
+        srcSet={srcSet}
+        alt={altSet}
+      />
       <img
-        className="img"
         src={src}
         alt={alt}
-        width="100%"
-        height="554px"
       />
-    </div>
+    </picture>
   );
 };
 
 WrapperImage.propTypes = {
   src: PropTypes.string.isRequired,
+  srcSet: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
+  altSet: PropTypes.string.isRequired,
 };
 
 export default WrapperImage;
