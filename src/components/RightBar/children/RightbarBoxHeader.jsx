@@ -15,7 +15,7 @@ const RightbarBoxHeader = ({ title, Icon }) => {
 
 RightbarBoxHeader.propTypes = {
   title: PropTypes.string.isRequired,
-  Icon: PropTypes.element.isRequired,
+  Icon: PropTypes.elementType.isRequired,
 };
 
 export default RightbarBoxHeader;

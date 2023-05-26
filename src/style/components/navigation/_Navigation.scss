@@ -60,6 +60,7 @@
   }
 
   .nav__group-profile {
+    position: relative;
     @include flex(row, flex-start, 0.5em);
 
     .nav__profile {
@@ -93,11 +94,36 @@
   .nav__search {
     display: none;
   }
+
+  .nav__button {
+    width: 100px;
+    height: 44px;
+    margin-right: 0.25em;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 0.25em;
+    color: $navi-002;
+    background-color: $light-001;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 5px 5px 0px rgba(164, 164, 164, 0.38);
+    }
+  }
 }
 
 @media (min-width: 768px) {
   .navbar {
     padding: 2.3em 1em;
+
+    .nav__button {
+      width: 142px;
+      height: 45px;
+      margin-right: 0;
+    }
   }
 }
 

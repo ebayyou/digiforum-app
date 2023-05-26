@@ -54,7 +54,7 @@ const navigationItem = [
   {
     id: '5',
     text: 'Leaderboards',
-    link: '/leaderboard',
+    link: '/leaderboards',
     icon: <MedalStar className="nav__icon" />,
     iconActive: (
       <MedalStar

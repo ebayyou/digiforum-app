@@ -82,16 +82,15 @@
 @media (min-width: 1024px) {
   .thread {
     margin-top: 1em;
-    background: $navi-002;
-    padding: 20px 30px;
-    border-radius: 15px;
-    box-shadow: 10px 10px 0px rgba(2, 2, 2, 0.45);
+    background: $navi-003;
+    padding: 1.2em;
+    border-radius: 0.4em;
     border: none;
   }
 }
 
 @media (min-width: 1536px) {
   .thread {
-    background: $navi-004;
+    background: $navi-002;
   }
 }

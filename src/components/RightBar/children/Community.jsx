@@ -37,7 +37,10 @@ const Community = ({ onHandlerRightbar }) => {
       <div className="rightBarBox__wrapper">
         {communities.length > 0 ? (
           communities.map((item) => (
-            <div className="community">
+            <div
+              key={item.id}
+              className="community"
+            >
               <div className="community__group">
                 <div
                   style={{ background: `${item.gradientColor}` }}

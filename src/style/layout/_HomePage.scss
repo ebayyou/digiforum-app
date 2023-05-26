@@ -4,26 +4,36 @@
 .homepage {
   padding: 2em 0 6em;
 
+  .homepage__wrapper {
+    @include flex(column-reverse, center, 1.5em);
+    margin-bottom: 1.5em;
+  }
+
   .homepage__btn {
     display: block;
-    width: 80%;
-    height: 54px;
-    margin: 1em auto 0;
+    width: 85%;
+    height: 60px;
+    margin: 0 auto;
     font-family: $body-font;
     font-style: normal;
     font-weight: $font-semi-bold;
     font-size: 16px;
-    line-height: 54px;
+    line-height: 60px;
     text-align: center;
     background: $light-001;
     color: $navi-001;
-    border-radius: 6px;
+    border-radius: 0.25em;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      box-shadow: 10px 10px 0px $navi-004;
+    }
   }
 }
 
 @media (min-width: 420px) {
   .homepage__btn {
-    width: 348px !important;
+    width: 350px !important;
   }
 }
 
@@ -55,7 +65,7 @@
     margin: 6em auto 0;
 
     .homepage__wrapper {
-      @include flex();
+      flex-direction: row;
     }
   }
 }

@@ -34,7 +34,6 @@
     position: absolute;
     right: 90px;
     overflow-y: scroll;
-    height: 840px;
 
     &::-webkit-scrollbar {
       width: 0;
@@ -47,27 +46,20 @@
     position: absolute;
     left: 0;
     right: 0;
-    height: 840px;
   }
 }
 
-@media (min-width: 1441px) {
+@media (min-width: 1440px) {
   .Layout {
     top: 35px;
     width: 1440px;
   }
 }
 
-@media (min-width: 1440px) and (min-height: 1000px) {
-  .Layout__children {
-    height: 900px;
-    padding-bottom: 1.5em;
-  }
-}
-
 @media (min-width: 1536px) {
   .Layout {
     position: fixed;
+    overflow-y: scroll;
     top: 20px;
     left: 0;
     bottom: 0;
@@ -75,7 +67,8 @@
     width: 1536px;
     height: 100vh;
     margin: 0 auto;
-    border-radius: 0.8em;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
     border: 2px solid $navi-004;
   }
 }
