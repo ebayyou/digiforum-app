@@ -3,12 +3,13 @@
 
 .navbar {
   @include flex(row, space-between, 0);
-  width: 100%;
+  width: 96%;
   height: 75px;
   font-family: $text-font;
+  margin: 0.8em auto 0;
   padding: 0 0.4em;
   background-color: $navi-003;
-  border-bottom: 2px solid $navi-004;
+  border-radius: 0.25em;
 
   .nav__brand {
     @include flex(row, center, 0.1em);
@@ -60,6 +61,7 @@
   }
 
   .nav__group-profile {
+    position: relative;
     @include flex(row, flex-start, 0.5em);
 
     .nav__profile {
@@ -93,11 +95,36 @@
   .nav__search {
     display: none;
   }
+
+  .nav__button {
+    width: 100px;
+    height: 44px;
+    margin-right: 0.25em;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 0.25em;
+    color: $navi-002;
+    background-color: $light-001;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 5px 5px 0px rgba(164, 164, 164, 0.38);
+    }
+  }
 }
 
 @media (min-width: 768px) {
   .navbar {
     padding: 2.3em 1em;
+
+    .nav__button {
+      width: 142px;
+      height: 45px;
+      margin-right: 0;
+    }
   }
 }
 
@@ -111,6 +138,7 @@
     z-index: 10;
     padding: 2.3em 1em;
     background-color: $navi-003;
+    border-bottom: 2px solid $navi-004;
 
     .nav__brand {
       display: none;
@@ -170,6 +198,8 @@
 
 @media (min-width: 1440px) {
   .navbar {
+    width: 78%;
+
     .nav__search {
       justify-content: flex-start;
       gap: 0.8em;

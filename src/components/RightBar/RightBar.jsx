@@ -53,9 +53,9 @@ const RightBar = () => {
         onTouchStart={onHandlerRightbar}
         className={menuStatus.rightbarStatus ? 'absolute__element' : null}
       />
-      <aside className={menuStatus.rightbarStatus ? 'rightBar active' : 'rightBar active'}>
+      <aside className={menuStatus.rightbarStatus ? 'rightBar active' : 'rightBar'}>
         <div className="rightBar__wrapper">
-          <Community />
+          <Community onHandlerRightbar={onHandlerRightbar} />
 
           <div className="rightBar__box">
             <RightbarBoxHeader

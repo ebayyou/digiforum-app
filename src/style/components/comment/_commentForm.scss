@@ -7,7 +7,7 @@
   width: 100%;
   height: 205px;
   padding: 0.6em;
-  background: $navi-004;
+  background: $navi-003;
   border-radius: 0.5em;
 
   .comment__user {
@@ -60,7 +60,7 @@
     align-self: flex-end;
     width: 100px;
     height: 34px;
-    border-radius: 0.4em;
+    border-radius: 0.25em;
     background: $light-001;
 
     span {
@@ -69,5 +69,11 @@
       font-size: 12px;
       line-height: 18px;
     }
+  }
+}
+
+@media (min-width: 1536px) {
+  .comment__form {
+    background: $navi-002;
   }
 }

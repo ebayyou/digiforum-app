@@ -48,6 +48,10 @@ const App = () => {
             element={<ProfilePage />}
           />
           <Route
+            path="/profile/:profileId"
+            element={<ProfilePage />}
+          />
+          <Route
             path="/threads"
             element={<ThreadsPage />}
           />

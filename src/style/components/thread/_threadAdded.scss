@@ -4,7 +4,7 @@
 .threadAdded {
   position: relative;
   width: 100%;
-  margin: 0 0 1.5em;
+  margin: 0 auto 1.5em;
   padding: 0.6em 0.5em;
   background: $navi-003;
   border-radius: 0.4em;
@@ -116,10 +116,6 @@
     }
 
     .added__group {
-      .added__dot {
-        display: none;
-      }
-
       .added__item {
         position: unset;
       }
@@ -146,16 +142,16 @@
 
 @media (min-width: 1536px) {
   .threadAdded {
-    background-color: $navi-004;
+    background-color: $navi-002;
 
     .added__input-group {
       .added__input {
-        background-color: $navi-002;
+        background-color: $navi-004;
       }
     }
 
     .added__group .added__item {
-      background-color: $navi-002;
+      background-color: $navi-004;
     }
   }
 }

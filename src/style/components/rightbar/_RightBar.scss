@@ -83,13 +83,6 @@
     margin: 0.6em 0;
   }
 
-  .neutral {
-    color: $neutral-002;
-  }
-  .pink {
-    color: $primary-001;
-  }
-
   &::-webkit-scrollbar {
     width: 0;
   }
@@ -117,7 +110,20 @@
     top: 76px;
 
     .rightBar__wrapper {
-      margin: 3.25em 0 2em;
+      margin: 3.25em 0 6em;
+    }
+
+    .rightBar__box {
+      background-color: $navi-003;
+
+      .rightBarBox__button {
+        background-color: $navi-004;
+
+        &:hover {
+          color: $navi-002;
+          background-color: $light-001;
+        }
+      }
     }
   }
 
@@ -141,6 +147,11 @@
 }
 
 @media (min-width: 1440px) {
+  .rightBar {
+    .rightBar__wrapper {
+      margin: 3.25em 0 7em;
+    }
+  }
 }
 
 @media (min-width: 1536px) {

@@ -14,11 +14,9 @@
     .trend__icon {
       width: 20px;
       height: 20px;
-      color: $neutral-005;
     }
 
     h4 {
-      color: $neutral-005;
       font-weight: 500;
       font-size: 12px;
       line-height: 18px;
@@ -26,9 +24,14 @@
   }
 
   .trend__createdAt {
-    color: $light-001;
     font-weight: 400;
     font-size: 12px;
     line-height: 18px;
   }
+}
+.trend__group.neutral {
+  color: $neutral-005;
+}
+.trend__group.pink {
+  color: $primary-001;
 }
