@@ -1,10 +1,9 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
-import { SearchStatus } from 'iconsax-react';
 import { useSelector } from 'react-redux';
 import { Link, useSearchParams } from 'react-router-dom';
 import Api from '../utils/Api';
 import ThreadItemOwner from '../components/thread/children/thread/ThreadItemOwner';
+import SearchElement from '../components/SearchElement';
 
 const UsersPage = () => {
   const { users } = useSelector((state) => state);
@@ -38,22 +37,10 @@ const UsersPage = () => {
   return (
     <section className="Layout__children">
       <div className="UsersPage">
-        <div className="input__group">
-          <label htmlFor="search__user">
-            <SearchStatus
-              size="28"
-              color="#d1caff"
-            />
-          </label>
-          <input
-            className="input__search"
-            id="search__user"
-            type="search"
-            placeholder="Find people speech in here..."
-            value={keyword}
-            onChange={changeValueSearchParams}
-          />
-        </div>
+        <SearchElement
+          keyword={keyword}
+          changeValueSearchParams={changeValueSearchParams}
+        />
 
         <div className="UsersPage__list">
           {foundUsers.length !== 0 ? (

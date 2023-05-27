@@ -62,9 +62,17 @@
 
 @media (min-width: 1536px) {
   .homepage {
-    margin: 6em auto 0;
+    width: 920px;
+    height: 90vh;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
 
     .homepage__wrapper {
+      width: 100%;
       flex-direction: row;
     }
   }

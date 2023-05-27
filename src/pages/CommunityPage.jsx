@@ -1,8 +1,10 @@
-import { MirroringScreen } from 'iconsax-react';
+import SearchElement from '../components/SearchElement';
+
+import CommunityItem from '../components/CommunityItem';
 
 const CommunityPage = () => {
   return (
-    <div className="Layout__children">
+    <div className="Layout__children children__w800">
       <div className="CommunityPage">
         <div className="headers__page">
           <h1 className="heading__page">Top Community that you can Join & Discuss</h1>
@@ -11,24 +13,17 @@ const CommunityPage = () => {
           </p>
         </div>
 
-        <div className="box__wrapper">
-          <div className="box__group-double" />
+        <div className="community__wrap">
+          <SearchElement
+            className="search__w-md"
+            keyword="Nothing Work"
+            changeValueSearchParams={() => {}}
+          />
 
-          <div className="box__group">
-            <div className="box__headers">
-              <MirroringScreen
-                size="32"
-                color="#d1caff"
-              />
-              <h3 className="box__head">Nothing Community</h3>
-            </div>
-
-            <p className="box__desc">
-              sorry #PeopleSpeech, community feature not yet available. but don&apos;t worry, this
-              feature is being worked on by
-              <span>professional developers.</span>
-              <span>see you again...</span>
-            </p>
+          <div className="community__list">
+            <CommunityItem />
+            <CommunityItem />
+            <CommunityItem />
           </div>
         </div>
       </div>

@@ -46,17 +46,21 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="nav__search">
+        <label
+          htmlFor="search__user"
+          className="nav__search"
+        >
           <SearchStatus
-            size={32}
+            size="28"
             color="#d1caff"
           />
           <input
-            type="search"
             className="search__input"
-            placeholder="Find what do you want ?"
+            id="search__user"
+            type="search"
+            placeholder="Find people speech in here..."
           />
-        </div>
+        </label>
 
         <div className="nav__wrap-icon">
           <div className="nav__group-icon">

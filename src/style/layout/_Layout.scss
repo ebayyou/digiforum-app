@@ -3,7 +3,7 @@
 
 .Layout__children {
   width: 100%;
-  padding: 2em 1em 6em;
+  padding: 2em 1em 4em;
 }
 
 .Layout__children-full {
@@ -53,6 +53,10 @@
   .Layout {
     top: 35px;
     width: 1440px;
+  }
+
+  .Layout__children.children__w800 {
+    width: 800px;
   }
 }
 

@@ -3,12 +3,13 @@
 
 .navbar {
   @include flex(row, space-between, 0);
-  width: 100%;
+  width: 96%;
   height: 75px;
   font-family: $text-font;
+  margin: 0.8em auto 0;
   padding: 0 0.4em;
   background-color: $navi-003;
-  border-bottom: 2px solid $navi-004;
+  border-radius: 0.25em;
 
   .nav__brand {
     @include flex(row, center, 0.1em);
@@ -137,6 +138,7 @@
     z-index: 10;
     padding: 2.3em 1em;
     background-color: $navi-003;
+    border-bottom: 2px solid $navi-004;
 
     .nav__brand {
       display: none;
@@ -196,6 +198,8 @@
 
 @media (min-width: 1440px) {
   .navbar {
+    width: 78%;
+
     .nav__search {
       justify-content: flex-start;
       gap: 0.8em;

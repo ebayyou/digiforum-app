@@ -35,6 +35,8 @@
 @use './components/rightbar/communityItems';
 @use './components/LeaderboardItem';
 @use './components/Headers';
+@use './components/SearchElement';
+@use './components/communityItem';
 @use './components/errorBoundaries/NothingThread';
 @use './components/errorBoundaries/ProfileLock';
 
@@ -79,14 +81,14 @@ html {
 
 .heading__page {
   margin: 0 0.5em;
-  font-weight: 600;
+  font-weight: $font-semi-bold;
   font-size: 1.3rem;
   line-height: 38px;
 }
 
 .desc__page {
   margin: 0 0.8em;
-  font-weight: 300;
+  font-weight: $font-regular;
   font-size: 1.05rem;
   line-height: 27px;
   color: $neutral-003;
@@ -209,7 +211,6 @@ html {
 @media (min-width: 1440px) {
   .headers__page {
     width: 348px;
-    height: 130px;
     margin: 0.2em auto;
     text-align: center;
   }
