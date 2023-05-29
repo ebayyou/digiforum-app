@@ -1,0 +1,35 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.threadAdded__body {
+  margin-top: 2.5em;
+  padding: 1em;
+
+  .threadAdded__profile {
+    @include flex(row, flex-start, 0.5em);
+    margin-bottom: 2.5em;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 0.25em;
+    }
+
+    .profile__info {
+      h4 {
+        font-style: normal;
+        font-weight: $font-semi-bold;
+        font-size: 16px;
+        line-height: 24px;
+        color: $neutral-005;
+      }
+      p {
+        font-style: normal;
+        font-weight: $font-regular;
+        font-size: 12px;
+        line-height: 18px;
+        color: $neutral-003;
+      }
+    }
+  }
+}

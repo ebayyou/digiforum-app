@@ -56,12 +56,12 @@ const App = () => {
             element={<ThreadsPage />}
           />
           <Route
-            path="/threads/:threadId"
-            element={<ThreadDetailPage />}
-          />
-          <Route
             path="/threads/thread-added"
             element={<ThreadAddedPage />}
+          />
+          <Route
+            path="/threads/:threadId"
+            element={<ThreadDetailPage />}
           />
           <Route
             path="/community"
@@ -77,10 +77,10 @@ const App = () => {
           />
           <Route
             path="/users/:userId"
-            // user page
             element={<ProfilePage />}
           />
         </Route>
+
         <Route
           path="/login"
           element={<LoginPage />}

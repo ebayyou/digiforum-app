@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
-// import { asyncUnsetAuthUser } from '../../states/authUser/action';
-import { SearchStatus, Notification, MessageFavorite } from 'iconsax-react';
+import { Notification, MessageFavorite } from 'iconsax-react';
 import { Link } from 'react-router-dom';
 import {
   // rightbarStatusActionCreator,
@@ -10,6 +8,7 @@ import {
 import NavList from './children/NavList';
 import logoBrand from '../../assets/images/brand/digiforum-main.svg';
 import NavGroupProfile from './children/NavGroupProfile';
+import SearchElement from '../SearchElement';
 
 const Navbar = () => {
   const { authUser } = useSelector((state) => state);
@@ -46,21 +45,11 @@ const Navbar = () => {
           </div>
         </div>
 
-        <label
-          htmlFor="search__user"
+        <SearchElement
           className="nav__search"
-        >
-          <SearchStatus
-            size="28"
-            color="#d1caff"
-          />
-          <input
-            className="search__input"
-            id="search__user"
-            type="search"
-            placeholder="Find people speech in here..."
-          />
-        </label>
+          keyword="Search Here"
+          changeValueSearchParams={() => {}}
+        />
 
         <div className="nav__wrap-icon">
           <div className="nav__group-icon">

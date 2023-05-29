@@ -1,5 +1,4 @@
 import SearchElement from '../components/SearchElement';
-
 import CommunityItem from '../components/CommunityItem';
 
 const CommunityPage = () => {

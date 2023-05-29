@@ -1,4 +1,4 @@
-![Design preview for the Results summary component digiforum](./src/assets/Thumb%20Digiforum.png);
+![Design preview for the Results summary component digiforum](./src/assets/Thumb%20Digiforum.png)
 
 # Build DigiForum APPs
 
@@ -6,6 +6,7 @@ DigiForum is a discussion platform with anyone, anywhere, and you can say anythi
 
 <br />
 <img align="left" alt="version" src="https://img.shields.io/static/v1?label=DigiForum&message=v.1.2.0&color=#fff" />
+<br />
 <br />
 
 > Three key concepts :

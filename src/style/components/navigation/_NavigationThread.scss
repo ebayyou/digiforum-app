@@ -1,33 +1,78 @@
 @use '../../base/variable' as *;
 @use '../../utilities/mixin' as *;
 
-.navigation__thread {
+.nav__thread {
   @include flex(row, space-between, 0);
+  padding: 0.8em 0.8em 1em;
+  border-bottom: 2px solid $navi-004;
 
-  button {
-    margin: 0;
-    background-color: transparent;
+  .nav__thread-group {
+    @include flex(row, flex-start, 0.5em);
+  }
 
-    .navigation__icon {
-      font-size: 2rem;
-      color: $neutral-001;
+  .nav__thread-brand {
+    h3 {
+      font-style: normal;
+      font-weight: $font-semi-bold;
+      font-size: 16px;
+      line-height: 27px;
+      color: $neutral-005;
+    }
+    p {
+      font-style: normal;
+      font-weight: $font-regular;
+      font-size: 10px;
+      line-height: 18px;
+      color: $neutral-003;
     }
   }
 
-  .navigation__button {
+  .nav__button-left,
+  .nav__button-right {
+    margin: 0;
+    background-color: transparent;
+
+    .nav__icon {
+      width: 32px;
+      height: 32px;
+      color: $light-001;
+    }
+  }
+
+  .nav__button-right {
+    display: none;
+  }
+
+  .nav__button-submit {
     @include flex();
-    width: 128px;
+    width: 100px;
     height: 44px;
     color: $navi-002;
     font-weight: $font-semi-bold;
     background-color: $light-001;
     border-radius: 0.3em;
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
-@media (min-width: 1024px) {
-  .navigation__thread {
-    display: none;
+@media (min-width: 650px) {
+  .nav__thread {
+    .nav__thread-brand {
+      h3 {
+        font-size: 1.25em;
+      }
+
+      p {
+        font-size: 12px;
+      }
+    }
+    .nav__button-submit,
+    .nav__button-left {
+      display: none;
+    }
+
+    .nav__button-right {
+      display: block;
+    }
   }
 }

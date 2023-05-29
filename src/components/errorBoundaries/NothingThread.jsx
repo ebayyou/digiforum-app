@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Hashtag, EmojiNormal } from 'iconsax-react';
 
-const NothingThread = ({ errorMsg, bgColor, btnMsg, btnTo, withButton, withInfoBox }) => {
+const NothingThread = ({ errorMsg, headMsg, bgColor, btnMsg, btnTo, withButton, withInfoBox }) => {
   const elementWithButton = withButton && btnMsg !== '' && (
     <Link
       className="nothing__btn"
@@ -26,7 +26,7 @@ const NothingThread = ({ errorMsg, bgColor, btnMsg, btnTo, withButton, withInfoB
           color="#d1caff"
         />
 
-        <h3 className="nothing__head">Nothing Thread</h3>
+        <h3 className="nothing__head">{headMsg || 'Nothing Thread'}</h3>
       </div>
       <p className="nothing__desc">{errorMsg}</p>
       <div className={`nothing__group ${withInfoBox && 'nt-extend-w'}`}>
@@ -56,6 +56,7 @@ const NothingThread = ({ errorMsg, bgColor, btnMsg, btnTo, withButton, withInfoB
 
 NothingThread.defaultProps = {
   bgColor: '#d1caff',
+  headMsg: '',
   btnMsg: '',
   btnTo: '',
   withButton: false,
@@ -64,6 +65,7 @@ NothingThread.defaultProps = {
 
 NothingThread.propTypes = {
   errorMsg: PropTypes.string.isRequired,
+  headMsg: PropTypes.string,
   bgColor: PropTypes.string,
   btnMsg: PropTypes.string,
   btnTo: PropTypes.string,

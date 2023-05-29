@@ -1,0 +1,48 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.threadAdded__group {
+  display: none;
+}
+
+@media (min-width: 650px) {
+  .threadAdded__group {
+    @include flex(row, space-between, 0);
+    margin: 0 1em 1.1em;
+
+    .threadAdded__dot {
+      @include flex(row, space-between, 0);
+      width: 55px;
+      height: 34px;
+      background: transparent;
+
+      span {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+
+        &:nth-child(1) {
+          background-color: #fc728b;
+        }
+        &:nth-child(2) {
+          background-color: #f9fc72;
+        }
+        &:nth-child(3) {
+          background-color: #7dfc72;
+        }
+      }
+    }
+
+    .threadAdded__btn {
+      width: 100px;
+      height: 44px;
+      font-style: normal;
+      font-weight: $font-semi-bold;
+      font-size: 14px;
+      line-height: 44px;
+      background-color: $light-001;
+      color: $navi-002;
+      border-radius: 0.2em;
+    }
+  }
+}

@@ -11,8 +11,8 @@ const UsersPage = () => {
   const username = searchParams.get('username');
   const [keyword, setKeyword] = useState(username || '');
 
-  const usersList = users.slice(22, 28);
-  const foundUsers = username ? Api.searchUser(users, username) : usersList;
+  // const usersList = users.slice(22, 28);
+  const foundUsers = username ? Api.searchUser(users, username) : users;
 
   const changeValueSearchParams = (event) => {
     setSearchParams({ username: event.target.value });

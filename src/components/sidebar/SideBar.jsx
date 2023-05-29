@@ -5,9 +5,10 @@ import SidebarLeaderboard from './children/SidebarLeaderboard';
 import SideBarFooter from './children/SidebarFooter';
 import WrapperError from '../errorBoundaries/WrapperError';
 import SidebarHeader from './children/SidebarHeader';
+import SidebarWrapper from './children/SidebarWrapper';
 
 const SideBar = () => {
-  const { leaderboards, menuStatus } = useSelector((state) => state);
+  const { leaderboards = [], menuStatus } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const onHandlerSidebar = () => dispatch(sidebarStatusActionCreator(false));
@@ -29,6 +30,7 @@ const SideBar = () => {
 
         <div className="sidebar__overflow">
           <div className="sidebar__wrapper">
+            <SidebarWrapper onHandlerSidebar={onHandlerSidebar} />
             <SideBarNavigation onHandlerSidebar={onHandlerSidebar} />
 
             {leaderboards.length > 0 ? (

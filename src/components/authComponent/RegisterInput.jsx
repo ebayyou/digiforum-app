@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useInput } from '../../hooks/useInput';
@@ -29,56 +28,59 @@ const RegisterInput = ({ onSubmitHandlerRegister }) => {
             className="auth__label"
             htmlFor="name"
           >
-            Name
+            <h4>Name</h4>
+            <input
+              className="auth__input"
+              onChange={onChangeName}
+              value={name}
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Ebayyou Anggoro"
+              required
+            />
           </label>
-          <input
-            className="auth__input"
-            onChange={onChangeName}
-            value={name}
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Ebayyou Anggoro"
-            required
-          />
         </div>
+
         <div className="auth__group">
           <label
             className="auth__label"
             htmlFor="email"
           >
-            Email
+            <h4>Email</h4>
+            <input
+              className="auth__input"
+              onChange={onChangeEmail}
+              value={email}
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Example@gmail.com"
+            />
           </label>
-          <input
-            className="auth__input"
-            onChange={onChangeEmail}
-            value={email}
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Example@gmail.com"
-          />
         </div>
+
         <div className="auth__group">
           <label
             className="auth__label"
             htmlFor="password"
           >
-            Password
+            <h4>Password</h4>
+            <input
+              className="auth__input"
+              onChange={onChangePassword}
+              value={password}
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Your password is..."
+              required
+            />
           </label>
-          <input
-            className="auth__input"
-            onChange={onChangePassword}
-            value={password}
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Your password is..."
-            required
-          />
         </div>
         <button
           type="submit"
+          style={{ backgroundColor: '#d1caff' }}
           className="auth__button"
         >
           Register
