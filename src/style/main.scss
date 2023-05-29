@@ -21,6 +21,9 @@
 @use './components/thread/threadAdded';
 @use './components/thread/threadItemOwner';
 @use './components/thread/threadAction';
+@use './components/thread/threadAddedBody';
+@use './components/thread/threadAddedForm';
+@use './components/thread/threadAddedFooter';
 @use './components/comment/commentForm';
 @use './components/comment/commentData';
 @use './components/comment/commentHeading';
@@ -29,6 +32,7 @@
 @use './components/sidebar/sidebarNavigation';
 @use './components/sidebar/sidebarLeaderboard';
 @use './components/sidebar/sidebarFooter';
+@use './components/sidebar/SidebarWrapper';
 @use './components/rightbar/RightBar';
 @use './components/rightbar/trendItems';
 @use './components/rightbar/userItems';

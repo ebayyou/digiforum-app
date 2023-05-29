@@ -35,9 +35,9 @@
   transition: all 350ms ease-in;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 420px) {
   .sidebar {
-    width: 320px;
+    width: 350px;
 
     .sidebar__wrapper {
       width: 100%;

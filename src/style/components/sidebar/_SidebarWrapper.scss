@@ -1,0 +1,29 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.sidebar__Wrapper {
+  @include flex(column, center, 1.2em);
+  width: 100%;
+
+  .sidebar__box {
+    @include flex(column, center, 0);
+    width: 100%;
+    height: 157px;
+    background: $navi-004;
+    border-radius: 5px;
+
+    h3 {
+      font-style: normal;
+      font-weight: $font-regular;
+      font-size: 22px;
+      line-height: 33px;
+      color: $light-001;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .sidebar__Wrapper {
+    display: none;
+  }
+}

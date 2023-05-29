@@ -1,8 +1,8 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useInput } from '../../hooks/useInput';
 import logoBrandStripe from '../../assets/images/brand/digiforum-stripe.svg';
+import googleIcon from '../../assets/images/Google_icon.svg';
 
 const LoginInput = ({ onSubmitHandlerLogin }) => {
   const [email, onChangeEmail] = useInput('');
@@ -25,15 +25,21 @@ const LoginInput = ({ onSubmitHandlerLogin }) => {
         />
       </Link>
       <h2 className="auth__heading">Login</h2>
+
       <p className="auth__description">
-        You can Login with your registered account, If you don’t have an account yet,
-        <Link
-          to="/register"
-          className="highlight"
-        >
-          Register here!
-        </Link>
+        You can login with your registered account or quick login with your Google account.
       </p>
+
+      <button
+        type="submit"
+        className="auth__button"
+      >
+        <img
+          src={googleIcon}
+          alt="google icon"
+        />
+        Login with Google
+      </button>
 
       <div className="auth__barrier" />
 
@@ -46,17 +52,17 @@ const LoginInput = ({ onSubmitHandlerLogin }) => {
             className="auth__label"
             htmlFor="email"
           >
-            Email
+            <h4>Email</h4>
+            <input
+              className="auth__input"
+              onChange={onChangeEmail}
+              value={email}
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Example@gmail.com"
+            />
           </label>
-          <input
-            className="auth__input"
-            onChange={onChangeEmail}
-            value={email}
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Example@gmail.com"
-          />
         </div>
 
         <div className="auth__group">
@@ -64,21 +70,22 @@ const LoginInput = ({ onSubmitHandlerLogin }) => {
             className="auth__label"
             htmlFor="password"
           >
-            Password
+            <h4>Password</h4>
+            <input
+              className="auth__input"
+              onChange={onChangePassword}
+              value={password}
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Your password is..."
+            />
           </label>
-          <input
-            className="auth__input"
-            onChange={onChangePassword}
-            value={password}
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Your password is..."
-          />
         </div>
 
         <button
           type="submit"
+          style={{ backgroundColor: '#d1caff' }}
           className="auth__button"
         >
           Login

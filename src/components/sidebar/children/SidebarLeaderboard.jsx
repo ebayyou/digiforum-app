@@ -6,7 +6,7 @@ import LeaderboardItem from '../LeaderboardItem';
 const SidebarLeaderboard = ({ onHandlerSidebar, topLeaderboard }) => {
   return (
     <div className="sidebar__leaderboard">
-      <h4 className="leaderboard__heading">Top Leaderboards</h4>
+      <h3 className="leaderboard__heading">Top Leaderboards</h3>
 
       <div className="leaderboard__wrapper">
         {topLeaderboard.map((topLeadBoard) => (
@@ -27,7 +27,7 @@ const SidebarLeaderboard = ({ onHandlerSidebar, topLeaderboard }) => {
           size="32"
           variant="Bold"
         />
-        <h5 className="btn__text">See all Leaderboards</h5>
+        <h4 className="btn__text">See all Leaderboards</h4>
       </Link>
     </div>
   );

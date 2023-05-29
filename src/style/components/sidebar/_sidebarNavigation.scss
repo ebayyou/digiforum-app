@@ -2,7 +2,7 @@
 @use '../../utilities/mixin' as *;
 
 .sidebar__navigation {
-  @include flex(column, flex-start, 0.4em);
+  display: none;
   width: 100%;
   align-items: flex-start;
 
@@ -45,5 +45,8 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 600px) {
+  .sidebar__navigation {
+    @include flex(column, flex-start, 0.4em);
+  }
 }

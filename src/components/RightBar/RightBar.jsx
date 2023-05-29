@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Medal, Profile2User } from 'iconsax-react';
-// import { asyncUnsetAuthUser } from '../../states/authUser/action';
 import { asyncPopulateUserAndThreads } from '../../states/shared/action';
 import { trendByCategoryActionCreator } from '../../states/trends/action';
 import { rightbarStatusActionCreator } from '../../states/menuStatus/action';
@@ -24,11 +23,6 @@ const RightBar = () => {
 
   const onHandlerRightbar = () => dispatch(rightbarStatusActionCreator(false));
 
-  // const onHandlerLogout = () => {
-  //   dispatch(asyncUnsetAuthUser());
-  //   onHandlerRightbar();
-  // };
-
   const onClickhandlerTrend = (newTrend) => {
     if (newTrend === trend) {
       dispatch(trendByCategoryActionCreator('all'));
@@ -40,7 +34,7 @@ const RightBar = () => {
     navigate('/threads');
   };
 
-  const usersList = users.slice(501, 507);
+  // const usersList = users.slice(501, 507);
   const popularTrends = threads.map((thread) => ({
     id: thread.id,
     createdAt: thread.createdAt,
@@ -87,8 +81,8 @@ const RightBar = () => {
             />
 
             <div className="rightBarBox__wrapper">
-              {usersList.length > 0 ? (
-                usersList.map((user) => (
+              {users.length > 0 ? (
+                users.map((user) => (
                   <UserItems
                     key={user.id}
                     avatar={user.avatar}

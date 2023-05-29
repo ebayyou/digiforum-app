@@ -1,0 +1,75 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.threadAddPage__form {
+  order: 2;
+
+  .threadAddPage__group {
+    margin: 1em auto;
+
+    label {
+      h5 {
+        display: inline-block;
+        margin: 0 0.2em 0.5em 0;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        color: $neutral-005;
+      }
+
+      span {
+        color: $primary-001;
+      }
+    }
+
+    .threadAddPage__input {
+      width: 100%;
+      height: 55px;
+      padding: 0 0.85em;
+      font-weight: $font-regular;
+      font-size: 18px;
+      line-height: 27px;
+      color: $neutral-005;
+      background-color: transparent;
+      border-radius: 0.4em;
+
+      &::placeholder {
+        color: $neutral-003;
+        font-family: $text-font;
+      }
+    }
+
+    .border-color-1 {
+      border: 1px solid $light-001;
+    }
+
+    .border-color-2 {
+      border: 1px solid $light-003;
+    }
+
+    .threadAddPage__textarea {
+      width: 100%;
+      height: 197px;
+      margin-bottom: 0.8em;
+      padding: 0.8em 0.85em;
+      font-weight: $font-regular;
+      font-size: 18px;
+      font-family: $text-font;
+      line-height: 27px;
+      color: $neutral-005;
+      background-color: transparent;
+      border-radius: 0.4em;
+      border: 1px solid $light-002;
+
+      &::placeholder {
+        color: $neutral-003;
+        font-family: $text-font;
+      }
+    }
+  }
+
+  .form__button {
+    display: none;
+  }
+}

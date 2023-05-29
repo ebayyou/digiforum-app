@@ -25,8 +25,9 @@
       .profile__picture {
         width: 100px;
         height: 100px;
+        border: 3px solid $neutral-005;
         margin: -3.25em auto 0;
-        border-radius: 0.35em;
+        border-radius: 0.25em;
       }
     }
 
@@ -135,7 +136,7 @@
           width: 144px;
           height: 148px;
           margin: -4.65em auto 0;
-          border-radius: 0.5em;
+          border-radius: 0.4em;
         }
       }
 

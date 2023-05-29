@@ -2,6 +2,9 @@
 @use '../utilities/mixin' as *;
 
 .container__section {
+  @include flex(column, center, 0);
+  width: 100%;
+  height: 100vh;
   background: $main-color;
   padding: 1rem;
   font-family: $text-font;
@@ -12,8 +15,7 @@
 }
 
 .right__side {
-  margin: 80px auto;
-  width: 95%;
+  width: 100%;
 
   .auth__input {
     .auth__heading {
@@ -60,10 +62,15 @@
         font-style: normal;
 
         .auth__label {
-          margin-bottom: 10px;
-          font-style: normal;
-          font-weight: 600;
-          font-size: 16px;
+          width: 100%;
+
+          h4 {
+            display: inline-block;
+            margin-bottom: 10px;
+            font-style: normal;
+            font-weight: $font-semi-bold;
+            font-size: 16px;
+          }
         }
 
         .auth__input {
@@ -83,26 +90,26 @@
           }
         }
       }
-
-      .auth__button {
-        @include flex();
-        width: 100%;
-        height: 59px;
-        margin-bottom: 40px;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 19px;
-        background-color: $light-001;
-        color: $main-color;
-        border-radius: 6px;
-      }
     }
 
     .auth__info {
       text-align: center;
       color: $neutral-005;
     }
+  }
+
+  .auth__button {
+    @include flex();
+    gap: 0.65em;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 40px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: $main-color;
+    border-radius: 6px;
   }
 }
 
@@ -136,7 +143,6 @@
 @media (min-width: 1440px) {
   .container__section {
     @include flex(row, space-between, 0);
-    align-items: flex-start;
     width: 1440px;
     margin: auto;
   }
