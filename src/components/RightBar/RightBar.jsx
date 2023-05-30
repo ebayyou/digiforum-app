@@ -34,7 +34,7 @@ const RightBar = () => {
     navigate('/threads');
   };
 
-  // const usersList = users.slice(501, 507);
+  const usersList = users.slice(6, 12);
   const popularTrends = threads.map((thread) => ({
     id: thread.id,
     createdAt: thread.createdAt,
@@ -81,8 +81,8 @@ const RightBar = () => {
             />
 
             <div className="rightBarBox__wrapper">
-              {users.length > 0 ? (
-                users.map((user) => (
+              {usersList.length > 0 ? (
+                usersList.map((user) => (
                   <UserItems
                     key={user.id}
                     avatar={user.avatar}

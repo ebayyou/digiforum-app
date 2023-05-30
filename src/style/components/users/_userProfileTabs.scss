@@ -1,0 +1,68 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.profile__tabs-wrapper {
+  width: 100%;
+  border-bottom: 2px solid $navi-004;
+}
+
+.profile__tabs {
+  @include flex(row, flex-start, 1.65em);
+  width: 225px;
+
+  .tabs {
+    width: 100%;
+    height: 33px;
+
+    .tabs__button {
+      display: inline-block;
+      width: 100%;
+      font-style: normal;
+      font-weight: $font-medium;
+      font-family: $text-font;
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+      background: transparent;
+      color: $neutral-001;
+      margin-bottom: 0.2em;
+    }
+
+    .active__button {
+      width: 100%;
+      height: 4px;
+      background: #7b61ff;
+      border-radius: 2px;
+    }
+  }
+}
+
+@media (min-width: 550px) {
+  .profile {
+    .profile__group {
+      .profile__banner {
+        height: 144px;
+      }
+
+      .profile__picture {
+        width: 144px;
+        height: 148px;
+        margin: -4.65em auto 0;
+        border-radius: 0.4em;
+      }
+    }
+
+    .profile__bio {
+      .bio__name {
+        font-size: 25px;
+        margin-bottom: 0.2em;
+      }
+      .bio__id {
+        font-size: 14px;
+      }
+      .bio__desc {
+        font-size: 16px;
+      }
+    }
+  }
+}

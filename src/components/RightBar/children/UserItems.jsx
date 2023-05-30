@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const UserItems = ({ onHandlerRightbar, avatar, name, id }) => {
   return (
     <Link
-      to="/"
+      to={`/users/${id}`}
       className="userItem__group"
       onClick={onHandlerRightbar}
     >

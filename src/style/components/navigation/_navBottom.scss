@@ -3,6 +3,7 @@
 
 .navbar__bottom {
   @include flex();
+  z-index: $z-fixed;
   position: fixed;
   bottom: 0;
   width: 100%;
