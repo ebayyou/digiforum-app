@@ -1,10 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Notification, MessageFavorite } from 'iconsax-react';
 import { Link } from 'react-router-dom';
-import {
-  // rightbarStatusActionCreator,
-  sidebarStatusActionCreator,
-} from '../../states/menuStatus/action';
+import { sidebarStatusActionCreator } from '../../states/menuStatus/action';
 import NavList from './children/NavList';
 import logoBrand from '../../assets/images/brand/digiforum-main.svg';
 import NavGroupProfile from './children/NavGroupProfile';
@@ -15,7 +12,6 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const onHandlerSidebar = () => dispatch(sidebarStatusActionCreator(true));
-  // const onHandlerRightbar = () => dispatch(rightbarStatusActionCreator(true));
 
   return (
     <>

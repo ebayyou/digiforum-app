@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useSearchParams } from 'react-router-dom';
 import Api from '../utils/Api';
@@ -10,9 +10,12 @@ const UsersPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const username = searchParams.get('username');
   const [keyword, setKeyword] = useState(username || '');
+  const [foundUsers, setFoundUsers] = useState([]);
+  const usersList = users.slice(0, 6);
 
-  // const usersList = users.slice(22, 28);
-  const foundUsers = username ? Api.searchUser(users, username) : users;
+  useEffect(() => {
+    setFoundUsers(username ? Api.searchUser(users, username) : usersList);
+  }, [keyword]);
 
   const changeValueSearchParams = (event) => {
     setSearchParams({ username: event.target.value });
@@ -21,7 +24,7 @@ const UsersPage = () => {
 
   const userItem = foundUsers.map((user) => (
     <Link
-      to="/"
+      to={`/users/${user.id}`}
       className="user__item"
       key={user.id}
     >

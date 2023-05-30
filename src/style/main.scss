@@ -37,6 +37,8 @@
 @use './components/rightbar/trendItems';
 @use './components/rightbar/userItems';
 @use './components/rightbar/communityItems';
+@use './components/users/userProfile';
+@use './components/users/userProfileTabs';
 @use './components/LeaderboardItem';
 @use './components/Headers';
 @use './components/SearchElement';
@@ -106,6 +108,8 @@ html {
 
 .wraperror {
   @include flex(column, center, 1.2em);
+  background: $navi-004;
+  border-radius: 0.25em;
   width: 100%;
 }
 
@@ -172,6 +176,10 @@ html {
   z-index: 1;
 }
 
+.wrapper__img {
+  position: relative;
+}
+
 @media (min-width: 500px) {
   .wrapper__img {
     display: block;
@@ -224,5 +232,9 @@ html {
   .wrapper__img {
     width: unset;
     margin: 0 auto;
+  }
+
+  .wraperror {
+    background: $navi-002;
   }
 }

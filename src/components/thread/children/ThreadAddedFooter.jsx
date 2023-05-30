@@ -24,7 +24,7 @@ const ThreadAddedFooter = ({ handlerSubmitAddedThread }) => {
 };
 
 ThreadAddedFooter.propTypes = {
-  handlerSubmitAddedThread: PropTypes.element.isRequired,
+  handlerSubmitAddedThread: PropTypes.func.isRequired,
 };
 
 export default ThreadAddedFooter;

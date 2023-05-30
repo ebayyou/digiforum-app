@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const WrapperImage = ({ src, srcSet, alt, altSet }) => {
+const WrapperImage = ({ src, srcSet, alt, altSet, children }) => {
   return (
     <picture className="wrapper__img">
       <source
@@ -12,8 +12,13 @@ const WrapperImage = ({ src, srcSet, alt, altSet }) => {
         src={src}
         alt={alt}
       />
+      {children}
     </picture>
   );
+};
+
+WrapperImage.defaultProps = {
+  children: null,
 };
 
 WrapperImage.propTypes = {
@@ -21,6 +26,7 @@ WrapperImage.propTypes = {
   srcSet: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   altSet: PropTypes.string.isRequired,
+  children: PropTypes.element,
 };
 
 export default WrapperImage;

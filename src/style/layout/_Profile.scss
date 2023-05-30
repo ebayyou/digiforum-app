@@ -7,96 +7,10 @@
   padding: 1em 1em 6em;
   font-family: $text-font;
 
-  .profile {
-    @include flex(column, flex-start, 0.9em);
-    align-items: flex-start;
-    width: 100%;
-
-    .profile__group {
-      width: 100%;
-
-      .profile__banner {
-        width: 100%;
-        height: 100px;
-        background: $gradient-005;
-        border-radius: 0.35em;
-      }
-
-      .profile__picture {
-        width: 100px;
-        height: 100px;
-        border: 3px solid $neutral-005;
-        margin: -3.25em auto 0;
-        border-radius: 0.25em;
-      }
-    }
-
-    .profile__bio {
-      .bio__name {
-        font-style: normal;
-        font-weight: $font-medium;
-        font-size: 22px;
-        line-height: 33px;
-      }
-
-      .bio__id {
-        font-style: normal;
-        font-weight: $font-light;
-        font-size: 12px;
-        line-height: 18px;
-        color: $neutral-002;
-      }
-
-      .bio__desc {
-        width: 75%;
-        margin-top: 1em;
-        font-style: normal;
-        font-weight: $font-regular;
-        font-size: 14px;
-        line-height: 21px;
-      }
-    }
-  }
-
   .profile__wrapper {
     @include flex(column, flex-start, 1.25em);
     align-items: flex-start;
     width: 100%;
-
-    .profile__tabs-wrapper {
-      width: 100%;
-      border-bottom: 2px solid $navi-004;
-    }
-
-    .profile__tabs {
-      @include flex(row, flex-start, 1.65em);
-      width: 225px;
-
-      .tabs {
-        width: 100%;
-        height: 33px;
-
-        .tabs__button {
-          width: 100%;
-          font-style: normal;
-          font-weight: $font-medium;
-          font-family: $text-font;
-          font-size: 16px;
-          line-height: 24px;
-          text-align: center;
-          background: transparent;
-          color: $neutral-001;
-          margin-bottom: 0.2em;
-        }
-
-        .active__button {
-          width: 100%;
-          height: 4px;
-          background: #7b61ff;
-          border-radius: 2px;
-        }
-      }
-    }
   }
 
   .userthread {
@@ -125,34 +39,6 @@
     gap: 1.8em;
     margin: 1em auto;
     padding-bottom: 6em;
-
-    .profile {
-      .profile__group {
-        .profile__banner {
-          height: 144px;
-        }
-
-        .profile__picture {
-          width: 144px;
-          height: 148px;
-          margin: -4.65em auto 0;
-          border-radius: 0.4em;
-        }
-      }
-
-      .profile__bio {
-        .bio__name {
-          font-size: 25px;
-          margin-bottom: 0.2em;
-        }
-        .bio__id {
-          font-size: 14px;
-        }
-        .bio__desc {
-          font-size: 16px;
-        }
-      }
-    }
   }
 }
 
