@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { asyncPopulateUserAndThreads } from '../states/shared/action';
@@ -15,7 +16,7 @@ const ProfilePage = () => {
     threads = [],
     savedThreads = [],
     authUser = {},
-    users = {},
+    users = [],
   } = useSelector((state) => state);
   const [userThreads, setUserThreads] = useState([]);
   const [getUser, setGetUser] = useState({});
@@ -48,7 +49,7 @@ const ProfilePage = () => {
       if (profileId === 'saved') setUserThreads(savedThreads);
       else setUserThreads(filterThreads);
     }
-  }, [dispatch, profileId, userId]);
+  }, [dispatch, profileId, userId, getUser, authUser]);
 
   const handlerTabsThreads = (type) => {
     if (type === 'yourThreads') {
@@ -63,7 +64,7 @@ const ProfilePage = () => {
       const filterThreads = combineUserAndThreads(authUser.id, authUser);
       setUserThreads(filterThreads);
       setTypeTabs('yourThreads');
-    } else {
+    } else if (type === 'saved') {
       setUserThreads(savedThreads);
       setTypeTabs('saved');
     }
@@ -71,8 +72,16 @@ const ProfilePage = () => {
 
   return (
     <section className="profile__container">
-      {authUser ? (
-        <>
+      {authUser || userId ? (
+        <ErrorBoundary
+          fallback={
+            <ProfileLock
+              message="something went wrong"
+              path="/"
+              btnMsg="Go to HomePage"
+            />
+          }
+        >
           <UserProfile user={getUser} />
 
           <div className="profile__wrapper">
@@ -83,12 +92,14 @@ const ProfilePage = () => {
                 nameBtn="Threads"
                 path="yourThreads"
               />
-              <UserTabs
-                handlerTabsThreads={handlerTabsThreads}
-                typeTabs={typeTabs}
-                nameBtn="Saved"
-                path="saved"
-              />
+              {!userId ? (
+                <UserTabs
+                  handlerTabsThreads={handlerTabsThreads}
+                  typeTabs={typeTabs}
+                  nameBtn="Saved"
+                  path="saved"
+                />
+              ) : null}
             </UserProfileTabs>
 
             {userThreads.length !== 0 ? (
@@ -103,9 +114,13 @@ const ProfilePage = () => {
               />
             )}
           </div>
-        </>
+        </ErrorBoundary>
       ) : (
-        <ProfileLock />
+        <ProfileLock
+          message="You must login first, if you want to see the profile page"
+          path="/login"
+          btnMsg="Login"
+        />
       )}
     </section>
   );

@@ -109,6 +109,7 @@ const ThreadAddedPage = () => {
             />
           </div>
         )}
+
         <ThreadAddedFooter handlerSubmitAddedThread={handlerSubmitAddedThread} />
       </div>
     </section>

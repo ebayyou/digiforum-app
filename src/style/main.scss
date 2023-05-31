@@ -211,7 +211,9 @@ html {
     font-size: 1.45em;
     margin: 0.2em 0.5em;
   }
+}
 
+@media (min-width: 1200px) {
   .absolute__element {
     display: none;
     width: 0;

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Medal, Profile2User } from 'iconsax-react';
@@ -44,7 +45,9 @@ const RightBar = () => {
   return (
     <>
       <div
+        aria-hidden="true"
         onTouchStart={onHandlerRightbar}
+        onClick={onHandlerRightbar}
         className={menuStatus.rightbarStatus ? 'absolute__element' : null}
       />
       <aside className={menuStatus.rightbarStatus ? 'rightBar active' : 'rightBar'}>
@@ -57,9 +60,9 @@ const RightBar = () => {
               Icon={Medal}
             />
 
-            <div className="rightBarBox__wrapper">
-              {popularTrends.length > 0 ? (
-                popularTrends.map(({ id, trending, createdAt }) => (
+            <ErrorBoundary fallback={<WrapperError height={200} />}>
+              <div className="rightBarBox__wrapper">
+                {popularTrends.map(({ id, trending, createdAt }) => (
                   <TrendItems
                     key={id}
                     onClickhandlerTrend={onClickhandlerTrend}
@@ -67,11 +70,9 @@ const RightBar = () => {
                     createdAt={createdAt}
                     popularTrend={trend === trending}
                   />
-                ))
-              ) : (
-                <WrapperError height={200} />
-              )}
-            </div>
+                ))}
+              </div>
+            </ErrorBoundary>
           </div>
 
           <div className="rightBar__box">
@@ -80,9 +81,9 @@ const RightBar = () => {
               Icon={Profile2User}
             />
 
-            <div className="rightBarBox__wrapper">
-              {usersList.length > 0 ? (
-                usersList.map((user) => (
+            <ErrorBoundary fallback={<WrapperError height={280} />}>
+              <div className="rightBarBox__wrapper">
+                {usersList.map((user) => (
                   <UserItems
                     key={user.id}
                     avatar={user.avatar}
@@ -90,11 +91,9 @@ const RightBar = () => {
                     id={user.id}
                     onHandlerRightbar={onHandlerRightbar}
                   />
-                ))
-              ) : (
-                <WrapperError height={280} />
-              )}
-            </div>
+                ))}
+              </div>
+            </ErrorBoundary>
 
             <RightbarBoxLink
               to="/users"

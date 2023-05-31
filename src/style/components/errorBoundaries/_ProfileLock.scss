@@ -3,13 +3,14 @@
 
 .profile__lock {
   width: 100%;
+  height: 200px;
   margin: 0 auto;
 
   .lock__wrapper {
     position: relative;
     width: 100%;
     height: 120px;
-    background: linear-gradient(152.9deg, #586061 -3.97%, #313f40 95.59%);
+    background: linear-gradient(152.9deg, #fc728b85 -3.97%, #384a8d 95.59%);
     border-radius: 0.3em;
 
     .lock__box {
@@ -21,11 +22,11 @@
       left: 0px;
       right: 0;
       margin: 0 auto;
-      background: #535c5d;
+      background: #282d41;
       border-radius: 0.3em;
 
       .lock__icon {
-        color: #9ab78d;
+        color: $primary-001;
       }
     }
   }
@@ -42,7 +43,7 @@
 
   .lock__btn {
     display: block;
-    width: 149px;
+    width: 180px;
     height: 46px;
     margin: 0 auto;
     font-style: normal;
@@ -50,8 +51,8 @@
     font-size: 18px;
     line-height: 46px;
     text-align: center;
-    background: #535c5d;
-    color: #9ab78d;
+    background: #282d41;
+    color: $primary-001;
     border-radius: 0.3em;
   }
 }

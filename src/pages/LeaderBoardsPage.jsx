@@ -1,3 +1,4 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { useSelector } from 'react-redux';
 import LeaderboardItem from '../components/sidebar/LeaderboardItem';
 
@@ -37,7 +38,9 @@ const LeaderboardsPage = () => {
             <h2 className="boards__text">Score</h2>
           </div>
 
-          <div className="boards__wrapper">{leaderboards.length > 0 ? leadmap : leadError}</div>
+          <ErrorBoundary fallback={leadError}>
+            <div className="boards__wrapper">{leadmap}</div>
+          </ErrorBoundary>
         </div>
       </div>
     </section>

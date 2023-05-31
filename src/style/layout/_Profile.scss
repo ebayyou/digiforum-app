@@ -2,8 +2,7 @@
 @use '../utilities/mixin' as *;
 
 .profile__container {
-  @include flex(column, flex-start, 1em);
-  align-items: flex-start;
+  @include flex(column, center, 1em);
   padding: 1em 1em 6em;
   font-family: $text-font;
 
@@ -18,19 +17,8 @@
   }
 }
 
-.profile__container-false {
-  @include flex(row, center, 1em);
-  width: 100%;
+.profile__container.profile__container-100vh {
   height: 100vh;
-
-  span {
-    padding-right: 0.5em;
-  }
-
-  .link-to-login {
-    color: $second-color;
-    text-decoration: underline;
-  }
 }
 
 @media (min-width: 550px) {
@@ -38,7 +26,6 @@
     width: 550px;
     gap: 1.8em;
     margin: 1em auto;
-    padding-bottom: 6em;
   }
 }
 
@@ -51,11 +38,10 @@
 @media (min-width: 1024px) {
   .profile__container {
     position: absolute;
-    top: 120px;
+    top: 80px;
     right: 80px;
-    width: 550px;
+    width: 600px;
     margin: 2em auto;
-    padding-bottom: 2em !important;
   }
 }
 @media (min-width: 1150px) {
@@ -75,7 +61,6 @@
   .profile__container {
     overflow-x: scroll;
     width: 580px;
-    height: 800px;
 
     &::-webkit-scrollbar {
       width: 0;

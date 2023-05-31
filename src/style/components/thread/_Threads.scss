@@ -15,8 +15,8 @@
 
   .thread__heading {
     font-style: normal;
-    font-weight: $font-semi-bold;
-    font-size: 20px;
+    font-weight: $font-medium;
+    font-size: 18px;
     line-height: 25px;
     color: $neutral-001;
     transition: text-decoration 0.3s ease;
@@ -65,7 +65,7 @@
     width: 550px;
 
     .thread__heading {
-      font-size: 25px;
+      font-size: 22px;
     }
 
     .thread__desc {
