@@ -34,11 +34,12 @@ const SearchElement = ({ className, keyword, changeValueSearchParams, onHandlerS
 };
 
 SearchElement.defaultProps = {
-  onHandlerSidebar: false,
+  onHandlerSidebar: () => {},
+  className: '',
 };
 
 SearchElement.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   keyword: PropTypes.string.isRequired,
   changeValueSearchParams: PropTypes.func.isRequired,
   onHandlerSidebar: PropTypes.func,

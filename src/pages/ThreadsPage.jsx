@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { ErrorBoundary } from 'react-error-boundary';
 import { asyncPopulateUserAndThreads } from '../states/shared/action';
 import ThreadList from '../components/thread/ThreadList';
 import NothingThread from '../components/errorBoundaries/NothingThread';
@@ -29,13 +30,17 @@ const ThreadsPage = () => {
       <ThreadAdded />
 
       {threadsAndUser.length > 0 ? (
-        <ThreadList threads={trend === 'all' ? threadsAndUser : threadsAndUserFilters} />
-      ) : (
-        <NothingThread
-          withInfoBox
-          errorMsg="Create a thread right now, if you want to be the first for the discussion on DigiForum"
-        />
-      )}
+        <ErrorBoundary
+          fallback={
+            <NothingThread
+              withInfoBox
+              errorMsg="Create a thread right now, if you want to be the first for the discussion on DigiForum"
+            />
+          }
+        >
+          <ThreadList threads={trend === 'all' ? threadsAndUser : threadsAndUserFilters} />
+        </ErrorBoundary>
+      ) : null}
     </section>
   );
 };

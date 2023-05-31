@@ -51,3 +51,33 @@
     }
   }
 }
+
+@media (min-width: 550px) {
+  .profile {
+    .profile__group {
+      .profile__banner {
+        height: 144px;
+      }
+
+      .profile__picture {
+        width: 144px;
+        height: 148px;
+        margin: -4.65em auto 0;
+        border-radius: 0.4em;
+      }
+    }
+
+    .profile__bio {
+      .bio__name {
+        font-size: 25px;
+        margin-bottom: 0.2em;
+      }
+      .bio__id {
+        font-size: 14px;
+      }
+      .bio__desc {
+        font-size: 16px;
+      }
+    }
+  }
+}

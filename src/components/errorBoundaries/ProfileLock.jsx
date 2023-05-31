@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Lock } from 'iconsax-react';
 
-const ProfileLock = () => {
+const ProfileLock = ({ message, path, btnMsg }) => {
   return (
     <div className="Layout__children-full">
       <div className="profile__lock">
@@ -14,17 +15,23 @@ const ProfileLock = () => {
           </div>
         </div>
 
-        <p className="lock__desc">You must login first, if you want to see the profile page</p>
+        <p className="lock__desc">{message}</p>
 
         <Link
           className="lock__btn"
-          to="/login"
+          to={path}
         >
-          Login
+          {btnMsg}
         </Link>
       </div>
     </div>
   );
+};
+
+ProfileLock.propTypes = {
+  message: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  btnMsg: PropTypes.string.isRequired,
 };
 
 export default ProfileLock;

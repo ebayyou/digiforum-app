@@ -3,6 +3,7 @@
 
 .thread__wrapper {
   @include flex(row, space-between, 0);
+  flex-wrap: wrap;
   margin: 1.3em 0 0.5em;
 }
 

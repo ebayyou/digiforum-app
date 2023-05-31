@@ -6,7 +6,7 @@
   position: fixed;
   right: -100%;
   top: 0;
-  z-index: 18;
+  z-index: $z-fixed;
   width: 280px;
   height: 100%;
   padding-bottom: 3.8em;
@@ -112,19 +112,6 @@
 
     .rightBar__wrapper {
       margin: 3.25em 0 6em;
-    }
-
-    .rightBar__box {
-      background-color: $navi-003;
-
-      .rightBarBox__button {
-        background-color: $navi-004;
-
-        &:hover {
-          color: $navi-002;
-          background-color: $light-001;
-        }
-      }
     }
   }
 

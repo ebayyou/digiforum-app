@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { ErrorBoundary } from 'react-error-boundary';
 import { Quant } from 'iconsax-react';
 import { timeNow } from '../../../utils/index';
 import WrapperError from '../../errorBoundaries/WrapperError';
@@ -34,9 +35,9 @@ const Community = ({ onHandlerRightbar }) => {
         Icon={Quant}
       />
 
-      <div className="rightBarBox__wrapper">
-        {communities.length > 0 ? (
-          communities.map((item) => (
+      <ErrorBoundary fallback={<WrapperError height={280} />}>
+        <div className="rightBarBox__wrapper">
+          {communities.map((item) => (
             <div
               key={item.id}
               className="community"
@@ -63,11 +64,9 @@ const Community = ({ onHandlerRightbar }) => {
                 Join
               </button>
             </div>
-          ))
-        ) : (
-          <WrapperError height={280} />
-        )}
-      </div>
+          ))}
+        </div>
+      </ErrorBoundary>
 
       <RightbarBoxLink
         to="/community"

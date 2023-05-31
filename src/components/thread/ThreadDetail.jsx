@@ -1,12 +1,21 @@
-import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
+import DOMPurify from 'dompurify';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ThreadItemOwner, { userShape } from './children/thread/ThreadItemOwner';
+import ThreadItemOwner from './children/thread/ThreadItemOwner';
 import CommentsInput from './children/comment/CommentInput';
-import CommentsItems, { commentShape } from './children/comment/CommentItems';
+import CommentsItems from './children/comment/CommentItems';
 import Votes from './children/Votes';
+import { asyncAddThreadComment } from '../../states/threadDetail/action';
 
-const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
+const ThreadDetail = ({ threadId }) => {
+  const { threadDetail = {}, authUser = {} } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const handlerSubmitComment = (content) => {
+    dispatch(asyncAddThreadComment(threadId, content));
+  };
+
   return (
     <>
       <div className="threadDetail__wrapper">
@@ -84,26 +93,8 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
   );
 };
 
-ThreadDetail.defaultProps = {
-  authUser: null,
-};
-
-const ThreadDetailShape = {
-  body: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  comments: PropTypes.arrayOf(PropTypes.shape(commentShape)).isRequired,
-  createdAt: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  upVotesBy: PropTypes.array.isRequired,
-  downVotesBy: PropTypes.array.isRequired,
-  owner: PropTypes.shape(userShape).isRequired,
-  title: PropTypes.string.isRequired,
-};
-
 ThreadDetail.propTypes = {
-  ...ThreadDetailShape,
-  handlerSubmitComment: PropTypes.func.isRequired,
-  authUser: PropTypes.object,
+  threadId: PropTypes.string.isRequired,
 };
 
 export default ThreadDetail;

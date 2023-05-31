@@ -9,6 +9,7 @@ const UsersPage = () => {
   const { users } = useSelector((state) => state);
   const [searchParams, setSearchParams] = useSearchParams();
   const username = searchParams.get('username');
+
   const [keyword, setKeyword] = useState(username || '');
   const [foundUsers, setFoundUsers] = useState([]);
   const usersList = users.slice(0, 6);

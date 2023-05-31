@@ -33,7 +33,7 @@ describe('asyncReceiveThreadDetail thunk', () => {
     ],
   };
 
-  const fakeErrorResponse = new Error('Ups, something went error');
+  // const fakeErrorResponse = new Error('Ups, something went error');
 
   it('should dispatch action correctly when data fetching success', async () => {
     // arrange
