@@ -11,6 +11,8 @@
 @use './layout/Profile';
 @use './layout/NotfoundPage';
 @use './layout/UsersPage';
+@use './components/authcomponent/authInput';
+@use './components/authcomponent/authTaglineBrand';
 @use './components/navigation/Navigation';
 @use './components/navigation/NavigationThread';
 @use './components/navigation/navList';

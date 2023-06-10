@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useInput } from '../../hooks/useInput';
+import AuthInput from './children/AuthInput';
 import logoBrandStripe from '../../assets/images/brand/digiforum-stripe.svg';
-import googleIcon from '../../assets/images/Google_icon.svg';
 
 const LoginInput = ({ onSubmitHandlerLogin }) => {
   const [email, onChangeEmail] = useInput('');
@@ -14,7 +14,7 @@ const LoginInput = ({ onSubmitHandlerLogin }) => {
   };
 
   return (
-    <div className="auth__input">
+    <div className="auth__wrapper-input">
       <Link
         to="/"
         className="logo__brand"
@@ -30,58 +30,25 @@ const LoginInput = ({ onSubmitHandlerLogin }) => {
         You can login with your registered account or quick login with your Google account.
       </p>
 
-      <button
-        type="submit"
-        className="auth__button"
-      >
-        <img
-          src={googleIcon}
-          alt="google icon"
-        />
-        Login with Google
-      </button>
-
       <div className="auth__barrier" />
 
       <form
         className="auth__form"
         onSubmit={handlerSubmitLogin}
       >
-        <div className="auth__group">
-          <label
-            className="auth__label"
-            htmlFor="email"
-          >
-            <h4>Email</h4>
-            <input
-              className="auth__input"
-              onChange={onChangeEmail}
-              value={email}
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Example@gmail.com"
-            />
-          </label>
-        </div>
+        <AuthInput
+          onChangeInput={onChangeEmail}
+          value={email}
+          typeInput="email"
+          placeholder="Example@gmail.com"
+        />
 
-        <div className="auth__group">
-          <label
-            className="auth__label"
-            htmlFor="password"
-          >
-            <h4>Password</h4>
-            <input
-              className="auth__input"
-              onChange={onChangePassword}
-              value={password}
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Your password is..."
-            />
-          </label>
-        </div>
+        <AuthInput
+          onChangeInput={onChangePassword}
+          value={password}
+          typeInput="password"
+          placeholder="Your password is..."
+        />
 
         <button
           type="submit"

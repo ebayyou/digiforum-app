@@ -11,15 +11,15 @@
   },
   "plugins": ["react", "cypress"],
   "rules": {
-    "eslint-disable-next-line": "off",
     "max-len": "off",
     "comma-dangle": "off",
     "object-curly-newline": "off",
-    "no-alert": "off",
+    "eslint-disable-next-line": "off",
     "no-underscore-dangle": "off",
     "linebreak-style": "off",
     "import/prefer-default-export": "off",
     "import/no-cycle": "off",
+    "import/no-extraneous-dependencies": "off",
     "react/no-danger": "off",
     "react/forbid-prop-types": "off",
     "react/react-in-jsx-scope": "off",
@@ -27,7 +27,11 @@
     "react/jsx-closing-bracket-location": "off",
     "react/function-component-definition": "off",
     "react/jsx-wrap-multilines": "off",
+    "react/jsx-filename-extension": "off",
     "arrow-body-style": "off",
-    "import/no-extraneous-dependencies": "off"
+    "no-alert": "off",
+    "no-undef": "off",
+    "no-unused-expressions": "off",
+    "operator-linebreak": "off"
   }
 }

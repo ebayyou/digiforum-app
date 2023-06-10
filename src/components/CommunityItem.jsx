@@ -1,30 +1,23 @@
-// import PropTypes from 'prop-types';
+const communityAvatarBackground = [
+  { background: '#9AB78D' },
+  { background: '#8DB7B2' },
+  { background: '#B7958D' },
+  { background: '#918DB7' },
+  { background: '#b78db7' },
+];
 
 const CommunityItem = () => {
   return (
     <div className="community__box">
       <div className="community__heading">
         <div className="community__group-people">
-          <div
-            className="community__avatar"
-            style={{ background: '#9AB78D' }}
-          />
-          <div
-            className="community__avatar"
-            style={{ background: '#8DB7B2' }}
-          />
-          <div
-            className="community__avatar"
-            style={{ background: '#B7958D' }}
-          />
-          <div
-            className="community__avatar"
-            style={{ background: '#918DB7' }}
-          />
-          <div
-            className="community__avatar"
-            style={{ background: '#b78db7' }}
-          />
+          {communityAvatarBackground.map((background) => (
+            <div
+              key={background.background}
+              className="community__avatar"
+              style={background}
+            />
+          ))}
         </div>
 
         <button
@@ -54,9 +47,5 @@ const CommunityItem = () => {
     </div>
   );
 };
-
-// CommunityItem.propTypes = {
-
-// };
 
 export default CommunityItem;

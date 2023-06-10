@@ -3,7 +3,7 @@ import { Save2, Message2 } from 'iconsax-react';
 import mainAvatar from '../../../assets/images/main_avatar.png';
 import logoBrandStripe from '../../../assets/images/brand/digiforum-stripe.svg';
 
-const TaglineBrand = () => {
+const AuthTaglineBrand = () => {
   return (
     <div className="wrapper__side">
       <div className="tagline">
@@ -74,4 +74,4 @@ const TaglineBrand = () => {
   );
 };
 
-export default TaglineBrand;
+export default AuthTaglineBrand;

@@ -1,5 +1,5 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { useSelector } from 'react-redux';
+import { ErrorBoundary } from 'react-error-boundary';
 import LeaderboardItem from '../components/sidebar/LeaderboardItem';
 
 const LeaderboardsPage = () => {

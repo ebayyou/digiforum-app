@@ -10,7 +10,7 @@
   padding: 0.2em;
   border-radius: 0.25em;
   background-color: $navi-003;
-  transition: display 300s ease-in;
+  opacity: 0;
   z-index: $z-tooltip;
 
   .dropdown__wrapper {
@@ -67,6 +67,8 @@
 
 .nav__dropdown.active {
   display: block;
+  opacity: 1; 
+  transition: all 350ms ease-in;
 }
 
 @media (min-width: 1440px) {

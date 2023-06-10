@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import threadDetailReducer from './reducer';
 import { ActionType } from './action';
 
