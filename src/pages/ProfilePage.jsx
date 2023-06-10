@@ -3,6 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { asyncPopulateUserAndThreads } from '../states/shared/action';
+import { combineUserAndThreads, findUser } from '../utils/utilsForUserThread';
 import ThreadList from '../components/thread/ThreadList';
 import UserProfile from '../components/user/UserProfile';
 import NothingThread from '../components/errorBoundaries/NothingThread';
@@ -14,39 +15,32 @@ const ProfilePage = () => {
   const { profileId, userId } = useParams();
   const {
     threads = [],
-    savedThreads = [],
-    authUser = {},
     users = [],
+    saveThreads = [],
+    authUser = {},
   } = useSelector((state) => state);
   const [userThreads, setUserThreads] = useState([]);
   const [getUser, setGetUser] = useState({});
   const [typeTabs, setTypeTabs] = useState(profileId === 'saved' ? 'saved' : 'yourThreads');
   const dispatch = useDispatch();
 
-  const findUserthreads = (id) => threads.filter((thread) => thread.ownerId === id);
-  const findUser = (id) => users.find((user) => user.id === id);
-  const combineUserAndThreads = (id, user) => {
-    const userThread = findUserthreads(id);
-    return userThread.map((thread) => ({ ...thread, user }));
-  };
-
   useEffect(() => {
     dispatch(asyncPopulateUserAndThreads());
 
     if (userId) {
-      const user = findUser(userId);
+      const user = findUser(users, userId);
       setGetUser(user);
 
-      const filterThreads = combineUserAndThreads(userId, user);
+      const filterThreads = combineUserAndThreads(threads, userId, user);
       setUserThreads(filterThreads);
       return;
     }
 
     if (authUser) {
-      const filterThreads = combineUserAndThreads(authUser.id, authUser);
+      const filterThreads = combineUserAndThreads(threads, authUser.id, authUser);
       setGetUser(authUser);
 
-      if (profileId === 'saved') setUserThreads(savedThreads);
+      if (profileId === 'saved') setUserThreads(saveThreads);
       else setUserThreads(filterThreads);
     }
   }, [dispatch, profileId, userId, getUser, authUser]);
@@ -54,18 +48,18 @@ const ProfilePage = () => {
   const handlerTabsThreads = (type) => {
     if (type === 'yourThreads') {
       if (userId) {
-        const user = findUser(userId);
-        const filterThreads = combineUserAndThreads(userId, user);
+        const user = findUser(users, userId);
+        const filterThreads = combineUserAndThreads(threads, userId, user);
         setUserThreads(filterThreads);
         setTypeTabs('yourThreads');
         return;
       }
 
-      const filterThreads = combineUserAndThreads(authUser.id, authUser);
+      const filterThreads = combineUserAndThreads(threads, authUser.id, authUser);
       setUserThreads(filterThreads);
       setTypeTabs('yourThreads');
     } else if (type === 'saved') {
-      setUserThreads(savedThreads);
+      setUserThreads(saveThreads);
       setTypeTabs('saved');
     }
   };

@@ -17,7 +17,7 @@
 .right__side {
   width: 100%;
 
-  .auth__input {
+  .auth__wrapper-input {
     .auth__heading {
       margin-bottom: 10px;
       font-size: 32px;
@@ -54,42 +54,6 @@
 
     .auth__form {
       margin-top: 30px;
-
-      .auth__group {
-        @include flex(column, flex-start, 0.5rem);
-        align-items: flex-start;
-        margin-bottom: 30px;
-        font-style: normal;
-
-        .auth__label {
-          width: 100%;
-
-          h4 {
-            display: inline-block;
-            margin-bottom: 10px;
-            font-style: normal;
-            font-weight: $font-semi-bold;
-            font-size: 16px;
-          }
-        }
-
-        .auth__input {
-          width: 100%;
-          padding: 20px;
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 19px;
-          background-color: $navi-004;
-          color: $neutral-001;
-          border-radius: 8px;
-          border: 0;
-
-          &::placeholder {
-            font-family: $text-font;
-            color: $neutral-003;
-          }
-        }
-      }
     }
 
     .auth__info {
@@ -126,7 +90,7 @@
   .right__side {
     width: 85%;
 
-    .auth__input {
+    .auth__wrapper-input {
       .auth__description {
         width: 450px;
       }
@@ -156,166 +120,6 @@
     margin: 20px 0;
     background: $gradient-mix;
     border-radius: 0.8em;
-
-    .wrapper__side {
-      @include flex(column, space-between, 0);
-      align-items: flex-start;
-      height: 100%;
-
-      .tagline {
-        .tagline__brand {
-          color: $main-color;
-          margin-bottom: 10px;
-          font-style: normal;
-          font-weight: 600;
-          font-size: 15px;
-          line-height: 18px;
-          letter-spacing: 0.1em;
-        }
-
-        .tagline__heading {
-          width: 550px;
-          color: $main-color;
-          font-style: normal;
-          font-weight: 500;
-          font-size: 40px;
-          line-height: 56px;
-        }
-      }
-
-      .box {
-        width: 446px;
-        padding: 1em 2em;
-        margin: 0px auto;
-        color: $neutral-001;
-        background-color: $main-color;
-        box-shadow: 10px 10px 0px rgba(32, 36, 51, 0.35);
-        border-radius: 10px;
-
-        .box__heading {
-          font-size: 20px;
-          font-weight: $font-semi-bold;
-          line-height: 30px;
-        }
-
-        .box__profile {
-          @include flex(row, space-between, 0);
-          margin: 1.1em 0 1.5em;
-
-          .box__group {
-            @include flex(row, center, 0.8em);
-
-            .box__image {
-              width: 38px;
-              height: 38px;
-              border-radius: 0.4em;
-            }
-
-            .box__info {
-              h4 {
-                font-size: 14px;
-                font-weight: $font-medium;
-                line-height: $line-height-poppins;
-                margin-bottom: 0.2em;
-              }
-
-              p {
-                font-size: 12px;
-                color: $neutral-002;
-              }
-            }
-          }
-          .box__badge {
-            width: 100px;
-            height: 34px;
-            font-size: 14px;
-            font-weight: 500;
-            text-align: center;
-            line-height: 34px;
-            background-color: $light-001;
-            color: $main-color;
-            border-radius: 0.3em;
-          }
-        }
-
-        .box__desc {
-          font-size: 14px;
-          font-weight: $font-medium;
-          line-height: $line-height-poppins;
-        }
-
-        .box__icon {
-          @include flex(row, flex-start, 1em);
-          margin: 1em 0 0;
-          padding: 1em 0.4em;
-
-          .wrapper__icon {
-            @include flex();
-            width: 34px;
-            height: 34px;
-            background-color: $neutral-004;
-            border-radius: 12px;
-
-            .bookmark {
-              color: $navi-004;
-              font-size: 16px;
-            }
-          }
-
-          .box__comment {
-            @include flex(row, space-between, 0.4em);
-            height: 34px;
-            padding: 0.4em 0.5em;
-            background-color: $neutral-004;
-            border-radius: 2em;
-
-            .comment {
-              color: $navi-004;
-              font-size: 1.3rem;
-            }
-
-            span {
-              font-size: 10px;
-              font-weight: $font-semi-bold;
-              line-height: 15px;
-              color: $main-color;
-            }
-
-            .comment__total {
-              width: 26px;
-              height: 19px;
-              font-size: 12px;
-              font-weight: $font-medium;
-              line-height: 19px;
-              text-align: center;
-              color: $neutral-001;
-              background-color: $primary-001;
-              border-radius: 0px 5px 5px 0px;
-            }
-          }
-        }
-      }
-
-      .terms {
-        @include flex(row, flex-start, 0.8em);
-        width: 400px;
-        color: $main-color;
-
-        p {
-          font-style: normal;
-          font-weight: 600;
-          font-size: 12px;
-          line-height: 15px;
-        }
-
-        .circle {
-          width: 5px;
-          height: 5px;
-          background-color: $main-color;
-          border-radius: 50%;
-        }
-      }
-    }
   }
 
   .right__side {

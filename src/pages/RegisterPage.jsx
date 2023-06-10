@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { asyncRequestRegisterUser } from '../states/users/action';
 import RegisterInput from '../components/authComponent/RegisterInput';
-import TaglineBrand from '../components/authComponent/children/TaglineBrand';
+import AuthTaglineBrand from '../components/authComponent/children/AuthTaglineBrand';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const RegisterPage = () => {
   return (
     <section className="container__section">
       <div className="left__side">
-        <TaglineBrand />
+        <AuthTaglineBrand />
       </div>
 
       <div className="right__side">

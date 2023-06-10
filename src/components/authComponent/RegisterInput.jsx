@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useInput } from '../../hooks/useInput';
+import AuthInput from './children/AuthInput';
 
 const RegisterInput = ({ onSubmitHandlerRegister }) => {
   const [name, onChangeName] = useInput('');
@@ -13,7 +14,7 @@ const RegisterInput = ({ onSubmitHandlerRegister }) => {
   };
 
   return (
-    <div className="auth__input">
+    <div className="auth__wrapper-input">
       <h2 className="auth__heading">Register</h2>
       <p className="auth__description">Enter your user details below.</p>
 
@@ -23,61 +24,27 @@ const RegisterInput = ({ onSubmitHandlerRegister }) => {
         className="auth__form"
         onSubmit={handlerSubmitRegister}
       >
-        <div className="auth__group">
-          <label
-            className="auth__label"
-            htmlFor="name"
-          >
-            <h4>Name</h4>
-            <input
-              className="auth__input"
-              onChange={onChangeName}
-              value={name}
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Ebayyou Anggoro"
-              required
-            />
-          </label>
-        </div>
+        <AuthInput
+          onChangeInput={onChangeName}
+          value={name}
+          typeInput="text"
+          placeholder="Ebayyou Anggoro"
+        />
 
-        <div className="auth__group">
-          <label
-            className="auth__label"
-            htmlFor="email"
-          >
-            <h4>Email</h4>
-            <input
-              className="auth__input"
-              onChange={onChangeEmail}
-              value={email}
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Example@gmail.com"
-            />
-          </label>
-        </div>
+        <AuthInput
+          onChangeInput={onChangeEmail}
+          value={email}
+          typeInput="email"
+          placeholder="Example@gmail.co"
+        />
 
-        <div className="auth__group">
-          <label
-            className="auth__label"
-            htmlFor="password"
-          >
-            <h4>Password</h4>
-            <input
-              className="auth__input"
-              onChange={onChangePassword}
-              value={password}
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Your password is..."
-              required
-            />
-          </label>
-        </div>
+        <AuthInput
+          onChangeInput={onChangePassword}
+          value={password}
+          typeInput="password"
+          placeholder="Your Password is..."
+        />
+
         <button
           type="submit"
           style={{ backgroundColor: '#d1caff' }}

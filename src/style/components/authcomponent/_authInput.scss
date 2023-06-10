@@ -1,0 +1,39 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.auth__group {
+  @include flex(column, flex-start, 0.5rem);
+  align-items: flex-start;
+  margin-bottom: 30px;
+  font-style: normal;
+
+  .auth__label {
+    width: 100%;
+
+    h4 {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-style: normal;
+      font-weight: $font-semi-bold;
+      font-size: 16px;
+      text-transform: capitalize;
+    }
+  }
+
+  .auth__input {
+    width: 100%;
+    padding: 20px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    background-color: $navi-004;
+    color: $neutral-001;
+    border-radius: 8px;
+    border: 0;
+
+    &::placeholder {
+      font-family: $text-font;
+      color: $neutral-003;
+    }
+  }
+}

@@ -1,9 +1,7 @@
-import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useInput } from '../hooks/useInput';
 import { asyncAddThread } from '../states/threads/action';
-import ThreadContext from '../context';
 import NavigationThread from '../components/navigation/children/NavigationThread';
 import ThreadAddedBody from '../components/thread/children/ThreadAddedBody';
 import ThreadAddedFooter from '../components/thread/children/ThreadAddedFooter';
@@ -11,8 +9,7 @@ import NothingThread from '../components/errorBoundaries/NothingThread';
 
 const ThreadAddedPage = () => {
   const { authUser = {} } = useSelector((state) => state);
-  const threadTitle = useContext(ThreadContext);
-  const [title, onChangeTitle] = useInput(threadTitle);
+  const [title, onChangeTitle] = useInput('');
   const [category, onChangeCategory] = useInput('');
   const [body, onChangeBody] = useInput('');
   const dispatch = useDispatch();

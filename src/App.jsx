@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncReceiveLeaderboars } from './states/leaderboard/action';
+import { asyncReceiveSaveThread } from './states/saveThreads/action';
 import Layout from './components/Layout';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -24,6 +25,7 @@ const App = () => {
   useEffect(() => {
     dispatch(asyncPreloadProcess());
     dispatch(asyncReceiveLeaderboars());
+    dispatch(asyncReceiveSaveThread());
   }, [dispatch]);
 
   return (

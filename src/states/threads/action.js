@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable operator-linebreak */
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import Api from '../../utils/Api';
 

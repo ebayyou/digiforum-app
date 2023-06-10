@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import Api from '../../utils/Api';
 import { asyncReceiveThreadDetail, receiveThreadDetailActionCreator } from './action';
