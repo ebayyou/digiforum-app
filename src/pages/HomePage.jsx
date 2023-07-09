@@ -1,8 +1,16 @@
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Educare } from 'iconsax-react';
+import { rightbarStatusActionCreator } from '../states/menuStatus/action';
 import Headers from '../components/Headers';
 import WrapperImage from '../components/WrapperImage';
+import illustrationHomeMobile from '../assets/images/illustration/Illustration-home_mobile.svg';
+import illustrationHomeDesktop from '../assets/images/illustration/Illustration-home_desktop.svg';
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+  const onHandlerRightbar = () => dispatch(rightbarStatusActionCreator(true));
+
   return (
     <section className="homepage">
       <div className="homepage__wrapper">
@@ -12,9 +20,19 @@ const HomePage = () => {
         />
 
         <WrapperImage
-          src="/images/illustration/Illustration_home.png"
-          alt="illustration home page"
-        />
+          alt="illustration home page mobile"
+          altSet="illustration home page desktop"
+          src={illustrationHomeMobile}
+          srcSet={illustrationHomeDesktop}
+        >
+          <button
+            type="button"
+            className="homepage__btn-fixed"
+            onClick={onHandlerRightbar}
+          >
+            <Educare className="btn__fixed-icon" />
+          </button>
+        </WrapperImage>
       </div>
 
       <Link

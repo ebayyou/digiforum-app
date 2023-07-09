@@ -1,0 +1,96 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.thread__list {
+  @include flex(column, flex-start, 1.4em);
+}
+
+.thread {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.5em 0.2em;
+  border-bottom: 2px solid $navi-004;
+  color: $neutral-001;
+  font-family: $text-font;
+
+  .thread__heading {
+    font-style: normal;
+    font-weight: $font-medium;
+    font-size: 18px;
+    line-height: 25px;
+    color: $neutral-001;
+    transition: text-decoration 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .thread__desc {
+    width: 100%;
+    font-style: normal;
+    font-weight: $font-regular;
+    font-size: 14px;
+    line-height: 21px;
+    color: $neutral-005;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .thread {
+    .thread__icon {
+      .wrapper__icon {
+        .bookmark {
+          font-size: 1.2rem;
+        }
+      }
+
+      .thread__comment {
+        .comment {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .thread {
+    width: 550px;
+
+    .thread__heading {
+      font-size: 22px;
+    }
+
+    .thread__desc {
+      font-size: 18px;
+      width: 490px;
+    }
+
+    .thread__profile {
+      margin: 1.5rem 0;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .thread {
+    margin-top: 1em;
+    background: $navi-003;
+    padding: 1.2em;
+    border-radius: 0.4em;
+    border: none;
+  }
+}
+
+@media (min-width: 1536px) {
+  .thread {
+    background: $navi-002;
+  }
+}

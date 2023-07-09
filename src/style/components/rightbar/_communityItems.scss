@@ -1,0 +1,47 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.community {
+  @include flex(row, space-between, 0.6em);
+  width: 100%;
+  padding: 0.3em 0.65em;
+
+  .community__group {
+    @include flex(row, flex-start, 0.45em);
+  }
+
+  .community__photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 0.1em;
+  }
+
+  .community__info {
+    h4 {
+      font-style: normal;
+      font-weight: $font-medium;
+      font-size: 12px;
+      line-height: 15px;
+      color: $neutral-005;
+    }
+    span {
+      font-style: normal;
+      font-weight: $font-regular;
+      font-size: 8px;
+      line-height: 12px;
+      color: $neutral-003;
+    }
+  }
+
+  .community__button {
+    width: 45px;
+    height: 35px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $navi-001;
+    background: #d1caff;
+    border-radius: 0.2em;
+  }
+}

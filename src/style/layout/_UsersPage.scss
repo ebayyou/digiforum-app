@@ -1,0 +1,70 @@
+@use '../base/variable' as *;
+@use '../utilities/mixin' as *;
+
+.UsersPage {
+  .UsersPage__list {
+    @include flex(column, flex-start, 0.5em);
+    align-items: flex-start;
+    margin: 2rem 0;
+
+    .user__item {
+      width: 100%;
+      display: block;
+      padding: 0 0.4em;
+      border-bottom: 1px solid $navi-004;
+      border-radius: 0.3em;
+      background: transparent;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        background-color: $navi-004;
+      }
+
+      &:focus {
+        border: 1px solid $light-001;
+        outline: 1px solid $light-001;
+      }
+    }
+
+    .user__notfound {
+      h3 {
+        font-style: normal;
+        font-weight: $font-medium;
+        font-size: 18px;
+        line-height: 22px;
+        color: $neutral-003;
+
+        span {
+          display: inline-block;
+          margin-left: 0.4em;
+          padding: 0.2em;
+          font-size: 14px;
+          background-color: #5e4dcb;
+          color: #d1caff;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .UsersPage {
+    width: 450px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .UsersPage {
+    margin: 2em auto;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .UsersPage {
+    .UsersPage__list .user__item {
+      padding: 0 1em;
+    }
+  }
+}

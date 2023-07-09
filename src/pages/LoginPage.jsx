@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { asyncSetAuthUser } from '../states/authUser/action';
 import LoginInput from '../components/authComponent/LoginInput';
-import TaglineBrand from '../components/authComponent/children/TaglineBrand';
+import AuthTaglineBrand from '../components/authComponent/children/AuthTaglineBrand';
 
 const LoginPage = () => {
   const { authUser = null } = useSelector((state) => state);
@@ -21,7 +21,7 @@ const LoginPage = () => {
   return (
     <section className="container__section">
       <div className="left__side">
-        <TaglineBrand />
+        <AuthTaglineBrand />
       </div>
 
       <div className="right__side">

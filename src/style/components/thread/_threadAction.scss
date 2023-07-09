@@ -3,6 +3,7 @@
 
 .thread__wrapper {
   @include flex(row, space-between, 0);
+  flex-wrap: wrap;
   margin: 1.3em 0 0.5em;
 }
 
@@ -24,7 +25,7 @@
 
   .thread__comment {
     @include flex(row, space-between, 0.4em);
-    width: 148px;
+    width: 150px;
     height: 34px;
     padding: 0.4em 0.5em;
     background-color: $neutral-004;
@@ -37,6 +38,7 @@
 
     span {
       font-size: 10px;
+      font-weight: $font-semi-bold;
       line-height: 15px;
       color: $main-color;
     }
@@ -48,7 +50,7 @@
       font-weight: $font-medium;
       line-height: 19px;
       text-align: center;
-      color: $title-color;
+      color: $neutral-001;
       background-color: $primary-001;
       border-radius: 0px 5px 5px 0px;
     }

@@ -1,15 +1,16 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import ThreadDetail from '../components/thread/ThreadDetail';
+import { ErrorBoundary } from 'react-error-boundary';
 import {
-  asyncAddThreadComment,
   asyncReceiveThreadDetail,
   clearThreadDetailActionCreator,
 } from '../states/threadDetail/action';
+import NothingThread from '../components/errorBoundaries/NothingThread';
+import ThreadDetail from '../components/thread/ThreadDetail';
 
 const ThreadDetailPage = () => {
-  const { threadDetail = {}, authUser } = useSelector((state) => state);
+  const { threadDetail = {} } = useSelector((state) => state);
   const { threadId } = useParams();
   const dispatch = useDispatch();
 
@@ -21,22 +22,24 @@ const ThreadDetailPage = () => {
     return () => dispatch(clearThreadDetailActionCreator());
   }, [threadId, dispatch]);
 
-  const handlerSubmitComment = (content) => {
-    dispatch(asyncAddThreadComment(threadId, content));
-  };
-
   return (
-    <section className="Layout__children">
-      <article className="ThreadDetailPage">
-        {threadDetail.body && (
-          <ThreadDetail
-            threadDetail={threadDetail}
-            handlerSubmitComment={handlerSubmitComment}
-            authUser={authUser}
-          />
-        )}
-      </article>
-    </section>
+    <ErrorBoundary
+      fallback={
+        <NothingThread
+          withButton
+          errorMsg="sorry #PeopleSpeech, we couldn't find the thread details you're looking for..."
+          bgColor="#fc728b"
+          btnMsg="Create #Thread"
+          btnTo="/threads/thread-added"
+        />
+      }
+    >
+      <section className={`${threadDetail.body ? 'Layout__children' : 'Layout__children-full'}`}>
+        <article className="ThreadDetailPage">
+          {threadDetail.body ? <ThreadDetail threadId={threadId} /> : null}
+        </article>
+      </section>
+    </ErrorBoundary>
   );
 };
 

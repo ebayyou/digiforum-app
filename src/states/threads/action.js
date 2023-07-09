@@ -1,11 +1,12 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable operator-linebreak */
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import Api from '../../utils/Api';
 
 const ActionType = {
   RECEIVE_THREADS: 'RECEIVE_THREADS',
   ADD_THREAD: 'ADD_THREAD',
+  ADD_THREAD_SUCCESS: 'ADD_THREAD_REQUEST',
+  ADD_THREAD_REQUEST: 'ADD_THREAD_REQUEST',
+  ADD_THREAD_FAILED: 'ADD_THREAD_REQUEST',
   UP_VOTE_THREAD: 'UP_VOTE_THREAD',
   DOWN_VOTE_THREAD: 'DOWN_VOTE_THREAD',
 };
@@ -15,6 +16,35 @@ function receiveThreadsActionCreator(threads) {
     type: ActionType.RECEIVE_THREADS,
     payload: {
       threads,
+    },
+  };
+}
+
+function addThreadRequest({ title, body, category }) {
+  return {
+    type: ActionType.ADD_THREAD_REQUEST,
+    payload: {
+      title,
+      body,
+      category,
+    },
+  };
+}
+
+function addThreadSuccess(thread) {
+  return {
+    type: ActionType.ADD_THREAD_SUCCESS,
+    payload: {
+      thread,
+    },
+  };
+}
+
+function addThreadFailed(message) {
+  return {
+    type: ActionType.ADD_THREAD_FAILED,
+    payload: {
+      message,
     },
   };
 }
@@ -118,4 +148,7 @@ export {
   asyncAddThread,
   asyncToggleUpVoteThread,
   asyncToggleDownVoteThread,
+  addThreadSuccess,
+  addThreadRequest,
+  addThreadFailed,
 };

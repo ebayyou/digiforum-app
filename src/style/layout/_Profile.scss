@@ -1,0 +1,69 @@
+@use '../base/variable' as *;
+@use '../utilities/mixin' as *;
+
+.profile__container {
+  @include flex(column, center, 1em);
+  padding: 1em 1em 6em;
+  font-family: $text-font;
+
+  .profile__wrapper {
+    @include flex(column, flex-start, 1.25em);
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .userthread {
+    width: 100%;
+  }
+}
+
+.profile__container.profile__container-100vh {
+  height: 100vh;
+}
+
+@media (min-width: 550px) {
+  .profile__container {
+    width: 550px;
+    gap: 1.8em;
+    margin: 1em auto;
+  }
+}
+
+@media (min-width: 700px) {
+  .profile__container {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profile__container {
+    position: absolute;
+    top: 80px;
+    right: 80px;
+    width: 600px;
+    margin: 2em auto;
+  }
+}
+@media (min-width: 1150px) {
+  .profile__container {
+    right: 145px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .profile__container {
+    left: 0px;
+    right: 0px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .profile__container {
+    overflow-x: scroll;
+    width: 580px;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}

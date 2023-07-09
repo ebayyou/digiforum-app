@@ -1,0 +1,45 @@
+@use '../base/variable' as *;
+@use '../utilities/mixin' as *;
+
+.CommunityPage {
+  padding: 1em 0;
+  font-family: $text-font;
+
+  .community__wrap {
+    margin: 1.55em auto;
+  }
+
+  .community__list {
+    @include flex(column, center, 1.25em);
+    margin: 2em 0 0;
+  }
+}
+
+@media (min-width: 500px) {
+  .CommunityPage {
+    width: 450px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .CommunityPage {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1150px) {
+  .CommunityPage {
+    width: 480px;
+  }
+}
+@media (min-width: 1440px) {
+  .CommunityPage {
+    width: 100%;
+
+    .community__list {
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+  }
+}

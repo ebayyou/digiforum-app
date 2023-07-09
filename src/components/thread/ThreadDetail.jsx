@@ -1,14 +1,21 @@
-import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
+import DOMPurify from 'dompurify';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ThreadItemOwner, { userShape } from './children/thread/ThreadItemOwner';
-import CommentWrapper from './children/comment/CommentWrapper';
+import ThreadItemOwner from './children/thread/ThreadItemOwner';
 import CommentsInput from './children/comment/CommentInput';
-import CommentResponse from './children/comment/CommentResponse';
-import CommentsItems, { commentShape } from './children/comment/CommentItems';
+import CommentsItems from './children/comment/CommentItems';
 import Votes from './children/Votes';
+import { asyncAddThreadComment } from '../../states/threadDetail/action';
 
-const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
+const ThreadDetail = ({ threadId }) => {
+  const { threadDetail = {}, authUser = {} } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const handlerSubmitComment = (content) => {
+    dispatch(asyncAddThreadComment(threadId, content));
+  };
+
   return (
     <>
       <div className="threadDetail__wrapper">
@@ -42,6 +49,7 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
         {authUser ? (
           <CommentsInput
             owner={threadDetail.owner}
+            length={threadDetail.comments.length}
             handlerSubmitComment={handlerSubmitComment}
           />
         ) : (
@@ -56,62 +64,37 @@ const ThreadDetail = ({ threadDetail, handlerSubmitComment, authUser }) => {
           </div>
         )}
 
-        <CommentWrapper>
-          <>
-            <CommentResponse
-              title="Comment"
-              length={threadDetail.comments.length}
-            />
-
-            <div className="comment__data">
-              {threadDetail.comments.length >= 1 ? (
-                threadDetail.comments.map((comment) => (
-                  <CommentsItems
-                    key={comment.id}
-                    threadId={threadDetail.id}
-                    commentId={comment.id}
-                    owner={comment.owner}
-                    content={comment.content}
-                    createdAt={comment.createdAt}
-                    upVotes={comment.upVotesBy}
-                    downVotes={comment.downVotesBy}
-                    like={authUser && comment.upVotesBy.includes(authUser.id)}
-                    unlike={authUser && comment.downVotesBy.includes(authUser.id)}
-                  />
-                ))
-              ) : (
-                <div className="comment__items">
-                  <h4 className="comment__notFound">No one commented</h4>
-                </div>
-              )}
-            </div>
-          </>
-        </CommentWrapper>
+        <div className="comment__wrapper">
+          <div className="comment__data">
+            {threadDetail.comments.length >= 1 ? (
+              threadDetail.comments.map((comment) => (
+                <CommentsItems
+                  key={comment.id}
+                  threadId={threadDetail.id}
+                  commentId={comment.id}
+                  owner={comment.owner}
+                  content={comment.content}
+                  createdAt={comment.createdAt}
+                  upVotes={comment.upVotesBy}
+                  downVotes={comment.downVotesBy}
+                  like={authUser && comment.upVotesBy.includes(authUser.id)}
+                  unlike={authUser && comment.downVotesBy.includes(authUser.id)}
+                />
+              ))
+            ) : (
+              <div className="comment__items">
+                <h4 className="comment__notFound">No one commented</h4>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </>
   );
 };
 
-ThreadDetail.defaultProps = {
-  authUser: null,
-};
-
-const ThreadDetailShape = {
-  body: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  comments: PropTypes.arrayOf(PropTypes.shape(commentShape)).isRequired,
-  createdAt: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  upVotesBy: PropTypes.array.isRequired,
-  downVotesBy: PropTypes.array.isRequired,
-  owner: PropTypes.shape(userShape).isRequired,
-  title: PropTypes.string.isRequired,
-};
-
 ThreadDetail.propTypes = {
-  ...ThreadDetailShape,
-  handlerSubmitComment: PropTypes.func.isRequired,
-  authUser: PropTypes.object,
+  threadId: PropTypes.string.isRequired,
 };
 
 export default ThreadDetail;

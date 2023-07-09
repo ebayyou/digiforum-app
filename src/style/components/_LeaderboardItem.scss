@@ -3,7 +3,8 @@
 
 .leaderboard__item {
   @include flex(row, space-between, 0);
-  margin: 1em 0;
+  width: 90%;
+  margin: 1em auto;
   transition: all 0.3s ease;
   font-family: $text-font;
 
@@ -34,20 +35,21 @@
   }
 
   .lb__score {
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
     font-size: 1rem;
     font-weight: $font-semi-bold;
     text-align: center;
-    line-height: 38px;
+    line-height: 42px;
     color: $navi-002;
-    background: $light-001;
+    background-color: $light-001;
     border-radius: 0.2em;
   }
 
   &:hover {
+    width: 100%;
     padding: 0.4rem;
-    background-color: #91707082;
+    background-color: $navi-004;
     border-radius: 0.4em;
   }
 }
@@ -61,6 +63,13 @@
 .leaderboard__item--lbPage {
   margin: 0;
   width: 100%;
+}
+
+.lb-image-error {
+  width: 42px;
+  height: 42px;
+  border-radius: 0.3em;
+  background-color: #9ab78d;
 }
 
 @media (min-width: 1024px) {

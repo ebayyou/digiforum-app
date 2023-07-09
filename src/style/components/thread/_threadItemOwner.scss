@@ -16,7 +16,10 @@
     }
 
     .thread__info {
+      text-align: left;
+
       h4 {
+        color: $neutral-001;
         font-size: 14px;
         font-weight: $font-medium;
         line-height: $line-height-poppins;

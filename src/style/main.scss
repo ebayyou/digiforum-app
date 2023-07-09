@@ -6,25 +6,47 @@
 @use './layout/AuthPage';
 @use './layout/ThreadAddedPage';
 @use './layout/ThreadDetailPage';
+@use './layout/CommunityPage';
 @use './layout/LeaderboardsPage';
+@use './layout/Profile';
 @use './layout/NotfoundPage';
-@use './components/Navigation';
-@use './components/navigation/menu';
-@use './components/navigation/menuCollapse';
-@use './components/navigation/menuHeader';
-@use './components/navigation/navigationThread';
-@use './components/Threads';
+@use './layout/UsersPage';
+@use './components/authcomponent/authInput';
+@use './components/authcomponent/authTaglineBrand';
+@use './components/navigation/Navigation';
+@use './components/navigation/NavigationThread';
+@use './components/navigation/navList';
+@use './components/navigation/navBottom';
+@use './components/navigation/navDropdownProfile';
+@use './components/navigation/dropdownList';
+@use './components/thread/Threads';
 @use './components/thread/threadAdded';
 @use './components/thread/threadItemOwner';
 @use './components/thread/threadAction';
+@use './components/thread/threadAddedBody';
+@use './components/thread/threadAddedForm';
+@use './components/thread/threadAddedFooter';
 @use './components/comment/commentForm';
 @use './components/comment/commentData';
 @use './components/comment/commentHeading';
-@use './components/Profile';
-@use './components/Sidebar';
-@use './components/RightBar';
+@use './components/sidebar/Sidebar';
+@use './components/sidebar/sidebarHeader';
+@use './components/sidebar/sidebarNavigation';
+@use './components/sidebar/sidebarLeaderboard';
+@use './components/sidebar/sidebarFooter';
+@use './components/sidebar/SidebarWrapper';
+@use './components/rightbar/RightBar';
+@use './components/rightbar/trendItems';
+@use './components/rightbar/userItems';
+@use './components/rightbar/communityItems';
+@use './components/users/userProfile';
+@use './components/users/userProfileTabs';
 @use './components/LeaderboardItem';
 @use './components/Headers';
+@use './components/SearchElement';
+@use './components/communityItem';
+@use './components/errorBoundaries/NothingThread';
+@use './components/errorBoundaries/ProfileLock';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
@@ -32,8 +54,9 @@ body {
   width: 100%;
   height: 100vh;
   font-family: $body-font;
-  color: $title-color;
+  color: $neutral-001;
   background: $main-color;
+  overflow-x: hidden;
 }
 
 html {
@@ -43,7 +66,7 @@ html {
 .heading {
   font-size: 2.2rem;
   text-align: center;
-  color: $title-color;
+  color: $neutral-001;
 }
 
 .logo__brand {
@@ -64,19 +87,119 @@ html {
   opacity: 0;
 }
 
-.wrapper__img {
-  margin: 3em auto 1em;
-  height: 554px;
+.heading__page {
+  margin: 0 0.5em;
+  font-weight: $font-semi-bold;
+  font-size: 1.3rem;
+  line-height: 38px;
 }
 
-@media (min-width: 600px) {
+.desc__page {
+  margin: 0 0.8em;
+  font-weight: $font-regular;
+  font-size: 1.05rem;
+  line-height: 27px;
+  color: $neutral-003;
+}
+
+.wrapper__100vh {
+  @include flex(column, center, 0);
+  width: 100%;
+  height: 100vh;
+}
+
+.wraperror {
+  @include flex(column, center, 1.2em);
+  background: $navi-004;
+  border-radius: 0.25em;
+  width: 100%;
+}
+
+.alertdigi {
+  @include flex(row, space-between, 1em);
+  align-items: flex-end;
+  position: fixed;
+  top: 10;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 90%;
+  height: 120px;
+  padding: 0.8em;
+  background-color: $navi-003;
+  border-radius: 0.3em;
+  z-index: 100;
+}
+
+.alertdigi__group {
+  @include flex(row, flex-start, 0.4em);
+  align-self: center;
+}
+
+.time__group {
+  h4 {
+    font-size: 16px;
+    font-weight: $font-semi-bold;
+    font-style: 'normal';
+    text-align: center;
+    color: $neutral-005;
+    margin-bottom: 0.4em;
+  }
+
+  p {
+    color: $neutral-003;
+    font-size: 12px;
+    font-weight: $font-medium;
+    font-style: 'normal';
+    text-align: center;
+
+    .time {
+      margin-left: 0.2em;
+      color: $light-001;
+    }
+  }
+}
+
+.alertdigi__button {
+  width: 80px;
+  height: 35px;
+  font-family: $text-font;
+  font-weight: $font-medium;
+  line-height: 35px;
+  color: $navi-002;
+  border-radius: 0.3rem;
+}
+
+.absolute__element {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+.wrapper__img {
+  position: relative;
+}
+
+@media (min-width: 500px) {
   .wrapper__img {
-    width: 458px;
-    margin: 3em auto 4em;
+    display: block;
+    width: 428px;
+    height: 554px;
+    margin: 1em auto 2em;
 
     .img {
       width: 100%;
     }
+  }
+
+  .heading__page {
+    font-size: 1.45em;
+  }
+
+  .desc__page {
+    font-size: 1.1rem;
   }
 }
 
@@ -85,11 +208,37 @@ html {
     display: block;
     opacity: 1;
   }
+
+  .heading__page {
+    font-size: 1.45em;
+    margin: 0.2em 0.5em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .absolute__element {
+    display: none;
+    width: 0;
+    height: 0;
+    position: unset;
+  }
+}
+
+@media (min-width: 1440px) {
+  .headers__page {
+    width: 348px;
+    margin: 0.2em auto;
+    text-align: center;
+  }
 }
 
 @media (min-width: 1536px) {
   .wrapper__img {
     width: unset;
     margin: 0 auto;
+  }
+
+  .wraperror {
+    background: $navi-002;
   }
 }

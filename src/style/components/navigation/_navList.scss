@@ -1,0 +1,35 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.navlist {
+  @include flex(row, space-between, 0);
+  width: 85%;
+  margin: 0 auto;
+  font-family: $text-font;
+  transition: background 0.3s ease;
+
+  .navlist__link {
+    @include flex(column, center, 0);
+    width: 45px;
+    height: 45px;
+    color: $neutral-001;
+
+    .link__icon {
+      color: $neutral-003;
+
+      &:hover {
+        color: $light-001;
+      }
+    }
+
+    .link__icon-active {
+      color: $light-001;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .navlist {
+    margin: 0 auto;
+  }
+}

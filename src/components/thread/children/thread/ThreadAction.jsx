@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import { HashLink } from 'react-router-hash-link';
-import { FaComment, FaBookmark, FaRegBookmark } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import { Save2, Message2 } from 'iconsax-react';
+import { checkConditionThreadSaved } from '../../../../utils/utilsForUserThread';
 
 const ThreadAction = ({
   handlerActionSavedThread,
@@ -9,28 +10,13 @@ const ThreadAction = ({
   id,
   totalComments,
 }) => {
-  const { savedThreads = [] } = useSelector((state) => state);
-
-  const checkConditionThreadSaved = () => {
-    let condition;
-    if (savedThreads.length > 0) {
-      savedThreads.forEach((thread) => {
-        if (thread.condition && thread.id === id) {
-          condition = thread.condition;
-        }
-      });
-    }
-    return condition;
-  };
+  const { saveThreads = [] } = useSelector((state) => state);
+  const isCondition = checkConditionThreadSaved(saveThreads, id);
 
   const toggleSavedThread = () => {
-    const threadCondition = checkConditionThreadSaved();
-
-    if (threadCondition) handlerActionRemoveSavedThread(id);
+    if (isCondition) handlerActionRemoveSavedThread(id);
     else handlerActionSavedThread(id);
   };
-
-  const bookmarkCondition = checkConditionThreadSaved();
 
   return (
     <div className="thread__action">
@@ -39,13 +25,28 @@ const ThreadAction = ({
         className="wrapper__icon"
         onClick={toggleSavedThread}
       >
-        {bookmarkCondition ? <FaBookmark className="saved" /> : <FaRegBookmark className="saved" />}
+        {isCondition ? (
+          <Save2
+            className="saved"
+            size="24"
+            variant="Bold"
+          />
+        ) : (
+          <Save2
+            className="saved"
+            size="24"
+          />
+        )}
       </button>
       <HashLink
-        to={`/threadDetail/${id}#comment`}
+        to={`/threads/${id}#comment`}
         className="thread__comment"
       >
-        <FaComment className="comment" />
+        <Message2
+          className="comment"
+          size="22"
+          variant="Bold"
+        />
         <span>Add Response</span>
         <span className="comment__total">{totalComments}</span>
       </HashLink>

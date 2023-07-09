@@ -1,0 +1,155 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.rightBar {
+  overflow-y: auto;
+  position: fixed;
+  right: -100%;
+  top: 0;
+  z-index: $z-fixed;
+  width: 280px;
+  height: 100%;
+  padding-bottom: 3.8em;
+  font-family: $text-font;
+  background: $navi-003;
+  border-left: 2px solid $navi-004;
+  transition: all 350ms ease-out;
+
+  .rightBar__wrapper {
+    @include flex(column, center, 1em);
+    margin: 1em 0;
+  }
+
+  .rightBar__box {
+    width: 245px;
+    padding: 0.8em 0;
+    background-color: $navi-004;
+    border-radius: 0.25em;
+  }
+
+  .rightBar__button {
+    width: 142px;
+    height: 44px;
+    font-weight: $font-semi-bold;
+    font-size: 1rem;
+    line-height: 44px;
+    text-align: center;
+    color: $navi-002;
+    background-color: $light-001;
+    box-shadow: 6px 6px 0px rgba(46, 34, 34, 0.38);
+    border-radius: 0.3em;
+  }
+
+  .rightBarBox__button {
+    display: block;
+    width: 93%;
+    height: 44px;
+    margin: 0 auto;
+    font-weight: $font-semi-bold;
+    font-size: 1rem;
+    line-height: 44px;
+    text-align: center;
+    color: $light-001;
+    background-color: $navi-001;
+    border-radius: 0.25em;
+    transition: background 0.3s ease;
+
+    &:hover {
+      color: $navi-002;
+      background-color: $light-001;
+    }
+  }
+
+  .rightBarBox__header {
+    @include flex(row, space-between, 0);
+    padding: 0 1em;
+
+    h3 {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #ddd8d8;
+    }
+
+    .rightBarBox__icon {
+      width: 24px;
+      height: 24px;
+      color: $primary-003;
+    }
+  }
+
+  .rightBarBox__wrapper {
+    @include flex(column, flex-start, 0.85em);
+    align-items: flex-start;
+    margin: 0.6em 0;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.rightBar-flex {
+  @include flex();
+}
+
+.rightBar.active {
+  right: 0;
+  transition: all 350ms ease-in;
+}
+
+.rightBar-relative {
+  position: relative;
+}
+
+.rightBar-w-s {
+  height: 148px;
+}
+
+@media (min-width: 1024px) {
+  .rightBar {
+    top: 76px;
+
+    .rightBar__wrapper {
+      margin: 3.25em 0 6em;
+    }
+  }
+
+  .rightBar.visible {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .rightBar {
+    top: 75px;
+    right: 0;
+    z-index: 0;
+    width: 300px;
+    background-color: transparent;
+  }
+
+  .rightBar.visible {
+    display: block;
+  }
+}
+
+@media (min-width: 1440px) {
+  .rightBar {
+    .rightBar__wrapper {
+      margin: 3.25em 0 7em;
+    }
+  }
+}
+
+@media (min-width: 1536px) {
+  .rightBar {
+    position: absolute;
+    right: 0px;
+    top: 87px;
+
+    .rightBar__box {
+      background-color: $navi-002;
+    }
+  }
+}

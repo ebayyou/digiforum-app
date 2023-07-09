@@ -1,43 +1,52 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { sidebarStatusActionCreator } from '../../states/menuStatus/action';
 import SideBarNavigation from './children/SidebarNavigation';
 import SidebarLeaderboard from './children/SidebarLeaderboard';
 import SideBarFooter from './children/SidebarFooter';
-import MenuHeader from '../navigation/children/MenuHeader';
-import { sidebarStatusActionCreator } from '../../states/sidebarStatus/action';
+import WrapperError from '../errorBoundaries/WrapperError';
+import SidebarHeader from './children/SidebarHeader';
+import SidebarWrapper from './children/SidebarWrapper';
 
 const SideBar = () => {
-  const { leaderboards, sidebarStatus } = useSelector((state) => state);
+  const { leaderboards = [], menuStatus } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const onHandlerSidebar = () => {
-    dispatch(sidebarStatusActionCreator(false));
-  };
+  const onHandlerSidebar = () => dispatch(sidebarStatusActionCreator(false));
 
   const topLeaderboard = [
-    { lead: leaderboards[0] },
-    { lead: leaderboards[1] },
-    { lead: leaderboards[2] },
+    { ...leaderboards[0], color: '#d1caff' },
+    { ...leaderboards[1], color: '#ffcaca' },
+    { ...leaderboards[2], color: '#caecff' },
   ];
 
   return (
-    <aside className={`sidebar ${sidebarStatus ? '' : 'visible'}`}>
-      <MenuHeader onHandlerNavbar={onHandlerSidebar} />
+    <>
+      <div
+        onTouchStart={onHandlerSidebar}
+        className={menuStatus.sidebarStatus ? 'absolute__element' : null}
+      />
+      <aside className={menuStatus.sidebarStatus ? 'sidebar active' : 'sidebar'}>
+        <SidebarHeader onHandlerSidebar={onHandlerSidebar} />
 
-      <div className="sidebar__overflow">
-        <div className="sidebar__wrapper">
-          <SideBarNavigation onHandlerSidebar={onHandlerSidebar} />
+        <div className="sidebar__overflow">
+          <div className="sidebar__wrapper">
+            <SidebarWrapper onHandlerSidebar={onHandlerSidebar} />
+            <SideBarNavigation onHandlerSidebar={onHandlerSidebar} />
 
-          {leaderboards.length >= 1 && (
-            <SidebarLeaderboard
-              onHandlerSidebar={onHandlerSidebar}
-              topLeaderboard={topLeaderboard}
-            />
-          )}
+            {leaderboards.length > 0 ? (
+              <SidebarLeaderboard
+                onHandlerSidebar={onHandlerSidebar}
+                topLeaderboard={topLeaderboard}
+              />
+            ) : (
+              <WrapperError height={220} />
+            )}
+          </div>
         </div>
 
         <SideBarFooter />
-      </div>
-    </aside>
+      </aside>
+    </>
   );
 };
 

@@ -1,36 +1,32 @@
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const ThreadAdded = () => {
+  const { authUser } = useSelector((state) => state);
+  const navigate = useNavigate();
+
   return (
     <div className="threadAdded">
-      <h3 className="added__heading">Add Your Threads...</h3>
-      <Link
-        to="/threadAdded"
-        className="added__button"
-      >
-        <svg
-          className="added__icon"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M22 8.27V4.23C22 2.64 21.36 2 19.77 2H15.73C14.14 2 13.5 2.64 13.5 4.23V8.27C13.5 9.86 14.14 10.5 15.73 10.5H19.77C21.36 10.5 22 9.86 22 8.27ZM10.5 8.52V3.98C10.5 2.57 9.86 2 8.27 2H4.23C2.64 2 2 2.57 2 3.98V8.51C2 9.93 2.64 10.49 4.23 10.49H8.27C9.86 10.5 10.5 9.93 10.5 8.52ZM10.5 19.77V15.73C10.5 14.14 9.86 13.5 8.27 13.5H4.23C2.64 13.5 2 14.14 2 15.73V19.77C2 21.36 2.64 22 4.23 22H8.27C9.86 22 10.5 21.36 10.5 19.77Z"
-            stroke="#131212"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+      <div className="added__input-group">
+        {authUser ? (
+          <img
+            className="added__img"
+            src={authUser.avatar}
+            alt="profile"
           />
-          <path
-            d="M14.5 17.5H20.5M17.5 20.5V14.5"
-            stroke="#131212"
-            strokeWidth="1.5"
-            strokeLinecap="round"
+        ) : (
+          <div
+            style={{ backgroundColor: '#9ab78d' }}
+            className="added__img"
           />
-        </svg>
-      </Link>
+        )}
+        <input
+          className="added__input"
+          type="text"
+          placeholder="what's in your mind?"
+          onFocus={() => navigate('/threads/thread-added')}
+        />
+      </div>
     </div>
   );
 };

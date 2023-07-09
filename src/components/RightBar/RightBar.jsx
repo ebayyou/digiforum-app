@@ -1,25 +1,28 @@
 import { useEffect } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { FaTripadvisor } from 'react-icons/fa';
-import { FiUsers, FiAward } from 'react-icons/fi';
-import { asyncUnsetAuthUser } from '../../states/authUser/action';
+import { useNavigate } from 'react-router-dom';
+import { Medal, Profile2User } from 'iconsax-react';
 import { asyncPopulateUserAndThreads } from '../../states/shared/action';
 import { trendByCategoryActionCreator } from '../../states/trends/action';
+import { rightbarStatusActionCreator } from '../../states/menuStatus/action';
 import TrendItems from './children/TrendItems';
 import UserItems from './children/UserItems';
+import RightbarBoxHeader from './children/RightbarBoxHeader';
+import RightbarBoxLink from './children/RightbarBoxLink';
+import Community from './children/Community';
+import WrapperError from '../errorBoundaries/WrapperError';
 
 const RightBar = () => {
-  const { trend, authUser, users, threads } = useSelector((state) => state);
+  const { trend, users, threads, menuStatus } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(asyncPopulateUserAndThreads());
   }, [dispatch]);
 
-  const onHandlerLogout = () => {
-    dispatch(asyncUnsetAuthUser());
-  };
+  const onHandlerRightbar = () => dispatch(rightbarStatusActionCreator(false));
 
   const onClickhandlerTrend = (newTrend) => {
     if (newTrend === trend) {
@@ -27,9 +30,12 @@ const RightBar = () => {
     } else {
       dispatch(trendByCategoryActionCreator(newTrend));
     }
+
+    onHandlerRightbar();
+    navigate('/threads');
   };
 
-  const usersList = users.slice(501, 507);
+  const usersList = users.slice(6, 12);
   const popularTrends = threads.map((thread) => ({
     id: thread.id,
     createdAt: thread.createdAt,
@@ -37,70 +43,66 @@ const RightBar = () => {
   }));
 
   return (
-    <aside className="rightBar">
-      <div className="rightBar__group">
-        <div className="rightBar__box rightBar-flex rightBar-relative rightBar-w-s">
-          <div className="rightBar__badge">
-            <FaTripadvisor className="badge__icon" />
-            <p className="badge__text">User Factor</p>
+    <>
+      <div
+        aria-hidden="true"
+        onTouchStart={onHandlerRightbar}
+        onClick={onHandlerRightbar}
+        className={menuStatus.rightbarStatus ? 'absolute__element' : null}
+      />
+      <aside className={menuStatus.rightbarStatus ? 'rightBar active' : 'rightBar'}>
+        <div className="rightBar__wrapper">
+          <Community onHandlerRightbar={onHandlerRightbar} />
+
+          <div className="rightBar__box">
+            <RightbarBoxHeader
+              title="Whats Happenning ?"
+              Icon={Medal}
+            />
+
+            <ErrorBoundary fallback={<WrapperError height={200} />}>
+              <div className="rightBarBox__wrapper">
+                {popularTrends.map(({ id, trending, createdAt }) => (
+                  <TrendItems
+                    key={id}
+                    onClickhandlerTrend={onClickhandlerTrend}
+                    trend={trending}
+                    createdAt={createdAt}
+                    popularTrend={trend === trending}
+                  />
+                ))}
+              </div>
+            </ErrorBoundary>
           </div>
 
-          {authUser ? (
-            <button
-              className="rightBar__button"
-              type="button"
-              onClick={onHandlerLogout}
-            >
-              Logout
-            </button>
-          ) : (
-            <Link
-              className="rightBar__button"
-              to="/login"
-            >
-              Login
-            </Link>
-          )}
-        </div>
+          <div className="rightBar__box">
+            <RightbarBoxHeader
+              title="List of Users"
+              Icon={Profile2User}
+            />
 
-        <div className="rightBar__box">
-          <div className="rightBarBox__header">
-            <h3>List of Users</h3>
-            <FiUsers className="rightBarBox__icon" />
-          </div>
+            <ErrorBoundary fallback={<WrapperError height={280} />}>
+              <div className="rightBarBox__wrapper">
+                {usersList.map((user) => (
+                  <UserItems
+                    key={user.id}
+                    avatar={user.avatar}
+                    name={user.name}
+                    id={user.id}
+                    onHandlerRightbar={onHandlerRightbar}
+                  />
+                ))}
+              </div>
+            </ErrorBoundary>
 
-          <div className="rightBarBox__wrapper">
-            {usersList.map((user) => (
-              <UserItems
-                key={user.id}
-                avatar={user.avatar}
-                name={user.name}
-                id={user.id}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="rightBar__box">
-          <div className="rightBarBox__header">
-            <h3>Whats Happenning ?</h3>
-            <FiAward className="rightBarBox__icon" />
-          </div>
-
-          <div className="rightBarBox__wrapper">
-            {popularTrends.map(({ id, trending, createdAt }) => (
-              <TrendItems
-                key={id}
-                onClickhandlerTrend={onClickhandlerTrend}
-                trend={trending}
-                createdAt={createdAt}
-                popularTrend={trend === trending}
-              />
-            ))}
+            <RightbarBoxLink
+              to="/users"
+              onHandlerRightbar={onHandlerRightbar}
+            />
           </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </>
   );
 };
 

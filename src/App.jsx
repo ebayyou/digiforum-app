@@ -3,16 +3,19 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncReceiveLeaderboars } from './states/leaderboard/action';
+import { asyncReceiveSaveThread } from './states/saveThreads/action';
 import Layout from './components/Layout';
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 import ThreadsPage from './pages/ThreadsPage';
 import ThreadAddedPage from './pages/ThreadAddedPage';
 import ThreadDetailPage from './pages/ThreadDetailPage';
-import LeaderboardsPage from './pages/LeaderBoardsPage';
 import ProfilePage from './pages/ProfilePage';
+import CommunityPage from './pages/CommunityPage';
+import LeaderboardsPage from './pages/LeaderBoardsPage';
+import UsersPage from './pages/UsersPage';
 import NotfoundPage from './pages/404Page';
 import Loading from './components/Loading';
 
@@ -22,6 +25,7 @@ const App = () => {
   useEffect(() => {
     dispatch(asyncPreloadProcess());
     dispatch(asyncReceiveLeaderboars());
+    dispatch(asyncReceiveSaveThread());
   }, [dispatch]);
 
   return (
@@ -54,18 +58,31 @@ const App = () => {
             element={<ThreadsPage />}
           />
           <Route
-            path="/threadAdded"
+            path="/threads/thread-added"
             element={<ThreadAddedPage />}
           />
           <Route
-            path="/threadDetail/:threadId"
+            path="/threads/:threadId"
             element={<ThreadDetailPage />}
+          />
+          <Route
+            path="/community"
+            element={<CommunityPage />}
           />
           <Route
             path="/leaderboards"
             element={<LeaderboardsPage />}
           />
+          <Route
+            path="/users"
+            element={<UsersPage />}
+          />
+          <Route
+            path="/users/:userId"
+            element={<ProfilePage />}
+          />
         </Route>
+
         <Route
           path="/login"
           element={<LoginPage />}

@@ -1,7 +1,8 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useInput } from '../../hooks/useInput';
+import AuthInput from './children/AuthInput';
+import logoBrandStripe from '../../assets/images/brand/digiforum-stripe.svg';
 
 const LoginInput = ({ onSubmitHandlerLogin }) => {
   const [email, onChangeEmail] = useInput('');
@@ -13,25 +14,20 @@ const LoginInput = ({ onSubmitHandlerLogin }) => {
   };
 
   return (
-    <div className="auth__input">
+    <div className="auth__wrapper-input">
       <Link
         to="/"
         className="logo__brand"
       >
         <img
-          src="/images/brand/Logo_Brand.png"
+          src={logoBrandStripe}
           alt="logo brand"
         />
       </Link>
       <h2 className="auth__heading">Login</h2>
+
       <p className="auth__description">
-        You can Login with your registered account, If you don’t have an account yet,
-        <Link
-          to="/register"
-          className="highlight"
-        >
-          Register here!
-        </Link>
+        You can login with your registered account or quick login with your Google account.
       </p>
 
       <div className="auth__barrier" />
@@ -40,44 +36,23 @@ const LoginInput = ({ onSubmitHandlerLogin }) => {
         className="auth__form"
         onSubmit={handlerSubmitLogin}
       >
-        <div className="auth__group">
-          <label
-            className="auth__label"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            className="auth__input"
-            onChange={onChangeEmail}
-            value={email}
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Example@gmail.com"
-          />
-        </div>
+        <AuthInput
+          onChangeInput={onChangeEmail}
+          value={email}
+          typeInput="email"
+          placeholder="Example@gmail.com"
+        />
 
-        <div className="auth__group">
-          <label
-            className="auth__label"
-            htmlFor="password"
-          >
-            Password
-          </label>
-          <input
-            className="auth__input"
-            onChange={onChangePassword}
-            value={password}
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Your password is..."
-          />
-        </div>
+        <AuthInput
+          onChangeInput={onChangePassword}
+          value={password}
+          typeInput="password"
+          placeholder="Your password is..."
+        />
 
         <button
           type="submit"
+          style={{ backgroundColor: '#d1caff' }}
           className="auth__button"
         >
           Login

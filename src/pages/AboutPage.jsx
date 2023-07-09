@@ -1,5 +1,6 @@
 import Headers from '../components/Headers';
 import WrapperImage from '../components/WrapperImage';
+import illustrationAbout from '../assets/images/illustration/Illustration_about.png';
 
 const AboutPage = () => {
   return (
@@ -11,8 +12,10 @@ const AboutPage = () => {
         />
 
         <WrapperImage
-          src="/images/illustration/Illustration_about.png"
-          alt="illustration home page"
+          alt="illustration home page mobile"
+          altSet="illustration home page desktop"
+          src={illustrationAbout}
+          srcSet={illustrationAbout}
         />
       </div>
     </section>

@@ -1,4 +1,3 @@
-/* eslint-disable  */
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import Api from '../../utils/Api';
 

@@ -1,0 +1,52 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.sidebar__navigation {
+  display: none;
+  width: 100%;
+  align-items: flex-start;
+
+  .nav__item {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.3em;
+    transition: all 0.3s ease;
+
+    &:hover,
+    &:active {
+      background-color: $navi-004;
+      border-radius: 0.25em;
+    }
+  }
+
+  .nav__link {
+    @include flex(row, flex-start, 1em);
+    width: 100%;
+    height: 44px;
+
+    .nav__wrap {
+      @include flex();
+      width: 36px;
+      height: 36px;
+
+      .nav__icon {
+        width: 30px;
+        height: 30px;
+        line-height: 36px;
+        color: $neutral-003;
+      }
+    }
+
+    .nav__title {
+      font-size: 1rem;
+      font-weight: $font-regular;
+      color: $neutral-003;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .sidebar__navigation {
+    @include flex(column, flex-start, 0.4em);
+  }
+}

@@ -6,9 +6,9 @@ import usersReducer from './users/reducer';
 import threadsReducer from './threads/reducer';
 import threadDetailReducer from './threadDetail/reducer';
 import leaderboardsReducer from './leaderboard/reducer';
-import sidebarstatusReducer from './sidebarStatus/reducer';
 import trendsReducer from './trends/reducer';
-import savedThreadReducer from './savedThread/reducer';
+import saveThreadsReducer from './saveThreads/reducer';
+import menuStatusReducer from './menuStatus/reducer';
 
 const store = configureStore({
   reducer: {
@@ -17,11 +17,11 @@ const store = configureStore({
     users: usersReducer,
     threads: threadsReducer,
     threadDetail: threadDetailReducer,
-    savedThreads: savedThreadReducer,
+    saveThreads: saveThreadsReducer,
     trend: trendsReducer,
     leaderboards: leaderboardsReducer,
     loadingBar: loadingBarReducer,
-    sidebarStatus: sidebarstatusReducer,
+    menuStatus: menuStatusReducer,
   },
 });
 

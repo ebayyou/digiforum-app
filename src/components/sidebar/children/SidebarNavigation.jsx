@@ -1,44 +1,26 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { FiHash, FiUsers } from 'react-icons/fi';
-import { FaBookmark } from 'react-icons/fa';
-
-const navigationItem = [
-  {
-    id: '1',
-    item: 'Profile',
-    link: '/profile',
-    icon: <FiUsers className="nav__icon" />,
-  },
-  {
-    id: '2',
-    item: 'Your Threads',
-    link: '/profile/yourThreads',
-    icon: <FiHash className="nav__icon" />,
-  },
-  {
-    id: '3',
-    item: 'Saved',
-    link: '/profile/saved',
-    icon: <FaBookmark className="nav__icon" />,
-  },
-];
+import { NavLink } from 'react-router-dom';
+import navigationItem from '../../../utils/navigationItem';
 
 const SideBarNavigation = ({ onHandlerSidebar }) => {
   return (
-    <div className="sidebar__navigation">
-      {navigationItem.map(({ id, item, link, icon }) => (
-        <Link
+    <ul className="sidebar__navigation">
+      {navigationItem.map(({ id, text, link, icon }) => (
+        <li
           key={id}
-          to={link}
-          onClick={onHandlerSidebar}
-          className="nav__link"
+          className="nav__item"
         >
-          <div className="nav__wrap">{icon}</div>
-          <h4 className="nav__title">{item}</h4>
-        </Link>
+          <NavLink
+            to={link}
+            onClick={onHandlerSidebar}
+            className="nav__link"
+          >
+            <div className="nav__wrap">{icon}</div>
+            <h4 className="nav__title">{text}</h4>
+          </NavLink>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

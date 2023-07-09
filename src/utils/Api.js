@@ -130,42 +130,28 @@ const Api = (() => {
     return detailThread;
   }
 
-  function getSavedThreadFromLocalStorage() {
-    return JSON.parse(localStorage.getItem('savedThread'));
+  function getSavedThreadFromSessionStorage() {
+    let threads = [];
+
+    if (sessionStorage.getItem('savedThread') !== null) {
+      threads = JSON.parse(sessionStorage.getItem('savedThread'));
+    }
+
+    return threads;
   }
 
-  function savedThreadToLocalStorage(thread) {
-    let threads = [];
-    if (localStorage.getItem('savedThread') !== null) threads = getSavedThreadFromLocalStorage();
+  function savedThreadToSesionStorage(thread) {
+    const threads = getSavedThreadFromSessionStorage();
+    const newThreads = [...threads, thread];
 
-    const threadsPromise = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve([...threads, thread]);
-      }, 1000);
-    });
-
-    threadsPromise
-      .then((response) => localStorage.setItem('savedThread', JSON.stringify(response)))
-      .catch((error) => {
-        throw new Error(error);
-      });
+    sessionStorage.setItem('savedThread', JSON.stringify(newThreads));
   }
 
-  function removeThreadFromLocalStorage(threadId) {
-    let threads = [];
-    if (localStorage.getItem('savedThread') !== null) threads = getSavedThreadFromLocalStorage();
+  function removeThreadFromSesionStorage(threadId) {
+    const threads = getSavedThreadFromSessionStorage();
+    const filterThread = threads.filter((thread) => thread.id !== threadId);
 
-    const threadsPromise = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(threads.filter((thread) => thread.id !== threadId));
-      }, 1000);
-    });
-
-    threadsPromise
-      .then((response) => localStorage.setItem('savedThread', JSON.stringify(response)))
-      .catch((error) => {
-        throw new Error(error);
-      });
+    sessionStorage.setItem('savedThread', JSON.stringify(filterThread));
   }
 
   async function createThread({ title, body, category = '' }) {
@@ -343,6 +329,10 @@ const Api = (() => {
     return leaderboards;
   }
 
+  function searchUser(users, username) {
+    return users.filter((user) => user.name.toLowerCase().includes(username.toLowerCase()));
+  }
+
   return {
     getAccessToken,
     putAccessToken,
@@ -352,9 +342,9 @@ const Api = (() => {
     getOwnProfile,
     getAllThreads,
     getDetailThread,
-    savedThreadToLocalStorage,
-    getSavedThreadFromLocalStorage,
-    removeThreadFromLocalStorage,
+    savedThreadToSesionStorage,
+    getSavedThreadFromSessionStorage,
+    removeThreadFromSesionStorage,
     upVoteThread,
     downVoteThread,
     neutralizeVoteThread,
@@ -364,6 +354,7 @@ const Api = (() => {
     createThread,
     createCommentForThread,
     getLeaderboardsByUsers,
+    searchUser,
   };
 })();
 

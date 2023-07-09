@@ -2,61 +2,123 @@
 @use '../utilities/mixin' as *;
 
 .homepage {
-  padding-bottom: 1em;
+  padding: 2em 0 6em;
+
+  .homepage__wrapper {
+    @include flex(column-reverse, center, 1.5em);
+    margin-bottom: 1.5em;
+  }
 
   .homepage__btn {
     display: block;
-    width: 80%;
-    height: 54px;
-    margin: 1em auto 0;
+    width: 85%;
+    height: 60px;
+    margin: 0 auto;
     font-family: $body-font;
     font-style: normal;
     font-weight: $font-semi-bold;
     font-size: 16px;
-    line-height: 54px;
+    line-height: 60px;
     text-align: center;
-    background: $primary-001;
+    background: $light-001;
     color: $navi-001;
-    border-radius: 6px;
+    border-radius: 0.25em;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      box-shadow: 10px 10px 0px $navi-004;
+    }
+  }
+
+  .homepage__btn-fixed {
+    @include flex();
+    position: absolute;
+    bottom: 20px;
+    right: 28px;
+    width: 65px;
+    height: 65px;
+    background: $navi-003;
+    border-radius: 50%;
+    transition: all 0.3s ease-in;
+
+    .btn__fixed-icon {
+      width: 34px;
+      height: 34px;
+      background: $gradient-mix;
+      color: rgba(225, 202, 255, 0.69);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &:hover {
+      box-shadow: 5px 5px 0px #33394fd9;
+    }
   }
 }
 
 @media (min-width: 420px) {
   .homepage__btn {
-    width: 348px !important;
+    width: 350px !important;
+  }
+}
+
+@media (min-width: 500px) {
+  .homepage {
+    .homepage__btn-fixed {
+      bottom: 75px;
+    }
+  }
+}
+@media (min-width: 720px) {
+  .homepage {
+    .homepage__btn-fixed {
+      bottom: 55px;
+    }
   }
 }
 
 @media (min-width: 1024px) {
   .homepage {
     position: absolute;
+    margin: 0 auto;
     top: 60px;
     right: 120px;
-    padding-bottom: 2em !important;
+    padding: 2em 1em;
   }
 }
+
 @media (min-width: 1150px) {
   .homepage {
+    max-width: 1000px;
     right: 190px;
   }
 }
+
 @media (min-width: 1200px) {
   .homepage {
     left: 0px;
     right: 0px;
-  }
-}
 
-@media (min-width: 1440px) and (min-height: 1000px) {
+    .homepage__btn-fixed {
+      display: none;
+    }
+  }
 }
 
 @media (min-width: 1536px) {
   .homepage {
-    max-width: 1000px;
-    margin: 6em auto 0;
+    width: 920px;
+    height: 90vh;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
 
     .homepage__wrapper {
-      @include flex();
+      width: 100%;
+      flex-direction: row;
     }
   }
 }

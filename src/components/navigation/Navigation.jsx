@@ -1,86 +1,85 @@
-import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Notification, MessageFavorite } from 'iconsax-react';
 import { Link } from 'react-router-dom';
-import { RiMenuFill } from 'react-icons/ri';
-import { asyncUnsetAuthUser } from '../../states/authUser/action';
-import { sidebarStatusActionCreator } from '../../states/sidebarStatus/action';
-import MenuList from './children/MenuList';
-import MenuCollapse from './children/MenuCollapse';
-import MenuHeader from './children/MenuHeader';
+import { sidebarStatusActionCreator } from '../../states/menuStatus/action';
+import NavList from './children/NavList';
+import logoBrand from '../../assets/images/brand/digiforum-main.svg';
+import NavGroupProfile from './children/NavGroupProfile';
+import SearchElement from '../SearchElement';
 
 const Navbar = () => {
-  const [toggle, setToggle] = useState(false);
   const { authUser } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const onHandlerLogout = () => {
-    dispatch(asyncUnsetAuthUser());
-  };
-
-  const onHandlerNavbar = () => {
-    setToggle(false);
-  };
-
-  const onHandlerSidebar = () => {
-    dispatch(sidebarStatusActionCreator(true));
-  };
+  const onHandlerSidebar = () => dispatch(sidebarStatusActionCreator(true));
 
   return (
     <>
       {/* mobile version */}
-      <MenuCollapse toggle={toggle}>
-        <MenuHeader onHandlerNavbar={onHandlerNavbar} />
-        <nav>
-          <MenuList onHandlerNavbar={onHandlerNavbar} />
-        </nav>
-      </MenuCollapse>
+      <nav className="navbar__bottom">
+        <NavList />
+      </nav>
+
       {/* desktop version */}
       <nav className="navbar">
         <div className="nav__brand">
-          <button
-            type="button"
-            className="logo__brand nav__brand-logo"
-            onClick={onHandlerSidebar}
-          >
-            <img
-              src="images/brand/Logo_brand.png"
-              alt="logo brand"
-            />
-          </button>
+          <div className="nav__brand-group">
+            <button
+              type="button"
+              className="nav__brand-logo"
+              onClick={onHandlerSidebar}
+            >
+              <img
+                src={logoBrand}
+                alt="logo brand"
+              />
+            </button>
+          </div>
           <div className="name__brand">
             <h4>DigiForum</h4>
             <span>Platform Discussion</span>
           </div>
         </div>
 
-        <div className="nav__group-button">
-          {authUser ? (
+        <SearchElement
+          className="nav__search"
+          keyword="Search Here"
+          changeValueSearchParams={() => {}}
+        />
+
+        <div className="nav__wrap-icon">
+          <div className="nav__group-icon">
             <button
-              className="nav__button"
               type="button"
-              onClick={onHandlerLogout}
+              className="icon__notif"
             >
-              Logout
+              <Notification
+                size={26}
+                color="#d1caff"
+              />
             </button>
+            <button
+              type="button"
+              className="icon__message"
+            >
+              <MessageFavorite
+                size={26}
+                color="#d1caff"
+              />
+            </button>
+          </div>
+
+          {authUser ? (
+            <NavGroupProfile user={authUser} />
           ) : (
             <Link
-              className="nav__button"
               to="/login"
+              className="nav__button"
             >
               Login
             </Link>
           )}
-
-          <button
-            type="button"
-            className="Humberger__Menu"
-            onClick={() => setToggle((prevState) => !prevState)}
-          >
-            <RiMenuFill className="menu__fill" />
-          </button>
         </div>
-
-        <MenuList desktopMode />
       </nav>
     </>
   );

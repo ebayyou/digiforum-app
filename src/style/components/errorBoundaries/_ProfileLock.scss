@@ -1,0 +1,64 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.profile__lock {
+  width: 100%;
+  height: 200px;
+  margin: 0 auto;
+
+  .lock__wrapper {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(152.9deg, #fc728b85 -3.97%, #384a8d 95.59%);
+    border-radius: 0.3em;
+
+    .lock__box {
+      @include flex();
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      top: -30px;
+      left: 0px;
+      right: 0;
+      margin: 0 auto;
+      background: #282d41;
+      border-radius: 0.3em;
+
+      .lock__icon {
+        color: $primary-001;
+      }
+    }
+  }
+
+  .lock__desc {
+    width: 75%;
+    margin: 5em auto 1.3em;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+  }
+
+  .lock__btn {
+    display: block;
+    width: 180px;
+    height: 46px;
+    margin: 0 auto;
+    font-style: normal;
+    font-weight: $font-semi-bold;
+    font-size: 18px;
+    line-height: 46px;
+    text-align: center;
+    background: #282d41;
+    color: $primary-001;
+    border-radius: 0.3em;
+  }
+}
+
+@media (min-width: 500px) {
+  .profile__lock {
+    width: 400px;
+  }
+}

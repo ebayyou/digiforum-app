@@ -1,0 +1,83 @@
+@use '../../base/variable' as *;
+@use '../../utilities/mixin' as *;
+
+.profile {
+  @include flex(column, flex-start, 0.9em);
+  align-items: flex-start;
+  width: 100%;
+
+  .profile__group {
+    width: 100%;
+
+    .profile__banner {
+      width: 100%;
+      height: 100px;
+      background: $gradient-005;
+      border-radius: 0.35em;
+    }
+
+    .profile__picture {
+      width: 100px;
+      height: 100px;
+      border: 3px solid $neutral-005;
+      margin: -3.25em auto 0;
+      border-radius: 0.25em;
+    }
+  }
+
+  .profile__bio {
+    .bio__name {
+      font-style: normal;
+      font-weight: $font-medium;
+      font-size: 22px;
+      line-height: 33px;
+    }
+
+    .bio__id {
+      font-style: normal;
+      font-weight: $font-light;
+      font-size: 12px;
+      line-height: 18px;
+      color: $neutral-003;
+    }
+
+    .bio__desc {
+      width: 75%;
+      margin-top: 1em;
+      font-style: normal;
+      font-weight: $font-regular;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+}
+
+@media (min-width: 550px) {
+  .profile {
+    .profile__group {
+      .profile__banner {
+        height: 144px;
+      }
+
+      .profile__picture {
+        width: 144px;
+        height: 148px;
+        margin: -4.65em auto 0;
+        border-radius: 0.4em;
+      }
+    }
+
+    .profile__bio {
+      .bio__name {
+        font-size: 25px;
+        margin-bottom: 0.2em;
+      }
+      .bio__id {
+        font-size: 14px;
+      }
+      .bio__desc {
+        font-size: 16px;
+      }
+    }
+  }
+}

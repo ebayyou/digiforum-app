@@ -1,15 +1,33 @@
 import { useSelector } from 'react-redux';
+import { ErrorBoundary } from 'react-error-boundary';
 import LeaderboardItem from '../components/sidebar/LeaderboardItem';
 
 const LeaderboardsPage = () => {
   const { leaderboards } = useSelector((state) => state);
 
+  const leadmap = leaderboards.map((leadboard) => (
+    <LeaderboardItem
+      key={leadboard.user.id}
+      DesktopMode
+      {...leadboard}
+    />
+  ));
+
+  const leadError = (
+    <LeaderboardItem
+      DesktopMode
+      errorLead
+      user={{ avatar: '', name: 'Something Went Wrong', email: 'error404@gmail.com' }}
+      score={999}
+    />
+  );
+
   return (
     <section className="Layout__children">
       <div className="LeaderboardsPage">
-        <div className="boards__headers">
-          <h1 className="boards__heading">Top Leaderboards For 24h Threads</h1>
-          <p className="boards__desc">
+        <div className="headers__page">
+          <h1 className="heading__page">Top Leaderboards For 24h Threads</h1>
+          <p className="desc__page">
             Leaderboard is used to see the top users with the highest score.
           </p>
         </div>
@@ -20,15 +38,9 @@ const LeaderboardsPage = () => {
             <h2 className="boards__text">Score</h2>
           </div>
 
-          <div className="boards__wrapper">
-            {leaderboards.map((leadboard) => (
-              <LeaderboardItem
-                key={leadboard.user.id}
-                DesktopMode
-                {...leadboard}
-              />
-            ))}
-          </div>
+          <ErrorBoundary fallback={leadError}>
+            <div className="boards__wrapper">{leadmap}</div>
+          </ErrorBoundary>
         </div>
       </div>
     </section>

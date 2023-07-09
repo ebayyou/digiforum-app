@@ -8,10 +8,11 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "dompurify": "^2.4.3",
+    "iconsax-react": "^0.0.8",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.7.1",
+    "react-error-boundary": "^3.1.4",
     "react-redux": "^8.0.5",
     "react-redux-loading-bar": "^5.0.4",
     "react-router-dom": "^6.6.2",
@@ -23,11 +24,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "e2e": "npx cypress run",
+    "test": "react-scripts test",
     "cypress:open": "cypress open",
-    "ci:test": "react-scripts test --watchAll=false && start-server-and-test start http-get://0.0.0.0:3000 e2e"
+    "e2e": "npx cypress run",
+    "ci:test": "react-scripts test --watchAll=false && start-server-and-test start http-get://0.0.0.0:3000 e2e",
+    "lint": "eslint ./src"
   },
   "eslintConfig": {
     "extends": [
