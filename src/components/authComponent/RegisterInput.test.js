@@ -17,34 +17,34 @@ describe('RegisterInput Component', () => {
     );
   });
 
-  it('should handle nameInput typing correctly', async () => {
+  it('should handle nameInput typing correctly', () => {
     // arrange
-    const nameInput = await screen.getByPlaceholderText('Ebayyou Anggoro');
+    const nameInput = screen.getByPlaceholderText('Ebayyou Anggoro');
 
     // action
-    await userEvent.type(nameInput, 'ebayyouanggoro');
+    userEvent.type(nameInput, 'ebayyouanggoro');
 
     // assert
     expect(nameInput).toHaveValue('ebayyouanggoro');
   });
 
-  it('should handle email typing correctly', async () => {
+  it('should handle email typing correctly', () => {
     // arrange
-    const emailInput = await screen.getByPlaceholderText('Example@gmail.com');
+    const emailInput = screen.getByPlaceholderText('Example@gmail.com');
 
     // action
-    await userEvent.type(emailInput, 'ebayyou@gmail.com');
+    userEvent.type(emailInput, 'ebayyou@gmail.com');
 
     // assert
     expect(emailInput).toHaveValue('ebayyou@gmail.com');
   });
 
-  it('should handle password typing correctly', async () => {
+  it('should handle password typing correctly', () => {
     // arrange
-    const passwordInput = await screen.getByPlaceholderText('Your password is...');
+    const passwordInput = screen.getByPlaceholderText('Your password is...');
 
     // action
-    await userEvent.type(passwordInput, 'ebayyou123');
+    userEvent.type(passwordInput, 'ebayyou123');
 
     // assert
     expect(passwordInput).toHaveValue('ebayyou123');
