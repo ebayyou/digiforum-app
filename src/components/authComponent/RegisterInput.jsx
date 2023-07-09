@@ -35,14 +35,14 @@ const RegisterInput = ({ onSubmitHandlerRegister }) => {
           onChangeInput={onChangeEmail}
           value={email}
           typeInput="email"
-          placeholder="Example@gmail.co"
+          placeholder="Example@gmail.com"
         />
 
         <AuthInput
           onChangeInput={onChangePassword}
           value={password}
           typeInput="password"
-          placeholder="Your Password is..."
+          placeholder="Your password is..."
         />
 
         <button

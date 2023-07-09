@@ -24,10 +24,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "e2e": "npx cypress run",
+    "test": "react-scripts test",
     "cypress:open": "cypress open",
+    "e2e": "npx cypress run",
     "ci:test": "react-scripts test --watchAll=false && start-server-and-test start http-get://0.0.0.0:3000 e2e",
     "lint": "eslint ./src"
   },

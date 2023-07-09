@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 describe('Login flow spec', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000');
